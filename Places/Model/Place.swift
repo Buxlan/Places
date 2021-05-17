@@ -12,6 +12,9 @@ struct Place: Hashable {
     
     typealias PlaceCategory = String
     
+    static let storyboardName = "Place"
+    static let viewControllerName = "Place"
+    
     let title: String
     let category: PlaceCategory
     let image: UIImage = {

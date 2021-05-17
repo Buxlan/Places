@@ -11,10 +11,6 @@ import UIKit
 
 class Utils: NSObject {
 
-    static func instantiateViewController(with name: Config.AvailableViewControllers, storyboardName: String = "Main") -> UIViewController {
-        return UIStoryboard.init(name: storyboardName, bundle: nil).instantiateViewController(withIdentifier: name.rawValue)
-    }
-
     static func isiPad() -> Bool {
         return UIDevice.current.userInterfaceIdiom == .pad
     }

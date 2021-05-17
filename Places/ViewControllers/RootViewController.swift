@@ -14,23 +14,10 @@ class RootViewController: UIViewController {
     */
     private lazy var viewHierarchy: [UIView] = {
         var vh = [UIView]()
-        vh.append(collectionsView)
+        vh.append(mostPopularCollectionView)
 //        vh.append(mostPopularLabel)
 //        vh.append(backgroundImageView)
         return vh
-    }()
-    
-    lazy var rightBarButtonItem: UIBarButtonItem = {
-        let font = UIFont.preferredFont(forTextStyle: .largeTitle)
-        let config = UIImage.SymbolConfiguration(font: font, scale: UIImage.SymbolScale.medium)
-        let image = UIImage(systemName: "heart.fill", withConfiguration: config)
-        var item = UIBarButtonItem(title: "image", style: .plain, target: self, action: #selector(rightNavigationItemPressed))
-        item.image = image
-        item.tintColor = .systemRed
-        
-        print(String(describing: type(of: item)))
-        
-        return item
     }()
     
     let placesController = PlacesController()
@@ -38,7 +25,6 @@ class RootViewController: UIViewController {
     /*
     // Views
      */
-    var collectionsView: UICollectionView! = nil
     var dataSource: UICollectionViewDiffableDataSource<PlacesController.PlacesCollection, Place>! = nil
     var currentSnapshot: NSDiffableDataSourceSnapshot<PlacesController.PlacesCollection, Place>! = nil
     static let titleElementKind = "title_element-kind"
@@ -58,7 +44,18 @@ class RootViewController: UIViewController {
     }()
     
     lazy var mostPopularCollectionView: UICollectionView = {
-        var collectionsView = UICollectionView()
+        var collectionsView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        
+        collectionsView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
+        
+        collectionsView.layer.borderWidth = 2
+        collectionsView.layer.borderColor = UIColor.black.cgColor
+        
+        collectionsView.backgroundColor = .systemBackground
+        
+        collectionsView.allowsSelection = true
+        collectionsView.allowsMultipleSelection = false
+        collectionsView.delegate = self
         return collectionsView
     }()
     
@@ -81,6 +78,19 @@ class RootViewController: UIViewController {
         return imageView
     }()
     
+    lazy var rightBarButtonItem: UIBarButtonItem = {
+        let font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        let config = UIImage.SymbolConfiguration(font: font, scale: UIImage.SymbolScale.medium)
+        let image = UIImage(systemName: "heart.fill", withConfiguration: config)
+        var item = UIBarButtonItem(title: "image", style: .plain, target: self, action: #selector(rightNavigationItemPressed))
+        item.image = image
+        item.tintColor = .systemRed
+        
+        print(String(describing: type(of: item)))
+        
+        return item
+    }()
+    
     /*
     // Handling view controller events
     */
@@ -100,9 +110,9 @@ class RootViewController: UIViewController {
 
 extension RootViewController {
     
-    func pushViewController() {
-        let storyboard = UIStoryboard(name: "Place", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "Place")
+    func pushPlaceViewController(_ item: Place) {
+        let storyboard = UIStoryboard(name: type(of: item).storyboardName, bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: type(of: item).viewControllerName)
         vc.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -154,22 +164,16 @@ extension RootViewController {
 
     func configureViewHierarchy() {
         
-        collectionsView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-        
-        collectionsView.layer.borderWidth = 2
-        collectionsView.layer.borderColor = UIColor.black.cgColor
-        
         for v in viewHierarchy {
             self.view.addSubview(v)
             v.translatesAutoresizingMaskIntoConstraints = false
         }
         
-        collectionsView.backgroundColor = .systemBackground
         NSLayoutConstraint.activate([
-            collectionsView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            collectionsView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            collectionsView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-            collectionsView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor)
+            mostPopularCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            mostPopularCollectionView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            mostPopularCollectionView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            mostPopularCollectionView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor)
         ])
     }
     
@@ -182,7 +186,7 @@ extension RootViewController {
             cell.imageView.image = place.image
         }
         
-        dataSource = UICollectionViewDiffableDataSource<PlacesController.PlacesCollection, Place>(collectionView: collectionsView) { (collectionsView: UICollectionView, indexPath: IndexPath, place: Place) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<PlacesController.PlacesCollection, Place>(collectionView: mostPopularCollectionView) { (collectionsView: UICollectionView, indexPath: IndexPath, place: Place) -> UICollectionViewCell? in
             // Return the cell
             return collectionsView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: place)
         }
@@ -196,7 +200,7 @@ extension RootViewController {
         }
         
         dataSource.supplementaryViewProvider = { (view, kind, index) in
-            return self.collectionsView.dequeueConfiguredReusableSupplementary(using: supplementaryRegistration, for: index)
+            return self.mostPopularCollectionView.dequeueConfiguredReusableSupplementary(using: supplementaryRegistration, for: index)
         }
         
         currentSnapshot = NSDiffableDataSourceSnapshot<PlacesController.PlacesCollection, Place>()
@@ -217,7 +221,7 @@ extension RootViewController {
 
     func configureNavigationBar() {
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationController?.hidesBarsOnTap = true
+        navigationController?.hidesBarsOnTap = false
     }
     
     // Actions
