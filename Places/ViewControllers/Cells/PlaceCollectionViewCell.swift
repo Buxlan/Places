@@ -26,6 +26,7 @@ class PlaceCollectionViewCell: UICollectionViewCell {
 
 extension PlaceCollectionViewCell {
     func configure() {
+        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         categoryLabel.translatesAutoresizingMaskIntoConstraints = false

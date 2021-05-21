@@ -20,13 +20,13 @@ class RootViewController: UIViewController {
         return vh
     }()
     
-    let placesController = PlacesController()
+    let placeController = PlaceController()
     
     /*
     // Views
      */
-    var dataSource: UICollectionViewDiffableDataSource<PlacesController.PlacesCollection, Place>! = nil
-    var currentSnapshot: NSDiffableDataSourceSnapshot<PlacesController.PlacesCollection, Place>! = nil
+    var dataSource: UICollectionViewDiffableDataSource<PlaceController.PlaceCollection, Place>! = nil
+    var currentSnapshot: NSDiffableDataSourceSnapshot<PlaceController.PlaceCollection, Place>! = nil
     static let titleElementKind = "title_element-kind"
     
     lazy var mostPopularStackView: UIStackView = {
@@ -36,9 +36,7 @@ class RootViewController: UIViewController {
         stackView.alignment = UIStackView.Alignment.fill
         stackView.addArrangedSubview(mostPopularLabel)
         stackView.addArrangedSubview(backgroundImageView)
-        stackView.backgroundColor = .systemGray6
-        
-        print(stackView.subviews)
+        stackView.backgroundColor = .systemGray
         
         return stackView
     }()
@@ -70,7 +68,6 @@ class RootViewController: UIViewController {
     lazy var backgroundImageView: UIImageView = {
         let image = UIImage(systemName: "photo")
         let imageView = UIImageView(image: image)
-        print("current content mode is \(imageView.contentMode.rawValue)")
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .systemPink
         imageView.sizeToFit()
@@ -85,8 +82,6 @@ class RootViewController: UIViewController {
         var item = UIBarButtonItem(title: "image", style: .plain, target: self, action: #selector(rightNavigationItemPressed))
         item.image = image
         item.tintColor = .systemRed
-        
-        print(String(describing: type(of: item)))
         
         return item
     }()
@@ -186,7 +181,7 @@ extension RootViewController {
             cell.imageView.image = place.image
         }
         
-        dataSource = UICollectionViewDiffableDataSource<PlacesController.PlacesCollection, Place>(collectionView: mostPopularCollectionView) { (collectionsView: UICollectionView, indexPath: IndexPath, place: Place) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<PlaceController.PlaceCollection, Place>(collectionView: mostPopularCollectionView) { (collectionsView: UICollectionView, indexPath: IndexPath, place: Place) -> UICollectionViewCell? in
             // Return the cell
             return collectionsView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: place)
         }
@@ -203,9 +198,9 @@ extension RootViewController {
             return self.mostPopularCollectionView.dequeueConfiguredReusableSupplementary(using: supplementaryRegistration, for: index)
         }
         
-        currentSnapshot = NSDiffableDataSourceSnapshot<PlacesController.PlacesCollection, Place>()
+        currentSnapshot = NSDiffableDataSourceSnapshot<PlaceController.PlaceCollection, Place>()
 
-        placesController.collections.forEach {
+        placeController.collections.forEach {
             let collection = $0
             currentSnapshot.appendSections([collection])
             currentSnapshot.appendItems(collection.places)

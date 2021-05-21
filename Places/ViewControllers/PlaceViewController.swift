@@ -2,87 +2,45 @@
 //  PlaceViewController.swift
 //  Places
 //
-//  Created by  Buxlan on 5/6/21.
+//  Created by  Buxlan on 5/19/21.
 //
 
 import UIKit
 
 class PlaceViewController: UIViewController {
-
-    lazy var firstButton: UIButton = {
-        let button = UIButton(type: .roundedRect)
-        button.setTitle("Go back", for: .normal)
-        button.titleLabel?.font = UIFont.preferredFont(forTextStyle: .headline)
-        button.addTarget(self, action: #selector(goBackButtonTapped), for: .touchUpInside)
-        button.backgroundColor = .systemGray2
-        button.layer.cornerRadius = 10
-        button.titleLabel?.textColor = UIColor.secondaryLabel
-        button.contentEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
-        return button
+    
+    @IBOutlet var tableView: UITableView!
+    
+    let place = PlaceController().collections[0].places[0]
+    var viewModel: PlaceViewModel! = nil
+    lazy var tableDirector: PlaceTableViewDirector = {
+        return PlaceTableViewDirector(tableView: tableView, items: viewModel.items)
     }()
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        setupUI()
-        setupNavigationBar()
+        
+        viewModel = PlaceViewModel(place: place)
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44
+        
+        addHandlers()
     }
     
-    func setupUI() {
-        
-        print(view.frame)
-        view.backgroundColor = .white
-        view.addSubview(firstButton)
-
-        setupConstraints()
-    }
-    
-    func setupConstraints() {
-        
-        firstButton.translatesAutoresizingMaskIntoConstraints = false
-        
-        let widthButtonAnchor = firstButton.widthAnchor.constraint(greaterThanOrEqualToConstant: 100)
-        widthButtonAnchor.priority = UILayoutPriority.defaultHigh
-        
-        let constraints: [NSLayoutConstraint] = [
-            firstButton.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor, constant: 0),
-            firstButton.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-            widthButtonAnchor,
-            firstButton.heightAnchor.constraint(greaterThanOrEqualToConstant: 60)
-        ]
-        
-        NSLayoutConstraint.activate(constraints)
-    }
-    
-    func setupNavigationBar() {
-        navigationController?.title = "Place"
-        navigationController?.setNavigationBarHidden(false, animated: false)
-        navigationItem.backButtonTitle = ""
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Right nav item", style: .plain, target: self, action: #selector(goBackButtonTapped))
-    }
-    
-    
-    
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-    
-    @objc func goBackButtonTapped() {
-        
-        if let navigationController = navigationController {
-            navigationController.popViewController(animated: true)
-        } else {
-            self.dismiss(animated: true, completion: { print("Went back") } )
+    private func addHandlers() {
+        self.tableDirector.actionsProxy.on(.didSelect) { (c :PlaceUsefulButtonsCellConfigurator, cell) in
+            print("did select useful cell", c.item, cell)
+        }.on(.willDisplay) { (c: PlaceUsefulButtonsCellConfigurator, cell) in
+            print("will display useful cell", c.item, cell)
+        }.on(.didSelect) { (c: PlaceImageTableCellConfigurator, cell) in
+            print("did select image cell", c.item, cell)
+        }.on(.willDisplay) { (c: PlaceImageTableCellConfigurator, cell) in
+            print("will display image cell", c.item, cell)
+        }.on(CellAction.custom(PlaceUsefulButtonsTableViewCell.reviewsAction)) { (c: PlaceUsefulButtonsCellConfigurator, cell) in
+            print("Show reviews action", c.item, cell)
+        }.on(CellAction.custom(PlaceUsefulButtonsTableViewCell.addToFavoriteAction)) { (c: PlaceUsefulButtonsCellConfigurator, cell) in
+            print("add to favorites action", c.item, cell)
         }
     }
-
+    
 }
