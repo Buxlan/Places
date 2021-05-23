@@ -17,56 +17,25 @@ class PlaceTableViewDirector: NSObject {
             tableView.reloadData()
         }
     }
+    var footerConfigurator: PlaceTableFooterConfigurator
     
     lazy var tableFooterView: UIView = {
-        let view = UIView(frame: .zero)
-        view.backgroundColor = .systemBlue
-        
-        let font = UIFont.preferredFont(forTextStyle: .headline)
-        let textColor = UIColor.systemGray6
-        let buttonPlay = UIButton(frame: .zero)
-        
-        // configure button's image
-        let config = UIImage.SymbolConfiguration(font: font)
-        let image = UIImage(systemName: "play.fill", withConfiguration: config)
-        buttonPlay.setImage(image, for: .normal)
-        buttonPlay.imageView?.tintColor = textColor
-        
-        // configure button's title
-        buttonPlay.setTitle("Play sound", for: .normal)
-        buttonPlay.titleLabel?.font = font
-        buttonPlay.titleLabel?.textColor = textColor
-        buttonPlay.setTitleColor(textColor, for: .normal)
-        
-        // configure button insets
-        buttonPlay.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        buttonPlay.titleEdgeInsets.left = 10
-        buttonPlay.titleEdgeInsets.right = -10
-        buttonPlay.contentEdgeInsets.right += 10
-        
-        view.addSubview(buttonPlay)
-        
-        buttonPlay.translatesAutoresizingMaskIntoConstraints = false
-        let constraints: [NSLayoutConstraint] = [
-            buttonPlay.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonPlay.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            buttonPlay.widthAnchor.constraint(equalTo: view.widthAnchor),
-            buttonPlay.heightAnchor.constraint(equalTo: view.heightAnchor)
-        ]
-        NSLayoutConstraint.activate(constraints)
-        
-        return view
+        return PlaceTableViewFooter()
     }()
     
-    init(tableView: UITableView, items: [CellConfigurator]) {
+    init(tableView: UITableView,
+         items: [CellConfigurator],
+         footerConfigurator: PlaceTableFooterConfigurator) {
         self.tableView = tableView
         self.items = items
+        self.footerConfigurator = footerConfigurator
         super.init()
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
         NotificationCenter.default.addObserver(self, selector: #selector(onActionEvent(n: )), name: CellAction.notificationName, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(onActionEvent(n:)), name: Place, object: <#T##Any?#>)
     }
     
     @objc fileprivate
@@ -75,6 +44,8 @@ class PlaceTableViewDirector: NSObject {
            let cell = eventData.cell as? UITableViewCell,
            let indexPath = self.tableView.indexPath(for: cell) {
             actionsProxy.invoke(action: eventData.action, cell: cell, configurator: items[indexPath.row])
+        } else if let eventData = n.userInfo?["data"] as? CellActionEventData {
+            actionsProxy.invoke(action: eventData.action, object: footerConfigurator.item, view: eventData.cell)
         }
     }
     
@@ -98,7 +69,7 @@ extension PlaceTableViewDirector: UITableViewDataSource {
         
         let item = items[indexPath.row]
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseId)!
+        let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseIdentifier)!
         item.configure(cell: cell)
         
         return cell

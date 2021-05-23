@@ -9,8 +9,8 @@ import UIKit
 
 class PlaceUsefulButtonsTableViewCell: UITableViewCell, ConfigurableCell {
     
-    static let reviewsAction = "reviewsAction"
-    static let addToFavoriteAction = "addToFavoriteAction"
+    static let reviewsAction = "placeReviewsAction"
+    static let addToFavoriteAction = "placeAddToFavoriteAction"
     
     @IBOutlet var stackView: UIStackView!
     @IBOutlet var buttonViews: UIButton!

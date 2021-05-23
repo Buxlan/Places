@@ -8,13 +8,13 @@
 import UIKit
 
 protocol CellConfigurator {
-    static var reuseId: String { get }
+    static var reuseIdentifier: String { get }
     var cellHeight: CGFloat { get set }
     func configure(cell: UIView)
 }
 
-class TableCellConfigurator<CellType: ConfigurableCell, DataType>: CellConfigurator where CellType.DataType == DataType, CellType: UITableViewCell {
-    static var reuseId: String { return CellType.reuseIdentifier }
+class TableCellConfigurator<CellType: ConfigurableCell, DataType>: CellConfigurator where CellType.DataType == DataType, CellType: UIView {
+    static var reuseIdentifier: String { return CellType.reuseIdentifier }
     var cellHeight: CGFloat
     
     let item: DataType

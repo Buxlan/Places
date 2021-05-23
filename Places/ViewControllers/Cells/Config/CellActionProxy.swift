@@ -10,12 +10,21 @@ import UIKit
 class CellActionProxy {
     //storage where subscrubers' closures are stored
     private var actions = [String: ((CellConfigurator, UIView) -> Void)]()
+    private var viewsActions = [String: (ReusableObject, UIView) -> Void]()
     
     //method to invoke cell action and notify all subscrubers
     func invoke(action: CellAction, cell: UIView, configurator: CellConfigurator) {
-        let key = "\(action.hashValue)\(type(of: configurator).reuseId)"
+        let key = "\(action.hashValue)\(type(of: configurator).reuseIdentifier)"
         if let action = self.actions[key] {
             action(configurator, cell)
+        }
+        
+    }
+    
+    func invoke(action: CellAction, object: ReusableObject, view: UIView) {
+        let key = "\(action.hashValue)\(type(of: object).reuseIdentifier)"
+        if let action = viewsActions[key] {
+            action(object, view)
         }
     }
     
@@ -28,4 +37,15 @@ class CellActionProxy {
         }
         return self
     }
+    
+    @discardableResult
+    func on<DataType: ReusableObject>(_ action: CellAction, handler: @escaping ( (DataType, UIView) -> Void)) -> Self {
+        let key = "\(action.hashValue)\(DataType.reuseIdentifier)"
+        viewsActions[key] = { (object, view) in
+
+            handler(object as! DataType, view)
+        }
+        return self
+    }
+    
 }

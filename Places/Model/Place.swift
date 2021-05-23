@@ -9,13 +9,17 @@ import Foundation
 import UIKit
 import CoreLocation
 
-struct Place: Hashable {
+protocol ReusableObject {
+    static var reuseIdentifier: String { get }
+}
+
+struct Place: Hashable, ReusableObject {
     
     typealias PlaceCategory = String
     
     static let storyboardName = "Place"
     static let viewControllerName = "Place"
-    static let reuseId = "Place"
+    static let reuseIdentifier = "Place"
     
     let title: String
     let category: PlaceCategory

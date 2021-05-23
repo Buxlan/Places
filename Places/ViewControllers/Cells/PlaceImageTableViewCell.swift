@@ -26,6 +26,4 @@ class PlaceImageTableViewCell: UITableViewCell, ConfigurableCell {
         NSLayoutConstraint.activate(constraints)
         
     }
-    
-    
 }
