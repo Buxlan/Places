@@ -20,3 +20,4 @@ class Utils: NSObject {
     }
   
 }
+

@@ -18,6 +18,7 @@ class PlaceDescriptionTableViewCell: UITableViewCell, ConfigurableCell {
         textView.text = data.description
         textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
         textView.isScrollEnabled = false
+        textView.isEditable = false
 
         textView.translatesAutoresizingMaskIntoConstraints = false
         let constraints: [NSLayoutConstraint] = [
@@ -28,6 +29,4 @@ class PlaceDescriptionTableViewCell: UITableViewCell, ConfigurableCell {
         ]
         NSLayoutConstraint.activate(constraints)
     }
-
-    
 }

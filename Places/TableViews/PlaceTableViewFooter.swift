@@ -18,7 +18,7 @@ class PlaceTableViewFooter: UIView {
         
         isUserInteractionEnabled = true
         
-        self.backgroundColor = .systemBlue
+        self.backgroundColor = .clear
         
         let font = UIFont.preferredFont(forTextStyle: .headline)
         let textColor = UIColor.systemGray6
@@ -26,9 +26,8 @@ class PlaceTableViewFooter: UIView {
         buttonPlay.addTarget(self, action: #selector(playSoundTapped), for: .touchUpInside)
         
         // configure button's image
-        let config = UIImage.SymbolConfiguration(font: font)
-        let image = UIImage(systemName: "play.fill", withConfiguration: config)
-        buttonPlay.setImage(image, for: .normal)
+        let symbol = UIImage.bxPreferredSymbol(with: "play.fill")
+        buttonPlay.setImage(symbol, for: .normal)
         buttonPlay.imageView?.tintColor = textColor
         
         // configure button's title
@@ -56,7 +55,7 @@ class PlaceTableViewFooter: UIView {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError("init(coder:) hasn't been implemented")
     }
     
     @objc

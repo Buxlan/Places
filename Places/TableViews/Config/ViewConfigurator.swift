@@ -29,3 +29,4 @@ class ReusableViewConfigurator<ViewType: ConfigurableView, DataType: ReusableObj
 }
 
 typealias PlaceTableFooterConfigurator = ReusableViewConfigurator<PlaceTableViewFooter, Place>
+typealias PlaceTableHeaderConfigurator = ReusableViewConfigurator<PlaceTableViewHeader, Place>

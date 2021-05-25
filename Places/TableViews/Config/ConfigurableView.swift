@@ -7,8 +7,7 @@
 
 import UIKit
 
-protocol ConfigurableView {
-    static var reuseIdentifier: String { get }
+protocol ConfigurableView: ReusableObject {
     
     associatedtype DataType
     func configure(data: DataType)

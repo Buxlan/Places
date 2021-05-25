@@ -10,12 +10,19 @@ import UIKit
 protocol CellConfigurator {
     static var reuseIdentifier: String { get }
     var cellHeight: CGFloat { get set }
+    var hash: Int { get }
+    
     func configure(cell: UIView)
 }
 
-class TableCellConfigurator<CellType: ConfigurableCell, DataType>: CellConfigurator where CellType.DataType == DataType, CellType: UIView {
+class TableCellConfigurator<CellType: ConfigurableCell, DataType: Hashable>: CellConfigurator where CellType.DataType == DataType, CellType: UIView {
     static var reuseIdentifier: String { return CellType.reuseIdentifier }
     var cellHeight: CGFloat
+    var hash: Int {
+        let v = String(describing: CellType.self).hashValue ^ item.hashValue
+        print("Hash is \(v)")
+        return v
+    }
     
     let item: DataType
     

@@ -7,10 +7,25 @@
 
 import UIKit
 
-class Config: NSObject {
+struct Config {
     
-    enum AvailableViewControllers: String {
-        case main = "Main"
+    enum ConfigType {
+        case standart
+        case night
+    }
+    
+    let type: ConfigType
+    
+    enum AppViewControllers: String {
+        case main = "RootViewController"
+        case obnoarding = "OnboardingViewController"
+        case place = "PlaceViewController"
+        case comments = "CommentsViewController"
+        case registration = "RegistrationViewController"
+        case authentification = "AuthentificationViewController"
+        case editComment = "EditPlaceViewController"
+        case unsignedProfile = "UnsignedUserViewController"
+        case profile = "ProfileViewController"
     }
     
     class Features: NSObject {

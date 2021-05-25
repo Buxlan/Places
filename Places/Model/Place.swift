@@ -13,7 +13,7 @@ protocol ReusableObject {
     static var reuseIdentifier: String { get }
 }
 
-struct Place: Hashable, ReusableObject {
+struct Place: ReusableObject {
     
     typealias PlaceCategory = String
     
@@ -32,8 +32,14 @@ struct Place: Hashable, ReusableObject {
     
     let latitude: CLLocationDegrees = 59.935317
     let longitude: CLLocationDegrees = 30.326959
-    
+}
+
+extension Place: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(identifier)
+    }
+    
+    static func ==(lhs: Place, rhs: Place) -> Bool {
+        return lhs.hashValue == rhs.hashValue
     }
 }
