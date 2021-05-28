@@ -1,5 +1,5 @@
 //
-//  PlaceViewController+UITableViewDelegate.swift
+//  PlaceCommentsViewController+UITableViewDelegate.swift
 //  Places
 //
 //  Created by  Buxlan on 5/18/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension CommentsViewController: UITableViewDelegate {
+extension PlaceCommentsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

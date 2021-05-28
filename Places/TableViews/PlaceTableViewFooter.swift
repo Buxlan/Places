@@ -20,18 +20,17 @@ class PlaceTableViewFooter: UIView {
         
         self.backgroundColor = .clear
         
-        let font = UIFont.preferredFont(forTextStyle: .headline)
-        let textColor = UIColor.systemGray6
+        let font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        let textColor = UIColor.systemBlue
         let buttonPlay = UIButton(frame: .zero)
         buttonPlay.addTarget(self, action: #selector(playSoundTapped), for: .touchUpInside)
         
         // configure button's image
-        let symbol = UIImage.bxPreferredSymbol(with: "play.fill")
+        let symbol = UIImage.bxPreferredSymbol(with: "play.circle")
         buttonPlay.setImage(symbol, for: .normal)
         buttonPlay.imageView?.tintColor = textColor
         
         // configure button's title
-        buttonPlay.setTitle("Play sound", for: .normal)
         buttonPlay.titleLabel?.font = font
         buttonPlay.titleLabel?.textColor = textColor
         buttonPlay.setTitleColor(textColor, for: .normal)
@@ -46,10 +45,10 @@ class PlaceTableViewFooter: UIView {
         
         buttonPlay.translatesAutoresizingMaskIntoConstraints = false
         let constraints: [NSLayoutConstraint] = [
-            buttonPlay.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            buttonPlay.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             buttonPlay.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            buttonPlay.widthAnchor.constraint(equalTo: self.widthAnchor),
-            buttonPlay.heightAnchor.constraint(equalTo: self.heightAnchor)
+//            buttonPlay.widthAnchor.constraint(equalTo: self.widthAnchor),
+//            buttonPlay.heightAnchor.constraint(equalTo: self.heightAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }

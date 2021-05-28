@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension RootViewController: UICollectionViewDelegate {
+extension PlaceListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class RootViewController: UIViewController {
+class PlaceListViewController: UIViewController {
 
     /*
     // Vars
@@ -97,13 +97,17 @@ class RootViewController: UIViewController {
         configureDataSource()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        configureNavigationBar()
+    }
+    
 }
     
 /*
 // Handling controls actions
 */
 
-extension RootViewController {
+extension PlaceListViewController {
     
     func pushPlaceViewController(_ item: Place) {
         let storyboard = UIStoryboard(name: type(of: item).storyboardName, bundle: nil)
@@ -121,7 +125,7 @@ extension RootViewController {
 /*
 // Collection view layout
 */
-extension RootViewController {
+extension PlaceListViewController {
     func createLayout() -> UICollectionViewLayout {
         let sectionPrivider = { (sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
@@ -139,7 +143,7 @@ extension RootViewController {
             
             let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
             
-            let titleSuplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSize, elementKind: RootViewController.titleElementKind, alignment: .top)
+            let titleSuplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSize, elementKind: PlaceListViewController.titleElementKind, alignment: .top)
             section.boundarySupplementaryItems = [titleSuplementary]
             return section
         }
@@ -155,7 +159,7 @@ extension RootViewController {
 /*
 // Other usefull functions
 */
-extension RootViewController {
+extension PlaceListViewController {
 
     func configureViewHierarchy() {
         
@@ -186,7 +190,7 @@ extension RootViewController {
             return collectionsView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: place)
         }
         
-        let supplementaryRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: RootViewController.titleElementKind) { (supplementaryView, string, indexPath) in
+        let supplementaryRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: PlaceListViewController.titleElementKind) { (supplementaryView, string, indexPath) in
             if let snapshot = self.currentSnapshot {
                 // Populate the view with our section's description
                 let placeCategory = snapshot.sectionIdentifiers[indexPath.section]
@@ -212,11 +216,19 @@ extension RootViewController {
 /*
 // Related to Navigation bar
 */
-extension RootViewController {
+extension PlaceListViewController {
 
     func configureNavigationBar() {
+        title = "Places"
+        navigationController?.title = "Places"
         navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationController?.navigationBar.barTintColor = .clear
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemGray6]
+        navigationController?.toolbar.barTintColor = .systemBlue
+        tabBarController?.tabBar.barTintColor = .systemBlue
+        tabBarController?.tabBar.tintColor = .systemGray6
         navigationController?.hidesBarsOnTap = false
+        navigationController?.isToolbarHidden = true
     }
     
     // Actions

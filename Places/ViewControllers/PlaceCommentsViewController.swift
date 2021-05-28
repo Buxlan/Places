@@ -1,5 +1,5 @@
 //
-//  CommentsViewController.swift
+//  PlaceCommentsViewController.swift
 //  Places
 //
 //  Created by  Buxlan on 5/6/21.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CommentsViewController: UIViewController {
+class PlaceCommentsViewController: UIViewController {
     
     var placeController = PlaceController()
     

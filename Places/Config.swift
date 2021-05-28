@@ -9,37 +9,14 @@ import UIKit
 
 struct Config {
     
-    enum ConfigType {
-        case standart
-        case night
-    }
-    
-    let type: ConfigType
-    
-    enum AppViewControllers: String {
-        case main = "RootViewController"
-        case obnoarding = "OnboardingViewController"
-        case place = "PlaceViewController"
-        case comments = "CommentsViewController"
-        case registration = "RegistrationViewController"
-        case authentification = "AuthentificationViewController"
-        case editComment = "EditPlaceViewController"
-        case unsignedProfile = "UnsignedUserViewController"
-        case profile = "ProfileViewController"
-    }
-    
-    class Features: NSObject {
+    let type: AppSettings.Appearance
         
-    }
-        
-    class General: NSObject {
+    struct General {
         static let appName = "Places"
 //        static let appGroupName = "group.com.buxlan.xTimers"
 //        static let iCloudContainerName = "iCloud.com.buxlan.xTimers"
         static let contactEmail = "buxlan51@gmail.com"
 //        static let languages = [LanguageModel(name: "LANGUAGE_OPTION_1".localized(), code: "en_US")]
-        
-        static let notificationDefaultDelayForNotifications = -30 // minutes
         
 //        static var dateFormatter: DateFormatter { 
 //            let formatter = DateFormatter()

@@ -76,3 +76,38 @@ extension UITableView {
         }
     }
 }
+
+extension UIButton {
+    
+    static func onboardingButton(title: String, image: UIImage?, action: UIAction?) -> UIButton {
+        
+        let button = UIButton(frame: .zero, primaryAction: action)
+        
+        button.setTitle(title, for: .normal)
+        button.setImage(image, for: .normal)
+        
+        button.setTitleColor(.systemGray6, for: .normal)
+        button.backgroundColor = .systemBlue
+        button.tintColor = .systemGray6
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        button.layer.cornerRadius = 15
+        
+        // configure insets
+        button.contentEdgeInsets = UIEdgeInsets(top: 15, left: 70, bottom: 15, right: 70)
+        
+        return button
+    }
+    
+}
+
+extension Notification.Name {
+    
+    private enum NotificationName: String {
+        case onboardingDismiss = "onboardingDismiss"
+    }
+    
+    static let onboardingDismiss = Notification.Name(NotificationName.onboardingDismiss.rawValue)
+    
+}

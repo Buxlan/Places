@@ -22,6 +22,14 @@ class PlaceViewController: UIViewController {
                                       headerConfigurator: PlaceTableHeaderConfigurator(item: place))
     }()
     
+    lazy var playBarButtonItem: UIBarButtonItem = {
+        let item = UIBarButtonItem(systemItem: .play, primaryAction: UIAction(handler: { (action) in
+            self.playTapped()
+        }))
+        item.tintColor = .systemGray6
+        return item
+    }()
+    
     override func viewDidLoad() {
         
         viewModel = PlaceViewModel(place: place)
@@ -29,7 +37,7 @@ class PlaceViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 44
         
-        configureToolbar()
+        configureBar()
         
         addHandlers()
     }
@@ -38,28 +46,30 @@ class PlaceViewController: UIViewController {
         tableDirector.configureHandlers()
     }
     
-    private func configureToolbar() {
+    private func configureBar() {
         
         navigationController?.isToolbarHidden = false
+        navigationController?.toolbar.barTintColor = .systemBlue
+        
+        let backItem = UIBarButtonItem(title: "<<<", style: .done, target: self, action: #selector(backTapped))
+        navigationItem.leftBarButtonItem = backItem
+        
+        navigationItem.leftBarButtonItem?.tintColor = UIColor.systemGray6
+        title = "Place"
         
         let font: UIFont = .preferredFont(forTextStyle: .largeTitle)
         let configuration = UIImage.SymbolConfiguration(font: font)
         let symbol = UIImage(systemName: "play.fill", withConfiguration: configuration)
-        
+
         let items = [
             UIBarButtonItem(systemItem: .flexibleSpace),
-            UIBarButtonItem(systemItem: .play, primaryAction: UIAction(handler: { (action) in
-                self.playTapped()
-            })),
-            UIBarButtonItem(systemItem: .flexibleSpace),
-            UIBarButtonItem(systemItem: .flexibleSpace),
-            UIBarButtonItem(systemItem: .flexibleSpace),
+            playBarButtonItem,
             UIBarButtonItem(image: UIImage.bxPreferredSymbol(with: "record.circle"), style: .plain, target: self, action: #selector(recordTapped)),
-            UIBarButtonItem(systemItem: .flexibleSpace)
         ]
         setToolbarItems(items, animated: true)
-        navigationController?.toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
-        navigationController?.toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
+        
+//        navigationController?.toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
+//        navigationController?.toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
         
     }
     
@@ -71,6 +81,11 @@ class PlaceViewController: UIViewController {
     @objc
     func recordTapped() {
         print("Record")
+    }
+    
+    @objc
+    func backTapped(sender: Any?) {
+        navigationController?.popViewController(animated: true)
     }
     
 }

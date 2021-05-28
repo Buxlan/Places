@@ -105,33 +105,6 @@ extension PlaceTableViewDirector: UITableViewDelegate {
         return item.cellHeight
     }
     
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 44
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForFooterInSection section: Int) -> CGFloat {
-        return 44
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        footerConfigurator.configure(view: tableFooterView)
-        return tableFooterView
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        headerConfigurator.configure(view: tableHeaderView)
-        return nil
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return 300
-    }
-    
-    
     /* Handling TableView actions */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // no need to keep cell selected
