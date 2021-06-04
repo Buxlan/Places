@@ -46,7 +46,7 @@ class PlaceListViewController: UIViewController {
         
         collectionsView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         
-        collectionsView.layer.borderWidth = 2
+//        collectionsView.layer.borderWidth = 2
         collectionsView.layer.borderColor = UIColor.black.cgColor
         
         collectionsView.backgroundColor = .systemBackground
@@ -90,11 +90,14 @@ class PlaceListViewController: UIViewController {
     // Handling view controller events
     */
     override func viewDidLoad() {
-        super.viewDidLoad()
+        
+        title = "Places"
         
         configureNavigationBar()
         configureViewHierarchy()
         configureDataSource()
+        
+        super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -225,7 +228,7 @@ extension PlaceListViewController {
         navigationController?.navigationBar.barTintColor = .clear
         navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemGray6]
         navigationController?.toolbar.barTintColor = .systemBlue
-        tabBarController?.tabBar.barTintColor = .systemBlue
+        tabBarController?.tabBar.barTintColor = UIColor.bxThirdColor
         tabBarController?.tabBar.tintColor = .systemGray6
         navigationController?.hidesBarsOnTap = false
         navigationController?.isToolbarHidden = true

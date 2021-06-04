@@ -32,6 +32,8 @@ class PlaceViewController: UIViewController {
     
     override func viewDidLoad() {
         
+        title = "Place"
+        
         viewModel = PlaceViewModel(place: place)
         
         tableView.rowHeight = UITableView.automaticDimension
@@ -40,6 +42,8 @@ class PlaceViewController: UIViewController {
         configureBar()
         
         addHandlers()
+        
+        super.viewDidLoad()
     }
     
     private func addHandlers() {

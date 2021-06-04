@@ -10,6 +10,12 @@ import UIKit
 
 class AppController: NSObject {
     
+    struct Key {
+        static let wasLaunchedBefore = "wasLauchedBefore"
+        static let bundleVersion = "CFBundleVersion"
+        static let lastExecutedBundleVersion = "LastExecutedBundleVersion"
+    }
+    
     static let shared = AppController()
     
     let settings = AppSettings()
@@ -24,7 +30,7 @@ class AppController: NSObject {
 //            return !value
         }
         set {
-            UserDefaults.standard.set(!newValue, forKey: "wasLauchedBefore")
+            UserDefaults.standard.set(!newValue, forKey: Key.wasLaunchedBefore)
         }
     }
     
@@ -36,18 +42,19 @@ class AppController: NSObject {
     override init() {
         super.init()
         
-        let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-        let lastExecutedVersion = UserDefaults.standard.value(forKey: "LastExecutedBundleVersion") as! String
-        
-        if currentVersion != lastExecutedVersion {
-            updateVersion(old: lastExecutedVersion, new: currentVersion)
+        let currentVersion = Bundle.main.object(forInfoDictionaryKey: Key.bundleVersion) as! String
+        if let lastExecutedVersion =
+            UserDefaults.standard.value(forKey: Key.lastExecutedBundleVersion)
+            as? String {
+            if currentVersion != lastExecutedVersion {
+                updateVersion(old: lastExecutedVersion, new: currentVersion)
+            }
         }
-        
-        UserDefaults.standard.set(currentVersion, forKey: "LastExecutedBundleVersion")
     }
     
     private func updateVersion(old: String, new: String) {
         Utils.log("updating version to ", object: new)
+        UserDefaults.standard.set(new, forKey: Key.lastExecutedBundleVersion)
     }
     
     private enum StoryboardIdentifier: String {

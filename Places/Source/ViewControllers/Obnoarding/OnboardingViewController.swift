@@ -8,23 +8,54 @@
 import UIKit
 import UserNotifications
 
+protocol OnboardingProtocol {
+    var dismissAction: (() -> Void)! { get set }
+    var futherAction: ((UIAction) -> Void)! { get set }
+}
+
 class OnboardingViewController: UIPageViewController {
     
-    let appSettings = AppController.shared.settings
-    
-    lazy var items: [UIViewController] = [
-        .instantiateViewController(withIdentifier: .onboarding1),
-        .instantiateViewController(withIdentifier: .onboarding2),
-        .instantiateViewController(withIdentifier: .onboarding3)
-    ]
-    
     private var currentIndex = 0
-
+    private var items = [UIViewController]() {
+        didSet {
+            for i in items {
+                if var vc = i as? OnboardingProtocol {
+                    vc.dismissAction = dismissAction
+                    vc.futherAction = futherAction
+                }
+            }
+        }
+    }
+    
+    private let appSettings = AppController.shared.settings
+    
+    
+    private lazy var dismissAction: () -> Void = { [weak self] in
+        self?.dismiss(animated: true) {
+            Utils.log("Dismissed", object: self)
+        }
+    }
+    
+    private lazy var futherAction: (UIAction) -> Void = { [weak self] (action) in
+        guard let self = self else { fatalError() }
+        self.nextPage(viewControllerBefore: self.items[self.currentIndex])
+    }
+    
+    // MARK: - initializers
+    
+    
+    // MARK: - events and actions
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         dataSource = self
         delegate = self
+        
+        items = [
+            .instantiateViewController(withIdentifier: .onboarding1),
+            .instantiateViewController(withIdentifier: .onboarding2),
+            .instantiateViewController(withIdentifier: .onboarding3)
+        ]
         
         setViewControllers([items[0]], direction: .forward, animated: true, completion: { success in
             print("view controllers was setted")
@@ -37,8 +68,10 @@ class OnboardingViewController: UIPageViewController {
             self.dismiss(animated: true) {
                 NotificationCenter.default.post(name: .onboardingDismiss, object: nil)
             }
+            currentIndex = 0
             return
         } else {
+            currentIndex = index+1
             setViewControllers([items[index+1]], direction: .forward, animated: true) { (success) in
                 viewController.dismiss(animated: false) {
                 }

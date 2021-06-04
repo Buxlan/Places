@@ -8,10 +8,6 @@
 import UIKit
 import ListDiff
 
-extension UIColor {
-    static let bxColorTypeOne = UIColor.white
-}
-
 extension UIView {
     // Function finds root view controller
     func findViewController() -> UIViewController? {
@@ -41,6 +37,16 @@ extension UIImage {
         let configuration = settings.symbolPreferredConfiguration
         let symbol = UIImage(systemName: systemName, withConfiguration: configuration)
         return symbol
+    }
+    
+    static var onboardingFirstImage: UIImage {
+        get {
+            guard let image = UIImage(named: "onboarding1")
+            else {
+                fatalError()
+            }
+            return image
+        }
     }
     
 }
@@ -95,7 +101,7 @@ extension UIButton {
         button.layer.cornerRadius = 15
         
         // configure insets
-        button.contentEdgeInsets = UIEdgeInsets(top: 15, left: 70, bottom: 15, right: 70)
+        button.contentEdgeInsets = UIEdgeInsets(top: 15, left: 40, bottom: 15, right: 40)
         
         return button
     }
@@ -104,10 +110,13 @@ extension UIButton {
 
 extension Notification.Name {
     
-    private enum NotificationName: String {
-        case onboardingDismiss = "onboardingDismiss"
+    static let onboardingDismiss = Notification.Name("onboardingDismiss")
+    
+}
+
+extension String {
+    func localized() -> String {
+        // To do smth later
+        return self
     }
-    
-    static let onboardingDismiss = Notification.Name(NotificationName.onboardingDismiss.rawValue)
-    
 }

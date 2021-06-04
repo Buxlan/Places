@@ -23,6 +23,7 @@
 		4028E52026617B9000765DC6 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4028E51F26617B9000765DC6 /* Favorites.storyboard */; };
 		4028E52326617BDA00765DC6 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4028E52226617BDA00765DC6 /* Profile.storyboard */; };
 		4028E52626617BF800765DC6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028E52526617BF800765DC6 /* ProfileViewController.swift */; };
+		403B5A52266A47CA00421470 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B5A51266A47CA00421470 /* Colors.swift */; };
 		40625A36265BB4B100E0E744 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40625A35265BB4B100E0E744 /* Settings.swift */; };
 		40631052265E708000700BB5 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40631051265E708000700BB5 /* Onboarding.storyboard */; };
 		406660C5263D21FF001BEF66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406660C4263D21FF001BEF66 /* AppDelegate.swift */; };
@@ -32,7 +33,6 @@
 		406660CE263D21FF001BEF66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 406660CD263D21FF001BEF66 /* Assets.xcassets */; };
 		406660D1263D21FF001BEF66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 406660CF263D21FF001BEF66 /* LaunchScreen.storyboard */; };
 		406660DB263D4A8A001BEF66 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406660DA263D4A8A001BEF66 /* Config.swift */; };
-		406660DF263D4CE4001BEF66 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406660DE263D4CE4001BEF66 /* Author.swift */; };
 		406660E3263D4E55001BEF66 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406660E2263D4E55001BEF66 /* Utils.swift */; };
 		40667CE226527004002D6E44 /* PlaceListViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40667CE126527004002D6E44 /* PlaceListViewController+UICollectionViewDelegate.swift */; };
 		407D8482265DB1E800F45C22 /* FavoritePlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D8481265DB1E800F45C22 /* FavoritePlacesViewController.swift */; };
@@ -57,6 +57,7 @@
 		40978DA22655AB80001E1DFC /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978DA12655AB80001E1DFC /* PlaceViewController.swift */; };
 		40978DA82655BAFD001E1DFC /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978DA72655BAFD001E1DFC /* PlaceViewModel.swift */; };
 		40978DAC265671F9001E1DFC /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978DAB265671F9001E1DFC /* ConfigurableCell.swift */; };
+		40A4160E266A34EE005ADBBD /* MainViewControllerTabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40A4160D266A34EE005ADBBD /* MainViewControllerTabBarItem.swift */; };
 		40D3EEA7264545AB005E2F0F /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D3EEA6264545AB005E2F0F /* Trash.swift */; };
 		40D3EEAC2645C5CE005E2F0F /* PlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D3EEAB2645C5CE005E2F0F /* PlaceController.swift */; };
 		40D3EEB12645C729005E2F0F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D3EEB02645C729005E2F0F /* Place.swift */; };
@@ -85,6 +86,7 @@
 		4028E51F26617B9000765DC6 /* Favorites.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
 		4028E52226617BDA00765DC6 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4028E52526617BF800765DC6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		403B5A51266A47CA00421470 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		40625A35265BB4B100E0E744 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		40631051265E708000700BB5 /* Onboarding.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		406660C1263D21FF001BEF66 /* Places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -96,7 +98,6 @@
 		406660D0263D21FF001BEF66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		406660D2263D21FF001BEF66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		406660DA263D4A8A001BEF66 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
-		406660DE263D4CE4001BEF66 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		406660E2263D4E55001BEF66 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		40667CE126527004002D6E44 /* PlaceListViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaceListViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		407D8481265DB1E800F45C22 /* FavoritePlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlacesViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +122,7 @@
 		40978DA12655AB80001E1DFC /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
 		40978DA72655BAFD001E1DFC /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
 		40978DAB265671F9001E1DFC /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
+		40A4160D266A34EE005ADBBD /* MainViewControllerTabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerTabBarItem.swift; sourceTree = "<group>"; };
 		40D3EEA6264545AB005E2F0F /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
 		40D3EEAB2645C5CE005E2F0F /* PlaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceController.swift; sourceTree = "<group>"; };
 		40D3EEB02645C729005E2F0F /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -144,6 +146,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		403B5A54266A844E00421470 /* PlaceCollectionViewController */ = {
+			isa = PBXGroup;
+			children = (
+				406660C8263D21FF001BEF66 /* PlaceListViewController.swift */,
+				4028E51C26617A9500765DC6 /* PlaceList.storyboard */,
+			);
+			path = PlaceCollectionViewController;
+			sourceTree = "<group>";
+		};
 		40625A38265CFF4500E0E744 /* Other */ = {
 			isa = PBXGroup;
 			children = (
@@ -172,11 +183,7 @@
 		406660C3263D21FF001BEF66 /* Places */ = {
 			isa = PBXGroup;
 			children = (
-				40D4F271265F6ACF001326C8 /* Obnoarding */,
-				407DCD7B265A5B5E005ADB16 /* Collections */,
-				407DCD79265A5925005ADB16 /* TableViews */,
-				40E982E42643FFF9007D14D6 /* Storyboards */,
-				40E982E526440022007D14D6 /* ViewControllers */,
+				40A41608266A3165005ADBBD /* Source */,
 				40D3EEAE2645C5D5005E2F0F /* Controllers */,
 				406660DD263D4CB6001BEF66 /* Model */,
 				406660C4263D21FF001BEF66 /* AppDelegate.swift */,
@@ -190,6 +197,7 @@
 				40E982D8264349A4007D14D6 /* Extensions.swift */,
 				406660D2263D21FF001BEF66 /* Info.plist */,
 				406660E2263D4E55001BEF66 /* Utils.swift */,
+				403B5A51266A47CA00421470 /* Colors.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -197,7 +205,6 @@
 		406660DD263D4CB6001BEF66 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				406660DE263D4CE4001BEF66 /* Author.swift */,
 				40D3EEB02645C729005E2F0F /* Place.swift */,
 			);
 			path = Model;
@@ -243,14 +250,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		40978DA62655BAB9001E1DFC /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				40978DA72655BAFD001E1DFC /* PlaceViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		40978DAA265671DD001E1DFC /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -262,6 +261,37 @@
 				407DCD7326585AEC005ADB16 /* ViewConfigurator.swift */,
 			);
 			path = Config;
+			sourceTree = "<group>";
+		};
+		40A41608266A3165005ADBBD /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				40E982E526440022007D14D6 /* ViewControllers */,
+				40E982E42643FFF9007D14D6 /* Storyboards */,
+				407DCD7B265A5B5E005ADB16 /* Collections */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		40A4160A266A31C6005ADBBD /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				407D8484265DB72200F45C22 /* MainTabBarViewController.swift */,
+				40A4160D266A34EE005ADBBD /* MainViewControllerTabBarItem.swift */,
+				406660CA263D21FF001BEF66 /* Main.storyboard */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		40A4160B266A321A005ADBBD /* PlaceViewController */ = {
+			isa = PBXGroup;
+			children = (
+				40978DA12655AB80001E1DFC /* PlaceViewController.swift */,
+				40978D9E2655AAC9001E1DFC /* Place.storyboard */,
+				40978DA72655BAFD001E1DFC /* PlaceViewModel.swift */,
+				407DCD79265A5925005ADB16 /* TableViews */,
+			);
+			path = PlaceViewController;
 			sourceTree = "<group>";
 		};
 		40D3EEAE2645C5D5005E2F0F /* Controllers */ = {
@@ -289,13 +319,10 @@
 				40631051265E708000700BB5 /* Onboarding.storyboard */,
 				40E982DE2643F81E007D14D6 /* PlaceComments.storyboard */,
 				4028E5122661308300765DC6 /* EditComment.storyboard */,
-				406660CA263D21FF001BEF66 /* Main.storyboard */,
 				401ACA34265F7B7D00AEADE2 /* MainTabBar.storyboard */,
 				4028E52226617BDA00765DC6 /* Profile.storyboard */,
 				406660CF263D21FF001BEF66 /* LaunchScreen.storyboard */,
 				4028E51F26617B9000765DC6 /* Favorites.storyboard */,
-				4028E51C26617A9500765DC6 /* PlaceList.storyboard */,
-				40978D9E2655AAC9001E1DFC /* Place.storyboard */,
 				4028E5032661187000765DC6 /* AuthLogin.storyboard */,
 				4028E50B26612FA600765DC6 /* AuthSignIn.storyboard */,
 			);
@@ -305,14 +332,14 @@
 		40E982E526440022007D14D6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				40978DA62655BAB9001E1DFC /* ViewModel */,
+				40D4F271265F6ACF001326C8 /* Obnoarding */,
+				40A4160A266A31C6005ADBBD /* MainViewController */,
+				403B5A54266A844E00421470 /* PlaceCollectionViewController */,
+				40A4160B266A321A005ADBBD /* PlaceViewController */,
 				408D5B4E2645E63400B4930F /* Views */,
-				40978DA12655AB80001E1DFC /* PlaceViewController.swift */,
-				407D8484265DB72200F45C22 /* MainTabBarViewController.swift */,
 				4028E515266130A100765DC6 /* EditCommentsViewController.swift */,
 				4028E50E26612FE000765DC6 /* AuthSignInViewController.swift */,
 				4028E506266118A700765DC6 /* AuthLoginViewController.swift */,
-				406660C8263D21FF001BEF66 /* PlaceListViewController.swift */,
 				407D8481265DB1E800F45C22 /* FavoritePlacesViewController.swift */,
 				4028E52526617BF800765DC6 /* ProfileViewController.swift */,
 				40667CE126527004002D6E44 /* PlaceListViewController+UICollectionViewDelegate.swift */,
@@ -465,6 +492,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40E982E7264400BC007D14D6 /* OnboardingViewController.swift in Sources */,
+				403B5A52266A47CA00421470 /* Colors.swift in Sources */,
 				40978DA82655BAFD001E1DFC /* PlaceViewModel.swift in Sources */,
 				401ACA2F265F6CC600AEADE2 /* OnboardingSecondViewController.swift in Sources */,
 				40E982E22643F880007D14D6 /* PlaceCommentsViewController.swift in Sources */,
@@ -496,12 +524,12 @@
 				4028E516266130A100765DC6 /* EditCommentsViewController.swift in Sources */,
 				408C38C72657728C009832FD /* PlaceMapTableViewCell.swift in Sources */,
 				408D5B4B2645DD5900B4930F /* PlaceCollectionViewCell.swift in Sources */,
+				40A4160E266A34EE005ADBBD /* MainViewControllerTabBarItem.swift in Sources */,
 				406660C7263D21FF001BEF66 /* SceneDelegate.swift in Sources */,
 				407DCD7426585AEC005ADB16 /* ViewConfigurator.swift in Sources */,
 				408C38BF26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift in Sources */,
 				40667CE226527004002D6E44 /* PlaceListViewController+UICollectionViewDelegate.swift in Sources */,
 				40978D9C26544E3A001E1DFC /* PlaceImageTableViewCell.swift in Sources */,
-				406660DF263D4CE4001BEF66 /* Author.swift in Sources */,
 				407D8482265DB1E800F45C22 /* FavoritePlacesViewController.swift in Sources */,
 				406660E3263D4E55001BEF66 /* Utils.swift in Sources */,
 				408C38D02657EAFC009832FD /* CellActionProxy.swift in Sources */,

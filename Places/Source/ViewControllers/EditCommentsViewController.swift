@@ -9,6 +9,10 @@ import UIKit
 
 class EditCommentViewController: UIViewController {
     
+    // MARK: - Public vars and properties
+    
+    // MARK: - Events and actions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
