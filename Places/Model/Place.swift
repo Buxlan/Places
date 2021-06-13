@@ -24,7 +24,10 @@ struct Place: ReusableObject {
     let title: String
     let category: PlaceCategory
     let image: UIImage = {
-        guard let image = UIImage(systemName: "photo") else { fatalError() }
+        guard let image = UIImage(systemName: "photo")?.withTintColor(.bxSecondaryLabel, renderingMode: .alwaysTemplate)
+        else {
+            fatalError()
+        }
         return image
     }()
     let identifier = UUID()

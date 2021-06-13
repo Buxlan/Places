@@ -31,14 +31,15 @@ class OnboardingFirstViewController: UIViewController, OnboardingProtocol {
         label.textColor = .darkText
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
-        label.font = .preferredFont(forTextStyle: .title1)
+        label.font = .bxAppTitle
         return label
     }()
     
     private lazy var dismissButton: UIButton = {
 
         let button = UIButton(type: .close)
-        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.setTitleColor(.bxSecondaryLabel, for: .normal)
+        button.titleLabel?.font = .bxAppTitle
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
         return button
@@ -57,20 +58,20 @@ class OnboardingFirstViewController: UIViewController, OnboardingProtocol {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Strings.titleString
-        label.textColor = .darkText
+        label.textColor = .bxOrdinaryLabel
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
-        label.font = .preferredFont(forTextStyle: .headline)
+        label.font = .bxControlTitle
         return label
     }()
     
     private lazy var textLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Strings.textString
-        label.textColor = .darkText
+        label.textColor = .bxOrdinaryLabel
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 7
-        label.font = .preferredFont(forTextStyle: .footnote)
+        label.numberOfLines = 10
+        label.font = .bxBody
         return label
     }()
     
@@ -79,6 +80,15 @@ class OnboardingFirstViewController: UIViewController, OnboardingProtocol {
             title: Strings.buttonText,
             image: nil,
             action: UIAction(handler: futherAction))
+        return button
+    }()
+    
+    private lazy var buttonFuther1: UIButton = {
+        let button = UIButton.onboardingButton(
+            title: Strings.buttonText + "123",
+            image: nil,
+            action: UIAction(handler: futherAction))
+        button.tintColor = .black
         return button
     }()
     
@@ -102,6 +112,7 @@ class OnboardingFirstViewController: UIViewController, OnboardingProtocol {
         
         // Button Futher
         view.addSubview(buttonFuther)
+//        view.addSubview(buttonFuther1)
         
         let constraints: [NSLayoutConstraint] = [
             
@@ -126,6 +137,9 @@ class OnboardingFirstViewController: UIViewController, OnboardingProtocol {
             
             buttonFuther.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             buttonFuther.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -10),
+//
+//            buttonFuther1.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+//            buttonFuther1.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -10),
         ]
         
         NSLayoutConstraint.activate(constraints)

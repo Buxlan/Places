@@ -10,6 +10,8 @@ import UIKit
 
 class AppController: NSObject {
     
+    // MARK: - Public
+    
     struct Key {
         static let wasLaunchedBefore = "wasLauchedBefore"
         static let bundleVersion = "CFBundleVersion"
@@ -51,6 +53,8 @@ class AppController: NSObject {
             }
         }
     }
+    
+    // MARK: - Private
     
     private func updateVersion(old: String, new: String) {
         Utils.log("updating version to ", object: new)

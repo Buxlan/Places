@@ -16,7 +16,7 @@ class PlaceLabelTableViewCell: UITableViewCell, ConfigurableCell {
         isUserInteractionEnabled = false
         
         placeLabel.text = data.title
-        placeLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        placeLabel.font = UIFont.bxControlTitle
         
         placeLabel.translatesAutoresizingMaskIntoConstraints = false
         let constraints: [NSLayoutConstraint] = [

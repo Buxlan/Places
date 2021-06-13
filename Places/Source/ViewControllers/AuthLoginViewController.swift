@@ -22,7 +22,7 @@ class AuthLoginViewController: UIViewController {
         
         title = Strings.title
         
-        view.backgroundColor = .bxFirstColor
+        view.backgroundColor = .bxOrdinaryBackground
         Utils.log("Did load", object: self)
         
         super.viewDidLoad()

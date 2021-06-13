@@ -9,20 +9,28 @@ import UIKit
 
 class PlaceViewController: UIViewController {
     
-    @IBOutlet var tableView: UITableView!
+    // MARK: - Public
+    var place: Place!
     
-    // temp entry
-    let place = PlaceController().collections[0].places[0]
     
-    var viewModel: PlaceViewModel! = nil
-    lazy var tableDirector: PlaceTableViewDirector = {
+    // MARK: - Private
+    struct Strings {
+        static let backBarButtonTitle = "<<<"
+        static let playImageName = "play.fill"
+        static let recordImageName = "record.circle"
+    }
+    
+    @IBOutlet private var tableView: UITableView!
+    
+    private var viewModel: PlaceViewModel! = nil
+    private lazy var tableDirector: PlaceTableViewDirector = {
         return PlaceTableViewDirector(tableView: tableView,
                                       items: viewModel.items,
                                       footerConfigurator: PlaceTableFooterConfigurator(item: place),
                                       headerConfigurator: PlaceTableHeaderConfigurator(item: place))
     }()
     
-    lazy var playBarButtonItem: UIBarButtonItem = {
+    private lazy var playBarButtonItem: UIBarButtonItem = {
         let item = UIBarButtonItem(systemItem: .play, primaryAction: UIAction(handler: { (action) in
             self.playTapped()
         }))
@@ -30,6 +38,7 @@ class PlaceViewController: UIViewController {
         return item
     }()
     
+    // MARK: - Events and actions
     override func viewDidLoad() {
         
         title = "Place"
@@ -53,22 +62,22 @@ class PlaceViewController: UIViewController {
     private func configureBar() {
         
         navigationController?.isToolbarHidden = false
-        navigationController?.toolbar.barTintColor = .systemBlue
+        navigationController?.toolbar.barTintColor = .bxOrdinaryBackground
         
-        let backItem = UIBarButtonItem(title: "<<<", style: .done, target: self, action: #selector(backTapped))
+        let backItem = UIBarButtonItem(title: Strings.backBarButtonTitle, style: .done, target: self, action: #selector(backTapped))
         navigationItem.leftBarButtonItem = backItem
         
         navigationItem.leftBarButtonItem?.tintColor = UIColor.systemGray6
         title = "Place"
         
-        let font: UIFont = .preferredFont(forTextStyle: .largeTitle)
+        let font: UIFont = .bxControlTitle
         let configuration = UIImage.SymbolConfiguration(font: font)
-        let symbol = UIImage(systemName: "play.fill", withConfiguration: configuration)
+        let symbol = UIImage(systemName: Strings.playImageName, withConfiguration: configuration)
 
         let items = [
             UIBarButtonItem(systemItem: .flexibleSpace),
             playBarButtonItem,
-            UIBarButtonItem(image: UIImage.bxPreferredSymbol(with: "record.circle"), style: .plain, target: self, action: #selector(recordTapped)),
+            UIBarButtonItem(image: UIImage.bxPreferredSymbol(with: Strings.recordImageName), style: .plain, target: self, action: #selector(recordTapped)),
         ]
         setToolbarItems(items, animated: true)
         

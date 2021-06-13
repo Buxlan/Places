@@ -15,29 +15,7 @@ class MainTabBarViewController: UITabBarController {
     
     // MARK: - Public functions
     
-    // MARK: - Events and actions
-    private let appController = AppController.shared
-    
-    private let symbolConfiguration: UIImage.SymbolConfiguration? = nil
-    
-    private lazy var items: [UIViewController] = [
-        generateNavViewController(vc: appController.viewController(.placeList),
-                                  image: UIImage(systemName: "building.columns")!
-                                    .withTintColor(UIColor.bxFirstColor,
-                                                   renderingMode: .alwaysOriginal)),
-        generateNavViewController(vc: appController.viewController(.favorites),
-                                  image: UIImage(systemName: "heart")!
-                                    .withTintColor(UIColor.bxFirstColor,
-                                                   renderingMode: .alwaysOriginal)),
-        generateNavViewController(vc: appController.viewController(.profile),
-                                  image: UIImage(systemName: "person")!
-                                    .withTintColor(UIColor.bxFirstColor,
-                                                   renderingMode: .alwaysOriginal))
-    ]
-    
     override func viewDidLoad() {
-        
-        Utils.log("tab bar did load", object: self)
         
         NotificationCenter.default.addObserver(self, selector: #selector(changePage), name: .bxChangePage, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(obnoardingDismissed), name: .onboardingDismiss, object: nil)
@@ -45,7 +23,12 @@ class MainTabBarViewController: UITabBarController {
         super.viewDidLoad()
         
         delegate = self
-        setViewControllers(items, animated: true)      
+        setViewControllers(items, animated: true)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
     }
     
@@ -56,7 +39,35 @@ class MainTabBarViewController: UITabBarController {
             let vc: UIViewController = .instantiateViewController(withIdentifier: .onboarding)
             present(vc, animated: true, completion: nil)
         }
+                       
+        guard let tabBarItems = tabBar.items,
+              let firstItem = tabBarItems.first
+        else {
+            Log(text: "tab bar is empty", object: self)
+            fatalError()
+        }
+        self.tabBar(self.tabBar, didSelect: firstItem)
     }
+    
+    // MARK: - Private vars and functions
+    
+    private let appController = AppController.shared
+    private let symbolConfiguration: UIImage.SymbolConfiguration? = nil
+    
+    private lazy var items: [UIViewController] = [
+        configureViewController(vc: appController.viewController(.placeList),
+                               title: Constants.tabBarItemNames[0],
+                               image: UIImage(systemName: "building.columns")!                                  .withTintColor(UIColor.bxSecondaryLabel, renderingMode: .alwaysOriginal),
+                               selectedImage: UIImage(systemName: "building.columns.fill")!                                   .withTintColor(UIColor.bxOrdinaryLabel, renderingMode: .alwaysOriginal)),
+        configureViewController(vc: appController.viewController(.favorites),
+                               title: Constants.tabBarItemNames[1],
+                               image: UIImage(systemName: "heart")!                                  .withTintColor(UIColor.bxSecondaryLabel, renderingMode: .alwaysOriginal),
+                               selectedImage: UIImage(systemName: "heart.fill")!                                   .withTintColor(UIColor.bxOrdinaryLabel, renderingMode: .alwaysOriginal)),
+        configureViewController(vc: appController.viewController(.profile),
+                               title: Constants.tabBarItemNames[2],
+                               image: UIImage(systemName: "person")!                                  .withTintColor(UIColor.bxSecondaryLabel, renderingMode: .alwaysOriginal),
+                               selectedImage: UIImage(systemName: "person.fill")!                                   .withTintColor(UIColor.bxOrdinaryLabel, renderingMode: .alwaysOriginal))
+    ]
     
     @objc
     private func changePage(notification: NSNotification) {
@@ -89,20 +100,42 @@ class MainTabBarViewController: UITabBarController {
     }
     
     @objc
-    func obnoardingDismissed() {
-        Utils.log("onboarding dismissed", object: self)
+    private func obnoardingDismissed() {
+        Log(text: "onboarding dismissed", object: self)
+        appController.isFirstLaunch = false
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
     
-    fileprivate func generateNavViewController(vc: UIViewController, image: UIImage)  -> UINavigationController {
-        let navController = UINavigationController(rootViewController: vc)
-        navController.title = vc.title
-        navController.tabBarItem.title = vc.title
-        navController.tabBarItem.image = image
-        return navController
+    fileprivate func configureViewController(vc: UIViewController,
+                                            title: String,
+                                            image: UIImage,
+                                            selectedImage: UIImage) -> UIViewController {
+               
+        vc.tabBarItem.title = title
+        vc.title = title
+        vc.navigationController?.title = title
+        
+        vc.tabBarItem.image = image
+        vc.tabBarItem.selectedImage = selectedImage
+          
+        vc.tabBarItem.setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor : UIColor.bxSecondaryLabel],
+            for: .normal)
+        
+        vc.tabBarItem.setTitleTextAttributes(
+            [NSAttributedString.Key.foregroundColor : UIColor.bxOrdinaryLabel],
+            for: .selected)
+        
+        return vc
+    }
+    
+    private struct Constants {
+        static let tabBarItemNames = ["Панорама".localized(),
+                                      FavoritePlacesViewController.Strings.title.localized(),
+                                      "Профиль".localized()]
     }
     
 }
@@ -112,10 +145,12 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let numberOfItems = items.count
         let tabBarItemSize = CGSize(width: tabBar.frame.width / CGFloat(numberOfItems), height: tabBar.frame.height)
-        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.bxSecondColor, size: tabBarItemSize)
+        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.bxOrdinaryBackground, size: tabBarItemSize)
         
-        tabBar.frame.size.width = self.view.frame.width + 4
-        tabBar.frame.origin.x = -2
+//        tabBar.frame.size.width = self.view.frame.width + 4
+//        tabBar.frame.origin.x = -2
+ 
+        tabBar.barTintColor = UIColor.bxOrdinaryBackground
     }
     
 }

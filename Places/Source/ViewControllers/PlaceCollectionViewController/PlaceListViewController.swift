@@ -8,10 +8,34 @@
 import UIKit
 
 class PlaceListViewController: UIViewController {
-
-    /*
-    // Vars
-    */
+    
+    // MARK: - Public vars and functions
+    var dataSource: UICollectionViewDiffableDataSource<PlaceController.PlaceCollection, Place>! = nil
+    
+    override func viewDidLoad() {
+        title = Strings.title
+        configureNavigationBar()
+        configureViewHierarchy()
+        configureDataSource()
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+    }
+    
+    // MARK: - Private vars and functions
+    
+    private struct Strings {
+        static let title = "Панорама".localized()
+        static let titleElementKind = "title_element-kind"
+        static let heart = "heart"
+        static let mostPopular = "Most popular places"
+        
+        static let imageName = "image"
+        static let photoImageName = "photo"
+    }
+    
     private lazy var viewHierarchy: [UIView] = {
         var vh = [UIView]()
         vh.append(mostPopularCollectionView)
@@ -20,53 +44,30 @@ class PlaceListViewController: UIViewController {
         return vh
     }()
     
-    let placeController = PlaceController()
+    private let placeController = PlaceController()
+    private var currentSnapshot: NSDiffableDataSourceSnapshot<PlaceController.PlaceCollection, Place>! = nil
     
-    /*
-    // Views
-     */
-    var dataSource: UICollectionViewDiffableDataSource<PlaceController.PlaceCollection, Place>! = nil
-    var currentSnapshot: NSDiffableDataSourceSnapshot<PlaceController.PlaceCollection, Place>! = nil
-    static let titleElementKind = "title_element-kind"
-    
-    lazy var mostPopularStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .fill
-        stackView.alignment = UIStackView.Alignment.fill
-        stackView.addArrangedSubview(mostPopularLabel)
-        stackView.addArrangedSubview(backgroundImageView)
-        stackView.backgroundColor = .systemGray
-        
-        return stackView
-    }()
-    
-    lazy var mostPopularCollectionView: UICollectionView = {
+    private lazy var mostPopularCollectionView: UICollectionView = {
         var collectionsView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
         
-        collectionsView = UICollectionView(frame: .zero, collectionViewLayout: createLayout())
-        
-//        collectionsView.layer.borderWidth = 2
-        collectionsView.layer.borderColor = UIColor.black.cgColor
-        
         collectionsView.backgroundColor = .systemBackground
-        
         collectionsView.allowsSelection = true
         collectionsView.allowsMultipleSelection = false
         collectionsView.delegate = self
         return collectionsView
     }()
     
-    lazy var mostPopularLabel: UILabel = {
+    private lazy var mostPopularLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont.preferredFont(forTextStyle: .headline)
-        label.text = "Most popular places"
+        label.font = .bxBody
+        label.textColor = .bxSecondaryLabel
+        label.text = Strings.mostPopular
         label.setContentHuggingPriority(.defaultHigh, for: .vertical)
         return label
     }()
     
-    lazy var backgroundImageView: UIImageView = {
-        let image = UIImage(systemName: "photo")
+    private lazy var backgroundImageView: UIImageView = {
+        let image = UIImage(systemName: Strings.photoImageName)
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .systemPink
@@ -75,58 +76,30 @@ class PlaceListViewController: UIViewController {
         return imageView
     }()
     
-    lazy var rightBarButtonItem: UIBarButtonItem = {
-        let font = UIFont.preferredFont(forTextStyle: .largeTitle)
+    private lazy var rightBarButtonItem: UIBarButtonItem = {
+        let font = UIFont.bxBody
         let config = UIImage.SymbolConfiguration(font: font, scale: UIImage.SymbolScale.medium)
-        let image = UIImage(systemName: "heart.fill", withConfiguration: config)
-        var item = UIBarButtonItem(title: "image", style: .plain, target: self, action: #selector(rightNavigationItemPressed))
+        let image: UIImage = #imageLiteral(resourceName: "menuIcon")
+        var item = UIBarButtonItem(title: Strings.imageName, style: .plain, target: self, action: #selector(rightNavigationItemPressed))
         item.image = image
-        item.tintColor = .systemRed
+        item.tintColor = .bxOrdinaryLabel
         
         return item
     }()
     
-    /*
-    // Handling view controller events
-    */
-    override func viewDidLoad() {
-        
-        title = "Places"
-        
-        configureNavigationBar()
-        configureViewHierarchy()
-        configureDataSource()
-        
-        super.viewDidLoad()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        configureNavigationBar()
-    }
-    
 }
-    
-/*
-// Handling controls actions
-*/
 
 extension PlaceListViewController {
-    
-    func pushPlaceViewController(_ item: Place) {
-        let storyboard = UIStoryboard(name: type(of: item).storyboardName, bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: type(of: item).viewControllerName)
-        vc.modalPresentationStyle = .fullScreen
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc func placeTapped(sender: Any?) {
-        print("place tapped is not developed")
+            
+    @objc
+    private func placeTapped(sender: Any?) {
+        Log(text: "place tapped is not developed", object: self)
     }
     
 }
 
 /*
-// Collection view layout
+// MARK: - Collection view layout
 */
 extension PlaceListViewController {
     func createLayout() -> UICollectionViewLayout {
@@ -136,7 +109,7 @@ extension PlaceListViewController {
             
             // if we have the space, adapt and go 2-up + peeking 3rd item
             let groupFractionalWidth = CGFloat(layoutEnvironment.container.effectiveContentSize.width > 500 ? 0.425 : 0.85)
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(groupFractionalWidth), heightDimension: .absolute(250))
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(groupFractionalWidth), heightDimension: .absolute(300))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
             
             let section = NSCollectionLayoutSection(group: group)
@@ -146,7 +119,7 @@ extension PlaceListViewController {
             
             let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
             
-            let titleSuplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSize, elementKind: PlaceListViewController.titleElementKind, alignment: .top)
+            let titleSuplementary = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSize, elementKind: Strings.titleElementKind, alignment: .top)
             section.boundarySupplementaryItems = [titleSuplementary]
             return section
         }
@@ -160,7 +133,7 @@ extension PlaceListViewController {
 }
     
 /*
-// Other usefull functions
+// MARK: - Other usefull functions
 */
 extension PlaceListViewController {
 
@@ -193,11 +166,12 @@ extension PlaceListViewController {
             return collectionsView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: place)
         }
         
-        let supplementaryRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: PlaceListViewController.titleElementKind) { (supplementaryView, string, indexPath) in
+        let supplementaryRegistration = UICollectionView.SupplementaryRegistration<TitleSupplementaryView>(elementKind: Strings.titleElementKind) { (supplementaryView, string, indexPath) in
             if let snapshot = self.currentSnapshot {
                 // Populate the view with our section's description
                 let placeCategory = snapshot.sectionIdentifiers[indexPath.section]
                 supplementaryView.label.text = placeCategory.title
+                supplementaryView.label.textColor = .bxOrdinaryLabel
             }
         }
         
@@ -217,21 +191,23 @@ extension PlaceListViewController {
 }
     
 /*
-// Related to Navigation bar
+// MARK: - Related to Navigation bar
 */
 extension PlaceListViewController {
 
     func configureNavigationBar() {
-        title = "Places"
-        navigationController?.title = "Places"
+        self.title = Strings.title
+        navigationController?.title = Strings.title
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        navigationController?.navigationBar.barTintColor = .clear
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.systemGray6]
-        navigationController?.toolbar.barTintColor = .systemBlue
-        tabBarController?.tabBar.barTintColor = UIColor.bxThirdColor
-        tabBarController?.tabBar.tintColor = .systemGray6
+        navigationController?.navigationBar.barTintColor = .bxOrdinaryBackground
+
+        navigationController?.navigationBar.titleTextAttributes =
+            [NSAttributedString.Key.foregroundColor: UIColor.bxOrdinaryLabel]
+
+                
         navigationController?.hidesBarsOnTap = false
-        navigationController?.isToolbarHidden = true
+        navigationController?.isToolbarHidden = true               
+                
     }
     
     // Actions
@@ -239,6 +215,24 @@ extension PlaceListViewController {
         print("rightNavigationItemPressed actions")
     }
 
+}
 
+extension PlaceListViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        Log(text: "didSelectItemAt", object: collectionView)
+        
+        guard let item = dataSource.itemIdentifier(for: indexPath)
+        else {
+            fatalError()
+        }
+        
+        let vc = UIViewController.instantiateViewController(withIdentifier: .place) as! PlaceViewController
+        vc.place = item
+        vc.modalPresentationStyle = .pageSheet
+        present(vc, animated: true)
+    }
+    
 }
 

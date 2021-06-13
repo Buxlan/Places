@@ -15,8 +15,8 @@ class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
     
     // MARK: - used strings
     struct Strings {
-        static let titleString = "Изучайте любимый город\nЧитайте и оставляйте свои комментарии".localized()
-        static let textString = "Мы рады приветствовать Вас в Панораме. Здесь мы делимся мыслями и воспоминаниями о любимых местах города.".localized()
+        static let titleString = "Делитесь впечатлениями".localized()
+        static let textString = "Изучайте любимый город\nЧитайте и оставляйте свои комментарии.".localized()
         static let appString = "Панорама".localized()
         static let buttonText = "Далее (2 из 3)".localized()
         
@@ -31,14 +31,15 @@ class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
         label.textColor = .darkText
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
-        label.font = .preferredFont(forTextStyle: .title1)
+        label.font = .bxAppTitle
         return label
     }()
     
     private lazy var dismissButton: UIButton = {
 
         let button = UIButton(type: .close)
-        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.setTitleColor(.bxSecondaryLabel, for: .normal)
+        button.titleLabel?.font = .bxAppTitle
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
         return button
@@ -54,37 +55,31 @@ class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
         return imageView
     }()
     
-    private lazy var nextButtonAction = UIAction() { action in
-        guard let parent = self.parent as? OnboardingViewController else {
-            fatalError()
-        }
-        parent.nextPage(viewControllerBefore: self)
-    }
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Strings.titleString
-        label.textColor = .darkText
+        label.textColor = .bxOrdinaryLabel
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 3
-        label.font = .preferredFont(forTextStyle: .headline)
+        label.numberOfLines = 2
+        label.font = .bxControlTitle
         return label
     }()
     
     private lazy var textLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Strings.textString
-        label.textColor = .darkText
+        label.textColor = .bxOrdinaryLabel
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.numberOfLines = 7
-        label.font = .preferredFont(forTextStyle: .footnote)
+        label.numberOfLines = 10
+        label.font = .bxBody
         return label
     }()
     
     private lazy var buttonFuther: UIButton = {
-        let button = UIButton.onboardingButton(title: Strings.buttonText,
-                                               image: nil,
-                                               action: nextButtonAction)
+        let button = UIButton.onboardingButton(
+            title: Strings.buttonText,
+            image: nil,
+            action: UIAction(handler: futherAction))
         return button
     }()
     
@@ -118,13 +113,11 @@ class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
             
             titleLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            titleLabel.widthAnchor.constraint(equalTo: imageView.widthAnchor),
             
             textLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            textLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            textLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            textLabel.widthAnchor.constraint(equalTo: imageView.widthAnchor),
             
             buttonFuther.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             buttonFuther.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -10),

@@ -20,7 +20,7 @@ class PlaceTableViewFooter: UIView {
         
         self.backgroundColor = .clear
         
-        let font = UIFont.preferredFont(forTextStyle: .largeTitle)
+        let font = UIFont.bxControlTitle
         let textColor = UIColor.systemBlue
         let buttonPlay = UIButton(frame: .zero)
         buttonPlay.addTarget(self, action: #selector(playSoundTapped), for: .touchUpInside)

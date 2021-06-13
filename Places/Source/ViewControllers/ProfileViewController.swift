@@ -25,7 +25,7 @@ class ProfileViewController: UIViewController {
         
         title = Strings.title
         
-        view.backgroundColor = .bxThirdColor
+        view.backgroundColor = .bxOrdinaryBackground
         Utils.log("Did load", object: self)
         
         super.viewDidLoad()

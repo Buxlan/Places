@@ -16,7 +16,7 @@ class PlaceDescriptionTableViewCell: UITableViewCell, ConfigurableCell {
         isUserInteractionEnabled = true
         
         textView.text = data.description
-        textView.font = UIFont.preferredFont(forTextStyle: .subheadline)
+        textView.font = .bxBody
         textView.isScrollEnabled = false
         textView.isEditable = false
 

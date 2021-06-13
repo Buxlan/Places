@@ -1,0 +1,16 @@
+PODS:
+  - ListDiff (0.2.0)
+
+DEPENDENCIES:
+  - ListDiff
+
+SPEC REPOS:
+  trunk:
+    - ListDiff
+
+SPEC CHECKSUMS:
+  ListDiff: 7900bcc309dbc9ccf6144e58f59ba4b51daa8278
+
+PODFILE CHECKSUM: 4497105e039a4de4f9cda72c9727ffabb5481d2c
+
+COCOAPODS: 1.10.1

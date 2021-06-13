@@ -29,17 +29,17 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
     private lazy var appLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Strings.appText
-        label.textColor = .darkText
+        label.textColor = .bxOrdinaryLabel
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
-        label.font = .preferredFont(forTextStyle: .title1)
+        label.font = .bxAppTitle
         return label
     }()
     
     private lazy var dismissButton: UIButton = {
 
         let button = UIButton(type: .close)
-        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.setTitleColor(.bxSecondaryLabel, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
         return button
@@ -58,20 +58,20 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Strings.titleText
-        label.textColor = .darkText
+        label.textColor = .bxOrdinaryLabel
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 3
-        label.font = .preferredFont(forTextStyle: .headline)
+        label.font = .bxControlTitle
         return label
     }()
     
     private lazy var textLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Strings.description
-        label.textColor = .darkText
+        label.textColor = .bxOrdinaryLabel
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 7
-        label.font = .preferredFont(forTextStyle: .footnote)
+        label.font = .bxBody
         return label
     }()
     
@@ -86,9 +86,9 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
         let button = UIButton.onboardingButton(title: Strings.buttonBeginTitle,
                                                image: nil,
                                                action: UIAction(handler: futherAction))
-        button.titleLabel?.font = .preferredFont(forTextStyle: .subheadline)
+        button.titleLabel?.font = .bxBody
         button.backgroundColor = .clear
-        button.setTitleColor(.secondaryLabel, for: .normal)
+        button.setTitleColor(.bxSecondaryLabel, for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 15, right: 10)
         return button
     }()
@@ -97,7 +97,7 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
     
     let loginAction: (UIAction) -> Void = { [self] (action) in
         NotificationCenter.default.post(name: .bxChangePage, object: nil, userInfo: [Strings.userInfoName : AppController.ViewControllerIdentifier.authLogin])
-        Utils.log("Jumped to login view controller", object: self)
+        Log(text: "Jumped to login view controller", object: self)
     }
     
     override func viewDidLoad() {
@@ -129,13 +129,11 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
             
             titleLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 10),
-            titleLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            titleLabel.widthAnchor.constraint(equalTo: imageView.widthAnchor),
             
             textLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
-            textLabel.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
-            textLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            textLabel.widthAnchor.constraint(equalTo: imageView.widthAnchor),
             
             buttonFuther.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             buttonFuther.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
