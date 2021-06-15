@@ -69,11 +69,7 @@ class PlaceViewController: UIViewController {
         
         navigationItem.leftBarButtonItem?.tintColor = UIColor.systemGray6
         title = "Place"
-        
-        let font: UIFont = .bxControlTitle
-        let configuration = UIImage.SymbolConfiguration(font: font)
-        let symbol = UIImage(systemName: Strings.playImageName, withConfiguration: configuration)
-
+                
         let items = [
             UIBarButtonItem(systemItem: .flexibleSpace),
             playBarButtonItem,

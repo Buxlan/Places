@@ -58,7 +58,7 @@ class OnboardingViewController: UIPageViewController {
         ]
         
         setViewControllers([items[0]], direction: .forward, animated: true, completion: { success in
-            print("view controllers was setted")
+            
         })
     }
     

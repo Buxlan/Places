@@ -97,7 +97,7 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
     
     let loginAction: (UIAction) -> Void = { [self] (action) in
         NotificationCenter.default.post(name: .bxChangePage, object: nil, userInfo: [Strings.userInfoName : AppController.ViewControllerIdentifier.authLogin])
-        Log(text: "Jumped to login view controller", object: self)
+//        Log(text: "Jumped to login view controller", object: self)
     }
     
     override func viewDidLoad() {

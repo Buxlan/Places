@@ -42,12 +42,14 @@ extension PlaceController {
                       Самая центральная часть Невского — от Адмиралтейства до площади Восстания. Тут находятся главные достопримечательности и красивые места. Часть проспекта после площади Восстания в обиходе называют Старо-Невским, хотя на картах он все равно "Невский". Здесь уже почти нет интересных мест, разве что Александро-Невская лавра.
                       """
     
-    func generateCollections() {
+    private func generateCollections() {
         _collections = [
             PlaceCollection(title: "Популярные за неделю", places: [
                 Place(title: "Невский проспект", category: "Category 1", description: PlaceController.description),
                 Place(title: "Parnas", category: "Category 2", description: "1"),
                 Place(title: "Hermitage", category: "Category 3", description: PlaceController.description),
+                Place(title: "Петергоф", category: "Category 3", description: PlaceController.description),
+                Place(title: "Площадь восстания", category: "Category 3", description: PlaceController.description),
             ]),
             PlaceCollection(title: "Новинки!", places: [
                 Place(title: "Vas'ka", category: "Category 1", description: PlaceController.description),

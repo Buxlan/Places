@@ -15,8 +15,20 @@
                     <view key="view" contentMode="scaleToFill" id="yUC-sj-mYj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jH-mY-5LY">
+                                <rect key="frame" x="132" y="179" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="oR0-Oa-5Xh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2jH-mY-5LY" firstAttribute="top" secondItem="oR0-Oa-5Xh" secondAttribute="top" constant="91" id="hXX-fe-i8Y"/>
+                            <constraint firstItem="oR0-Oa-5Xh" firstAttribute="trailing" secondItem="2jH-mY-5LY" secondAttribute="trailing" constant="240" id="k0b-rj-lYc"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="icT-gq-j5G"/>
                 </viewController>
