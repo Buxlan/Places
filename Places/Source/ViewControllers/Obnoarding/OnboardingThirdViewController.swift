@@ -96,7 +96,7 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
     // MARK: - events and actions
     
     let loginAction: (UIAction) -> Void = { [self] (action) in
-        NotificationCenter.default.post(name: .bxChangePage, object: nil, userInfo: [Strings.userInfoName : AppController.ViewControllerIdentifier.authLogin])
+        NotificationCenter.default.post(name: .bxPresentViewController, object: nil, userInfo: [Strings.userInfoName : AppController.ViewControllerIdentifier.authLogin])
 //        Log(text: "Jumped to login view controller", object: self)
     }
     
@@ -158,5 +158,5 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
 }
 
 extension NSNotification.Name {
-    static let bxChangePage = NSNotification.Name("changePage")
+    static let bxPresentViewController = NSNotification.Name("bxPresentViewController")
 }

@@ -74,6 +74,7 @@ class AppController: NSObject {
         case authLogin = "AuthLogin"
         case authSignIn = "AuthSignIn"
         case editComment = "EditComment"
+        case nearestPlaces = "NearestPlaces"
     }
     
     enum ViewControllerIdentifier: String, CaseIterable {
@@ -92,6 +93,7 @@ class AppController: NSObject {
         case authLogin = "AuthLogin"
         case registration = "Registration"
         case editComment = "EditPlace"
+        case nearestPlaces = "NearestPlaces"
         
     }
     
@@ -127,6 +129,8 @@ class AppController: NSObject {
             return .editComment
         case .mainTabBar:
             return .main
+        case .nearestPlaces:
+            return .nearestPlaces
         }
     }
     

@@ -36,14 +36,6 @@ class PlaceListViewController: UIViewController {
         static let photoImageName = "photo"
     }
     
-    private lazy var viewHierarchy: [UIView] = {
-        var vh = [UIView]()
-        vh.append(mostPopularCollectionView)
-//        vh.append(mostPopularLabel)
-//        vh.append(backgroundImageView)
-        return vh
-    }()
-    
     private let placeController = PlaceController()
     private var currentSnapshot: NSDiffableDataSourceSnapshot<PlaceController.PlaceCollection, Place>! = nil
     
@@ -57,35 +49,16 @@ class PlaceListViewController: UIViewController {
         return collectionsView
     }()
     
-    private lazy var mostPopularLabel: UILabel = {
-        let label = UILabel()
-        label.font = .bxBody
-        label.textColor = .bxSecondaryLabel
-        label.text = Strings.mostPopular
-        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
-        return label
-    }()
-    
-    private lazy var backgroundImageView: UIImageView = {
-        let image = UIImage(systemName: Strings.photoImageName)
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = .systemPink
-        imageView.sizeToFit()
-        imageView.setContentHuggingPriority(.defaultLow, for: .vertical)
-        return imageView
-    }()
-    
-    private lazy var rightBarButtonItem: UIBarButtonItem = {
-        let font = UIFont.bxBody
-        let config = UIImage.SymbolConfiguration(font: font, scale: UIImage.SymbolScale.medium)
-        let image: UIImage = #imageLiteral(resourceName: "menuIcon")
-        var item = UIBarButtonItem(title: Strings.imageName, style: .plain, target: self, action: #selector(rightNavigationItemPressed))
-        item.image = image
-        item.tintColor = .bxOrdinaryLabel
-        
-        return item
-    }()
+//    private lazy var rightBarButtonItem: UIBarButtonItem = {
+//        let font = UIFont.bxBody
+//        let config = UIImage.SymbolConfiguration(font: font, scale: UIImage.SymbolScale.medium)
+//        let image: UIImage = #imageLiteral(resourceName: "menuIcon")
+//        var item = UIBarButtonItem(title: Strings.imageName, style: .plain, target: self, action: #selector(rightNavigationItemPressed))
+//        item.image = image
+//        item.tintColor = .bxOrdinaryLabel
+//
+//        return item
+//    }()
     
 }
 
@@ -109,13 +82,13 @@ extension PlaceListViewController {
             
             // if we have the space, adapt and go 2-up + peeking 3rd item
             let groupFractionalWidth = CGFloat(layoutEnvironment.container.effectiveContentSize.width > 500 ? 0.425 : 0.85)
-            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(groupFractionalWidth), heightDimension: .absolute(300))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(groupFractionalWidth), heightDimension: .fractionalHeight(0.85))
+            let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item, item, item])
             
             let section = NSCollectionLayoutSection(group: group)
             section.orthogonalScrollingBehavior = .continuous
-            section.interGroupSpacing = 20
-            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20)
+            section.interGroupSpacing = 8
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 8, bottom: 0, trailing: 8)
             
             let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(44))
             
@@ -125,7 +98,7 @@ extension PlaceListViewController {
         }
         
         let config = UICollectionViewCompositionalLayoutConfiguration()
-        config.interSectionSpacing = 20
+        config.interSectionSpacing = 8
         
         let layout = UICollectionViewCompositionalLayout(sectionProvider: sectionPrivider, configuration: config)
         return layout
@@ -138,11 +111,9 @@ extension PlaceListViewController {
 extension PlaceListViewController {
 
     func configureViewHierarchy() {
-        
-        for v in viewHierarchy {
-            self.view.addSubview(v)
-            v.translatesAutoresizingMaskIntoConstraints = false
-        }
+                        
+        view.addSubview(mostPopularCollectionView)
+        mostPopularCollectionView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
             mostPopularCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -150,6 +121,7 @@ extension PlaceListViewController {
             mostPopularCollectionView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
             mostPopularCollectionView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor)
         ])
+        
     }
     
     func configureDataSource() {
@@ -198,7 +170,7 @@ extension PlaceListViewController {
     func configureNavigationBar() {
         self.title = Strings.title
         navigationController?.title = Strings.title
-        navigationItem.rightBarButtonItem = rightBarButtonItem
+//        navigationItem.rightBarButtonItem = rightBarButtonItem
         navigationController?.navigationBar.barTintColor = .bxOrdinaryBackground
 
         navigationController?.navigationBar.titleTextAttributes =

@@ -28,7 +28,7 @@ extension PlaceCollectionViewCell {
     func configure() {
         
         isUserInteractionEnabled = true
-        imageView.tintColor = .bxSecondaryLabel
+        imageView.tintColor = .bxSelectedControlBackground
         titleLabel.textColor = .darkText
         
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -39,9 +39,9 @@ extension PlaceCollectionViewCell {
         contentView.addSubview(categoryLabel)
         
         titleLabel.font = .bxCaption
-        titleLabel.adjustsFontForContentSizeCategory = true
+//        titleLabel.adjustsFontForContentSizeCategory = true
         categoryLabel.font = .bxCaption
-        categoryLabel.adjustsFontForContentSizeCategory = true
+//        categoryLabel.adjustsFontForContentSizeCategory = true
         categoryLabel.textColor = .secondaryLabel
         
         imageView.layer.borderColor = UIColor.black.cgColor

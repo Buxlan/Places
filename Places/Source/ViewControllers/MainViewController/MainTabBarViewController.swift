@@ -17,13 +17,22 @@ class MainTabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(changePage), name: .bxChangePage, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(presentViewController), name: .bxPresentViewController, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(obnoardingDismissed), name: .onboardingDismiss, object: nil)
         
         super.viewDidLoad()
         
         delegate = self
         setViewControllers(items, animated: true)
+        selectedIndex = 0
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        leftSwipe.direction = .left
+        self.view.addGestureRecognizer(leftSwipe)
+        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        rightSwipe.direction = .right
+        self.view.addGestureRecognizer(rightSwipe)
         
     }
     
@@ -59,18 +68,22 @@ class MainTabBarViewController: UITabBarController {
                                title: Constants.tabBarItemNames[0],
                                image: UIImage(systemName: "building.columns")!                                  .withTintColor(UIColor.bxSecondaryLabel, renderingMode: .alwaysOriginal),
                                selectedImage: UIImage(systemName: "building.columns.fill")!                                   .withTintColor(UIColor.bxOrdinaryLabel, renderingMode: .alwaysOriginal)),
-        configureViewController(vc: appController.viewController(.favorites),
+        configureViewController(vc: appController.viewController(.nearestPlaces),
                                title: Constants.tabBarItemNames[1],
+                               image: UIImage(systemName: "map")!                                  .withTintColor(UIColor.bxSecondaryLabel, renderingMode: .alwaysOriginal),
+                               selectedImage: UIImage(systemName: "map.fill")!                                   .withTintColor(UIColor.bxOrdinaryLabel, renderingMode: .alwaysOriginal)),
+        configureViewController(vc: appController.viewController(.favorites),
+                               title: Constants.tabBarItemNames[2],
                                image: UIImage(systemName: "heart")!                                  .withTintColor(UIColor.bxSecondaryLabel, renderingMode: .alwaysOriginal),
                                selectedImage: UIImage(systemName: "heart.fill")!                                   .withTintColor(UIColor.bxOrdinaryLabel, renderingMode: .alwaysOriginal)),
         configureViewController(vc: appController.viewController(.profile),
-                               title: Constants.tabBarItemNames[2],
+                               title: Constants.tabBarItemNames[3],
                                image: UIImage(systemName: "person")!                                  .withTintColor(UIColor.bxSecondaryLabel, renderingMode: .alwaysOriginal),
                                selectedImage: UIImage(systemName: "person.fill")!                                   .withTintColor(UIColor.bxOrdinaryLabel, renderingMode: .alwaysOriginal))
     ]
     
     @objc
-    private func changePage(notification: NSNotification) {
+    private func presentViewController(notification: NSNotification) {
         guard let userInfo = notification.userInfo,
               let viewControllerIdentifier
                 = userInfo["viewControllerIdentifier"] as? AppController.ViewControllerIdentifier else {
@@ -105,6 +118,24 @@ class MainTabBarViewController: UITabBarController {
         appController.isFirstLaunch = false
     }
     
+    private var swipeDirection: UISwipeGestureRecognizer.Direction?
+    
+    @objc
+    private func handleSwipes(_ sender: UISwipeGestureRecognizer) {
+        swipeDirection = sender.direction
+        if sender.direction == .left {
+            if selectedIndex < items.count - 1 {
+                let vc = items[selectedIndex + 1]
+                let _ = self.tabBarController(self, shouldSelect: vc)
+            }
+        } else if sender.direction == .right {
+            if selectedIndex > 0 {
+                let vc = items[self.selectedIndex - 1]
+                let _ = self.tabBarController(self, shouldSelect: vc)
+            }
+        }
+    }
+    
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
@@ -134,6 +165,7 @@ class MainTabBarViewController: UITabBarController {
     
     private struct Constants {
         static let tabBarItemNames = ["Панорама".localized(),
+                                      "На карте".localized(),
                                       FavoritePlacesViewController.Strings.title.localized(),
                                       "Профиль".localized()]
     }
@@ -151,6 +183,26 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
 //        tabBar.frame.origin.x = -2
  
         tabBar.barTintColor = UIColor.bxOrdinaryBackground
+    }
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        guard let fromView = selectedViewController?.view,
+              let toView = viewController.view else {
+            return false
+        }
+        
+        if fromView != toView {
+            let transitionStyle = (self.swipeDirection == UISwipeGestureRecognizer.Direction.left ? UIView.AnimationOptions.transitionFlipFromLeft : UIView.AnimationOptions.transitionFlipFromRight)
+            UIView.transition(from: fromView,
+                              to: toView,
+                              duration: 0.5,
+                              options: [transitionStyle],
+                              completion: nil)
+        }
+        selectedViewController = viewController
+        
+        return true
     }
     
 }

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import ListDiff
 
 class PlaceTableViewDirector: NSObject {
     
@@ -15,14 +14,7 @@ class PlaceTableViewDirector: NSObject {
     let tableView: UITableView
     var items: [CellConfigurator] {
         didSet {
-            if oldValue.isEmpty {
-                tableView.reloadData()
-            } else {
-                let oldHashes = oldValue.map { $0.hash }
-                let newHashes = items.map { $0.hash }
-                let result = List.diffing(oldArray: oldHashes, newArray: newHashes)
-                self.tableView.perform(result: result)
-            }
+            tableView.reloadData()
         }
     }
     var footerConfigurator: PlaceTableFooterConfigurator
