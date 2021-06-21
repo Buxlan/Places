@@ -10,6 +10,7 @@ import UIKit
 extension UIColor {
     
     static let bxOrdinaryBackground: UIColor = .systemBackground
+    static let bxSecondaryBackground: UIColor = .systemGray5
     static let bxSelectedControlBackground: UIColor = .systemBlue
     static let bxSelectedControlLabel: UIColor = .systemBackground
     

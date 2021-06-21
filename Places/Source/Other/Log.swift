@@ -10,7 +10,7 @@ import Foundation
 struct Log {
     
     @discardableResult
-    init(text: String, object: Any?) {
+    init(text: String, object: Any? = nil) {
         Utils.log(text, object: object)
     }
 }

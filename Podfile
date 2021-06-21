@@ -6,6 +6,16 @@ target 'Places' do
   use_frameworks!
 
   # Pods for Places
-  pod 'ListDiff'
+
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Database'
+  pod 'Firebase/Storage'
+  pod 'Firebase/DynamicLinks'
+
+  pod 'FirebaseUI'
+  pod 'FirebaseUI/Google'
+  pod 'FirebaseUI/Facebook'
+  pod 'FirebaseUI/OAuth' # Used for Sign in with Apple, Twitter, etc
 
 end

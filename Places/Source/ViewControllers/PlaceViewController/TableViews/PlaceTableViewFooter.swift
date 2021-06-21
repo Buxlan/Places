@@ -7,14 +7,14 @@
 
 import UIKit
 
-class PlaceTableViewFooter: UIView {
+class PlaceTableViewFooter: UITableViewHeaderFooterView {
     
     static let placePlaySoundAction = "placePlaySoundAction"
     static let reuseIdentifier: String = "PlaceTableViewFooter"
     
-    init() {
+    override init(reuseIdentifier: String?) {
         
-        super.init(frame: .zero)
+        super.init(reuseIdentifier: reuseIdentifier)
         
         isUserInteractionEnabled = true
         
@@ -41,14 +41,14 @@ class PlaceTableViewFooter: UIView {
         buttonPlay.titleEdgeInsets.right = -10
         buttonPlay.contentEdgeInsets.right += 10
         
-        self.addSubview(buttonPlay)
+        self.contentView.addSubview(buttonPlay)
         
         buttonPlay.translatesAutoresizingMaskIntoConstraints = false
         let constraints: [NSLayoutConstraint] = [
-            buttonPlay.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            buttonPlay.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             buttonPlay.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-//            buttonPlay.widthAnchor.constraint(equalTo: self.widthAnchor),
-//            buttonPlay.heightAnchor.constraint(equalTo: self.heightAnchor)
+            buttonPlay.widthAnchor.constraint(equalTo: self.widthAnchor),
+            buttonPlay.heightAnchor.constraint(equalToConstant: 50)
         ]
         NSLayoutConstraint.activate(constraints)
     }

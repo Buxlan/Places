@@ -10,14 +10,12 @@ import UIKit
 class FavoritePlacesViewController: UIViewController {
     
     // MARK: - Public
-    
-    // MARK: - Private
-    
     struct Strings {
         static let title = "Избранное"
         static let cellReuseId = "PlaceCell"
     }
     
+    // MARK: - Private
     private var tableView: UITableView = UITableView(frame: .zero, style: .plain)
     private var viewModel: FavoritePlacesViewModel
     private var spinner = UIActivityIndicatorView(style: .medium)
@@ -41,6 +39,7 @@ class FavoritePlacesViewController: UIViewController {
         
         view.backgroundColor = .bxOrdinaryBackground
        
+        tableView.tableFooterView = UIView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.translatesAutoresizingMaskIntoConstraints = false

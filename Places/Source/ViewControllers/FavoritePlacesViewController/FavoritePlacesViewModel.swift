@@ -11,7 +11,7 @@ import UIKit
 class FavoritePlacesViewModel {
     
     var items: [Place]
-    let tableView: UITableView?
+    weak var tableView: UITableView?
     
     init(tableView: UITableView) {
         self.tableView = tableView

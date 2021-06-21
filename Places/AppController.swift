@@ -71,7 +71,7 @@ class AppController: NSObject {
         case favorites = "Favorites"
         case profile = "Profile"
         case placeList = "PlaceList"
-        case authLogin = "AuthLogin"
+        case authSignUp = "authSignUp"
         case authSignIn = "AuthSignIn"
         case editComment = "EditComment"
         case nearestPlaces = "NearestPlaces"
@@ -90,8 +90,8 @@ class AppController: NSObject {
         case placeComments = "Comments"
         case favorites = "Favorites"
         case profile = "Profile"
-        case authLogin = "AuthLogin"
-        case registration = "Registration"
+        case authSignIn = "AuthSignIn"
+        case authSignUp = "AuthSignUp"
         case editComment = "EditPlace"
         case nearestPlaces = "NearestPlaces"
         
@@ -120,17 +120,17 @@ class AppController: NSObject {
         case .favorites:
             return .favorites
         case .profile:
-            return .profile
-        case .authLogin:
-            return .authLogin
-        case .registration:
-            return .authSignIn
+            return .profile      
+        case .authSignUp:
+            return .authSignUp
         case .editComment:
             return .editComment
         case .mainTabBar:
             return .main
         case .nearestPlaces:
             return .nearestPlaces
+        case .authSignIn:
+            return .authSignIn
         }
     }
     

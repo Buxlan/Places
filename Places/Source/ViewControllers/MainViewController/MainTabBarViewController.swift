@@ -171,8 +171,8 @@ class MainTabBarViewController: UITabBarController {
     }
     
 }
-
-extension MainTabBarViewController: UITabBarControllerDelegate {
+// UITabBarControllerDelegate
+extension MainTabBarViewController {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let numberOfItems = items.count
@@ -193,7 +193,7 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
         }
         
         if fromView != toView {
-            let transitionStyle = (self.swipeDirection == UISwipeGestureRecognizer.Direction.left ? UIView.AnimationOptions.transitionFlipFromLeft : UIView.AnimationOptions.transitionFlipFromRight)
+            let transitionStyle = (self.swipeDirection == UISwipeGestureRecognizer.Direction.left ? UIView.AnimationOptions.transitionCrossDissolve : UIView.AnimationOptions.transitionCrossDissolve)
             UIView.transition(from: fromView,
                               to: toView,
                               duration: 0.5,
