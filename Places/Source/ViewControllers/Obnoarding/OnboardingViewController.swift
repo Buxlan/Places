@@ -8,41 +8,43 @@
 import UIKit
 import UserNotifications
 
-protocol OnboardingProtocol {
-    var dismissAction: (() -> Void)! { get set }
-    var futherAction: ((UIAction) -> Void)! { get set }
+@objc
+protocol OnboardingViewControllerDelegate: AnyObject {
+    
+    @objc
+    func buttonFutherTapped()
+    
+    @objc
+    func dismissTapped()
+    
 }
 
 class OnboardingViewController: UIPageViewController {
     
+    // MARK: - Public
+    
+    // MARK: - Private
+    
     private var currentIndex = 0
     private var items = [UIViewController]() {
         didSet {
-            for i in items {
-                if var vc = i as? OnboardingProtocol {
-                    vc.dismissAction = dismissAction
-                    vc.futherAction = futherAction
+            for item in items {
+                if var vc = item as? OnboardingProtocol {
+                    vc.rootViewController = self
                 }
             }
         }
     }
     
     private let appSettings = AppController.shared.settings
-    
-    
+        
     private lazy var dismissAction: () -> Void = { [weak self] in
         self?.dismiss(animated: true) {
             Utils.log("Dismissed", object: self)
         }
     }
     
-    private lazy var futherAction: (UIAction) -> Void = { [weak self] (action) in
-        guard let self = self else { fatalError() }
-        self.nextPage(viewControllerBefore: self.items[self.currentIndex])
-    }
-    
     // MARK: - initializers
-    
     
     // MARK: - events and actions
     override func viewDidLoad() {
@@ -57,9 +59,10 @@ class OnboardingViewController: UIPageViewController {
             .instantiateViewController(withIdentifier: .onboarding3)
         ]
         
-        setViewControllers([items[0]], direction: .forward, animated: true, completion: { success in
-            
-        })
+        setViewControllers([items[0]],
+                           direction: .forward,
+                           animated: true,
+                           completion: nil)
     }
     
     func nextPage(viewControllerBefore viewController: UIViewController) {
@@ -72,9 +75,10 @@ class OnboardingViewController: UIPageViewController {
             return
         } else {
             currentIndex = index+1
-            setViewControllers([items[index+1]], direction: .forward, animated: true) { (success) in
-                viewController.dismiss(animated: false) {
-                }
+            setViewControllers([items[index+1]],
+                               direction: .forward,
+                               animated: true) { _ in
+                viewController.dismiss(animated: false, completion: nil)
             }
         }
     }
@@ -112,7 +116,19 @@ extension OnboardingViewController: UIPageViewControllerDataSource {
 }
 
 extension OnboardingViewController: UIPageViewControllerDelegate {
+           
+}
+
+extension OnboardingViewController: OnboardingViewControllerDelegate {
+    @objc
+    func buttonFutherTapped() {
+        self.nextPage(viewControllerBefore: self.items[self.currentIndex])
+    }
     
-    
-    
+    @objc
+    func dismissTapped() {
+        dismiss(animated: true) {
+            Utils.log("Dismissed", object: self)
+        }
+    }
 }

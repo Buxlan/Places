@@ -18,7 +18,7 @@ import Firebase
 class CustomAuthViewController: OtherAuthViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureUI(for: .Custom)
+    configureUI(for: .custom)
   }
 
   override func buttonTapped() {
@@ -29,6 +29,7 @@ class CustomAuthViewController: OtherAuthViewController {
   // MARK: - Firebase 🔥
 
   private func customAuthLogin(token: String) {
+    // swiftlint:disable:next unused_closure_parameter
     Auth.auth().signIn(withCustomToken: token) { result, error in
       guard error == nil else { return self.displayError(error) }
       self.navigationController?.dismiss(animated: true, completion: {

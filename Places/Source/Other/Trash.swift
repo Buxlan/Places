@@ -28,18 +28,18 @@ class Garbage {
         return button
         
         // in viewDidLoad
-//        frame = CGRect(...)
-//        let blurEffect = UIBlurEffect(style: .light)
-//        let blurView = UIVisualEffectView.init(effect: blurEffect)
-//        blurView.frame = frame
-//
-//        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect, style: .label)
-//        let vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
-//        vibrancyView.frame = firstButton.bounds
-//
-//        vibrancyView.contentView.addSubview(firstButton)
-//        blurView.contentView.addSubview(vibrancyView)
-//        view.addSubview(blurView)
+        //        frame = CGRect(...)
+        //        let blurEffect = UIBlurEffect(style: .light)
+        //        let blurView = UIVisualEffectView.init(effect: blurEffect)
+        //        blurView.frame = frame
+        //
+        //        let vibrancyEffect = UIVibrancyEffect(blurEffect: blurEffect, style: .label)
+        //        let vibrancyView = UIVisualEffectView(effect: vibrancyEffect)
+        //        vibrancyView.frame = firstButton.bounds
+        //
+        //        vibrancyView.contentView.addSubview(firstButton)
+        //        blurView.contentView.addSubview(vibrancyView)
+        //        view.addSubview(blurView)
         
     }()
 }

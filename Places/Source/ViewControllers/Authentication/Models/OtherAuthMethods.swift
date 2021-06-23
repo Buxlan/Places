@@ -16,37 +16,37 @@
 /// Used in configuring the UI for `OtherAuthViewController` subclasses
 /// - Tag: OtherAuthMethods
 enum OtherAuthMethod: String {
-  case Passwordless = "Email Link/Passwordless"
-  case PhoneNumber = "Phone Auth"
-  case Custom = "a Custom Auth System"
+  case passwordless = "Email Link/Passwordless"
+  case phoneNumber = "Phone Auth"
+  case custom = "a Custom Auth System"
 
   var navigationTitle: String { "Sign in using \(rawValue)" }
 
   var textFieldPlaceholder: String {
     switch self {
-    case .Passwordless:
+    case .passwordless:
       return "Enter Authentication Email"
-    case .PhoneNumber:
+    case .phoneNumber:
       return "Enter Phone Number"
-    case .Custom:
+    case .custom:
       return "Enter Custom Auth Token"
     }
   }
 
   var textFieldIcon: String {
     switch self {
-    case .Passwordless:
+    case .passwordless:
       return "envelope.circle"
-    case .PhoneNumber:
+    case .phoneNumber:
       return "phone.circle"
-    case .Custom:
+    case .custom:
       return "lock.shield"
     }
   }
 
   var textFieldInputText: String? {
     switch self {
-    case .PhoneNumber:
+    case .phoneNumber:
       return "Example input for +1 (123)456-7890 would be 11234567890"
     default:
       return nil
@@ -55,22 +55,22 @@ enum OtherAuthMethod: String {
 
   var buttonTitle: String {
     switch self {
-    case .Passwordless:
+    case .passwordless:
       return "Send Sign In Link"
-    case .PhoneNumber:
+    case .phoneNumber:
       return "Send Verification Code"
-    case .Custom:
+    case .custom:
       return "Login"
     }
   }
 
   var infoText: String {
     switch self {
-    case .Passwordless:
+    case .passwordless:
       return passwordlessInfoText
-    case .PhoneNumber:
+    case .phoneNumber:
       return phoneNumberInfoText
-    case .Custom:
+    case .custom:
       return customAuthInfoText
     }
   }

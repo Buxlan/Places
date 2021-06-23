@@ -29,7 +29,7 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
     private lazy var appLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Strings.appText
-        label.textColor = .bxOrdinaryLabel
+        label.textColor = .bxDarkText
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 1
         label.font = .bxAppTitle
@@ -39,7 +39,7 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
     private lazy var dismissButton: UIButton = {
 
         let button = UIButton(type: .close)
-        button.setTitleColor(.bxSecondaryLabel, for: .normal)
+        button.setTitleColor(.bxSecondaryText, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
         return button
@@ -58,7 +58,7 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Strings.titleText
-        label.textColor = .bxOrdinaryLabel
+        label.textColor = .bxDarkText
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 3
         label.font = .bxControlTitle
@@ -68,7 +68,7 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
     private lazy var textLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Strings.description
-        label.textColor = .bxOrdinaryLabel
+        label.textColor = .bxDarkText
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 7
         label.font = .bxBody
@@ -88,16 +88,18 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
                                                action: UIAction(handler: futherAction))
         button.titleLabel?.font = .bxBody
         button.backgroundColor = .clear
-        button.setTitleColor(.bxSecondaryLabel, for: .normal)
+        button.setTitleColor(.bxSecondaryText, for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 15, right: 10)
         return button
     }()
     
     // MARK: - events and actions
     
-    let loginAction: (UIAction) -> Void = { [self] (action) in
-        NotificationCenter.default.post(name: .bxPresentViewController, object: nil, userInfo: [Strings.userInfoName : AppController.ViewControllerIdentifier.authSignIn])
-//        Log(text: "Jumped to login view controller", object: self)
+    let loginAction: (UIAction) -> Void = { [self] _ in
+        let userInfo = [Strings.userInfoName: AppController.ViewControllerIdentifier.authLogin]
+        NotificationCenter.default.post(name: .bxPresentViewController,
+                                        object: nil,
+                                        userInfo: userInfo)
     }
     
     override func viewDidLoad() {
@@ -139,7 +141,7 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
             buttonFuther.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
             
             buttonLogin.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            buttonLogin.bottomAnchor.constraint(equalTo: buttonFuther.topAnchor, constant: -10),
+            buttonLogin.bottomAnchor.constraint(equalTo: buttonFuther.topAnchor, constant: -10)
             
         ]
         

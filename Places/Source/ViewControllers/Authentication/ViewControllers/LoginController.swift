@@ -18,7 +18,16 @@ import Firebase
 class LoginController: UIViewController {
   weak var delegate: LoginDelegate?
 
-  private var loginView: LoginView { view as! LoginView }
+  private var loginView: LoginView {
+    if let view = self.view as? LoginView {
+        return view
+    } else {
+        // impossible case
+        Log(text: "LoginController: view can't cast to Login view", object: self)
+        dismiss(animated: false, completion: nil)
+        return LoginView()
+    }
+  }
 
   private var email: String { loginView.emailTextField.text! }
   private var password: String { loginView.passwordTextField.text! }

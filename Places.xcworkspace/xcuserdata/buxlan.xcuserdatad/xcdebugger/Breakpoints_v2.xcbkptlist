@@ -14,8 +14,8 @@
             filePath = "Places/Source/ViewControllers/MainViewController/MainTabBarViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "configureViewController(vc:title:image:selectedImage:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -80,8 +80,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "38"
             endingLineNumber = "38"
-            landmarkName = "FavoritePlacesViewController"
-            landmarkType = "3">
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -144,8 +144,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
             endingLineNumber = "95"
-            landmarkName = "FavoritePlacesViewController"
-            landmarkType = "21">
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -176,8 +176,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
             endingLineNumber = "25"
-            landmarkName = "FavoritePlacesViewController"
-            landmarkType = "3">
+            landmarkName = "init(coder:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -206,8 +206,8 @@
             filePath = "Places/Source/ViewControllers/FavoritePlacesViewController/FavoritePlaceTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "129"
+            endingLineNumber = "129"
             landmarkName = "configuration"
             landmarkType = "24">
          </BreakpointContent>
@@ -254,8 +254,8 @@
             filePath = "Places/Source/ViewControllers/MainViewController/MainTabBarViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
+            startingLineNumber = "198"
+            endingLineNumber = "198"
             landmarkName = "tabBarController(_:shouldSelect:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -286,8 +286,8 @@
             filePath = "Places/Source/ViewControllers/PlaceCollectionViewController/PlaceListTableViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "PlaceListTableViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -366,8 +366,8 @@
             filePath = "Places/Source/ViewControllers/PlaceCollectionViewController/PlaceListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
             landmarkName = "updateData(completion:)"
             landmarkType = "7">
             <Locations>
@@ -462,8 +462,8 @@
             filePath = "Places/Source/ViewControllers/PlaceCollectionViewController/PlaceListViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "updateData(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -590,8 +590,8 @@
             filePath = "Places/Source/ViewControllers/SignIn/AuthSignInViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>
@@ -606,184 +606,8 @@
             filePath = "Places/Source/ViewControllers/SignIn/AuthSignInViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "AA1EB1A3-7B32-49AB-8D4F-FBEE723649DC"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Places/Source/ViewControllers/SignIn/AuthSignInViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
-            landmarkName = "unknown"
-            landmarkType = "0">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A8AD2F27-7C13-42E2-BC80-9861D054E170"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Places/Source/ViewControllers/SignIn/AuthSignInViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "134"
-            endingLineNumber = "134"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  uuid = "A8AD2F27-7C13-42E2-BC80-9861D054E170 - 7b8d94d8c11c7332"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Places.AuthSignInViewController.didTapEmailLogin(Swift.AnyObject) -&gt; ()"
-                  moduleName = "Places"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/buxlan/Documents/_iosDev/Places/Places/Source/ViewControllers/SignIn/AuthSignInViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "117"
-                  endingLineNumber = "117"
-                  offsetFromSymbolStart = "933">
-               </Location>
-               <Location
-                  uuid = "A8AD2F27-7C13-42E2-BC80-9861D054E170 - 49367409cc992080"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Places.AuthSignInViewController.didTapEmailLogin(Swift.AnyObject) -&gt; ()"
-                  moduleName = "Places"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/buxlan/Documents/_iosDev/Places/Places/Source/ViewControllers/SignIn/AuthSignInViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "119"
-                  endingLineNumber = "119"
-                  offsetFromSymbolStart = "50">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "F72D8C7D-4212-40C7-88FE-6A1E0B0C31D4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Places/Source/ViewControllers/SignIn/AuthSignInViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  uuid = "F72D8C7D-4212-40C7-88FE-6A1E0B0C31D4 - 49367409cc992080"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Places.AuthSignInViewController.didTapEmailLogin(Swift.AnyObject) -&gt; ()"
-                  moduleName = "Places"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/buxlan/Documents/_iosDev/Places/Places/Source/ViewControllers/SignIn/AuthSignInViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "119"
-                  endingLineNumber = "119"
-                  offsetFromSymbolStart = "50">
-               </Location>
-               <Location
-                  uuid = "F72D8C7D-4212-40C7-88FE-6A1E0B0C31D4 - aa4fe5822da4790b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 () -&gt; () in Places.AuthSignInViewController.didTapEmailLogin(Swift.AnyObject) -&gt; ()"
-                  moduleName = "Places"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/buxlan/Documents/_iosDev/Places/Places/Source/ViewControllers/SignIn/AuthSignInViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "119"
-                  endingLineNumber = "119"
-                  offsetFromSymbolStart = "142">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "491B8702-6FD9-4984-BEEB-60639EF2FBF4"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Places/Source/ViewControllers/SignIn/AuthSignInViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
-            landmarkName = "unknown"
-            landmarkType = "0">
-            <Locations>
-               <Location
-                  uuid = "491B8702-6FD9-4984-BEEB-60639EF2FBF4 - aa4fe5822da47968"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 () -&gt; () in Places.AuthSignInViewController.didTapEmailLogin(Swift.AnyObject) -&gt; ()"
-                  moduleName = "Places"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/buxlan/Documents/_iosDev/Places/Places/Source/ViewControllers/SignIn/AuthSignInViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "122"
-                  endingLineNumber = "122"
-                  offsetFromSymbolStart = "242">
-               </Location>
-               <Location
-                  uuid = "491B8702-6FD9-4984-BEEB-60639EF2FBF4 - d10290a4c98b2354"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in closure #1 () -&gt; () in Places.AuthSignInViewController.didTapEmailLogin(Swift.AnyObject) -&gt; ()"
-                  moduleName = "Places"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/buxlan/Documents/_iosDev/Places/Places/Source/ViewControllers/SignIn/AuthSignInViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "119"
-                  endingLineNumber = "119"
-                  offsetFromSymbolStart = "337">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "CE46436E-5A57-4364-814E-0F232E0C83BA"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Places/Source/ViewControllers/SignIn/AuthSignInViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>

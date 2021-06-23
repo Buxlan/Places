@@ -26,7 +26,6 @@ class PlaceMapTableViewCell: UITableViewCell, ConfigurableCell {
         
         mapView.showsScale = true
         
-
         mapView.isScrollEnabled = true
         mapView.setCenter(coordinate, animated: false)
 
@@ -40,5 +39,4 @@ class PlaceMapTableViewCell: UITableViewCell, ConfigurableCell {
         NSLayoutConstraint.activate(constraints)
     }
 
-    
 }

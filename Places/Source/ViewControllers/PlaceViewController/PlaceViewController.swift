@@ -11,8 +11,7 @@ class PlaceViewController: UIViewController {
     
     // MARK: - Public
     var place: Place!
-    
-    
+        
     // MARK: - Private
     struct Strings {
         static let backBarButtonTitle = "<<<"
@@ -62,7 +61,7 @@ class PlaceViewController: UIViewController {
     private func configureBar() {
         
         navigationController?.isToolbarHidden = false
-        navigationController?.toolbar.barTintColor = .bxOrdinaryBackground
+        navigationController?.toolbar.barTintColor = .bxBackground
         
         let backItem = UIBarButtonItem(title: Strings.backBarButtonTitle, style: .done, target: self, action: #selector(backTapped))
         navigationItem.leftBarButtonItem = backItem
@@ -73,7 +72,7 @@ class PlaceViewController: UIViewController {
         let items = [
             UIBarButtonItem(systemItem: .flexibleSpace),
             playBarButtonItem,
-            UIBarButtonItem(image: UIImage.bxPreferredSymbol(with: Strings.recordImageName), style: .plain, target: self, action: #selector(recordTapped)),
+            UIBarButtonItem(image: UIImage.bxPreferredSymbol(with: Strings.recordImageName), style: .plain, target: self, action: #selector(recordTapped))
         ]
         setToolbarItems(items, animated: true)
         

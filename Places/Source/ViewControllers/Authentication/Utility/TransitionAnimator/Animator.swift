@@ -51,13 +51,14 @@ class Animator: NSObject, UIViewControllerAnimatedTransitioning {
     container.addSubview(toView)
     toView.frame = toViewStartFrame
 
-    UIView.animate(withDuration: transitionDuration, animations: {
-      fromView.frame = fromViewFinalFrame
-      toView.frame = container.frame
-
-        }) { _ in
-      fromView.removeFromSuperview()
-      transitionContext.completeTransition(true)
-    }
+    UIView.animate(withDuration: transitionDuration,
+                   animations: {
+                    fromView.frame = fromViewFinalFrame
+                    toView.frame = container.frame
+                   },
+                   completion: { _ in
+                    fromView.removeFromSuperview()
+                    transitionContext.completeTransition(true)
+                   })
   }
 }

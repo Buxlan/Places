@@ -27,7 +27,7 @@ enum CellAction: Hashable {
         hasher.combine(value)
     }
     
-    static func ==(lhs: CellAction, rhs: CellAction) -> Bool {
+    static func == (lhs: CellAction, rhs: CellAction) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
     

@@ -17,8 +17,14 @@ class MainTabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         
-        NotificationCenter.default.addObserver(self, selector: #selector(presentViewController), name: .bxPresentViewController, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(obnoardingDismissed), name: .onboardingDismiss, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(presentViewController),
+                                               name: .bxPresentViewController,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(obnoardingDismissed),
+                                               name: .onboardingDismiss,
+                                               object: nil)
         
         super.viewDidLoad()
         
@@ -61,25 +67,24 @@ class MainTabBarViewController: UITabBarController {
     // MARK: - Private vars and functions
     
     private let appController = AppController.shared
-    private let symbolConfiguration: UIImage.SymbolConfiguration? = nil
     
     private lazy var items: [UIViewController] = [
         configureViewController(vc: appController.viewController(.placeList),
                                title: Constants.tabBarItemNames[0],
-                               image: UIImage(systemName: "building.columns")!                                  .withTintColor(UIColor.bxSecondaryLabel, renderingMode: .alwaysOriginal),
-                               selectedImage: UIImage(systemName: "building.columns.fill")!                                   .withTintColor(UIColor.bxOrdinaryLabel, renderingMode: .alwaysOriginal)),
+                               image: .buildingIcon,
+                               selectedImage: .buildingIcon),
         configureViewController(vc: appController.viewController(.nearestPlaces),
                                title: Constants.tabBarItemNames[1],
-                               image: UIImage(systemName: "map")!                                  .withTintColor(UIColor.bxSecondaryLabel, renderingMode: .alwaysOriginal),
-                               selectedImage: UIImage(systemName: "map.fill")!                                   .withTintColor(UIColor.bxOrdinaryLabel, renderingMode: .alwaysOriginal)),
+                               image: .mapIcon,
+                               selectedImage: .mapFilledIcon),
         configureViewController(vc: appController.viewController(.favorites),
                                title: Constants.tabBarItemNames[2],
-                               image: UIImage(systemName: "heart")!                                  .withTintColor(UIColor.bxSecondaryLabel, renderingMode: .alwaysOriginal),
-                               selectedImage: UIImage(systemName: "heart.fill")!                                   .withTintColor(UIColor.bxOrdinaryLabel, renderingMode: .alwaysOriginal)),
+                               image: .favoriteIcon,
+                               selectedImage: .favoriteFilledIcon),
         configureViewController(vc: appController.viewController(.profile),
                                title: Constants.tabBarItemNames[3],
-                               image: UIImage(systemName: "person")!                                  .withTintColor(UIColor.bxSecondaryLabel, renderingMode: .alwaysOriginal),
-                               selectedImage: UIImage(systemName: "person.fill")!                                   .withTintColor(UIColor.bxOrdinaryLabel, renderingMode: .alwaysOriginal))
+                               image: .profileIcon,
+                               selectedImage: .profileFilledIcon)
     ]
     
     @objc
@@ -87,6 +92,7 @@ class MainTabBarViewController: UITabBarController {
         guard let userInfo = notification.userInfo,
               let viewControllerIdentifier
                 = userInfo["viewControllerIdentifier"] as? AppController.ViewControllerIdentifier else {
+            Log(text: "Error: Problems while presenting view controller")
             fatalError()
         }
         
@@ -126,12 +132,12 @@ class MainTabBarViewController: UITabBarController {
         if sender.direction == .left {
             if selectedIndex < items.count - 1 {
                 let vc = items[selectedIndex + 1]
-                let _ = self.tabBarController(self, shouldSelect: vc)
+                _ = self.tabBarController(self, shouldSelect: vc)
             }
         } else if sender.direction == .right {
             if selectedIndex > 0 {
                 let vc = items[self.selectedIndex - 1]
-                let _ = self.tabBarController(self, shouldSelect: vc)
+                _ = self.tabBarController(self, shouldSelect: vc)
             }
         }
     }
@@ -141,9 +147,9 @@ class MainTabBarViewController: UITabBarController {
     }
     
     fileprivate func configureViewController(vc: UIViewController,
-                                            title: String,
-                                            image: UIImage,
-                                            selectedImage: UIImage) -> UIViewController {
+                                             title: String,
+                                             image: UIImage,
+                                             selectedImage: UIImage) -> UIViewController {
                
         vc.tabBarItem.title = title
         vc.title = title
@@ -153,11 +159,11 @@ class MainTabBarViewController: UITabBarController {
         vc.tabBarItem.selectedImage = selectedImage
           
         vc.tabBarItem.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor : UIColor.bxSecondaryLabel],
+            [NSAttributedString.Key.foregroundColor: UIColor.bxSecondaryText],
             for: .normal)
         
         vc.tabBarItem.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor : UIColor.bxOrdinaryLabel],
+            [NSAttributedString.Key.foregroundColor: UIColor.bxDarkText],
             for: .selected)
         
         return vc
@@ -177,15 +183,17 @@ extension MainTabBarViewController {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let numberOfItems = items.count
         let tabBarItemSize = CGSize(width: tabBar.frame.width / CGFloat(numberOfItems), height: tabBar.frame.height)
-        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.bxOrdinaryBackground, size: tabBarItemSize)
+        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.bxBackground,
+                                                                size: tabBarItemSize)
         
 //        tabBar.frame.size.width = self.view.frame.width + 4
 //        tabBar.frame.origin.x = -2
  
-        tabBar.barTintColor = UIColor.bxOrdinaryBackground
+        tabBar.barTintColor = UIColor.bxBackground
     }
     
-    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+    func tabBarController(_ tabBarController: UITabBarController,
+                          shouldSelect viewController: UIViewController) -> Bool {
         
         guard let fromView = selectedViewController?.view,
               let toView = viewController.view else {
@@ -193,7 +201,7 @@ extension MainTabBarViewController {
         }
         
         if fromView != toView {
-            let transitionStyle = (self.swipeDirection == UISwipeGestureRecognizer.Direction.left ? UIView.AnimationOptions.transitionCrossDissolve : UIView.AnimationOptions.transitionCrossDissolve)
+            let transitionStyle = UIView.AnimationOptions.transitionCrossDissolve
             UIView.transition(from: fromView,
                               to: toView,
                               duration: 0.5,
@@ -204,19 +212,4 @@ extension MainTabBarViewController {
         
         return true
     }
-    
-}
-
-extension UIImage {
-    
-    class func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
-        let rect: CGRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        UIGraphicsBeginImageContextWithOptions(size, false, 0)
-        color.setFill()
-        UIRectFill(rect)
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
-        UIGraphicsEndImageContext()
-        return image
-    }
-    
 }

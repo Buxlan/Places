@@ -19,9 +19,9 @@ class TableCellConfigurator<CellType: ConfigurableCell, DataType: Hashable>: Cel
     static var reuseIdentifier: String { return CellType.reuseIdentifier }
     var cellHeight: CGFloat
     var hash: Int {
-        let v = String(describing: CellType.self).hashValue ^ item.hashValue
-        print("Hash is \(v)")
-        return v
+        let hash = String(describing: CellType.self).hashValue ^ item.hashValue
+        print("Hash is \(hash)")
+        return hash
     }
     
     let item: DataType
@@ -32,7 +32,11 @@ class TableCellConfigurator<CellType: ConfigurableCell, DataType: Hashable>: Cel
     }
     
     func configure(cell: UIView) {
-        (cell as! CellType).configure(data: item)
+        guard let cell = cell as? CellType else {
+            Log(text: "Can't cast cell to \(CellType.self)", object: self)
+            return
+        }
+        cell.configure(data: item)
     }
 }
 
@@ -41,4 +45,3 @@ typealias PlaceLabelTableCellConfigurator = TableCellConfigurator<PlaceLabelTabl
 typealias PlaceUsefulButtonsCellConfigurator = TableCellConfigurator<PlaceUsefulButtonsTableViewCell, Place>
 typealias PlaceDescriptionTableCellConfigurator = TableCellConfigurator<PlaceDescriptionTableViewCell, Place>
 typealias PlaceMapTableCellConfigurator = TableCellConfigurator<PlaceMapTableViewCell, Place>
-

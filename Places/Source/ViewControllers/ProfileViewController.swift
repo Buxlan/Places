@@ -13,7 +13,6 @@ class ProfileViewController: UIViewController {
     
     // MARK: - Public functions
     
-    
     // MARK: - UI Elements
     private struct Strings {
         static let title = "Profile"
@@ -25,7 +24,7 @@ class ProfileViewController: UIViewController {
         
         title = Strings.title
         
-        view.backgroundColor = .bxOrdinaryBackground
+        view.backgroundColor = .bxBackground
         Utils.log("Did load", object: self)
         
         super.viewDidLoad()

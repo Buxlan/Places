@@ -37,7 +37,7 @@ class FavoritePlacesViewController: UIViewController {
         
         super.viewDidLoad()
         
-        view.backgroundColor = .bxOrdinaryBackground
+        view.backgroundColor = .bxBackground
        
         tableView.tableFooterView = UIView()
         tableView.delegate = self
@@ -54,11 +54,11 @@ class FavoritePlacesViewController: UIViewController {
             tableView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor),
             tableView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor),
             spinner.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor),
+            spinner.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
    
-        if let _ = self.title {
+        if self.title != nil {
             //
         } else {
             self.title = Strings.title
@@ -70,7 +70,7 @@ class FavoritePlacesViewController: UIViewController {
     
     private func configureBars() {
     
-        if let _ = navigationController?.title {
+        if navigationController?.title != nil {
             //
         } else {
             navigationController?.title = title
@@ -105,8 +105,7 @@ extension FavoritePlacesViewController: UITableViewDataSource {
         cell.contentConfiguration = configuration
         return cell
     }
-    
-    
+        
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

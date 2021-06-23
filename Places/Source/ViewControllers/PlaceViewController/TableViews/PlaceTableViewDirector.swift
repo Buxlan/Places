@@ -41,8 +41,10 @@ class PlaceTableViewDirector: NSObject {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        NotificationCenter.default.addObserver(self, selector: #selector(onActionEvent(n: )), name: CellAction.notificationName, object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(onActionEvent(n:)), name: Place, object: <#T##Any?#>)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onActionEvent(n: )),
+                                               name: CellAction.notificationName,
+                                               object: nil)
     }
     
     @objc fileprivate
@@ -114,24 +116,23 @@ extension PlaceTableViewDirector: UITableViewDelegate {
     }
 }
 
-
-/* Handlers */
 extension PlaceTableViewDirector {
     
     func configureHandlers() {
         
-        self.actionsProxy.on(.didSelect) { (c :PlaceUsefulButtonsCellConfigurator, cell) in
-            print("did select useful cell", c.item, cell)
-        }.on(.willDisplay) { (c: PlaceUsefulButtonsCellConfigurator, cell) in
+        self.actionsProxy.on(.didSelect) { (config:PlaceUsefulButtonsCellConfigurator, cell) in
+            print("did select useful cell", config.item, cell)
+        }.on(.willDisplay) { (config: PlaceUsefulButtonsCellConfigurator, cell) in
 //            print("will display useful cell", c.item, cell)
-        }.on(.didSelect) { (c: PlaceImageTableCellConfigurator, cell) in
-            print("did select image cell", c.item, cell)
-        }.on(.willDisplay) { (c: PlaceImageTableCellConfigurator, cell) in
+        }.on(.didSelect) { (config: PlaceImageTableCellConfigurator, cell) in
+            print("did select image cell", config.item, cell)
+        }.on(.willDisplay) { (config: PlaceImageTableCellConfigurator, _) in
 //            print("will display image cell", c.item, cell)
-        }.on(CellAction.custom(PlaceUsefulButtonsTableViewCell.reviewsAction)) { (c: PlaceUsefulButtonsCellConfigurator, cell) in
-            print("Show reviews action", c.item, cell)
-        }.on(CellAction.custom(PlaceUsefulButtonsTableViewCell.addToFavoriteAction)) { (c: PlaceUsefulButtonsCellConfigurator, cell) in
-            print("add to favorites action", c.item, cell)
+        }.on(CellAction.custom(PlaceUsefulButtonsTableViewCell.reviewsAction)) {
+            (config: PlaceUsefulButtonsCellConfigurator, cell) in
+            print("Show reviews action", config.item, cell)
+        }.on(CellAction.custom(PlaceUsefulButtonsTableViewCell.addToFavoriteAction)) { (config: PlaceUsefulButtonsCellConfigurator, cell) in
+            print("add to favorites action", config.item, cell)
         }.on(CellAction.custom(PlaceTableViewFooter.placePlaySoundAction)) { [self] (object: Place, view: UIView) in
             print("Tapped play sound", object, view)
             let cell = tableView.dequeueReusableCell(withIdentifier: PlaceUsefulButtonsCellConfigurator.reuseIdentifier)!

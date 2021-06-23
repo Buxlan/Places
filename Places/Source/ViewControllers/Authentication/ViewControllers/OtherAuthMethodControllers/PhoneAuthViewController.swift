@@ -18,7 +18,7 @@ import Firebase
 class PhoneAuthViewController: OtherAuthViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureUI(for: .PhoneNumber)
+    configureUI(for: .phoneNumber)
   }
 
   override func buttonTapped() {

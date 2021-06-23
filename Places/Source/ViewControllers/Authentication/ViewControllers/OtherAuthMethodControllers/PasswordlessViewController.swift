@@ -20,7 +20,7 @@ class PasswordlessViewController: OtherAuthViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    configureUI(for: .Passwordless)
+    configureUI(for: .passwordless)
     registerForLoginNotifications()
   }
 

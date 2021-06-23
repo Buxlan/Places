@@ -42,7 +42,7 @@ extension PlaceTableViewHeader {
         
         isUserInteractionEnabled = true
         
-        backgroundColor = .bxOrdinaryBackground
+        backgroundColor = .bxBackground
         
         self.addSubview(label)
         self.addSubview(imageView)
@@ -72,8 +72,5 @@ extension PlaceTableViewHeader: ConfigurableView {
         imageView.setImage(data.image, animated: true)
         setNeedsLayout()
     }
-    
-    
-    
-    
+  
 }

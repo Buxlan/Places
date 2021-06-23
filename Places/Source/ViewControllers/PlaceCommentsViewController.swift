@@ -19,29 +19,34 @@ class PlaceCommentsViewController: UIViewController {
         return tableView
     }()
     
-    lazy var currentSnapshot: NSDiffableDataSourceSnapshot<PlaceController.PlaceCollection, Place> = {
-        var snapshot = NSDiffableDataSourceSnapshot<PlaceController.PlaceCollection, Place>()
-        placeController.collections.forEach {
-            let collection = $0
-            snapshot.appendSections([collection])
-            snapshot.appendItems(collection.places)
-        }
-        return snapshot
-    }()
+//    lazy var currentSnapshot: NSDiffableDataSourceSnapshot<PlaceController.PlaceCollection, Place> = {
+//        var snapshot = NSDiffableDataSourceSnapshot<PlaceController.PlaceCollection, Place>()
+//        placeController.collections.forEach {
+//            let collection = $0
+//            snapshot.appendSections([collection])
+//            snapshot.appendItems(collection.places)
+//        }
+//        return snapshot
+//    }()
     
-    lazy var dataSource: UITableViewDiffableDataSource<PlaceController.PlaceCollection, Place> = {
-        
-        let dataSource = UITableViewDiffableDataSource<PlaceController.PlaceCollection, Place>(tableView: tableView) {
-            (tableView: UITableView, indexPath: IndexPath, itemIdentifier: Place) -> UITableViewCell? in
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PlaceImageTableViewCell.self), for: indexPath) as? PlaceImageTableViewCell else { fatalError() }
-            
-            cell.configure(data: itemIdentifier)
-            
-            return cell
-            
-        }
-        return dataSource
-    }()
+//    lazy var dataSource: UITableViewDiffableDataSource<PlaceController.PlaceCollection, Place> = {
+//
+//        let dataSource = UITableViewDiffableDataSource<PlaceController.PlaceCollection,
+//                                                       Place>(tableView: tableView) { (tableView, indexPath, itemIdentifier) -> UITableViewCell? in
+//            let id = String(describing: PlaceImageTableViewCell.self)
+//            guard let cell = tableView.dequeueReusableCell(withIdentifier: id,
+//                                                           for: indexPath) as? PlaceImageTableViewCell else {
+//                Log("")
+//                return nil
+//            }
+//
+//            cell.configure(data: itemIdentifier)
+//
+//            return cell
+//
+//        }
+//        return dataSource
+//    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,7 +73,7 @@ class PlaceCommentsViewController: UIViewController {
         
         tableView.register(PlaceImageTableViewCell.self, forCellReuseIdentifier: String(describing: PlaceImageTableViewCell.self))
         
-        dataSource.apply(currentSnapshot)
+//        dataSource.apply(currentSnapshot)
         tableView.reloadData()
     }
     
@@ -83,7 +88,7 @@ class PlaceCommentsViewController: UIViewController {
         if let navigationController = navigationController {
             navigationController.popViewController(animated: true)
         } else {
-            self.dismiss(animated: true, completion: { print("Went back") } )
+            self.dismiss(animated: true, completion: { print("Went back") })
         }
     }
 

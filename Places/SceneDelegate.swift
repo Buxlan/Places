@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }()
 
     lazy var tabBarController: UITabBarController = {
-      let tabBarController = UITabBarController()
+      let tabBarController = MainTabBarViewController()
       tabBarController.delegate = tabBarController
       tabBarController.view.backgroundColor = .systemBackground
       return tabBarController

@@ -34,30 +34,29 @@ class AuthSignInViewController: UIViewController {
     lazy var emailField: UITextField = {
         let view = UITextField()
         view.font = .bxControlTitle
-        view.backgroundColor = .bxSecondaryBackground
-        view.textColor = .bxOrdinaryLabel
+        view.backgroundColor = .bxBackground
+        view.textColor = .bxDarkText
         return view
     }()
     
     lazy var passwordField: UITextField! = {
         let view = UITextField()
         view.font = .bxControlTitle
-        view.backgroundColor = .bxSecondaryBackground
-        view.textColor = .bxOrdinaryLabel
+        view.backgroundColor = .bxBackground
+        view.textColor = .bxDarkText
         view.isSecureTextEntry = true
         view.passwordRules = UITextInputPasswordRules(descriptor: "required: upper; required: lower; max-consecutive: 3; minlength: 6;")
         return view
     }()
-    
-    
+        
     lazy var loginButton: UIButton = {
         let view = UIButton()
         view.setTitle("Login", for: .normal)
         view.addTarget(self, action: #selector(didTapEmailLogin), for: .touchUpInside)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.titleLabel?.font = .bxControlTitle
-        view.backgroundColor = .bxSelectedControlBackground
-        view.setTitleColor(.bxSelectedControlLabel, for: .normal)
+        view.backgroundColor = .bxControlBackground
+        view.setTitleColor(.bxLightText, for: .normal)
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         return view
@@ -73,7 +72,7 @@ class AuthSignInViewController: UIViewController {
         
         title = Strings.title
         
-        view.backgroundColor = .bxOrdinaryBackground
+        view.backgroundColor = .bxBackground
         Utils.log("Did load", object: self)
         
         emailField.translatesAutoresizingMaskIntoConstraints = false
@@ -126,6 +125,7 @@ class AuthSignInViewController: UIViewController {
     }
     
     @objc
+    // swiftlint:disable:next function_body_length
     func didTapEmailLogin(_ sender: AnyObject) {
         guard let email = self.emailField.text, let password = self.passwordField.text else {
             self.showMessagePrompt("email/password can't be empty")
@@ -139,9 +139,16 @@ class AuthSignInViewController: UIViewController {
                 strongSelf.hideSpinner {
                     if let error = error {
                         let authError = error as NSError
-                        if (authError.code == AuthErrorCode.secondFactorRequired.rawValue) {
+                        if authError.code == AuthErrorCode.secondFactorRequired.rawValue {
                             // The user is a multi-factor user. Second factor challenge is required.
-                            let resolver = authError.userInfo[AuthErrorUserInfoMultiFactorResolverKey] as! MultiFactorResolver
+                            let value = authError.userInfo[AuthErrorUserInfoMultiFactorResolverKey]
+                            var resolver: MultiFactorResolver
+                            if let value = value as? MultiFactorResolver {
+                                resolver = value
+                            } else {
+                                Log(text: "Resolver cast data with problems", object: self)
+                                return
+                            }
                             var displayNameString = ""
                             for tmpFactorInfo in (resolver.hints) {
                                 displayNameString += tmpFactorInfo.displayName ?? ""
@@ -149,18 +156,30 @@ class AuthSignInViewController: UIViewController {
                             }
                             self!.showTextInputPrompt(withMessage: "Select factor to sign in\n\(displayNameString)", completionBlock: { userPressedOK, displayName in
                                 var selectedHint: PhoneMultiFactorInfo?
-                                for tmpFactorInfo in resolver.hints {
-                                    if (displayName == tmpFactorInfo.displayName) {
-                                        selectedHint = tmpFactorInfo as? PhoneMultiFactorInfo
-                                    }
+                                let predicate = { (element: MultiFactorInfo) in
+                                    element.displayName == displayName
                                 }
-                                PhoneAuthProvider.provider().verifyPhoneNumber(with: selectedHint!, uiDelegate: nil, multiFactorSession: resolver.session) { verificationID, error in
+                                if let element = resolver.hints.last(where: predicate),
+                                   let castedElenent = element as? PhoneMultiFactorInfo {
+                                    selectedHint = castedElenent
+                                }
+                                
+                                let phoneProvider = PhoneAuthProvider.provider()
+                                phoneProvider.verifyPhoneNumber(with: selectedHint!,
+                                                                uiDelegate: nil,
+                                                                multiFactorSession: resolver.session) { verificationID, error in
                                     if error != nil {
                                         print("Multi factor start sign in failed. Error: \(error.debugDescription)")
                                     } else {
-                                        self!.showTextInputPrompt(withMessage: "Verification code for \(selectedHint?.displayName ?? "")", completionBlock: { userPressedOK, verificationCode in
-                                            let credential: PhoneAuthCredential? = PhoneAuthProvider.provider().credential(withVerificationID: verificationID!, verificationCode: verificationCode!)
-                                            let assertion: MultiFactorAssertion? = PhoneMultiFactorGenerator.assertion(with: credential!)
+                                        let message = "Verification code for \(selectedHint?.displayName ?? "")"
+                                        self!.showTextInputPrompt(withMessage: message,
+                                                                  // swiftlint:disable:next unused_closure_parameter
+                                                                  completionBlock: { userPressedOK, verificationCode in
+                                            let phoneProvider = PhoneAuthProvider.provider()
+                                            let credential = phoneProvider.credential(withVerificationID: verificationID!,
+                                                                                       verificationCode: verificationCode!)
+                                            let assertion: MultiFactorAssertion? = PhoneMultiFactorGenerator.assertion(with: credential)
+                                            // swiftlint:disable:next unused_closure_parameter
                                             resolver.resolveSignIn(with: assertion!) { authResult, error in
                                                 if error != nil {
                                                     print("Multi factor finanlize sign in failed. Error: \(error.debugDescription)")
@@ -189,6 +208,7 @@ class AuthSignInViewController: UIViewController {
      @brief Requests a "password reset" email be sent.
      */
     @IBAction func didRequestPasswordReset(_ sender: AnyObject) {
+        // swiftlint:disable:next unused_closure_parameter
         showTextInputPrompt(withMessage: "Email:") { [weak self] userPressedOK, email in
             guard let strongSelf = self, let email = email else {
                 return
@@ -216,6 +236,7 @@ class AuthSignInViewController: UIViewController {
      and displays the result.
      */
     @IBAction func didGetProvidersForEmail(_ sender: AnyObject) {
+        // swiftlint:disable:next unused_closure_parameter
         showTextInputPrompt(withMessage: "Email:") { [weak self] userPressedOK, email in
             guard let strongSelf = self else { return }
             guard let email = email else {
@@ -247,6 +268,7 @@ class AuthSignInViewController: UIViewController {
                 strongSelf.showMessagePrompt("email can't be empty")
                 return
             }
+            // swiftlint:disable:next unused_closure_parameter
             strongSelf.showTextInputPrompt(withMessage: "Password:") { userPressedOK, password in
                 guard let password = password else {
                     strongSelf.showMessagePrompt("password can't be empty")

@@ -46,7 +46,5 @@ class PlaceUsefulButtonsTableViewCell: UITableViewCell, ConfigurableCell {
 }
 
 extension PlaceUsefulButtonsTableViewCell {
-    
-    
-    
+            
 }

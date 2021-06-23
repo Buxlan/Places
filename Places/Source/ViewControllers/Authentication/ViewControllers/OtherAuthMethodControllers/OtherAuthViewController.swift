@@ -78,7 +78,7 @@ class OtherAuthViewController: UIViewController {
     button.setTitle(authMethod.buttonTitle, for: .normal)
     infoLabel.text = authMethod.infoText
 
-    if authMethod == .PhoneNumber {
+    if authMethod == .phoneNumber {
       textField.keyboardType = .numberPad
     }
   }
@@ -122,7 +122,7 @@ class OtherAuthViewController: UIViewController {
       label.trailingAnchor.constraint(
         equalTo: view.safeAreaLayoutGuide.trailingAnchor,
         constant: -15
-      ),
+      )
     ])
     textFieldInputLabel = label
   }

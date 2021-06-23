@@ -10,8 +10,7 @@ import UIKit
 class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
     
     // MARK: - public properties and methods
-    var dismissAction: (() -> Void)!
-    var futherAction: ((UIAction) -> Void)!
+    weak var delegate: OnboardingViewControllerDelegate?
     
     // MARK: - used strings
     struct Strings {
@@ -38,7 +37,7 @@ class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
     private lazy var dismissButton: UIButton = {
 
         let button = UIButton(type: .close)
-        button.setTitleColor(.bxSecondaryLabel, for: .normal)
+        button.setTitleColor(.bxSecondaryText, for: .normal)
         button.titleLabel?.font = .bxAppTitle
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
@@ -58,7 +57,7 @@ class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
     private lazy var titleLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Strings.titleString
-        label.textColor = .bxOrdinaryLabel
+        label.textColor = .bxDarkText
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 2
         label.font = .bxControlTitle
@@ -68,7 +67,7 @@ class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
     private lazy var textLabel: UILabel = {
         let label = UILabel(frame: .zero)
         label.text = Strings.textString
-        label.textColor = .bxOrdinaryLabel
+        label.textColor = .bxDarkText
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 10
         label.font = .bxBody
@@ -120,7 +119,7 @@ class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
             textLabel.widthAnchor.constraint(equalTo: imageView.widthAnchor),
             
             buttonFuther.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            buttonFuther.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -10),
+            buttonFuther.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor, constant: -10)
         ]
         
         NSLayoutConstraint.activate(constraints)

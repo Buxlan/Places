@@ -13,7 +13,8 @@ protocol ViewConfigurator {
     func configure(view: UIView)
 }
 
-class ReusableViewConfigurator<ViewType: ConfigurableView, DataType: ReusableObject>: ViewConfigurator where ViewType.DataType == DataType, ViewType: UIView {
+class ReusableViewConfigurator<ViewType: ConfigurableView,
+                               DataType: ReusableObject>: ViewConfigurator where ViewType.DataType == DataType, ViewType: UIView {
     
     static var reuseIdentifier: String { return DataType.reuseIdentifier }
     
@@ -24,7 +25,9 @@ class ReusableViewConfigurator<ViewType: ConfigurableView, DataType: ReusableObj
     }
     
     func configure(view: UIView) {
-        (view as! ViewType).configure(data: item)
+        if let view = view as? ViewType {
+            view.configure(data: item)
+        }
     }
 }
 

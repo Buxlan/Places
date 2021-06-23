@@ -25,13 +25,15 @@ import FBSDKLoginKit
 import AuthenticationServices
 import CryptoKit
 
-class AccountLinkingViewController: UIViewController, DataSourceProviderDelegate {
+class AccountLinkingViewController: UIViewController,
+                                    DataSourceProviderDelegate {
   var dataSourceProvider: DataSourceProvider<AuthProvider>!
 
-  var tableView: UITableView { view as! UITableView }
+  var tableView: UITableView
 
   override func loadView() {
-    view = UITableView(frame: .zero, style: .insetGrouped)
+    tableView = UITableView(frame: .zero, style: .grouped)
+    view = tableView
   }
 
   let user: User
@@ -112,7 +114,7 @@ class AccountLinkingViewController: UIViewController, DataSourceProviderDelegate
   /// This method will update the UI upon the linking's completion.
   /// - Parameter authCredential: The credential used to link the user with the auth provider.
   private func linkAccount(authCredential: AuthCredential) {
-    user.link(with: authCredential) { result, error in
+    user.link(with: authCredential) { _, error in
       guard error == nil else { return self.displayError(error) }
       self.updateUI()
     }

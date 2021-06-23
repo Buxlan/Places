@@ -16,7 +16,6 @@
 		401ACA3B265F86BE00AEADE2 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401ACA3A265F86BE00AEADE2 /* AppController.swift */; };
 		4028E5042661187000765DC6 /* AuthSignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4028E5032661187000765DC6 /* AuthSignUp.storyboard */; };
 		4028E507266118A700765DC6 /* AuthSignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028E506266118A700765DC6 /* AuthSignInViewController.swift */; };
-		4028E50C26612FA600765DC6 /* AuthSignIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4028E50B26612FA600765DC6 /* AuthSignIn.storyboard */; };
 		4028E50F26612FE000765DC6 /* AuthSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028E50E26612FE000765DC6 /* AuthSignUpViewController.swift */; };
 		4028E5132661308300765DC6 /* EditComment.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4028E5122661308300765DC6 /* EditComment.storyboard */; };
 		4028E516266130A100765DC6 /* EditCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028E515266130A100765DC6 /* EditCommentsViewController.swift */; };
@@ -25,9 +24,10 @@
 		4028E52326617BDA00765DC6 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4028E52226617BDA00765DC6 /* Profile.storyboard */; };
 		4028E52626617BF800765DC6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028E52526617BF800765DC6 /* ProfileViewController.swift */; };
 		402E0AFC2680998C001B1CBE /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402E0AFB2680998C001B1CBE /* UIViewController.swift */; };
-		403B5A52266A47CA00421470 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B5A51266A47CA00421470 /* Colors.swift */; };
+		4031EBF82682031000BF1F76 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4031EBF72682031000BF1F76 /* .swiftlint.yml */; };
+		403B5A52266A47CA00421470 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B5A51266A47CA00421470 /* UIColor.swift */; };
 		404C999C26777F51009ADECF /* FavoritePlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404C999B26777F51009ADECF /* FavoritePlaceTableViewCell.swift */; };
-		404DB6EE266CC0A6002464DB /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DB6ED266CC0A6002464DB /* Fonts.swift */; };
+		404DB6EE266CC0A6002464DB /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DB6ED266CC0A6002464DB /* UIFont.swift */; };
 		4050EF402680BCB4009FA600 /* OtherAuthMethods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050EF3C2680BCB4009FA600 /* OtherAuthMethods.swift */; };
 		4050EF412680BCB4009FA600 /* AuthProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050EF3D2680BCB4009FA600 /* AuthProvider.swift */; };
 		4050EF422680BCB4009FA600 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4050EF3E2680BCB4009FA600 /* Section.swift */; };
@@ -50,12 +50,12 @@
 		40631052265E708000700BB5 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40631051265E708000700BB5 /* Onboarding.storyboard */; };
 		406660C5263D21FF001BEF66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406660C4263D21FF001BEF66 /* AppDelegate.swift */; };
 		406660C7263D21FF001BEF66 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406660C6263D21FF001BEF66 /* SceneDelegate.swift */; };
-		406660C9263D21FF001BEF66 /* PlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406660C8263D21FF001BEF66 /* PlaceListViewController.swift */; };
 		406660CC263D21FF001BEF66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 406660CA263D21FF001BEF66 /* Main.storyboard */; };
 		406660CE263D21FF001BEF66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 406660CD263D21FF001BEF66 /* Assets.xcassets */; };
 		406660D1263D21FF001BEF66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 406660CF263D21FF001BEF66 /* LaunchScreen.storyboard */; };
 		406660DB263D4A8A001BEF66 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406660DA263D4A8A001BEF66 /* Config.swift */; };
 		406660E3263D4E55001BEF66 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406660E2263D4E55001BEF66 /* Utils.swift */; };
+		4070918C26829B0900AF410F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4070918B26829B0900AF410F /* UIImage.swift */; };
 		407D8482265DB1E800F45C22 /* FavoritePlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D8481265DB1E800F45C22 /* FavoritePlacesViewController.swift */; };
 		407D8485265DB72200F45C22 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D8484265DB72200F45C22 /* MainTabBarViewController.swift */; };
 		407DCD71265859F4005ADB16 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407DCD70265859F4005ADB16 /* ConfigurableView.swift */; };
@@ -71,7 +71,6 @@
 		408C38D02657EAFC009832FD /* CellActionProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38CF2657EAFC009832FD /* CellActionProxy.swift */; };
 		408C38D3265839DD009832FD /* PlaceTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38D2265839DD009832FD /* PlaceTableViewFooter.swift */; };
 		408D39D42678B5A90082151C /* FavoritePlacesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408D39D32678B5A90082151C /* FavoritePlacesViewModel.swift */; };
-		408D5B4B2645DD5900B4930F /* PlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408D5B4A2645DD5900B4930F /* PlaceCollectionViewCell.swift */; };
 		408D5B502645E65A00B4930F /* TitileSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408D5B4F2645E65A00B4930F /* TitileSupplementaryView.swift */; };
 		40978D9926541CBC001E1DFC /* PlaceCommentsViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978D9826541CBC001E1DFC /* PlaceCommentsViewController+UITableViewDelegate.swift */; };
 		40978D9C26544E3A001E1DFC /* PlaceImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978D9B26544E3A001E1DFC /* PlaceImageTableViewCell.swift */; };
@@ -88,10 +87,11 @@
 		40D3EEA7264545AB005E2F0F /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D3EEA6264545AB005E2F0F /* Trash.swift */; };
 		40D3EEAC2645C5CE005E2F0F /* PlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D3EEAB2645C5CE005E2F0F /* PlaceController.swift */; };
 		40D3EEB12645C729005E2F0F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D3EEB02645C729005E2F0F /* Place.swift */; };
-		40E982D9264349A4007D14D6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E982D8264349A4007D14D6 /* Extensions.swift */; };
+		40E982D9264349A4007D14D6 /* OtherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E982D8264349A4007D14D6 /* OtherExtensions.swift */; };
 		40E982DF2643F81E007D14D6 /* PlaceComments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40E982DE2643F81E007D14D6 /* PlaceComments.storyboard */; };
 		40E982E22643F880007D14D6 /* PlaceCommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E982E12643F880007D14D6 /* PlaceCommentsViewController.swift */; };
 		40E982E7264400BC007D14D6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E982E6264400BC007D14D6 /* OnboardingViewController.swift */; };
+		40ECF9002680FAA5005811E1 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40ECF8FF2680FAA5005811E1 /* Login.storyboard */; };
 		FB6793D10F24DC3E1D21CBC8 /* Pods_Places.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB95DCC09A0ED131E58E26D2 /* Pods_Places.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,7 +106,6 @@
 		401ACA3A265F86BE00AEADE2 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		4028E5032661187000765DC6 /* AuthSignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthSignUp.storyboard; sourceTree = "<group>"; };
 		4028E506266118A700765DC6 /* AuthSignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSignInViewController.swift; sourceTree = "<group>"; };
-		4028E50B26612FA600765DC6 /* AuthSignIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AuthSignIn.storyboard; sourceTree = "<group>"; };
 		4028E50E26612FE000765DC6 /* AuthSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthSignUpViewController.swift; sourceTree = "<group>"; };
 		4028E5122661308300765DC6 /* EditComment.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditComment.storyboard; sourceTree = "<group>"; };
 		4028E515266130A100765DC6 /* EditCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCommentsViewController.swift; sourceTree = "<group>"; };
@@ -115,9 +114,10 @@
 		4028E52226617BDA00765DC6 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4028E52526617BF800765DC6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		402E0AFB2680998C001B1CBE /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
-		403B5A51266A47CA00421470 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		4031EBF72682031000BF1F76 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		403B5A51266A47CA00421470 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		404C999B26777F51009ADECF /* FavoritePlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceTableViewCell.swift; sourceTree = "<group>"; };
-		404DB6ED266CC0A6002464DB /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		404DB6ED266CC0A6002464DB /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		4050EF3C2680BCB4009FA600 /* OtherAuthMethods.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherAuthMethods.swift; sourceTree = "<group>"; };
 		4050EF3D2680BCB4009FA600 /* AuthProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthProvider.swift; sourceTree = "<group>"; };
 		4050EF3E2680BCB4009FA600 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
@@ -141,13 +141,13 @@
 		406660C1263D21FF001BEF66 /* Places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		406660C4263D21FF001BEF66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		406660C6263D21FF001BEF66 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		406660C8263D21FF001BEF66 /* PlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewController.swift; sourceTree = "<group>"; };
 		406660CB263D21FF001BEF66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		406660CD263D21FF001BEF66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		406660D0263D21FF001BEF66 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		406660D2263D21FF001BEF66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		406660DA263D4A8A001BEF66 /* Config.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		406660E2263D4E55001BEF66 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		4070918B26829B0900AF410F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		407D8481265DB1E800F45C22 /* FavoritePlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlacesViewController.swift; sourceTree = "<group>"; };
 		407D8484265DB72200F45C22 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		407DCD70265859F4005ADB16 /* ConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableView.swift; sourceTree = "<group>"; };
@@ -163,7 +163,6 @@
 		408C38CF2657EAFC009832FD /* CellActionProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellActionProxy.swift; sourceTree = "<group>"; };
 		408C38D2265839DD009832FD /* PlaceTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewFooter.swift; sourceTree = "<group>"; };
 		408D39D32678B5A90082151C /* FavoritePlacesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlacesViewModel.swift; sourceTree = "<group>"; };
-		408D5B4A2645DD5900B4930F /* PlaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		408D5B4F2645E65A00B4930F /* TitileSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitileSupplementaryView.swift; sourceTree = "<group>"; };
 		40978D9826541CBC001E1DFC /* PlaceCommentsViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlaceCommentsViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		40978D9B26544E3A001E1DFC /* PlaceImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -180,10 +179,11 @@
 		40D3EEA6264545AB005E2F0F /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
 		40D3EEAB2645C5CE005E2F0F /* PlaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceController.swift; sourceTree = "<group>"; };
 		40D3EEB02645C729005E2F0F /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
-		40E982D8264349A4007D14D6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		40E982D8264349A4007D14D6 /* OtherExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherExtensions.swift; sourceTree = "<group>"; };
 		40E982DE2643F81E007D14D6 /* PlaceComments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PlaceComments.storyboard; sourceTree = "<group>"; };
 		40E982E12643F880007D14D6 /* PlaceCommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCommentsViewController.swift; sourceTree = "<group>"; };
 		40E982E6264400BC007D14D6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		40ECF8FF2680FAA5005811E1 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		58BE727BCED534A3751BCDD0 /* Pods-Places.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Places.debug.xcconfig"; path = "Target Support Files/Pods-Places/Pods-Places.debug.xcconfig"; sourceTree = "<group>"; };
 		BB95DCC09A0ED131E58E26D2 /* Pods_Places.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Places.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -228,16 +228,15 @@
 			path = SignIn;
 			sourceTree = "<group>";
 		};
-		403B5A54266A844E00421470 /* PlaceCollectionViewController */ = {
+		403B5A54266A844E00421470 /* PlaceListViewController */ = {
 			isa = PBXGroup;
 			children = (
 				4028E51C26617A9500765DC6 /* PlaceList.storyboard */,
 				40B6EAEE267973D500AA4CC2 /* PlaceListTableViewController.swift */,
 				40B6EAF1267974B200AA4CC2 /* PlaceListViewModel.swift */,
 				40B6EAF42679754500AA4CC2 /* PlaceTableViewCell.swift */,
-				407DCD7B265A5B5E005ADB16 /* Collection */,
 			);
-			path = PlaceCollectionViewController;
+			path = PlaceListViewController;
 			sourceTree = "<group>";
 		};
 		4050EF392680BC71009FA600 /* Authentication */ = {
@@ -247,6 +246,7 @@
 				4050EF7E2680BCC9009FA600 /* CustomViews */,
 				4050EF6A2680BCC0009FA600 /* ViewControllers */,
 				4050EF3B2680BCB4009FA600 /* Models */,
+				40ECF8FF2680FAA5005811E1 /* Login.storyboard */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -324,13 +324,11 @@
 		40625A38265CFF4500E0E744 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				407091BB2682BADD00AF410F /* Extensions */,
 				406660E2263D4E55001BEF66 /* Utils.swift */,
 				401960E5266A9B08004765F7 /* Log.swift */,
-				403B5A51266A47CA00421470 /* Colors.swift */,
-				404DB6ED266CC0A6002464DB /* Fonts.swift */,
 				40625A35265BB4B100E0E744 /* Settings.swift */,
 				406660DA263D4A8A001BEF66 /* Config.swift */,
-				40E982D8264349A4007D14D6 /* Extensions.swift */,
 				40D3EEA6264545AB005E2F0F /* Trash.swift */,
 			);
 			path = Other;
@@ -365,6 +363,7 @@
 				40C10947267A628F00264062 /* GoogleService-Info.plist */,
 				406660CD263D21FF001BEF66 /* Assets.xcassets */,
 				406660D2263D21FF001BEF66 /* Info.plist */,
+				4031EBF72682031000BF1F76 /* .swiftlint.yml */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -378,6 +377,17 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		407091BB2682BADD00AF410F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				403B5A51266A47CA00421470 /* UIColor.swift */,
+				404DB6ED266CC0A6002464DB /* UIFont.swift */,
+				4070918B26829B0900AF410F /* UIImage.swift */,
+				40E982D8264349A4007D14D6 /* OtherExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		407DCD79265A5925005ADB16 /* TableViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -388,15 +398,6 @@
 				408C38C92657E608009832FD /* PlaceTableViewDirector.swift */,
 			);
 			path = TableViews;
-			sourceTree = "<group>";
-		};
-		407DCD7B265A5B5E005ADB16 /* Collection */ = {
-			isa = PBXGroup;
-			children = (
-				406660C8263D21FF001BEF66 /* PlaceListViewController.swift */,
-				408D5B4A2645DD5900B4930F /* PlaceCollectionViewCell.swift */,
-			);
-			path = Collection;
 			sourceTree = "<group>";
 		};
 		408D5B492645DD1E00B4930F /* Cells */ = {
@@ -492,7 +493,6 @@
 				4028E52226617BDA00765DC6 /* Profile.storyboard */,
 				406660CF263D21FF001BEF66 /* LaunchScreen.storyboard */,
 				4028E5032661187000765DC6 /* AuthSignUp.storyboard */,
-				4028E50B26612FA600765DC6 /* AuthSignIn.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -504,7 +504,7 @@
 				402E0AFA26809937001B1CBE /* SignIn */,
 				40D4F271265F6ACF001326C8 /* Obnoarding */,
 				40A4160A266A31C6005ADBBD /* MainViewController */,
-				403B5A54266A844E00421470 /* PlaceCollectionViewController */,
+				403B5A54266A844E00421470 /* PlaceListViewController */,
 				40BB8F51267969B7009B8841 /* NearestPlacesViewController */,
 				401960E8266AD2E9004765F7 /* FavoritePlacesViewController */,
 				40A4160B266A321A005ADBBD /* PlaceViewController */,
@@ -536,6 +536,7 @@
 			buildConfigurationList = 406660D5263D21FF001BEF66 /* Build configuration list for PBXNativeTarget "Places" */;
 			buildPhases = (
 				FD267262167B2E0632859681 /* [CP] Check Pods Manifest.lock */,
+				40AF77352681209900D7A985 /* Lint */,
 				406660BD263D21FF001BEF66 /* Sources */,
 				406660BE263D21FF001BEF66 /* Frameworks */,
 				406660BF263D21FF001BEF66 /* Resources */,
@@ -588,12 +589,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4031EBF82682031000BF1F76 /* .swiftlint.yml in Resources */,
+				40ECF9002680FAA5005811E1 /* Login.storyboard in Resources */,
 				40E982DF2643F81E007D14D6 /* PlaceComments.storyboard in Resources */,
 				406660D1263D21FF001BEF66 /* LaunchScreen.storyboard in Resources */,
 				40C10948267A628F00264062 /* GoogleService-Info.plist in Resources */,
 				4028E52026617B9000765DC6 /* Favorites.storyboard in Resources */,
 				40BB8F5526796B2E009B8841 /* NearestPlaces.storyboard in Resources */,
-				4028E50C26612FA600765DC6 /* AuthSignIn.storyboard in Resources */,
 				4028E51D26617A9500765DC6 /* PlaceList.storyboard in Resources */,
 				4028E52326617BDA00765DC6 /* Profile.storyboard in Resources */,
 				40978D9F2655AAC9001E1DFC /* Place.storyboard in Resources */,
@@ -609,6 +611,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		40AF77352681209900D7A985 /* Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Lint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		5FEF0E19D6F36F3C039DD27C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -676,14 +696,13 @@
 				4050EF772680BCC0009FA600 /* UserViewController.swift in Sources */,
 				40E982E7264400BC007D14D6 /* OnboardingViewController.swift in Sources */,
 				4050EF7B2680BCC0009FA600 /* PhoneAuthViewController.swift in Sources */,
-				403B5A52266A47CA00421470 /* Colors.swift in Sources */,
+				403B5A52266A47CA00421470 /* UIColor.swift in Sources */,
 				40978DA82655BAFD001E1DFC /* PlaceViewModel.swift in Sources */,
 				4050EF792680BCC0009FA600 /* OtherAuthViewController.swift in Sources */,
 				401ACA2F265F6CC600AEADE2 /* OnboardingSecondViewController.swift in Sources */,
 				4050EF912680BCDF009FA600 /* Animator.swift in Sources */,
 				40E982E22643F880007D14D6 /* PlaceCommentsViewController.swift in Sources */,
 				4050EF752680BCC0009FA600 /* AuthViewController.swift in Sources */,
-				406660C9263D21FF001BEF66 /* PlaceListViewController.swift in Sources */,
 				4050EF412680BCB4009FA600 /* AuthProvider.swift in Sources */,
 				40978D9926541CBC001E1DFC /* PlaceCommentsViewController+UITableViewDelegate.swift in Sources */,
 				4028E52626617BF800765DC6 /* ProfileViewController.swift in Sources */,
@@ -698,7 +717,7 @@
 				40BB8F5826796BC7009B8841 /* NearestPlacesViewController.swift in Sources */,
 				4050EF812680BCC9009FA600 /* LoginView.swift in Sources */,
 				40978DA22655AB80001E1DFC /* PlaceViewController.swift in Sources */,
-				404DB6EE266CC0A6002464DB /* Fonts.swift in Sources */,
+				404DB6EE266CC0A6002464DB /* UIFont.swift in Sources */,
 				4050EF8F2680BCDF009FA600 /* DataSourceProtocols.swift in Sources */,
 				406660DB263D4A8A001BEF66 /* Config.swift in Sources */,
 				408C38C426576797009832FD /* PlaceDescriptionTableViewCell.swift in Sources */,
@@ -711,6 +730,7 @@
 				401960E6266A9B09004765F7 /* Log.swift in Sources */,
 				40B6EAEF267973D500AA4CC2 /* PlaceListTableViewController.swift in Sources */,
 				40B6EAF2267974B200AA4CC2 /* PlaceListViewModel.swift in Sources */,
+				4070918C26829B0900AF410F /* UIImage.swift in Sources */,
 				407DCD71265859F4005ADB16 /* ConfigurableView.swift in Sources */,
 				407D8485265DB72200F45C22 /* MainTabBarViewController.swift in Sources */,
 				408C38B8265685E2009832FD /* CellConfigurator.swift in Sources */,
@@ -724,7 +744,6 @@
 				4028E516266130A100765DC6 /* EditCommentsViewController.swift in Sources */,
 				4050EF8D2680BCDF009FA600 /* LoginDelegate.swift in Sources */,
 				408C38C72657728C009832FD /* PlaceMapTableViewCell.swift in Sources */,
-				408D5B4B2645DD5900B4930F /* PlaceCollectionViewCell.swift in Sources */,
 				4050EF782680BCC0009FA600 /* PasswordlessViewController.swift in Sources */,
 				406660C7263D21FF001BEF66 /* SceneDelegate.swift in Sources */,
 				407DCD7426585AEC005ADB16 /* ViewConfigurator.swift in Sources */,
@@ -737,7 +756,7 @@
 				402E0AFC2680998C001B1CBE /* UIViewController.swift in Sources */,
 				4050EF902680BCDF009FA600 /* DataSourceProvider.swift in Sources */,
 				40D3EEAC2645C5CE005E2F0F /* PlaceController.swift in Sources */,
-				40E982D9264349A4007D14D6 /* Extensions.swift in Sources */,
+				40E982D9264349A4007D14D6 /* OtherExtensions.swift in Sources */,
 				4050EF432680BCB4009FA600 /* UserActions.swift in Sources */,
 				404C999C26777F51009ADECF /* FavoritePlaceTableViewCell.swift in Sources */,
 				408D39D42678B5A90082151C /* FavoritePlacesViewModel.swift in Sources */,
@@ -818,7 +837,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -873,7 +892,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -892,6 +911,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X9YKGG45V3;
 				INFOPLIST_FILE = Places/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -912,6 +932,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X9YKGG45V3;
 				INFOPLIST_FILE = Places/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -48,8 +48,7 @@ class FavoritePlaceContentView: UIView, UIContentView {
         self.addSubview(titleView)
         self.addSubview(descriptionView)
         self.addSubview(likeButton)
-        
-               
+                       
         let constraints: [NSLayoutConstraint] = [
             imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             imageView.widthAnchor.constraint(equalTo: self.heightAnchor),
@@ -68,7 +67,7 @@ class FavoritePlaceContentView: UIView, UIContentView {
             descriptionView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: 8),
             descriptionView.trailingAnchor.constraint(equalTo: likeButton.leadingAnchor, constant: -8),
             descriptionView.topAnchor.constraint(equalTo: titleView.bottomAnchor, constant: 8),
-            descriptionView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            descriptionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
             
         ]
         likeButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
@@ -91,7 +90,7 @@ class FavoritePlaceContentView: UIView, UIContentView {
     private lazy var titleView: UILabel = {
         let titleView = UILabel(frame: .zero)
         titleView.font = UIFont.bxBody
-        titleView.textColor = .bxOrdinaryLabel
+        titleView.textColor = .bxDarkText
         
         titleView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -101,7 +100,7 @@ class FavoritePlaceContentView: UIView, UIContentView {
     private lazy var descriptionView: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.bxCaption
-        view.textColor = .bxSecondaryLabel
+        view.textColor = .bxSecondaryText
         view.numberOfLines = 0
         
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -139,6 +138,5 @@ class FavoritePlaceContentView: UIView, UIContentView {
         titleView.text = conf.place?.title
         descriptionView.text = conf.place?.description
     }
-    
-    
+        
 }

@@ -37,7 +37,7 @@ final class SignedOutView: UIView {
       imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
       imageView.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -50),
       imageView.heightAnchor.constraint(equalToConstant: 100),
-      imageView.widthAnchor.constraint(equalToConstant: 100),
+      imageView.widthAnchor.constraint(equalToConstant: 100)
     ])
 
     let label = UILabel()

@@ -16,7 +16,7 @@ class Utils: NSObject {
             print("\(text): \(object)")
         } else {
             print("\(text) without object")
-        }
+        }        
     }
     
     static func isiPad() -> Bool {
@@ -28,4 +28,3 @@ class Utils: NSObject {
     }
   
 }
-

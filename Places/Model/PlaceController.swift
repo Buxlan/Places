@@ -32,6 +32,7 @@ class PlaceController {
 
 extension PlaceController {
     
+    // swiftlint:disable line_length
     fileprivate static let description = """
                         Прогулка-экскурсия по Невскому проспекту — пожалуй, второе по важности мероприятие, которое обязательно надо совершить во время визита в Санкт-Петербург. Здесь много достопримечательностей и мест, связанных с историей, но также это променад, на который петербуржцы и туристы выходят себя "себя показать и других посмотреть". Кроме того, здесь много магазинов, кафе и ресторанов, поэтому прогулку лучше запланировать на вечер.
                       
@@ -41,6 +42,7 @@ extension PlaceController {
 
                       Самая центральная часть Невского — от Адмиралтейства до площади Восстания. Тут находятся главные достопримечательности и красивые места. Часть проспекта после площади Восстания в обиходе называют Старо-Невским, хотя на картах он все равно "Невский". Здесь уже почти нет интересных мест, разве что Александро-Невская лавра.
                       """
+    // swiftlint:enable line_length
     
     private func generateCollections() {
         _collections = [
@@ -49,12 +51,12 @@ extension PlaceController {
                 Place(title: "Parnas", category: "Category 2", description: "1"),
                 Place(title: "Hermitage", category: "Category 3", description: PlaceController.description),
                 Place(title: "Петергоф", category: "Category 3", description: PlaceController.description),
-                Place(title: "Площадь восстания", category: "Category 3", description: PlaceController.description),
+                Place(title: "Площадь восстания", category: "Category 3", description: PlaceController.description)
             ]),
             PlaceCollection(title: "Новинки!", places: [
                 Place(title: "Vas'ka", category: "Category 1", description: PlaceController.description),
                 Place(title: "Prosvet", category: "Category 2", description: PlaceController.description),
-                Place(title: "Devyatkino", category: "Category 3", description: PlaceController.description),
+                Place(title: "Devyatkino", category: "Category 3", description: PlaceController.description)
             ]),
         ]
     }

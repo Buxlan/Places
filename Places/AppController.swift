@@ -44,12 +44,13 @@ class AppController: NSObject {
     override init() {
         super.init()
         
-        let currentVersion = Bundle.main.object(forInfoDictionaryKey: Key.bundleVersion) as! String
-        if let lastExecutedVersion =
-            UserDefaults.standard.value(forKey: Key.lastExecutedBundleVersion)
-            as? String {
-            if currentVersion != lastExecutedVersion {
-                updateVersion(old: lastExecutedVersion, new: currentVersion)
+        let bundleVersion = Bundle.main.object(forInfoDictionaryKey: Key.bundleVersion)
+        if let bundleVersion = bundleVersion as? String {
+            let lastExecutedVersion = UserDefaults.standard.value(forKey: Key.lastExecutedBundleVersion)
+            if let lastExecutedVersion = lastExecutedVersion as? String {
+                if bundleVersion != lastExecutedVersion {
+                    updateVersion(old: lastExecutedVersion, new: bundleVersion)
+                }
             }
         }
     }
@@ -72,7 +73,7 @@ class AppController: NSObject {
         case profile = "Profile"
         case placeList = "PlaceList"
         case authSignUp = "authSignUp"
-        case authSignIn = "AuthSignIn"
+        case authLogin = "Login"
         case editComment = "EditComment"
         case nearestPlaces = "NearestPlaces"
     }
@@ -90,14 +91,15 @@ class AppController: NSObject {
         case placeComments = "Comments"
         case favorites = "Favorites"
         case profile = "Profile"
-        case authSignIn = "AuthSignIn"
         case authSignUp = "AuthSignUp"
+        case authLogin = "Login"
         case editComment = "EditPlace"
         case nearestPlaces = "NearestPlaces"
         
     }
     
-    private static let storyboardIdentifier: ( (ViewControllerIdentifier) -> StoryboardIdentifier) = { (identifier: ViewControllerIdentifier) -> StoryboardIdentifier in
+    private static let storyboardIdentifier: ((ViewControllerIdentifier) -> StoryboardIdentifier) = { identifier in
+        
         switch identifier {
         case .entry:
             return .main
@@ -129,8 +131,8 @@ class AppController: NSObject {
             return .main
         case .nearestPlaces:
             return .nearestPlaces
-        case .authSignIn:
-            return .authSignIn
+        case .authLogin:
+            return .authLogin
         }
     }
     

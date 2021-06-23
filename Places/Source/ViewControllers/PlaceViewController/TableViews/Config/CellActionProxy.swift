@@ -8,11 +8,12 @@
 import UIKit
 
 class CellActionProxy {
-    //storage where subscrubers' closures are stored
+    
+    // storage where subscrubers' closures are stored
     private var actions = [String: ((CellConfigurator, UIView) -> Void)]()
     private var viewsActions = [String: (ReusableObject, UIView) -> Void]()
     
-    //method to invoke cell action and notify all subscrubers
+    // method to invoke cell action and notify all subscrubers
     func invoke(action: CellAction, cell: UIView, configurator: CellConfigurator) {
         let key = "\(action.hashValue)\(type(of: configurator).reuseIdentifier)"
         if let action = self.actions[key] {
@@ -32,8 +33,11 @@ class CellActionProxy {
     @discardableResult
     func on<CellType, DataType>(_ action: CellAction, handler: @escaping ( (TableCellConfigurator<CellType, DataType>, CellType) -> Void) ) -> Self {
         let key = "\(action.hashValue)\(CellType.reuseIdentifier)"
-        self.actions[key] = { (c, cell) in
-            handler(c as! TableCellConfigurator<CellType, DataType>, cell as! CellType)
+        self.actions[key] = { (config, cell) in
+            if let config = config as? TableCellConfigurator<CellType, DataType>,
+               let cell = cell as? CellType {
+                handler(config, cell)
+            }
         }
         return self
     }
@@ -43,7 +47,9 @@ class CellActionProxy {
         let key = "\(action.hashValue)\(DataType.reuseIdentifier)"
         viewsActions[key] = { (object, view) in
 
-            handler(object as! DataType, view)
+            if let object = object as? DataType {
+                handler(object, view)
+            }
         }
         return self
     }

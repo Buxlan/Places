@@ -126,7 +126,7 @@ extension AuthProvider: DataSourceProvidable {
       Item(title: passwordless.name, image: lockSymbol),
       Item(title: phoneNumber.name, image: phoneSymbol),
       Item(title: anonymous.name, image: anonSymbol),
-      Item(title: custom.name, image: shieldSymbol),
+      Item(title: custom.name, image: shieldSymbol)
     ]
     return Section(footerDescription: "Other authentication methods.", items: otherOptions)
   }

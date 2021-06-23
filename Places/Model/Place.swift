@@ -24,7 +24,7 @@ struct Place: ReusableObject {
     let title: String
     let category: PlaceCategory
     let image: UIImage = {
-        guard let image = UIImage(systemName: "photo")?.withTintColor(.bxSecondaryLabel, renderingMode: .alwaysTemplate)
+        guard let image = UIImage(systemName: "photo")?.withTintColor(.bxSecondaryText, renderingMode: .alwaysTemplate)
         else {
             fatalError()
         }

@@ -45,8 +45,8 @@ class LoginView: UIView {
   lazy var createAccountButton: UIButton = {
     let button = UIButton()
     button.setTitle("Create Account", for: .normal)
-    button.setTitleColor(.secondaryLabel, for: .normal)
-    button.setTitleColor(UIColor.secondaryLabel.highlighted, for: .highlighted)
+    button.setTitleColor(.bxSecondaryText, for: .normal)
+    button.setTitleColor(UIColor.bxSecondaryText.highlighted, for: .highlighted)
     return button
   }()
 
@@ -58,7 +58,7 @@ class LoginView: UIView {
   // MARK: - Subviews Setup
 
   private func setupSubviews() {
-    backgroundColor = .systemBackground
+    backgroundColor = .bxBackground
     clipsToBounds = true
 
     setupFirebaseLogoImage()
@@ -78,12 +78,12 @@ class LoginView: UIView {
       imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -55),
       imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 55),
       imageView.widthAnchor.constraint(equalToConstant: 325),
-      imageView.heightAnchor.constraint(equalToConstant: 325),
+      imageView.heightAnchor.constraint(equalToConstant: 325)
     ])
   }
 
   private func setupEmailTextfield() {
-    emailTextField = textField(placeholder: "Email", symbolName: "person.crop.circle")
+    emailTextField = textField(placeholder: "Email", image: .profileIcon)
     emailTextField.translatesAutoresizingMaskIntoConstraints = false
     addSubview(emailTextField)
     NSLayoutConstraint.activate([
@@ -95,7 +95,7 @@ class LoginView: UIView {
         equalTo: safeAreaLayoutGuide.trailingAnchor,
         constant: -15
       ),
-      emailTextField.heightAnchor.constraint(equalToConstant: 45),
+      emailTextField.heightAnchor.constraint(equalToConstant: 45)
     ])
 
     let constant: CGFloat = UIDevice.current.orientation.isLandscape ? 15 : 50
@@ -107,7 +107,7 @@ class LoginView: UIView {
   }
 
   private func setupPasswordTextField() {
-    passwordTextField = textField(placeholder: "Password", symbolName: "lock.fill")
+    passwordTextField = textField(placeholder: "Password", image: .lockFilledIcon)
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     addSubview(passwordTextField)
     NSLayoutConstraint.activate([
@@ -119,7 +119,7 @@ class LoginView: UIView {
         equalTo: safeAreaLayoutGuide.trailingAnchor,
         constant: -15
       ),
-      passwordTextField.heightAnchor.constraint(equalToConstant: 45),
+      passwordTextField.heightAnchor.constraint(equalToConstant: 45)
     ])
 
     let constant: CGFloat = UIDevice.current.orientation.isLandscape ? 5 : 20
@@ -144,7 +144,7 @@ class LoginView: UIView {
         constant: -15
       ),
       loginButton.heightAnchor.constraint(equalToConstant: 45),
-      loginButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 5),
+      loginButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 5)
     ])
   }
 
@@ -153,19 +153,19 @@ class LoginView: UIView {
     createAccountButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       createAccountButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-      createAccountButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 5),
+      createAccountButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 5)
     ])
   }
 
   // MARK: - Private Helpers
 
-  private func textField(placeholder: String, symbolName: String) -> UITextField {
+    private func textField(placeholder: String, image: UIImage) -> UITextField {
     let textfield = UITextField()
-    textfield.backgroundColor = .secondarySystemBackground
+    textfield.backgroundColor = .bxPlaceholderText
     textfield.layer.cornerRadius = 14
     textfield.placeholder = placeholder
     textfield.tintColor = .systemOrange
-    let symbol = UIImage(systemName: symbolName)
+    let symbol = image
     textfield.setImage(symbol)
     return textfield
   }

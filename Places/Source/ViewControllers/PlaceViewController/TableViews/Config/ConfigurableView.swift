@@ -16,5 +16,3 @@ protocol ConfigurableView: ReusableObject {
 extension ConfigurableView {
     static var reuseIdentifier: String { return String(describing: Self.self) }
 }
-
-
