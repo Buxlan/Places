@@ -57,7 +57,7 @@ final class SignedOutView: UIView {
 
     let attributes: [NSAttributedString.Key: Any] = [
       .paragraphStyle: paragraph,
-      .foregroundColor: UIColor.secondaryLabel,
+      .foregroundColor: UIColor.secondaryLabel
     ]
 
     let imageAttachment = NSTextAttachment()

@@ -18,7 +18,7 @@ class FavoritePlacesViewModel {
         items = [Place]()
     }
     
-    func updateData(completion: @escaping ()->()) {
+    func updateData(completion: @escaping () -> Void) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             do {
                 sleep(4)

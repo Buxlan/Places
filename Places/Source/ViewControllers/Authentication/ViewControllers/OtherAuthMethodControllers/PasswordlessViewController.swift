@@ -54,6 +54,7 @@ class PasswordlessViewController: OtherAuthViewController {
     // Retrieve link that we stored in user defaults in `SceneDelegate`.
     guard let link = UserDefaults.standard.value(forKey: "Link") as? String else { return }
 
+    // swiftlint:disable:next unused_closure_parameter
     Auth.auth().signIn(withEmail: email, link: link) { result, error in
       guard error == nil else { return self.displayError(error) }
 

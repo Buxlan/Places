@@ -30,10 +30,9 @@ class PlaceViewController: UIViewController {
     }()
     
     private lazy var playBarButtonItem: UIBarButtonItem = {
-        let item = UIBarButtonItem(systemItem: .play, primaryAction: UIAction(handler: { (action) in
-            self.playTapped()
-        }))
-        item.tintColor = .systemGray6
+        let image = UIImage.playIcon
+        let item = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(playTapped))
+        item.tintColor = .bxLightText
         return item
     }()
     
@@ -66,13 +65,16 @@ class PlaceViewController: UIViewController {
         let backItem = UIBarButtonItem(title: Strings.backBarButtonTitle, style: .done, target: self, action: #selector(backTapped))
         navigationItem.leftBarButtonItem = backItem
         
-        navigationItem.leftBarButtonItem?.tintColor = UIColor.systemGray6
+        navigationItem.leftBarButtonItem?.tintColor = .bxLightText
         title = "Place"
                 
         let items = [
-            UIBarButtonItem(systemItem: .flexibleSpace),
+//            UIBarButtonItem(systemItem: .flexibleSpace),
             playBarButtonItem,
-            UIBarButtonItem(image: UIImage.bxPreferredSymbol(with: Strings.recordImageName), style: .plain, target: self, action: #selector(recordTapped))
+            UIBarButtonItem(image: .micIcon,
+                            style: .plain,
+                            target: self,
+                            action: #selector(recordTapped))
         ]
         setToolbarItems(items, animated: true)
         

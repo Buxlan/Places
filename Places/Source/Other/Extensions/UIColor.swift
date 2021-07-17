@@ -78,5 +78,17 @@ extension UIColor {
             return .black
         }
     }()
+
+//    static let highlightedLabel = UIColor.label.withAlphaComponent(0.8)
+    
+    var highlighted: UIColor { withAlphaComponent(0.8) }
+    
+    var image: UIImage {
+        let pixel = CGSize(width: 1, height: 1)
+        return UIGraphicsImageRenderer(size: pixel).image { context in
+            self.setFill()
+            context.fill(CGRect(origin: .zero, size: pixel))
+        }
+    }
     
 }

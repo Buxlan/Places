@@ -64,6 +64,7 @@ enum AuthProvider: String {
   
   /// Failable initializer to create an `AuthProvider` from it's corresponding `name` value.
   /// - Parameter rawValue: String value representing `AuthProvider`'s name or type.
+  // swiftlint:disable:next cyclomatic_complexity
   init?(rawValue: String) {
     switch rawValue {
     case "Google":
@@ -117,7 +118,7 @@ extension AuthProvider: DataSourceProvidable {
   }
 
   static var otherSection: Section {
-    let lockSymbol = UIImage.systemImage("lock.slash.fill", tintColor: .systemOrange)
+    let lockSymbol = UIImage.lockSlashIcon
     let phoneSymbol = UIImage.systemImage("phone.fill", tintColor: .systemOrange)
     let anonSymbol = UIImage.systemImage("questionmark.circle.fill", tintColor: .systemOrange)
     let shieldSymbol = UIImage.systemImage("lock.shield.fill", tintColor: .systemOrange)
@@ -138,8 +139,10 @@ extension AuthProvider: DataSourceProvidable {
   static var authLinkSections: [Section] {
     let allItems = AuthProvider.sections.flatMap { $0.items }
     let header = "Manage linking between providers"
-    let footer =
-      "Select an unchecked row to link the currently signed in user to that auth provider. To unlink the user from a linked provider, select its corresponding row marked with a checkmark."
+    let footer = """
+    Select an unchecked row to link the currently signed in user to that auth provider.
+    To unlink the user from a linked provider, select its corresponding row marked with a checkmark.
+"""
     return [Section(headerDescription: header, footerDescription: footer, items: allItems)]
   }
 

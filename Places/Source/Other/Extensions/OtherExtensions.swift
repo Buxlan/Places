@@ -175,18 +175,18 @@ extension UIViewController {
 }
 
 extension UINavigationController {
-    func configureTabBar(title: String, systemImageName: String) {
-        let tabBarItemImage = UIImage(systemName: systemImageName)
-        tabBarItem = UITabBarItem(title: title,
-                                  image: tabBarItemImage?.withRenderingMode(.alwaysTemplate),
-                                  selectedImage: tabBarItemImage)
-    }
+//    func configureTabBar(title: String, systemImageName: String) {
+//        let tabBarItemImage = UIImage(systemName: systemImageName)
+//        tabBarItem = UITabBarItem(title: title,
+//                                  image: tabBarItemImage?.withRenderingMode(.alwaysTemplate),
+//                                  selectedImage: tabBarItemImage)
+//    }
     
     enum TitleType: CaseIterable {
         case regular, large
     }
     
-    func setTitleColor(_ color: UIColor, _ types: [titleType] = titleType.allCases) {
+    func setTitleColor(_ color: UIColor, _ types: [TitleType] = TitleType.allCases) {
         if types.contains(.regular) {
             navigationBar.titleTextAttributes = [.foregroundColor: color]
         }
@@ -212,13 +212,13 @@ extension UITextField {
 }
 
 extension UIImageView {
-    convenience init(systemImageName: String, tintColor: UIColor? = nil) {
-        var systemImage = UIImage(systemName: systemImageName)
-        if let tintColor = tintColor {
-            systemImage = systemImage?.withTintColor(tintColor, renderingMode: .alwaysOriginal)
-        }
-        self.init(image: systemImage)
-    }
+//    convenience init(systemImageName: String, tintColor: UIColor? = nil) {
+//        var systemImage = UIImage(systemName: systemImageName)
+//        if let tintColor = tintColor {
+//            systemImage = systemImage?.withTintColor(tintColor, renderingMode: .alwaysOriginal)
+//        }
+//        self.init(image: systemImage)
+//    }
     
     func setImage(from url: URL?) {
         guard let url = url else { return }
@@ -230,24 +230,6 @@ extension UIImageView {
                 self.image = image
                 self.contentMode = .scaleAspectFit
             }
-        }
-    }
-}
-
-extension UIImage {
-    
-}
-
-extension UIColor {
-    static let highlightedLabel = UIColor.label.withAlphaComponent(0.8)
-    
-    var highlighted: UIColor { withAlphaComponent(0.8) }
-    
-    var image: UIImage {
-        let pixel = CGSize(width: 1, height: 1)
-        return UIGraphicsImageRenderer(size: pixel).image { context in
-            self.setFill()
-            context.fill(CGRect(origin: .zero, size: pixel))
         }
     }
 }

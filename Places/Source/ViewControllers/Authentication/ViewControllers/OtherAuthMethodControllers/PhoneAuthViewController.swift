@@ -44,6 +44,7 @@ class PhoneAuthViewController: OtherAuthViewController {
   }
 
   private func signin(with credential: PhoneAuthCredential) {
+    // swiftlint:disable:next unused_closure_parameter
     Auth.auth().signIn(with: credential) { result, error in
       guard error == nil else { return self.displayError(error) }
       self.navigationController?.dismiss(animated: true, completion: {

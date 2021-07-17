@@ -140,7 +140,7 @@ class OtherAuthViewController: UIViewController {
         equalTo: view.safeAreaLayoutGuide.trailingAnchor,
         constant: -15
       ),
-      button.heightAnchor.constraint(equalToConstant: 45),
+      button.heightAnchor.constraint(equalToConstant: 45)
     ])
     let constant: CGFloat = UIDevice.current.orientation.isLandscape ? 15 : 110
     buttonTopConstraint = button.topAnchor.constraint(
@@ -165,7 +165,7 @@ class OtherAuthViewController: UIViewController {
       infoLabel.trailingAnchor.constraint(
         equalTo: view.safeAreaLayoutGuide.trailingAnchor,
         constant: -15
-      ),
+      )
     ])
     let infoSymbol = UIImageView(systemImageName: "info.circle", tintColor: .systemOrange)
     infoSymbol.contentMode = .center
@@ -177,7 +177,7 @@ class OtherAuthViewController: UIViewController {
       infoSymbol.trailingAnchor.constraint(
         equalTo: infoLabel.safeAreaLayoutGuide.leadingAnchor,
         constant: -5
-      ),
+      )
     ])
   }
 

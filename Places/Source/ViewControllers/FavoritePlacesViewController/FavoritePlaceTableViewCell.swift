@@ -109,13 +109,10 @@ class FavoritePlaceContentView: UIView, UIContentView {
     }()
     
     private lazy var likeButton: UIButton = {
-        let action = UIAction { (action) in
-            Log(text: "123", object: nil)
-            self.likeButton.isSelected.toggle()
-        }
-        let view = UIButton(primaryAction: action)
-        let image = UIImage.bxPreferredSymbol(with: "suit.heart.fill")
-        let selectedImage = UIImage.bxPreferredSymbol(with: "suit.heart")
+        let view = UIButton()
+        let image = UIImage.favoriteFilledIcon
+        let selectedImage = UIImage.favoriteIcon
+        view.addTarget(self, action: #selector(likeButtonTapped(sender:)), for: .touchUpInside)
         
         view.setImage(image, for: .normal)
         view.setImage(selectedImage, for: .selected)
@@ -137,6 +134,12 @@ class FavoritePlaceContentView: UIView, UIContentView {
         imageView.image = conf.place?.image
         titleView.text = conf.place?.title
         descriptionView.text = conf.place?.description
+    }
+    
+    @objc
+    private func likeButtonTapped(sender: UIButton) {
+        Log(text: "123", object: nil)
+        self.likeButton.isSelected.toggle()
     }
         
 }

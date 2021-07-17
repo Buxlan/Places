@@ -16,8 +16,7 @@ class NearestPlacesViewController: UIViewController {
         title = Strings.title
         configureBars()
     }
-    
-    
+        
     // MARK: - Private
     private struct Strings {
         static let title: String = "На карте"

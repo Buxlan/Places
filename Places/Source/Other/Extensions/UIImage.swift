@@ -10,154 +10,136 @@ import UIKit
 
 extension UIImage {
       
-    static var onboardingFirstImage: UIImage {
+    static var onboardingFirstImage: UIImage? {
         let imageName = "onboarding1"
-        guard let image = UIImage(named: imageName)
-        else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
         return image
     }
     
-    static var buildingIcon: UIImage = {
+    static var buildingIcon: UIImage? = {
         let imageName = "bulding.columns"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
     }()
     
-    static var favoriteFilledIcon: UIImage = {
+    static var favoriteFilledIcon: UIImage? = {
         let imageName = "favorite.fill"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
     }()
     
-    static var favoriteIcon: UIImage = {
+    static var favoriteIcon: UIImage? = {
         let imageName = "favorite"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
     }()
     
-    static var mapFilledIcon: UIImage = {
+    static var mapFilledIcon: UIImage? = {
         let imageName = "map.fill"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
     }()
     
-    static var mapIcon: UIImage = {
+    static var mapIcon: UIImage? = {
         let imageName = "map"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
     }()
     
-    static var profileIcon: UIImage = {
+    static var profileIcon: UIImage? = {
         let imageName = "profile"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
     }()
     
-    static var profileFilledIcon: UIImage = {
+    static var profileFilledIcon: UIImage? = {
         let imageName = "profile.fill"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
     }()
     
-    static var arrowRightIcon: UIImage = {
+    static var arrowRightIcon: UIImage? = {
         let imageName = "arrow.right"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
     }()
     
-    static var closeIcon: UIImage = {
+    static var closeIcon: UIImage? = {
         let imageName = "close"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
     }()
     
-    static var shareIcon: UIImage = {
+    static var shareIcon: UIImage? = {
         let imageName = "share"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
     }()
     
-    static var likeIcon: UIImage = {
+    static var likeIcon: UIImage? = {
         let imageName = "like"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
     }()
     
-    static var likeFilledIcon: UIImage = {
+    static var likeFilledIcon: UIImage? = {
         let imageName = "like.fill"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
     }()
     
-    static var lockIcon: UIImage = {
+    static var lockIcon: UIImage? = {
         let imageName = "lock"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
     }()
     
-    static var lockFilledIcon: UIImage = {
+    static var lockFilledIcon: UIImage? = {
         let imageName = "lock.fill"
-        if let image = UIImage(named: imageName) {
-            return image
-        } else {
-            Log(text: "Can't find image with name \(imageName)")
-            return UIImage()
-        }
+        let image = UIImage(named: imageName)
+        return image
+    }()
+    
+    static var micFilledIcon: UIImage? = {
+        let imageName = "mic.fill"
+        let image = UIImage(named: imageName)
+        return image
+    }()
+    
+    static var micIcon: UIImage? = {
+        let imageName = "mic"
+        let image = UIImage(named: imageName)
+        return image
+    }()
+    
+    static var playFilledIcon: UIImage? = {
+        let imageName = "play.fill"
+        let image = UIImage(named: imageName)
+        return image
+    }()
+    
+    static var playIcon: UIImage? = {
+        let imageName = "play"
+        let image = UIImage(named: imageName)
+        return image
+    }()
+    
+    static var lockSlashIcon: UIImage? = {
+        let imageName = "lock.slash"
+        let image = UIImage(named: imageName)
+        return image
+    }()
+    
+    static var lockSlashFilledIcon: UIImage? = {
+        let imageName = "lock.slash.fill"
+        let image = UIImage(named: imageName)
+        return image
+    }()
+    
+    static var phoneFilledIcon: UIImage? = {
+        let imageName = "phone.fill"
+        let image = UIImage(named: imageName)
+        return image
     }()
     
     class func imageWithColor(color: UIColor, size: CGSize) -> UIImage {
@@ -169,5 +151,5 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return image
     }
-        
+      
 }

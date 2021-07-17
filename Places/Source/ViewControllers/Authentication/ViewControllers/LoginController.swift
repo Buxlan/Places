@@ -49,13 +49,13 @@ class LoginController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    navigationController?.setTitleColor(.label)
+    navigationController?.setTitleColor(UIColor.bxDarkText)
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
     view.endEditing(true)
-    navigationController?.setTitleColor(.systemOrange)
+    navigationController?.setTitleColor(UIColor.bxControlBackground)
   }
 
   override func viewDidDisappear(_ animated: Bool) {
@@ -72,6 +72,7 @@ class LoginController: UIViewController {
   // MARK: - Firebase 🔥
 
   private func login(with email: String, password: String) {
+    // swiftlint:disable:next unused_closure_parameter
     Auth.auth().signIn(withEmail: email, password: password) { result, error in
       guard error == nil else { return self.displayError(error) }
       self.delegate?.loginDidOccur()
@@ -79,6 +80,7 @@ class LoginController: UIViewController {
   }
 
   private func createUser(email: String, password: String) {
+    // swiftlint:disable:next unused_closure_parameter
     Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
       guard error == nil else { return self.displayError(error) }
       self.delegate?.loginDidOccur()

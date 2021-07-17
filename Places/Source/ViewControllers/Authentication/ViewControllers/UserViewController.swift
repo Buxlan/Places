@@ -16,10 +16,16 @@ import UIKit
 import Firebase
 
 class UserViewController: UIViewController, DataSourceProviderDelegate {
-  var dataSourceProvider: DataSourceProvider<User>!
-
-  var userImage = UIImageView(systemImageName: "person.circle.fill", tintColor: .secondaryLabel)
-  var tableView: UITableView { view as! UITableView }
+    var dataSourceProvider: DataSourceProvider<User>!
+    
+    var userImage = UIImageView(systemImageName: "person.circle.fill",
+                                tintColor: .bxSecondaryText)
+    var tableView: UITableView {
+        guard let view = self.view as? UITableView else {
+            assertionFailure("Can't cast UIView to UITableView")
+        }
+        return view
+    }
 
   private var _user: User?
   var user: User? {

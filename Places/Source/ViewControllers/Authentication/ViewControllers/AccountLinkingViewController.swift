@@ -25,6 +25,7 @@ import FBSDKLoginKit
 import AuthenticationServices
 import CryptoKit
 
+// swiftlint:disable file_length
 class AccountLinkingViewController: UIViewController,
                                     DataSourceProviderDelegate {
   var dataSourceProvider: DataSourceProvider<AuthProvider>!
@@ -58,7 +59,7 @@ class AccountLinkingViewController: UIViewController,
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    navigationController?.setTitleColor(.systemOrange)
+    navigationController?.setTitleColor(UIColor.bxControlBackground)
   }
 
   // MARK: - DataSourceProviderDelegate
@@ -124,6 +125,7 @@ class AccountLinkingViewController: UIViewController,
   /// This method will update the UI upon the unlinking's completion.
   /// - Parameter providerID: The string id of the auth provider.
   private func unlinkFromProvider(_ providerID: String) {
+    // swiftlint:disable:next unused_closure_parameter
     user.unlink(fromProvider: providerID) { user, error in
       guard error == nil else { return self.displayError(error) }
       print("Unlinked user from auth provider: \(providerID)")
@@ -157,15 +159,16 @@ class AccountLinkingViewController: UIViewController,
   private func performAppleAccountLink() {
     let nonce = randomNonceString()
     currentNonce = nonce
-    let appleIDProvider = ASAuthorizationAppleIDProvider()
-    let request = appleIDProvider.createRequest()
-    request.requestedScopes = [.fullName, .email]
-    request.nonce = sha256(nonce)
-
-    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-    authorizationController.delegate = self
-    authorizationController.presentationContextProvider = self
-    authorizationController.performRequests()
+    fatalError()
+//    let appleIDProvider = ASAuthorizationAppleIDProvider()
+//    let request = appleIDProvider.createRequest()
+//    request.requestedScopes = [.fullName, .email]
+//    request.nonce = sha256(nonce)
+//
+//    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+//    authorizationController.delegate = self
+//    authorizationController.presentationContextProvider = self
+//    authorizationController.performRequests()
   }
 
   // MARK: - Twitter, Microsoft, GitHub, Yahoo Account Linking 🔥
@@ -192,6 +195,7 @@ class AccountLinkingViewController: UIViewController,
 
     // Create a Facebook `LoginManager` instance
     let loginManager = LoginManager()
+    // swiftlint:disable:next unused_closure_parameter
     loginManager.logIn(permissions: ["email"], from: self) { [weak self] result, error in
       guard let strongSelf = self else { return }
       guard error == nil else { return strongSelf.displayError(error) }

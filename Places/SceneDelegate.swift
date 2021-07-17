@@ -111,6 +111,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       tabBarController.viewControllers = [authNavController, userNavController]
     }
 
-
 }
-

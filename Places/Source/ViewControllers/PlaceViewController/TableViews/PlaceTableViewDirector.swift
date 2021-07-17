@@ -48,12 +48,12 @@ class PlaceTableViewDirector: NSObject {
     }
     
     @objc fileprivate
-    func onActionEvent(n: Notification) {
-        if let eventData = n.userInfo?["data"] as? CellActionEventData,
+    func onActionEvent(notification: Notification) {
+        if let eventData = notification.userInfo?["data"] as? CellActionEventData,
            let cell = eventData.cell as? UITableViewCell,
            let indexPath = self.tableView.indexPath(for: cell) {
             actionsProxy.invoke(action: eventData.action, cell: cell, configurator: items[indexPath.row])
-        } else if let eventData = n.userInfo?["data"] as? CellActionEventData {
+        } else if let eventData = notification.userInfo?["data"] as? CellActionEventData {
             actionsProxy.invoke(action: eventData.action, object: footerConfigurator.item, view: eventData.cell)
         }
     }
@@ -120,39 +120,22 @@ extension PlaceTableViewDirector {
     
     func configureHandlers() {
         
-        self.actionsProxy.on(.didSelect) { (config:PlaceUsefulButtonsCellConfigurator, cell) in
+        let reviewsAction = CellAction.custom(PlaceUsefulButtonsTableViewCell.reviewsAction)
+        
+        self.actionsProxy.on(.didSelect) { (config: PlaceUsefulButtonsCellConfigurator, cell) in
             print("did select useful cell", config.item, cell)
-        }.on(.willDisplay) { (config: PlaceUsefulButtonsCellConfigurator, cell) in
+        // swiftlint:disable:next unused_closure_parameter
+        }.on(.willDisplay) { (config: PlaceImageTableCellConfigurator, cell) in
 //            print("will display useful cell", c.item, cell)
         }.on(.didSelect) { (config: PlaceImageTableCellConfigurator, cell) in
             print("did select image cell", config.item, cell)
-        }.on(.willDisplay) { (config: PlaceImageTableCellConfigurator, _) in
+        // swiftlint:disable:next unused_closure_parameter
+        }.on(.willDisplay) { (config: PlaceImageTableCellConfigurator, cell) in
 //            print("will display image cell", c.item, cell)
-        }.on(CellAction.custom(PlaceUsefulButtonsTableViewCell.reviewsAction)) {
-            (config: PlaceUsefulButtonsCellConfigurator, cell) in
+        }.on(reviewsAction) { (config: PlaceUsefulButtonsCellConfigurator, cell) in
             print("Show reviews action", config.item, cell)
         }.on(CellAction.custom(PlaceUsefulButtonsTableViewCell.addToFavoriteAction)) { (config: PlaceUsefulButtonsCellConfigurator, cell) in
             print("add to favorites action", config.item, cell)
-        }.on(CellAction.custom(PlaceTableViewFooter.placePlaySoundAction)) { [self] (object: Place, view: UIView) in
-            print("Tapped play sound", object, view)
-            let cell = tableView.dequeueReusableCell(withIdentifier: PlaceUsefulButtonsCellConfigurator.reuseIdentifier)!
-            if let currentIndexPath = self.tableView.indexPathForRow(at: cell.center) {
-                guard let newIndexPath = self.tableView.indexPathsForVisibleRows?.first else {
-                    fatalError()
-                }
-                if currentIndexPath != newIndexPath {
-                    tableView.beginUpdates()
-                    self.tableView.moveRow(at: currentIndexPath, to: newIndexPath)
-                    tableView.endUpdates()
-                    let item = items[currentIndexPath.row]
-                    for i in (newIndexPath.row+1...currentIndexPath.row).reversed() {
-                        items[i] = items[i-1]
-                    }
-                    items[newIndexPath.row] = item
-                }
-            }
-        }.on(CellAction.custom(PlaceTableViewHeader.tappedLogoAction)) { (object: Place, view: UIView) in
-            print("Tapped play sound", object, view)
         }
     }
 }

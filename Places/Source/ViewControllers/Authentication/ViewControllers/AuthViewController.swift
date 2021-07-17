@@ -211,7 +211,8 @@ extension AuthViewController: GIDSignInDelegate {
     guard let authentication = user.authentication else { return }
     let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
                                                    accessToken: authentication.accessToken)
-
+    
+    // swiftlint:disable:next unused_closure_parameter
     Auth.auth().signIn(with: credential) { result, error in
       guard error == nil else { return self.displayError(error) }
 
