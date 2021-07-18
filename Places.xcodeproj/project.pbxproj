@@ -64,6 +64,7 @@
 		40BB8F5526796B2E009B8841 /* NearestPlaces.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40BB8F5426796B2E009B8841 /* NearestPlaces.storyboard */; };
 		40BB8F5826796BC7009B8841 /* NearestPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BB8F5726796BC7009B8841 /* NearestPlacesViewController.swift */; };
 		40C10948267A628F00264062 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40C10947267A628F00264062 /* GoogleService-Info.plist */; };
+		40CF48E926A4A4020054DD6C /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CF48E826A4A4020054DD6C /* Assets.swift */; };
 		40D3EEA7264545AB005E2F0F /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D3EEA6264545AB005E2F0F /* Trash.swift */; };
 		40D3EEAC2645C5CE005E2F0F /* PlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D3EEAB2645C5CE005E2F0F /* PlaceController.swift */; };
 		40D3EEB12645C729005E2F0F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D3EEB02645C729005E2F0F /* Place.swift */; };
@@ -135,6 +136,7 @@
 		40BB8F5426796B2E009B8841 /* NearestPlaces.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NearestPlaces.storyboard; sourceTree = "<group>"; };
 		40BB8F5726796BC7009B8841 /* NearestPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestPlacesViewController.swift; sourceTree = "<group>"; };
 		40C10947267A628F00264062 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		40CF48E826A4A4020054DD6C /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		40D3EEA6264545AB005E2F0F /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
 		40D3EEAB2645C5CE005E2F0F /* PlaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceController.swift; sourceTree = "<group>"; };
 		40D3EEB02645C729005E2F0F /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 		40A41608266A3165005ADBBD /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				40CF48E826A4A4020054DD6C /* Assets.swift */,
 				40E982E526440022007D14D6 /* ViewControllers */,
 				40E982E42643FFF9007D14D6 /* Storyboards */,
 				40625A38265CFF4500E0E744 /* Other */,
@@ -402,6 +405,7 @@
 			buildPhases = (
 				FD267262167B2E0632859681 /* [CP] Check Pods Manifest.lock */,
 				40AF77352681209900D7A985 /* Lint */,
+				40CF48B226A49F370054DD6C /* SwiftGen */,
 				406660BD263D21FF001BEF66 /* Sources */,
 				406660BE263D21FF001BEF66 /* Frameworks */,
 				406660BF263D21FF001BEF66 /* Resources */,
@@ -493,6 +497,24 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
+		40CF48B226A49F370054DD6C /* SwiftGen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftGen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = " ${PODS_ROOT}/SwiftGen/bin/swiftgen config run --config ${PODS_ROOT}/SwiftGen/bin/swiftgen.yml\n";
+		};
 		5FEF0E19D6F36F3C039DD27C /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -564,6 +586,7 @@
 				40978D9926541CBC001E1DFC /* PlaceCommentsViewController+UITableViewDelegate.swift in Sources */,
 				4028E52626617BF800765DC6 /* ProfileViewController.swift in Sources */,
 				408D5B502645E65A00B4930F /* TitileSupplementaryView.swift in Sources */,
+				40CF48E926A4A4020054DD6C /* Assets.swift in Sources */,
 				407DCD77265A590B005ADB16 /* PlaceTableViewHeader.swift in Sources */,
 				408C38BC26568A11009832FD /* PlaceLabelTableViewCell.swift in Sources */,
 				401ACA32265F6CEC00AEADE2 /* OnboardingThirdViewController.swift in Sources */,
