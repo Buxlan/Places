@@ -8,11 +8,9 @@
 import UIKit
 import UserNotifications
 
-class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
+class OnboardingThirdViewController: UIViewController {
     
     // MARK: - Public vars and properties
-    var dismissAction: (() -> Void)!
-    var futherAction: ((UIAction) -> Void)!
     
     // MARK: - UI objects
     
@@ -38,7 +36,9 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
     
     private lazy var dismissButton: UIButton = {
 
-        let button = UIButton(type: .close)
+        let button = UIButton()
+        button.setImage(UIImage.closeIcon, for: .normal)
+        button.setImage(UIImage.closeIcon?.maskWithColor(color: .gray), for: .selected)
         button.setTitleColor(.bxSecondaryText, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
@@ -77,35 +77,25 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
     
     private lazy var buttonLogin: UIButton = {
         let button = UIButton.onboardingButton(title: Strings.buttonLoginTitle,
-                                               image: nil,
-                                               action: UIAction(handler: loginAction))
+                                               image: nil)
         return button
     }()
     
     private lazy var buttonFuther: UIButton = {
         let button = UIButton.onboardingButton(title: Strings.buttonBeginTitle,
-                                               image: nil,
-                                               action: UIAction(handler: futherAction))
+                                               image: nil)
         button.titleLabel?.font = .bxBody
         button.backgroundColor = .clear
-        button.setTitleColor(.bxSecondaryText, for: .normal)
         button.contentEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 15, right: 10)
         return button
     }()
     
     // MARK: - events and actions
     
-    let loginAction: (UIAction) -> Void = { [self] _ in
-        let userInfo = [Strings.userInfoName: AppController.ViewControllerIdentifier.authLogin]
-        NotificationCenter.default.post(name: .bxPresentViewController,
-                                        object: nil,
-                                        userInfo: userInfo)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .bxBackground
         
         // setup views
         view.addSubview(appLabel)
@@ -147,18 +137,12 @@ class OnboardingThirdViewController: UIViewController, OnboardingProtocol {
         
         NSLayoutConstraint.activate(constraints)
     }
-    
-    deinit {
-        Utils.log("deinit OnboardingThirdViewController", object: self)
-    }
-    
+        
     @objc
     private func dismissTapped() {
-        dismissAction()
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }
 
-extension NSNotification.Name {
-    static let bxPresentViewController = NSNotification.Name("bxPresentViewController")
-}
+

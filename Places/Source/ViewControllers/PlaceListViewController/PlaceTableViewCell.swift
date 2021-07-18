@@ -24,24 +24,9 @@ class PlaceTableViewCell: UITableViewCell {
     
 }
 
-struct PlaceCellConfiguration: UIContentConfiguration {
+class PlaceContentView: UIView {
     
-    var place: Place?
-    
-    func makeContentView() -> UIView & UIContentView {
-        let view = PlaceContentView(self)
-        return view
-    }
-    
-    func updated(for state: UIConfigurationState) -> PlaceCellConfiguration {
-        return self
-    }
-}
-
-class PlaceContentView: UIView, UIContentView {
-    
-    init(_ configuration: UIContentConfiguration) {
-        self.configuration = configuration
+    init() {
         super.init(frame: .zero)
         
         self.addSubview(imageView)
@@ -76,8 +61,7 @@ class PlaceContentView: UIView, UIContentView {
         ]
         likeButton.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         NSLayoutConstraint.activate(constraints)
-        
-        configure(configuration: configuration)
+
     }
     
     required init?(coder: NSCoder) {
@@ -164,21 +148,6 @@ class PlaceContentView: UIView, UIContentView {
     private func likeButtonTapped() {
         self.likeButton.isSelected.toggle()
         Log(text: "shareButtonTapped", object: nil)
-    }
-    
-    internal var configuration: UIContentConfiguration {
-        didSet {
-            self.configure(configuration: configuration)
-        }
-    }
-    
-    private func configure(configuration: UIContentConfiguration) {
-        guard let conf = configuration as? PlaceCellConfiguration else {
-            fatalError()
-        }
-        imageView.image = conf.place?.image
-        titleView.text = conf.place?.title
-        descriptionView.text = conf.place?.description
     }
 
 }

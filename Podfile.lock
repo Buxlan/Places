@@ -434,6 +434,7 @@ PODS:
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
+  - SwiftGen (6.4.0)
   - SwiftLint (0.43.1)
 
 DEPENDENCIES:
@@ -446,6 +447,7 @@ DEPENDENCIES:
   - FirebaseUI/Facebook
   - FirebaseUI/Google
   - FirebaseUI/OAuth
+  - SwiftGen (~> 6.0)
   - SwiftLint
 
 SPEC REPOS:
@@ -478,6 +480,7 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - SDWebImage
+    - SwiftGen
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -509,8 +512,9 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  SwiftGen: 67860cc7c3cfc2ed25b9b74cfd55495fc89f9108
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
-PODFILE CHECKSUM: 8b24d2862fb779b6f208cf6ec59987c93db8c685
+PODFILE CHECKSUM: fd76c60ba209b33f92ee2a61aa36dbacd68e5d3e
 
 COCOAPODS: 1.10.1

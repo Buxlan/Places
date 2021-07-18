@@ -12,7 +12,7 @@ class PlaceTableViewHeader: UIView {
     lazy var label: UILabel = {
         var label = UILabel(frame: .zero)
         label.font = .bxControlTitle
-        label.textColor = UIColor.systemGray6
+        label.textColor = UIColor.gray
         return label
     }()
     

@@ -12,6 +12,8 @@ import FBSDKCoreKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
+    var window: UIWindow?
+    
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
     ) -> Bool {
@@ -29,10 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: UISceneSession Lifecycle
     
-    func application(
-        _ app: UIApplication,
-        open url: URL,
-        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    func application(_ app: UIApplication,
+                     open url: URL,
+                     options: [UIApplication.OpenURLOptionsKey: Any] = [:]
     ) -> Bool {
         ApplicationDelegate.shared.application(
             app,
@@ -42,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         )
     }
     
+    @available(iOS 13.0, *)
     func application(_ application: UIApplication,
                      configurationForConnecting connectingSceneSession: UISceneSession,
                      options: UIScene.ConnectionOptions) -> UISceneConfiguration {
@@ -51,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                     sessionRole: connectingSceneSession.role)
     }
 
+    @available(iOS 13.0, *)
     func application(_ application: UIApplication,
                      didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         // Called when the user discards a scene session.
@@ -61,10 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Application Appearance
 
     private func configureApplicationAppearance() {
-      UINavigationBar.appearance().tintColor = .systemOrange
-      UITabBar.appearance().tintColor = .systemOrange
+      UINavigationBar.appearance().tintColor = .red
+      UITabBar.appearance().tintColor = .red
     }
     
-    
-
 }

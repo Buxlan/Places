@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "lock.fill.pdf",
+      "filename" : "person.fill.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },
@@ -12,7 +12,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "lock.pdf",
+      "filename" : "person.pdf",
       "idiom" : "universal",
       "scale" : "1x"
     },

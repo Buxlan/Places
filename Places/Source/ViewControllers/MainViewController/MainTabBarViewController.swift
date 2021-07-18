@@ -17,17 +17,8 @@ class MainTabBarViewController: UITabBarController {
     
     override func viewDidLoad() {
         
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(presentViewController),
-                                               name: .bxPresentViewController,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(obnoardingDismissed),
-                                               name: .onboardingDismiss,
-                                               object: nil)
-        
         super.viewDidLoad()
-        
+            
         delegate = self
         setViewControllers(items, animated: true)
         selectedIndex = 0
@@ -69,22 +60,10 @@ class MainTabBarViewController: UITabBarController {
     private let appController = AppController.shared
     
     private lazy var items: [UIViewController] = [
-        configureViewController(vc: appController.viewController(.placeList),
-                               title: Constants.tabBarItemNames[0],
-                               image: .buildingIcon,
-                               selectedImage: .buildingIcon),
-        configureViewController(vc: appController.viewController(.nearestPlaces),
-                               title: Constants.tabBarItemNames[1],
-                               image: .mapIcon,
-                               selectedImage: .mapFilledIcon),
-        configureViewController(vc: appController.viewController(.favorites),
-                               title: Constants.tabBarItemNames[2],
-                               image: .favoriteIcon,
-                               selectedImage: .favoriteFilledIcon),
-        configureViewController(vc: appController.viewController(.profile),
-                               title: Constants.tabBarItemNames[3],
-                               image: .profileIcon,
-                               selectedImage: .profileFilledIcon)
+        UINavigationController(rootViewController: appController.viewController(.placeList)),
+        UINavigationController(rootViewController: appController.viewController(.nearestPlaces)),
+        UINavigationController(rootViewController: appController.viewController(.favorites)),
+        UINavigationController(rootViewController: appController.viewController(.profile))
     ]
     
     @objc
@@ -146,18 +125,9 @@ class MainTabBarViewController: UITabBarController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    fileprivate func configureViewController(vc: UIViewController,
-                                             title: String,
-                                             image: UIImage,
-                                             selectedImage: UIImage) -> UIViewController {
+    fileprivate func configureViewController(vc: UIViewController) -> UIViewController {
                
-        vc.tabBarItem.title = title
-        vc.title = title
-        vc.navigationController?.title = title
-        
-        vc.tabBarItem.image = image
-        vc.tabBarItem.selectedImage = selectedImage
-          
+              
         vc.tabBarItem.setTitleTextAttributes(
             [NSAttributedString.Key.foregroundColor: UIColor.bxSecondaryText],
             for: .normal)
@@ -178,7 +148,7 @@ class MainTabBarViewController: UITabBarController {
     
 }
 // UITabBarControllerDelegate
-extension MainTabBarViewController {
+extension MainTabBarViewController: UITabBarControllerDelegate {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let numberOfItems = items.count

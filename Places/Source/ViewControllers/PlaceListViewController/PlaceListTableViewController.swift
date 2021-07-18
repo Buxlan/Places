@@ -137,8 +137,10 @@ extension PlaceListTableViewController: UITableViewDataSource {
                 
         let cell = tableView.dequeueReusableCell(withIdentifier: Strings.cellReuseId, for: indexPath)
         
-        let configuration = PlaceCellConfiguration(place: item)
-        cell.contentConfiguration = configuration
+        // configure cell
+        
+        // end configure
+        
         return cell
     }
 

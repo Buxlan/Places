@@ -90,8 +90,8 @@ extension Notification.Name {
 
 extension String {
     func localized() -> String {
-        // To do smth later
-        return self
+        let str = NSLocalizedString(self, comment: "Comment for: \(self)")
+        return str
     }
 }
 
@@ -109,78 +109,9 @@ extension String {
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// MARK: - Extending a `Firebase User` to conform to `DataSourceProvidable`
-
-extension User: DataSourceProvidable {
-    private var infoSection: Section {
-        let items = [Item(title: providerID, detailTitle: "Provider ID"),
-                     Item(title: uid, detailTitle: "UUID"),
-                     Item(title: displayName ?? "––", detailTitle: "Display Name", isEditable: true),
-                     Item(
-                        title: photoURL?.absoluteString ?? "––",
-                        detailTitle: "Photo URL",
-                        isEditable: true
-                     ),
-                     Item(title: email ?? "––", detailTitle: "Email", isEditable: true),
-                     Item(title: phoneNumber ?? "––", detailTitle: "Phone Number")]
-        return Section(headerDescription: "Info", items: items)
-    }
-    
-    private var metaDataSection: Section {
-        let metadataRows = [
-            Item(title: metadata.lastSignInDate?.description, detailTitle: "Last Sign-in Date"),
-            Item(title: metadata.creationDate?.description, detailTitle: "Creation Date")
-        ]
-        return Section(headerDescription: "Firebase Metadata", items: metadataRows)
-    }
-    
-    private var otherSection: Section {
-        let otherRows = [Item(title: isAnonymous ? "Yes" : "No", detailTitle: "Is User Anonymous?"),
-                         Item(title: isEmailVerified ? "Yes" : "No", detailTitle: "Is Email Verified?")]
-        return Section(headerDescription: "Other", items: otherRows)
-    }
-    
-    private var actionSection: Section {
-        let actionsRows = [
-            Item(title: UserAction.refreshUserInfo.rawValue, textColor: .systemBlue),
-            Item(title: UserAction.signOut.rawValue, textColor: .systemBlue),
-            Item(title: UserAction.link.rawValue, textColor: .systemBlue, hasNestedContent: true),
-            Item(title: UserAction.requestVerifyEmail.rawValue, textColor: .systemBlue),
-            Item(title: UserAction.tokenRefresh.rawValue, textColor: .systemBlue),
-            Item(title: UserAction.delete.rawValue, textColor: .systemRed)
-        ]
-        return Section(headerDescription: "Actions", items: actionsRows)
-    }
-    
-    var sections: [Section] {
-        [infoSection, metaDataSection, otherSection, actionSection]
-    }
-}
-
 // MARK: - UIKit Extensions
 
-extension UIViewController {
-    public func displayError(_ error: Error?, from function: StaticString = #function) {
-        guard let error = error else { return }
-        print("ⓧ Error in \(function): \(error.localizedDescription)")
-        let message = "\(error.localizedDescription)\n\n Ocurred in \(function)"
-        let errorAlertController = UIAlertController(
-            title: "Error",
-            message: message,
-            preferredStyle: .alert
-        )
-        errorAlertController.addAction(UIAlertAction(title: "OK", style: .default))
-        present(errorAlertController, animated: true, completion: nil)
-    }
-}
-
 extension UINavigationController {
-//    func configureTabBar(title: String, systemImageName: String) {
-//        let tabBarItemImage = UIImage(systemName: systemImageName)
-//        tabBarItem = UITabBarItem(title: title,
-//                                  image: tabBarItemImage?.withRenderingMode(.alwaysTemplate),
-//                                  selectedImage: tabBarItemImage)
-//    }
     
     enum TitleType: CaseIterable {
         case regular, large
@@ -212,14 +143,7 @@ extension UITextField {
 }
 
 extension UIImageView {
-//    convenience init(systemImageName: String, tintColor: UIColor? = nil) {
-//        var systemImage = UIImage(systemName: systemImageName)
-//        if let tintColor = tintColor {
-//            systemImage = systemImage?.withTintColor(tintColor, renderingMode: .alwaysOriginal)
-//        }
-//        self.init(image: systemImage)
-//    }
-    
+
     func setImage(from url: URL?) {
         guard let url = url else { return }
         DispatchQueue.global(qos: .background).async {
@@ -233,49 +157,6 @@ extension UIImageView {
         }
     }
 }
-
-// MARK: UINavigationBar + UserDisplayable Protocol
-
-protocol UserDisplayable {
-    func addProfilePic(_ imageView: UIImageView)
-}
-
-extension UINavigationBar: UserDisplayable {
-    func addProfilePic(_ imageView: UIImageView) {
-        let length = frame.height * 0.46
-        imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = length / 2
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(imageView)
-        NSLayoutConstraint.activate([
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
-            imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
-            imageView.heightAnchor.constraint(equalToConstant: length),
-            imageView.widthAnchor.constraint(equalToConstant: length)
-        ])
-    }
-}
-
-// MARK: Extending UITabBarController to work with custom transition animator
-
-extension UITabBarController: UITabBarControllerDelegate {
-    public func tabBarController(_ tabBarController: UITabBarController,
-                                 animationControllerForTransitionFrom fromVC: UIViewController,
-                                 to toVC: UIViewController)
-    -> UIViewControllerAnimatedTransitioning? {
-        let fromIndex = tabBarController.viewControllers!.firstIndex(of: fromVC)!
-        let toIndex = tabBarController.viewControllers!.firstIndex(of: toVC)!
-        
-        let direction: Animator.TransitionDirection = fromIndex < toIndex ? .right : .left
-        return Animator(direction)
-    }
-    
-    func transitionToViewController(atIndex index: Int) {
-        selectedIndex = index
-    }
-}
-
-// MARK: - Foundation Extensions
 
 extension Date {
     var description: String {

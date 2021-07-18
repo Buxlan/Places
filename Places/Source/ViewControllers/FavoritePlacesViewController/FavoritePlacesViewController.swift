@@ -18,7 +18,7 @@ class FavoritePlacesViewController: UIViewController {
     // MARK: - Private
     private var tableView: UITableView = UITableView(frame: .zero, style: .plain)
     private var viewModel: FavoritePlacesViewModel
-    private var spinner = UIActivityIndicatorView(style: .medium)
+    private var spinner = UIActivityIndicatorView(style: .gray)
     
     // MARK: - Init, Events and actions
     required init?(coder: NSCoder) {
@@ -100,9 +100,10 @@ extension FavoritePlacesViewController: UITableViewDataSource {
         let item = viewModel.items[indexPath.row]
                 
         let cell = tableView.dequeueReusableCell(withIdentifier: Strings.cellReuseId, for: indexPath)
+       
+        // cell configure
+        // end cell configure
         
-        let configuration = FavoritePlaceCellConfiguration(place: item)
-        cell.contentConfiguration = configuration
         return cell
     }
         

@@ -57,7 +57,7 @@ extension PlaceController {
                 Place(title: "Vas'ka", category: "Category 1", description: PlaceController.description),
                 Place(title: "Prosvet", category: "Category 2", description: PlaceController.description),
                 Place(title: "Devyatkino", category: "Category 3", description: PlaceController.description)
-            ]),
+            ])
         ]
     }
 }

@@ -42,7 +42,7 @@ class PlaceTableViewDirector: NSObject {
         self.tableView.delegate = self
         
         NotificationCenter.default.addObserver(self,
-                                               selector: #selector(onActionEvent(n: )),
+                                               selector: #selector(onActionEvent),
                                                name: CellAction.notificationName,
                                                object: nil)
     }

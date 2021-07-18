@@ -24,7 +24,7 @@ struct Place: ReusableObject {
     let title: String
     let category: PlaceCategory
     let image: UIImage = {
-        guard let image = UIImage(systemName: "photo")?.withTintColor(.bxSecondaryText, renderingMode: .alwaysTemplate)
+        guard let image = UIImage(named: "photo")?.maskWithColor(color: .bxSecondaryText)
         else {
             fatalError()
         }
@@ -42,7 +42,7 @@ extension Place: Hashable {
         hasher.combine(identifier)
     }
     
-    static func ==(lhs: Place, rhs: Place) -> Bool {
+    static func == (lhs: Place, rhs: Place) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
 }

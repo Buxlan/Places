@@ -26,15 +26,7 @@ class OnboardingViewController: UIPageViewController {
     // MARK: - Private
     
     private var currentIndex = 0
-    private var items = [UIViewController]() {
-        didSet {
-            for item in items {
-                if var vc = item as? OnboardingProtocol {
-                    vc.rootViewController = self
-                }
-            }
-        }
-    }
+    private var items = [UIViewController]()
     
     private let appSettings = AppController.shared.settings
         

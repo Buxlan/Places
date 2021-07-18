@@ -26,7 +26,7 @@ class PlaceTableViewFooter: UITableViewHeaderFooterView {
         buttonPlay.addTarget(self, action: #selector(playSoundTapped), for: .touchUpInside)
         
         // configure button's image
-        let symbol = UIImage.bxPreferredSymbol(with: "play.circle")
+        let symbol = UIImage.playIcon
         buttonPlay.setImage(symbol, for: .normal)
         buttonPlay.imageView?.tintColor = textColor
         

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
+class OnboardingSecondViewController: UIViewController {
     
     // MARK: - public properties and methods
     weak var delegate: OnboardingViewControllerDelegate?
@@ -36,7 +36,8 @@ class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
     
     private lazy var dismissButton: UIButton = {
 
-        let button = UIButton(type: .close)
+        let button = UIButton()
+        button.setImage(UIImage.closeIcon, for: .normal)
         button.setTitleColor(.bxSecondaryText, for: .normal)
         button.titleLabel?.font = .bxAppTitle
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -75,10 +76,8 @@ class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
     }()
     
     private lazy var buttonFuther: UIButton = {
-        let button = UIButton.onboardingButton(
-            title: Strings.buttonText,
-            image: nil,
-            action: UIAction(handler: futherAction))
+        let button = UIButton.onboardingButton(title: Strings.buttonText,
+                                               image: nil)
         return button
     }()
     
@@ -87,7 +86,7 @@ class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .bxBackground
         
         // setup views
         view.addSubview(appLabel)
@@ -132,7 +131,7 @@ class OnboardingSecondViewController: UIViewController, OnboardingProtocol {
     
     @objc
     private func dismissTapped() {
-        dismissAction()
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
 }
