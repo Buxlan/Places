@@ -40,12 +40,13 @@ class MainTabBarViewController: UITabBarController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+             
         if AppController.shared.isFirstLaunch {
-            let vc: UIViewController = .instantiateViewController(withIdentifier: .onboarding)
-            present(vc, animated: true, completion: nil)
+            let onboarding: UIViewController = OnboardingViewController()
+            onboarding.modalPresentationStyle = .fullScreen
+            present(onboarding, animated: true, completion: nil)
         }
-                       
+        
         guard let tabBarItems = tabBar.items,
               let firstItem = tabBarItems.first
         else {
@@ -60,42 +61,11 @@ class MainTabBarViewController: UITabBarController {
     private let appController = AppController.shared
     
     private lazy var items: [UIViewController] = [
-        UINavigationController(rootViewController: appController.viewController(.placeList)),
-        UINavigationController(rootViewController: appController.viewController(.nearestPlaces)),
-        UINavigationController(rootViewController: appController.viewController(.favorites)),
-        UINavigationController(rootViewController: appController.viewController(.profile))
+        UINavigationController(rootViewController: PlaceListTableViewController()),
+        UINavigationController(rootViewController: NearestPlacesViewController()),
+        UINavigationController(rootViewController: FavoritePlacesViewController()),
+        UINavigationController(rootViewController: ProfileViewController())
     ]
-    
-    @objc
-    private func presentViewController(notification: NSNotification) {
-        guard let userInfo = notification.userInfo,
-              let viewControllerIdentifier
-                = userInfo["viewControllerIdentifier"] as? AppController.ViewControllerIdentifier else {
-            Log(text: "Error: Problems while presenting view controller")
-            fatalError()
-        }
-        
-        if let presentedViewController = presentedViewController {
-            presentedViewController.dismiss(animated: true) {
-                [self, viewControllerIdentifier] in
-                let viewController: UIViewController =
-                    .instantiateViewController(withIdentifier: viewControllerIdentifier)
-                present(viewController, animated: true) {
-                    [weak viewController] in
-                    Utils.log("completion of", object: viewController)
-                }
-            }
-        }
-        
-        let viewController: UIViewController =
-            .instantiateViewController(withIdentifier: viewControllerIdentifier)
-        
-        self.present(viewController, animated: true) {
-            [weak viewController] in
-            Utils.log("completion of", object: viewController)
-        }
-        
-    }
     
     @objc
     private func obnoardingDismissed() {
@@ -126,24 +96,16 @@ class MainTabBarViewController: UITabBarController {
     }
     
     fileprivate func configureViewController(vc: UIViewController) -> UIViewController {
-               
-              
+          
         vc.tabBarItem.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: UIColor.bxSecondaryText],
+            [NSAttributedString.Key.foregroundColor: Asset.secondaryText.color],
             for: .normal)
         
         vc.tabBarItem.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: UIColor.bxDarkText],
+            [NSAttributedString.Key.foregroundColor: Asset.darkText.color],
             for: .selected)
         
         return vc
-    }
-    
-    private struct Constants {
-        static let tabBarItemNames = ["Панорама".localized(),
-                                      "На карте".localized(),
-                                      FavoritePlacesViewController.Strings.title.localized(),
-                                      "Профиль".localized()]
     }
     
 }
@@ -153,13 +115,13 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let numberOfItems = items.count
         let tabBarItemSize = CGSize(width: tabBar.frame.width / CGFloat(numberOfItems), height: tabBar.frame.height)
-        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: UIColor.bxBackground,
+        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: Asset.background.color,
                                                                 size: tabBarItemSize)
         
 //        tabBar.frame.size.width = self.view.frame.width + 4
 //        tabBar.frame.origin.x = -2
  
-        tabBar.barTintColor = UIColor.bxBackground
+        tabBar.barTintColor = Asset.background.color
     }
     
     func tabBarController(_ tabBarController: UITabBarController,

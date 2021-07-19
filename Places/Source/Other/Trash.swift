@@ -23,7 +23,7 @@ class Garbage {
         button.layer.cornerRadius = 15
         button.clipsToBounds = true
         button.contentEdgeInsets = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
-        button.setImage(UIImage.arrowRightIcon, for: UIControl.State.normal)
+        button.setImage(Asset.arrowRight.image, for: UIControl.State.normal)
         return button
         
         // in viewDidLoad

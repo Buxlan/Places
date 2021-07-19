@@ -8,26 +8,40 @@
 import UIKit
 import UserNotifications
 
-@objc
-protocol OnboardingViewControllerDelegate: AnyObject {
-    
-    @objc
-    func buttonFutherTapped()
-    
-    @objc
-    func dismissTapped()
-    
+protocol OnboardingViewControllerProtocol: AnyObject {
+    var coordinator: OnboardingCoordinator { get set }
 }
 
-class OnboardingViewController: UIPageViewController {
+class OnboardingViewController: UIPageViewController,
+                                OnboardingViewControllerProtocol {
     
     // MARK: - Public
+    var currentIndex = 0
+    
+    init() {
+        let options = [UIPageViewController.OptionsKey.interPageSpacing: 32]
+        coordinator = OnboardingCoordinator()
+        super.init(transitionStyle: .scroll,
+                   navigationOrientation: .horizontal,
+                   options: options)
+        coordinator.parentViewController = self
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    lazy var items: [UIViewController] = {
+        let firstOnboardingVC = OnboardingFirstViewController(coordinator: self.coordinator)
+        let secondOnboardingVC = OnboardingSecondViewController(coordinator: self.coordinator)
+        let thirdOnboardingVC = OnboardingThirdViewController(coordinator: self.coordinator)
+        let  items = [firstOnboardingVC, secondOnboardingVC, thirdOnboardingVC]
+        return items
+    }()
     
     // MARK: - Private
-    
-    private var currentIndex = 0
-    private var items = [UIViewController]()
-    
+    internal var coordinator: OnboardingCoordinator
+        
     private let appSettings = AppController.shared.settings
         
     private lazy var dismissAction: () -> Void = { [weak self] in
@@ -41,15 +55,7 @@ class OnboardingViewController: UIPageViewController {
     // MARK: - events and actions
     override func viewDidLoad() {
         super.viewDidLoad()
-
         dataSource = self
-        delegate = self
-        
-        items = [
-            .instantiateViewController(withIdentifier: .onboarding1),
-            .instantiateViewController(withIdentifier: .onboarding2),
-            .instantiateViewController(withIdentifier: .onboarding3)
-        ]
         
         setViewControllers([items[0]],
                            direction: .forward,
@@ -58,19 +64,21 @@ class OnboardingViewController: UIPageViewController {
     }
     
     func nextPage(viewControllerBefore viewController: UIViewController) {
-        guard let index = items.firstIndex(of: viewController) else { fatalError() }
+        guard let index = items.firstIndex(of: viewController)
+        else {
+            fatalError()
+        }
+        
         if index == items.count - 1 {
-            self.dismiss(animated: true) {
-                NotificationCenter.default.post(name: .onboardingDismiss, object: nil)
-            }
-            currentIndex = 0
+            AppController.shared.isFirstLaunch = false
+            coordinator.dismissTapped()
             return
         } else {
             currentIndex = index+1
             setViewControllers([items[index+1]],
                                direction: .forward,
                                animated: true) { _ in
-                viewController.dismiss(animated: false, completion: nil)
+//                viewController.dismiss(animated: false, completion: nil)
             }
         }
     }
@@ -90,11 +98,12 @@ class OnboardingViewController: UIPageViewController {
 extension OnboardingViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        print("viewControllerBefore")
-        guard let index = items.firstIndex(of: viewController) else {
-            fatalError()
-        }
-        return (index == 0 ? nil : items[index-1])
+        return nil
+//        print("viewControllerBefore")
+//        guard let index = items.firstIndex(of: viewController) else {
+//            fatalError()
+//        }
+//        return (index == 0 ? nil : items[index-1])
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -105,22 +114,4 @@ extension OnboardingViewController: UIPageViewControllerDataSource {
         return (index == (items.count-1) ? nil : items[index+1])
     }
     
-}
-
-extension OnboardingViewController: UIPageViewControllerDelegate {
-           
-}
-
-extension OnboardingViewController: OnboardingViewControllerDelegate {
-    @objc
-    func buttonFutherTapped() {
-        self.nextPage(viewControllerBefore: self.items[self.currentIndex])
-    }
-    
-    @objc
-    func dismissTapped() {
-        dismiss(animated: true) {
-            Utils.log("Dismissed", object: self)
-        }
-    }
 }

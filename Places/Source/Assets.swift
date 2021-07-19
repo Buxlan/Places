@@ -49,11 +49,14 @@ internal enum Asset {
   internal static let micFill = ImageAsset(name: "mic.fill")
   internal static let mic = ImageAsset(name: "mic")
   internal static let person = ImageAsset(name: "person")
+  internal static let play = ImageAsset(name: "play")
+  internal static let share = ImageAsset(name: "share")
+  internal static let xmark = ImageAsset(name: "xmark")
   internal static let login = ImageAsset(name: "login")
   internal static let logo = ImageAsset(name: "logo")
   internal static let onboarding1 = ImageAsset(name: "onboarding1")
   internal static let onboarding2 = ImageAsset(name: "onboarding2")
-  internal static let menuIcon = ImageAsset(name: "menuIcon")
+  internal static let onboarding3 = ImageAsset(name: "onboarding3")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
