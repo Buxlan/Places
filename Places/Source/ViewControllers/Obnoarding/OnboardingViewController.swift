@@ -71,7 +71,7 @@ class OnboardingViewController: UIPageViewController,
         
         if index == items.count - 1 {
             AppController.shared.isFirstLaunch = false
-            coordinator.dismissTapped()
+            coordinator.dismiss()
             return
         } else {
             currentIndex = index+1

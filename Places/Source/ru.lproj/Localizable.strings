@@ -9,8 +9,11 @@
 Здесь мы делимся собственными мыслями и воспоминаниями о любимых местах города.
 ";
 "Onboarding.loginDescription" = "Login is needed for...";
-"Onboarding.Buttons.Login" = "Войти / Зарегистрироваться";
+"Onboarding.Buttons.Login" = "Вход";
 "Onboarding.Buttons.Later" = "Начать без регистрации";
 "Onboarding.Buttons.Skip" = "Пропустить";
 "Onboarding.welcomeLogin" = "Авторизация";
 "Onboarding.loginDescription" = "Зарегистрируйтесь или войдите в систему под собственным именем. Это позволит Вам оставлять собственные заметки.";
+"Onboarding.usernamePlaceholder" = "Пользователь / Эл. почта";
+"Onboarding.passwordPlaceholder" = "Пароль";
+"Onboarding.Buttons.signUp" = "Регистрация";

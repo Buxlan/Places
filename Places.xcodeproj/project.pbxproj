@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		400E81FC26A571E000164CB3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 400E81FE26A571E000164CB3 /* Localizable.strings */; };
 		400E820426A575F000164CB3 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E820326A575F000164CB3 /* Strings.swift */; };
-		400E820726A57E2100164CB3 /* OnboardingButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E820626A57E2100164CB3 /* OnboardingButtons.swift */; };
+		400E820726A57E2100164CB3 /* OnboardingControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E820626A57E2100164CB3 /* OnboardingControls.swift */; };
 		400E820B26A57F4B00164CB3 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E820A26A57F4B00164CB3 /* OnboardingCoordinator.swift */; };
 		401960E6266A9B09004765F7 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401960E5266A9B08004765F7 /* Log.swift */; };
 		401ACA2C265F6C8500AEADE2 /* OnboardingFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401ACA2B265F6C8500AEADE2 /* OnboardingFirstViewController.swift */; };
@@ -23,6 +23,7 @@
 		403B5A52266A47CA00421470 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B5A51266A47CA00421470 /* UIColor.swift */; };
 		404C999C26777F51009ADECF /* FavoritePlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404C999B26777F51009ADECF /* FavoritePlaceTableViewCell.swift */; };
 		404DB6EE266CC0A6002464DB /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DB6ED266CC0A6002464DB /* UIFont.swift */; };
+		40539CC526A607EC00127DE5 /* Layers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40539CC426A607EC00127DE5 /* Layers.swift */; };
 		40625A36265BB4B100E0E744 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40625A35265BB4B100E0E744 /* Settings.swift */; };
 		406660C5263D21FF001BEF66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406660C4263D21FF001BEF66 /* AppDelegate.swift */; };
 		406660C7263D21FF001BEF66 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406660C6263D21FF001BEF66 /* SceneDelegate.swift */; };
@@ -51,6 +52,8 @@
 		40978DA22655AB80001E1DFC /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978DA12655AB80001E1DFC /* PlaceViewController.swift */; };
 		40978DA82655BAFD001E1DFC /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978DA72655BAFD001E1DFC /* PlaceViewModel.swift */; };
 		40978DAC265671F9001E1DFC /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978DAB265671F9001E1DFC /* ConfigurableCell.swift */; };
+		40AE8B9826A74FE1004825AF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AE8B9726A74FE1004825AF /* SignInViewController.swift */; };
+		40AE8B9B26A75022004825AF /* SignInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40AE8B9A26A75022004825AF /* SignInView.xib */; };
 		40B6EAEF267973D500AA4CC2 /* PlaceListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B6EAEE267973D500AA4CC2 /* PlaceListTableViewController.swift */; };
 		40B6EAF2267974B200AA4CC2 /* PlaceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B6EAF1267974B200AA4CC2 /* PlaceListViewModel.swift */; };
 		40B6EAF52679754500AA4CC2 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B6EAF42679754500AA4CC2 /* PlaceTableViewCell.swift */; };
@@ -74,7 +77,7 @@
 		400E81FD26A571E000164CB3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		400E820026A571E400164CB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		400E820326A575F000164CB3 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		400E820626A57E2100164CB3 /* OnboardingButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingButtons.swift; sourceTree = "<group>"; };
+		400E820626A57E2100164CB3 /* OnboardingControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingControls.swift; sourceTree = "<group>"; };
 		400E820A26A57F4B00164CB3 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		401960E5266A9B08004765F7 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		401ACA2B265F6C8500AEADE2 /* OnboardingFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 		403B5A51266A47CA00421470 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		404C999B26777F51009ADECF /* FavoritePlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceTableViewCell.swift; sourceTree = "<group>"; };
 		404DB6ED266CC0A6002464DB /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		40539CC426A607EC00127DE5 /* Layers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Layers.swift; path = Places/Source/Layers.swift; sourceTree = SOURCE_ROOT; };
 		40625A35265BB4B100E0E744 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		406660C1263D21FF001BEF66 /* Places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Places.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		406660C4263D21FF001BEF66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 		40978DA12655AB80001E1DFC /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
 		40978DA72655BAFD001E1DFC /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
 		40978DAB265671F9001E1DFC /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
+		40AE8B9726A74FE1004825AF /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		40AE8B9A26A75022004825AF /* SignInView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInView.xib; sourceTree = "<group>"; };
 		40B6EAEE267973D500AA4CC2 /* PlaceListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListTableViewController.swift; sourceTree = "<group>"; };
 		40B6EAF1267974B200AA4CC2 /* PlaceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewModel.swift; sourceTree = "<group>"; };
 		40B6EAF42679754500AA4CC2 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
@@ -317,6 +323,24 @@
 			path = Place;
 			sourceTree = "<group>";
 		};
+		40AE8B9126A74F51004825AF /* Authenticaton */ = {
+			isa = PBXGroup;
+			children = (
+				40AE8B9226A74F6B004825AF /* SignIn */,
+				40E7D9F426A5AE8800DC94C2 /* Profile */,
+			);
+			path = Authenticaton;
+			sourceTree = "<group>";
+		};
+		40AE8B9226A74F6B004825AF /* SignIn */ = {
+			isa = PBXGroup;
+			children = (
+				40AE8B9726A74FE1004825AF /* SignInViewController.swift */,
+				40AE8B9A26A75022004825AF /* SignInView.xib */,
+			);
+			path = SignIn;
+			sourceTree = "<group>";
+		};
 		40BB8F51267969B7009B8841 /* NearestPlaces */ = {
 			isa = PBXGroup;
 			children = (
@@ -334,7 +358,7 @@
 				401ACA2B265F6C8500AEADE2 /* OnboardingFirstViewController.swift */,
 				401ACA2E265F6CC600AEADE2 /* OnboardingSecondViewController.swift */,
 				401ACA31265F6CEC00AEADE2 /* OnboardingThirdViewController.swift */,
-				400E820626A57E2100164CB3 /* OnboardingButtons.swift */,
+				400E820626A57E2100164CB3 /* OnboardingControls.swift */,
 				400E820A26A57F4B00164CB3 /* OnboardingCoordinator.swift */,
 			);
 			path = Obnoarding;
@@ -345,6 +369,7 @@
 			children = (
 				40E7D9FB26A5AEDE00DC94C2 /* ProfileView.xib */,
 				4028E52526617BF800765DC6 /* ProfileViewController.swift */,
+				40539CC426A607EC00127DE5 /* Layers.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -352,7 +377,7 @@
 		40E982E526440022007D14D6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				40E7D9F426A5AE8800DC94C2 /* Profile */,
+				40AE8B9126A74F51004825AF /* Authenticaton */,
 				40D4F271265F6ACF001326C8 /* Obnoarding */,
 				40A4160A266A31C6005ADBBD /* MainViewController */,
 				403B5A54266A844E00421470 /* PlaceList */,
@@ -435,6 +460,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40AE8B9B26A75022004825AF /* SignInView.xib in Resources */,
 				4031EBF82682031000BF1F76 /* .swiftlint.yml in Resources */,
 				40E7D9E526A5ACDE00DC94C2 /* PlaceListTableView.xib in Resources */,
 				401BFFDE26A31D35005E0B74 /* swiftgen.yml in Resources */,
@@ -552,6 +578,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40AE8B9826A74FE1004825AF /* SignInViewController.swift in Sources */,
 				40E982E7264400BC007D14D6 /* OnboardingViewController.swift in Sources */,
 				403B5A52266A47CA00421470 /* UIColor.swift in Sources */,
 				40978DA82655BAFD001E1DFC /* PlaceViewModel.swift in Sources */,
@@ -559,6 +586,7 @@
 				401ACA2F265F6CC600AEADE2 /* OnboardingSecondViewController.swift in Sources */,
 				4028E52626617BF800765DC6 /* ProfileViewController.swift in Sources */,
 				40CF48E926A4A4020054DD6C /* Assets.swift in Sources */,
+				40539CC526A607EC00127DE5 /* Layers.swift in Sources */,
 				407DCD77265A590B005ADB16 /* PlaceTableViewHeader.swift in Sources */,
 				408C38BC26568A11009832FD /* PlaceLabelTableViewCell.swift in Sources */,
 				401ACA32265F6CEC00AEADE2 /* OnboardingThirdViewController.swift in Sources */,
@@ -587,7 +615,7 @@
 				408C38C72657728C009832FD /* PlaceMapTableViewCell.swift in Sources */,
 				406660C7263D21FF001BEF66 /* SceneDelegate.swift in Sources */,
 				407DCD7426585AEC005ADB16 /* ViewConfigurator.swift in Sources */,
-				400E820726A57E2100164CB3 /* OnboardingButtons.swift in Sources */,
+				400E820726A57E2100164CB3 /* OnboardingControls.swift in Sources */,
 				408C38BF26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift in Sources */,
 				40978D9C26544E3A001E1DFC /* PlaceImageTableViewCell.swift in Sources */,
 				407D8482265DB1E800F45C22 /* FavoritePlacesViewController.swift in Sources */,

@@ -12,17 +12,32 @@ class OnboardingCoordinator: Any {
     weak var parentViewController: OnboardingViewController?
     
     @objc
-    func dismissTapped() {
+    func dismiss() {
         AppController.shared.isFirstLaunch = false
         parentViewController?.dismiss(animated: true, completion: nil)
     }
     
     @objc
-    func futherTapped() {
+    func futher() {
         if let pvc = parentViewController {
             let currentIndex = pvc.currentIndex
             pvc.nextPage(viewControllerBefore: pvc.items[currentIndex])
         }
+    }
+    
+    @objc
+    func signUp() {
+        
+        print("Sign up")
+        
+    }
+    
+    @objc
+    func signIn() {
+        
+        let vc = SignInViewController()
+        parentViewController?.present(vc, animated: true)
+        
     }
     
 }

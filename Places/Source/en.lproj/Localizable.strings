@@ -7,8 +7,11 @@
 "Onboarding.welcomeDescription" = "
 We're glad to see you at Essay. Here are we're sharing thoughts, dreams and imaginations about favorite Saint-petersburg places";
 "Onboarding.loginDescription" = "Login is needed for...";
-"Onboarding.Buttons.Login" = "Login / Sign up";
+"Onboarding.Buttons.Login" = "Login";
 "Onboarding.Buttons.Later" = "Maybe later";
 "Onboarding.Buttons.Skip" = "Skip";
-"Onboarding.welcomeLogin" = "Sign in";
+"Onboarding.welcomeLogin" = "Do you have a login already?";
 "Onboarding.loginDescription" = "You will have a lot of advantages besause of signing. Please do it as faster as you can.";
+"Onboarding.usernamePlaceholder" = "Username / E-mail";
+"Onboarding.passwordPlaceholder" = "Password";
+"Onboarding.Buttons.signUp" = "Sign up now";

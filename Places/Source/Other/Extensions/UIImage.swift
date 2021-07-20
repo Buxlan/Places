@@ -25,7 +25,7 @@ extension UIImage {
         
         let width = size.width
         let height = size.height
-        let bounds = CGRect(x: 0, y: 0, width: width, height: height)
+        let bounds = CGRect(x: 0, y: 0, width: 44, height: 44)
         
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
@@ -37,7 +37,8 @@ extension UIImage {
                                 space: colorSpace,
                                 bitmapInfo: bitmapInfo.rawValue)
         else {
-            return UIImage()
+            fatalError()
+//            return UIImage()
         }
                 
         context.clip(to: bounds, mask: maskImage)
@@ -48,8 +49,9 @@ extension UIImage {
             let coloredImage = UIImage(cgImage: cgImage)
             return coloredImage
         } else {
-            return UIImage()
+            fatalError()
+//            return UIImage()
         }
     }
-
+    
 }

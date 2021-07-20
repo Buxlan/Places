@@ -39,18 +39,32 @@ class OnboardingSecondViewController: UIViewController {
         let view = UIButton()
         view.setImage(Asset.xmark.image, for: .normal)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(coordinator, action: #selector(OnboardingCoordinator.dismissTapped), for: .touchUpInside)
+        view.addTarget(coordinator, action: #selector(OnboardingCoordinator.dismiss), for: .touchUpInside)
         return view
     }()
     
-    private lazy var imageView: UIImageView = {
+    private lazy var imageView: UIView = {
+        
         let image = Asset.onboarding2.image
+        
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.layer.shadowRadius = 50
+        view.layer.shadowOpacity = 0.4
+        view.layer.shadowOffset = CGSize(width: 12, height: 12)
+        view.layer.shadowColor = Asset.darkText.color.cgColor
+        view.translatesAutoresizingMaskIntoConstraints = false
+                        
         let imageView = UIImageView()
         imageView.image = image
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.backgroundColor = Asset.background.color
         imageView.layer.cornerRadius = 50
         imageView.clipsToBounds = true
-        return imageView
+        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        view.addSubview(imageView)
+        
+        return view
     }()
     
     private lazy var titleLabel: UILabel = {
@@ -73,17 +87,17 @@ class OnboardingSecondViewController: UIViewController {
         return label
     }()
     
-    private lazy var buttonFuther: OnboardingFutherButton = {
-        let button = OnboardingFutherButton(title: L10n.Onboarding.Buttons.futher2,
+    private lazy var buttonFuther: ButtonWithShadow = {
+        let button = ButtonWithShadow(title: L10n.Onboarding.Buttons.futher2,
                                       image: nil)
-        button.addTarget(coordinator, action: #selector(OnboardingCoordinator.futherTapped), for: .touchUpInside)
+        button.addTarget(coordinator, action: #selector(OnboardingCoordinator.futher), for: .touchUpInside)
         return button
     }()
     
     private lazy var buttonSkip: OnboardingSkipButton = {
         let button = OnboardingSkipButton(title: L10n.Onboarding.Buttons.skip,
                                       image: nil)
-        button.addTarget(coordinator, action: #selector(OnboardingCoordinator.dismissTapped), for: .touchUpInside)
+        button.addTarget(coordinator, action: #selector(OnboardingCoordinator.dismiss), for: .touchUpInside)
         return button
     }()
     
@@ -138,6 +152,7 @@ class OnboardingSecondViewController: UIViewController {
             buttonFuther.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             buttonFuther.bottomAnchor.constraint(equalTo: buttonSkip.topAnchor,
                                                  constant: -8),
+            buttonFuther.heightAnchor.constraint(equalToConstant: 44),
             
             buttonSkip.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             buttonSkip.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor,
