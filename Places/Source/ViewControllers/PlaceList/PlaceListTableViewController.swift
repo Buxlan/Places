@@ -15,28 +15,20 @@ class PlaceListTableViewController: UITableViewController {
     }
     
     // MARK: - Private
-    private var viewModel: PlaceListViewModel
+    private var dataSource: PlaceListDataModel = PlaceListDataModel()
+    private var viewModel: PlaceListViewModel = PlaceListViewModel()
     private var spinner = UIActivityIndicatorView(style: .white)
     
     // MARK: - Init, Events and actions
     init() {
-        viewModel = PlaceListViewModel()
         super.init(nibName: nil, bundle: nil)
         tableView = UITableView(frame: .zero, style: .grouped)
-        // Tab bar configure
-        tabBarItem.title = L10n.PlacesList.title
-        let image = Asset.buildingColumns.image.resizeImage(to: 30, aspectRatio: .current)
-        tabBarItem.image = image
+        configureTabBarItem()
     }
     
     required init?(coder: NSCoder) {
-        viewModel = PlaceListViewModel()
         super.init(coder: coder)
-        tableView = UITableView(frame: .zero, style: .grouped)
-        // Tab bar configure
-        tabBarItem.title = L10n.PlacesList.title
-        let image = Asset.buildingColumns.image.resizeImage(to: 30, aspectRatio: .current)
-        tabBarItem.image = image
+        configureTabBarItem()
     }
         
     override func viewDidLoad() {
@@ -58,10 +50,10 @@ class PlaceListTableViewController: UITableViewController {
 //        tableView.register(PlaceTableViewFooter.self, forHeaderFooterViewReuseIdentifier: PlaceTableViewFooter.reuseIdentifier)
         
         let constraints: [NSLayoutConstraint] = [
-            tableView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            tableView.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor),
-            tableView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor),
-            tableView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor),
+//            tableView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+//            tableView.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor),
+//            tableView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor),
+//            tableView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor),
             spinner.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             spinner.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor)
         ]
@@ -69,6 +61,13 @@ class PlaceListTableViewController: UITableViewController {
            
         configureBars()
         
+    }
+    
+    private func configureTabBarItem() {
+        tabBarItem.title = L10n.PlacesList.title
+        let image = Asset.buildingColumns.image.resizeImage(to: 30, aspectRatio: .current)
+        tabBarItem.image = image
+        title = L10n.App.name
     }
     
     private func configureBars() {
@@ -139,8 +138,8 @@ extension PlaceListTableViewController {
 extension PlaceListTableViewController {
 
     override func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        viewModel.items.count
+                            numberOfRowsInSection section: Int) -> Int {
+        return dataSource.items(in: section).count
     }
     
     override func tableView(_ tableView: UITableView,
@@ -158,7 +157,7 @@ extension PlaceListTableViewController {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return dataSource.sections.count
     }
     
 }

@@ -18,6 +18,8 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        title = L10n.App.name
             
         delegate = self
         setViewControllers(items, animated: true)

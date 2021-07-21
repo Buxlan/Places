@@ -28,7 +28,7 @@ class PlaceListViewModel {
                         
             guard let self = self else { return }
             
-            self.items = PlaceController().collections[0].places
+            self.items = PlaceController().collections[0].items
             
             let connectedRef = self.database.reference(withPath: ".info/connected")
             connectedRef.observe(.value) { [weak self] snapshot in

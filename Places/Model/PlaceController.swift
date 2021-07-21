@@ -7,25 +7,65 @@
 
 import Foundation
 
-class PlaceController {
+enum CollectionType {
+    case top
+    case favorite
+    case nearest
+    case new
+    case ancient
+    case nearToCenter
+}
+
+struct PlaceCollection: Hashable, Equatable {
+    let name: String
+    let collectionType: CollectionType
+    let items: [Place]
     
-    struct PlaceCollection: Hashable {
-        let title: String
-        let places: [Place]
-        
-        let identifier = UUID()
-        func hash(into hasher: inout Hasher) {
-            hasher.combine(identifier)
-        }
+    let identifier = UUID()
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(identifier)
     }
     
+    static func == (lhs: PlaceCollection,
+                    rhs: PlaceCollection) -> Bool {
+        return lhs.name == rhs.name
+            && lhs.collectionType == rhs.collectionType
+    }
+}
+
+class PlaceController {
+    
+    static let shared = PlaceController()
+    
+    // MARK: - Public
     var collections: [PlaceCollection] {
         return _collections
+    }
+    
+    func collection(with type: CollectionType) -> PlaceCollection? {
+        let item = _collections.first(where: {$0.collectionType == type})
+        return item
     }
     
     init() {
         generateCollections()
     }
+    
+    func insert(collection: PlaceCollection, at index: Int) {
+        _collections.insert(collection, at: index)
+    }
+    
+    func append(collection: PlaceCollection) {
+        _collections.append(collection)
+    }
+    
+    func remove(collection: PlaceCollection) {
+        if let index = _collections.firstIndex(where: { $0.name == collection.name }) {
+            _collections.remove(at: index)
+        }
+    }
+    
+    // MARK: - Public
     fileprivate var _collections = [PlaceCollection]()
     
 }
@@ -45,19 +85,25 @@ extension PlaceController {
     // swiftlint:enable line_length
     
     private func generateCollections() {
-        _collections = [
-            PlaceCollection(title: "Популярные за неделю", places: [
-                Place(title: "Невский проспект", category: "Category 1", description: PlaceController.description),
-                Place(title: "Parnas", category: "Category 2", description: "1"),
-                Place(title: "Hermitage", category: "Category 3", description: PlaceController.description),
-                Place(title: "Петергоф", category: "Category 3", description: PlaceController.description),
-                Place(title: "Площадь восстания", category: "Category 3", description: PlaceController.description)
-            ]),
-            PlaceCollection(title: "Новинки!", places: [
-                Place(title: "Vas'ka", category: "Category 1", description: PlaceController.description),
-                Place(title: "Prosvet", category: "Category 2", description: PlaceController.description),
-                Place(title: "Devyatkino", category: "Category 3", description: PlaceController.description)
-            ])
-        ]
+        
+        let topCol = PlaceCollection(name: "Популярные за неделю",
+                                     collectionType: .top,
+                                     items: [
+                                        Place(title: "Невский проспект", category: "Category 1", description: PlaceController.description),
+                                        Place(title: "Parnas", category: "Category 2", description: "1"),
+                                        Place(title: "Hermitage", category: "Category 3", description: PlaceController.description),
+                                        Place(title: "Петергоф", category: "Category 3", description: PlaceController.description),
+                                        Place(title: "Площадь восстания", category: "Category 3", description: PlaceController.description)
+                                     ])
+        
+        let newCol = PlaceCollection(name: "Новинки!",
+                                     collectionType: .new,
+                                     items: [
+                                        Place(title: "Vas'ka", category: "Category 1", description: PlaceController.description),
+                                        Place(title: "Prosvet", category: "Category 2", description: PlaceController.description),
+                                        Place(title: "Devyatkino", category: "Category 3", description: PlaceController.description)
+                                     ])
+        
+        _collections = [topCol, newCol]
     }
 }

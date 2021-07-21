@@ -23,7 +23,7 @@ class FavoritePlacesViewModel {
             do {
                 sleep(4)
             }
-            self?.items = PlaceController().collections[0].places
+            self?.items = PlaceController().collections[0].items
             
             DispatchQueue.main.async {
                 self?.tableView?.reloadData()
