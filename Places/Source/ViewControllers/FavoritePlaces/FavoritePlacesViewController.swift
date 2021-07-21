@@ -12,6 +12,11 @@ class FavoritePlacesViewController: UIViewController {
     init() {
         viewModel = FavoritePlacesViewModel(tableView: tableView)
         super.init(nibName: nil, bundle: nil)
+        
+        // Tab bar configure
+        tabBarItem.title = L10n.FavoritePlaces.title
+        let image = Asset.favoriteFill.image.resizeImage(to: 30, aspectRatio: .current)
+        tabBarItem.image = image
     }
     
     // MARK: - Public

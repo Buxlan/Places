@@ -9,7 +9,7 @@ import UIKit
 
 class OnboardingThirdViewController: UIViewController {
     
-    // MARK: - public properties and methods
+    // MARK: - public properties, events and methods
     init(coordinator: OnboardingCoordinator) {
         self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
@@ -19,12 +19,31 @@ class OnboardingThirdViewController: UIViewController {
         super.init(coder: coder)
     }
     
-    // MARK: - UI objects
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = Asset.background.color
+        view.tintColor = Asset.appTintColor.color
+        
+        view.addSubview(logo)
+        view.addSubview(dismissButton)
+        view.addSubview(imageView)
+        view.addSubview(titleLabel)
+        view.addSubview(textLabel)
+        view.addSubview(buttonsStack)
+//        view.addSubview(buttonSignIn)
+//        view.addSubview(buttonSkip)
+        
+        configureConstraints()
+ 
+    }
+    
+    // MARK: - Private
     private weak var coordinator: OnboardingCoordinator?
     
     private lazy var logo: UILabel = {
         let view = UILabel()
-        view.text = L10n.Onboarding.logo
+        view.text = L10n.App.name
         view.textColor = Asset.darkText.color
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 2
@@ -107,7 +126,7 @@ class OnboardingThirdViewController: UIViewController {
 //        let width = imageSize.width / fraction
 //        let newSize = CGSize(width: width, height: height)
         
-        let view = ButtonWithShadow(title: L10n.Onboarding.Buttons.login,
+        let view = ButtonWithShadow(title: L10n.Auth.Buttons.login,
                                           image: nil)
                         
 //        let size = CGSize(width: width, height: height)
@@ -134,7 +153,7 @@ class OnboardingThirdViewController: UIViewController {
     }()
     
     private lazy var buttonSignUp: ButtonWithShadow = {
-        let view = ButtonWithShadow(title: L10n.Onboarding.Buttons.signUp,
+        let view = ButtonWithShadow(title: L10n.Auth.Buttons.signUp,
                                       image: nil)
         view.addTarget(coordinator, action: #selector(OnboardingCoordinator.futher), for: .touchUpInside)
         return view
@@ -146,28 +165,7 @@ class OnboardingThirdViewController: UIViewController {
         view.addTarget(coordinator, action: #selector(OnboardingCoordinator.dismiss), for: .touchUpInside)
         return view
     }()
-    
-    // MARK: - events and actions
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
         
-        view.backgroundColor = Asset.background.color
-        view.tintColor = Asset.appTintColor.color
-        
-        view.addSubview(logo)
-        view.addSubview(dismissButton)
-        view.addSubview(imageView)
-        view.addSubview(titleLabel)
-        view.addSubview(textLabel)
-        view.addSubview(buttonsStack)
-//        view.addSubview(buttonSignIn)
-//        view.addSubview(buttonSkip)
-        
-        configureConstraints()
- 
-    }
-
     private func configureConstraints() {
                 
         let constraints: [NSLayoutConstraint] = [
@@ -178,22 +176,23 @@ class OnboardingThirdViewController: UIViewController {
                         
             dismissButton.centerYAnchor.constraint(equalTo: logo.centerYAnchor),
             dismissButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-            dismissButton.widthAnchor.constraint(equalToConstant: 18),
+            dismissButton.widthAnchor.constraint(equalToConstant: 16),
             dismissButton.heightAnchor.constraint(equalTo: dismissButton.widthAnchor),
             
             imageView.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 8),
             imageView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             imageView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
                                              constant: -32),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -8),
             
             titleLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: 8),
             titleLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
                                               constant: -32),
 
             textLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
+            textLabel.bottomAnchor.constraint(equalTo: buttonsStack.topAnchor, constant: -8),
             textLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
                                              constant: -32),
             

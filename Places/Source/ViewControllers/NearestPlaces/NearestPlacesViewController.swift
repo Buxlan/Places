@@ -11,6 +11,10 @@ class NearestPlacesViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        // Tab bar configure
+        tabBarItem.title = L10n.NearestPlaces.title
+        let image = Asset.map.image.resizeImage(to: 30, aspectRatio: .current)
+        tabBarItem.image = image
     }
     
     required init?(coder: NSCoder) {

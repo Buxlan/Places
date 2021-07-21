@@ -19,6 +19,30 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return image
     }
+    
+    func resizeImage(to height: CGFloat, aspectRatio: AspectRatio) -> UIImage {
+        
+        let imageSize = self.size
+        var width: CGFloat = 0
+        
+        switch aspectRatio {
+        case .current:
+            let ratio = imageSize.height / height
+            width = imageSize.width / ratio
+        case .square:
+            width = height
+        }
+        
+        let size = CGSize(width: width, height: height)        
+        let rect = CGRect(origin: CGPoint(x: 0, y: 0),
+                          size: size)
+        let rend = UIGraphicsImageRenderer(size: size,
+                                           format: self.imageRendererFormat)
+        let resizedImage = rend.image { _ in
+            self.draw(in: rect)
+        }
+        return resizedImage
+    }
 
     func maskWithColor(color: UIColor) -> UIImage {
         let maskImage = cgImage!
@@ -54,4 +78,9 @@ extension UIImage {
         }
     }
     
+}
+
+enum AspectRatio {
+    case square
+    case current
 }

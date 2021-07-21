@@ -21,7 +21,7 @@ class SignInViewController: UIViewController {
     // MARK: - Private
     private lazy var logo: UILabel = {
         let view = UILabel()
-        view.text = L10n.Onboarding.logo
+        view.text = L10n.App.name
         view.textColor = Asset.darkText.color
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 2
@@ -71,13 +71,63 @@ class SignInViewController: UIViewController {
         return view
     }()
     
-    private lazy var textLabel: UILabel = {
-        let view = UILabel()
-        view.text = L10n.Onboarding.loginDescription
-        view.textColor = Asset.darkText.color
+    private lazy var usernameView: UITextField = {
+        let view = UITextField()
+        view.delegate = self
+        view.placeholder = L10n.Auth.usernamePlaceholder
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.numberOfLines = 10
-        view.font = .bxBody
+        view.layer.borderWidth = 0.5
+        view.layer.borderColor = Asset.border.color.cgColor
+        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
+        
+        let leftView = UIView()
+        leftView.frame = CGRect(x: 0, y: 0, width: 8, height: 8)
+                
+        view.leftView = leftView
+        view.leftViewMode = .always
+        
+        return view
+    }()
+    
+    private lazy var passwordView: UITextField = {
+        let view = UITextField()
+        view.delegate = self
+        view.placeholder = L10n.Auth.passwordPlaceholder
+        view.isSecureTextEntry = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.borderWidth = 0.5
+        view.layer.borderColor = Asset.border.color.cgColor
+        view.layer.cornerRadius = 8
+        view.clipsToBounds = true
+        
+        let leftView = UIView()
+        leftView.frame = CGRect(x: 0, y: 0, width: 8, height: 8)
+        view.leftView = leftView
+        view.leftViewMode = .always
+        
+        let image = Asset.lock.image
+        let size = CGSize(width: 16, height: 16)
+        let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: size)
+        
+        let rend = UIGraphicsImageRenderer(size: size, format: image.imageRendererFormat)
+        let resizedImage = rend.image { _ in
+            image.draw(in: frame)
+        }
+                
+        let imageView = UIImageView(frame: frame)
+        imageView.alpha = 0.5
+        imageView.setImage(resizedImage)
+        imageView.contentMode = .scaleAspectFit
+        
+        let viewSize = CGSize(width: size.width + 8, height: size.height)
+        let viewFrame = CGRect(origin: CGPoint(x: 0, y: 0), size: viewSize)
+        let rightView = UIView(frame: viewFrame)
+        rightView.addSubview(imageView)
+        
+        view.rightView = rightView
+        view.rightViewMode = .unlessEditing
+                
         return view
     }()
     
@@ -85,7 +135,7 @@ class SignInViewController: UIViewController {
 //        let flexView = UIView()
 //        flexView.backgroundColor = .red
 //        flexView.setContentHuggingPriority(.defaultLow, for: .vertical)
-        let subviews = [buttonSignIn, buttonSignUp, buttonSkip]
+        let subviews = [signInButton, forgetPasswordButton, signUpButton]
         let view = UIStackView(arrangedSubviews: subviews)
         view.axis = .vertical
         view.distribution = .fillEqually
@@ -94,9 +144,9 @@ class SignInViewController: UIViewController {
         return view
     }()
         
-    private lazy var buttonSignIn: ButtonWithShadow = {
+    private lazy var signInButton: ButtonWithShadow = {
         
-        let view = ButtonWithShadow(title: L10n.Onboarding.Buttons.login,
+        let view = ButtonWithShadow(title: L10n.Auth.Buttons.login,
                                           image: nil)
         
         view.backgroundColor = Asset.shadow.color
@@ -108,14 +158,14 @@ class SignInViewController: UIViewController {
         return view
     }()
     
-    private lazy var buttonSignUp: ButtonWithShadow = {
-        let view = ButtonWithShadow(title: L10n.Onboarding.Buttons.signUp,
+    private lazy var signUpButton: ButtonWithShadow = {
+        let view = ButtonWithShadow(title: L10n.Auth.Buttons.signUp,
                                       image: nil)
         view.addTarget(self, action: #selector(OnboardingCoordinator.signUp), for: .touchUpInside)
         return view
     }()
     
-    private lazy var buttonSkip: OnboardingSkipButton = {
+    private lazy var forgetPasswordButton: OnboardingSkipButton = {
         let view = OnboardingSkipButton(title: L10n.Onboarding.Buttons.later,
                                       image: nil)
         view.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
@@ -134,7 +184,8 @@ class SignInViewController: UIViewController {
         view.addSubview(dismissButton)
         view.addSubview(imageView)
         view.addSubview(titleLabel)
-        view.addSubview(textLabel)
+        view.addSubview(usernameView)
+        view.addSubview(passwordView)
         view.addSubview(buttonsStack)
         
         configureConstraints()
@@ -151,30 +202,35 @@ class SignInViewController: UIViewController {
                         
             dismissButton.centerYAnchor.constraint(equalTo: logo.centerYAnchor),
             dismissButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-            dismissButton.widthAnchor.constraint(equalToConstant: 18),
+            dismissButton.widthAnchor.constraint(equalToConstant: 16),
             dismissButton.heightAnchor.constraint(equalTo: dismissButton.widthAnchor),
             
             imageView.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 8),
             imageView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            imageView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
-                                             multiplier: 0.3),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -8),
             
             titleLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: 8),
             titleLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
                                               constant: -32),
+            usernameView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+            usernameView.heightAnchor.constraint(equalToConstant: 44),
+            usernameView.widthAnchor.constraint(equalTo: buttonsStack.widthAnchor),
+            usernameView.bottomAnchor.constraint(equalTo: passwordView.topAnchor, constant: -8),
 
-            textLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-            textLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
-                                             constant: -32),
+            passwordView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+            passwordView.heightAnchor.constraint(equalToConstant: 44),
+            passwordView.widthAnchor.constraint(equalTo: buttonsStack.widthAnchor),
+            passwordView.bottomAnchor.constraint(equalTo: buttonsStack.topAnchor, constant: -8),
             
             buttonsStack.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             buttonsStack.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor,
                                                constant: -8),
             buttonsStack.widthAnchor.constraint(greaterThanOrEqualTo: view.layoutMarginsGuide.widthAnchor,
                                                 multiplier: 0.5),
+            buttonsStack.widthAnchor.constraint(lessThanOrEqualTo: view.layoutMarginsGuide.widthAnchor,
+                                                multiplier: 0.8),
             buttonsStack.heightAnchor.constraint(equalToConstant: 148)
 
         ]
@@ -193,4 +249,8 @@ class SignInViewController: UIViewController {
         }
     }
 
+}
+
+extension SignInViewController: UITextFieldDelegate {
+            
 }

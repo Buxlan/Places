@@ -24,7 +24,7 @@ class OnboardingFirstViewController: UIViewController {
     
     private lazy var logo: UILabel = {
         let view = UILabel()
-        view.text = L10n.Onboarding.logo
+        view.text = L10n.App.name
 //        label.font = UIFont(name: <#T##String#>, size: <#T##CGFloat#>)
         view.textColor = Asset.darkText.color
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -75,16 +75,20 @@ class OnboardingFirstViewController: UIViewController {
         return view
     }()
     
-    private lazy var textLabel: UILabel = {
+    private lazy var textView: UILabel = {
+
         let view = UILabel()
         view.text = L10n.Onboarding.welcomeDescription
         view.textColor = Asset.darkText.color
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.numberOfLines = 10
+        view.numberOfLines = 0
+        view.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
         view.font = .bxBody
+        
         return view
+        
     }()
-    
+        
     private lazy var buttonFuther: ButtonWithShadow = {
         let view = ButtonWithShadow(title: L10n.Onboarding.Buttons.futher1,
                                             image: nil)
@@ -114,7 +118,7 @@ class OnboardingFirstViewController: UIViewController {
         
         // Tittle and text
         view.addSubview(titleLabel)
-        view.addSubview(textLabel)
+        view.addSubview(textView)
         
         // Buttons
         view.addSubview(buttonFuther)
@@ -128,23 +132,24 @@ class OnboardingFirstViewController: UIViewController {
                         
             dismissButton.centerYAnchor.constraint(equalTo: logo.centerYAnchor),
             dismissButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-            dismissButton.widthAnchor.constraint(equalToConstant: 18),
+            dismissButton.widthAnchor.constraint(equalToConstant: 16),
             dismissButton.heightAnchor.constraint(equalTo: dismissButton.widthAnchor),
             
             imageView.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 8),
             imageView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
             imageView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
                                              constant: -32),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -8),
             
             titleLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: 8),
             titleLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
                                               constant: -32),
 
-            textLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-            textLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
+            textView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+            textView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
+            textView.bottomAnchor.constraint(equalTo: buttonFuther.topAnchor, constant: -8),
+            textView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
                                              constant: -32),
             
             buttonFuther.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
@@ -163,5 +168,5 @@ class OnboardingFirstViewController: UIViewController {
         NSLayoutConstraint.activate(constraints)
         
     }
-
+    
 }

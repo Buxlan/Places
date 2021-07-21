@@ -1,17 +1,26 @@
-"App.name" = "Essay";
+"App.name" = "Place";
 "Onboarding.Buttons.futher1" = "Next (1 from 3)";
 "Onboarding.Buttons.futher2" = "Next (2 from 3)";
-"Onboarding.logo" = "Essay!";
 "Onboarding.welcome" = "Welcome!";
 "Onboarding.shareImaginations" = "Share your imaginations! Listen and share audio, text and pictures with other";
 "Onboarding.welcomeDescription" = "
-We're glad to see you at Essay. Here are we're sharing thoughts, dreams and imaginations about favorite Saint-petersburg places";
+We're glad to see you at Place. Here are we're sharing thoughts, dreams and imaginations about favorite Saint-petersburg places";
 "Onboarding.loginDescription" = "Login is needed for...";
-"Onboarding.Buttons.Login" = "Login";
 "Onboarding.Buttons.Later" = "Maybe later";
 "Onboarding.Buttons.Skip" = "Skip";
 "Onboarding.welcomeLogin" = "Do you have a login already?";
 "Onboarding.loginDescription" = "You will have a lot of advantages besause of signing. Please do it as faster as you can.";
-"Onboarding.usernamePlaceholder" = "Username / E-mail";
-"Onboarding.passwordPlaceholder" = "Password";
-"Onboarding.Buttons.signUp" = "Sign up now";
+/* Authentication */
+"Auth.usernamePlaceholder" = "Username / E-mail";
+"Auth.passwordPlaceholder" = "Password";
+"Auth.Buttons.signUp" = "Sign up now";
+"Auth.Buttons.Login" = "Login";
+/* Main tab bar */
+/* Place list */
+"PlacesList.title" = "Top";
+/* Nearest places */
+"NearestPlaces.title" = "Nearby";
+/* Favorite places */
+"FavoritePlaces.title" = "Favorite";
+/* Profile */
+"Profile.title" = "Profile";

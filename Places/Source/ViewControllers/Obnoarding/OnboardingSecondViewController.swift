@@ -7,8 +7,6 @@
 
 import UIKit
 
-import UIKit
-
 class OnboardingSecondViewController: UIViewController {
     
     // MARK: - public properties and methods
@@ -26,7 +24,7 @@ class OnboardingSecondViewController: UIViewController {
     
     private lazy var logo: UILabel = {
         let label = UILabel()
-        label.text = L10n.Onboarding.logo
+        label.text = L10n.App.name
 //        label.font = UIFont(name: <#T##String#>, size: <#T##CGFloat#>)
         label.textColor = Asset.darkText.color
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -122,6 +120,11 @@ class OnboardingSecondViewController: UIViewController {
         view.addSubview(buttonFuther)
         view.addSubview(buttonSkip)
         
+        configureConstraints()
+        
+    }
+    
+    private func configureConstraints() {
         let constraints: [NSLayoutConstraint] = [
             
             logo.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor,
@@ -130,22 +133,23 @@ class OnboardingSecondViewController: UIViewController {
                         
             dismissButton.centerYAnchor.constraint(equalTo: logo.centerYAnchor),
             dismissButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-            dismissButton.widthAnchor.constraint(equalToConstant: 18),
-            dismissButton.heightAnchor.constraint(equalTo: dismissButton.widthAnchor),
+            dismissButton.widthAnchor.constraint(equalToConstant: 16),
+            dismissButton.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
+                                                  constant: -32),
             
             imageView.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 8),
             imageView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            imageView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
-                                             constant: -32),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
+            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -8),
             
             titleLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
+            titleLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: 8),
             titleLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
                                               constant: -32),
 
             textLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
+            textLabel.bottomAnchor.constraint(equalTo: buttonFuther.topAnchor, constant: -8),
             textLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
                                              constant: -32),
             
@@ -161,9 +165,7 @@ class OnboardingSecondViewController: UIViewController {
             buttonSkip.heightAnchor.constraint(equalTo: buttonFuther.heightAnchor)
             
         ]
-        
         NSLayoutConstraint.activate(constraints)
-        
     }
 
 }

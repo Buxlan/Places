@@ -166,3 +166,13 @@ extension Date {
         return dateFormatter.string(from: self)
     }
 }
+
+extension UITextView {
+    
+    func alignTextVerticallyInContainer() {
+        var inset = (self.bounds.height - self.contentSize.height * self.zoomScale) / 2
+        inset = inset < 0 ? 0.0 : inset
+        self.contentInset.bottom = inset
+    }
+    
+}

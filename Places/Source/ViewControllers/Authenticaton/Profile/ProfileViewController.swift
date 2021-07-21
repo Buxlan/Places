@@ -11,6 +11,10 @@ class ProfileViewController: UIViewController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        // Tab bar configure
+        tabBarItem.title = L10n.Profile.title
+        let image = Asset.person.image.resizeImage(to: 30, aspectRatio: .current)
+        tabBarItem.image = image
     }
     
     required init?(coder: NSCoder) {
@@ -43,7 +47,7 @@ class ProfileViewController: UIViewController {
     // MARK: - UI objects
     private lazy var logo: UILabel = {
         let view = UILabel()
-        view.text = L10n.Onboarding.logo
+        view.text = L10n.App.name
         view.textColor = Asset.darkText.color
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 2
@@ -79,7 +83,7 @@ class ProfileViewController: UIViewController {
         
         let view = UITextField()
         view.delegate = self
-        view.placeholder = L10n.Onboarding.usernamePlaceholder
+        view.placeholder = L10n.Auth.usernamePlaceholder
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.5
         view.layer.borderColor = Asset.border.color.cgColor
@@ -99,7 +103,7 @@ class ProfileViewController: UIViewController {
         
         let view = UITextField()
         view.delegate = self
-        view.placeholder = L10n.Onboarding.passwordPlaceholder
+        view.placeholder = L10n.Auth.passwordPlaceholder
         view.isSecureTextEntry = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.5
@@ -137,7 +141,7 @@ class ProfileViewController: UIViewController {
     }()
     
     private lazy var buttonSignIn: ButtonWithShadow = {
-        let view = ButtonWithShadow(title: L10n.Onboarding.Buttons.login,
+        let view = ButtonWithShadow(title: L10n.Auth.Buttons.login,
                                       image: nil)
         view.addTarget(self, action: #selector(signIn), for: .touchUpInside)
         return view

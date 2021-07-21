@@ -41,4 +41,68 @@ class Garbage {
         //        view.addSubview(blurView)
         
     }()
+    
+    private lazy var textLabel: UIStackView = {
+        
+        let view = UITextView()
+        view.text = L10n.Onboarding.welcomeDescription
+        view.textColor = Asset.darkText.color
+//        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .red
+        view.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        view.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
+        view.font = .bxBody
+        
+        let flexView = UIView()
+        flexView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        flexView.backgroundColor = .blue
+        flexView.frame = CGRect(origin: flexView.frame.origin,
+                                size: CGSize(width: 50, height: 10))
+        flexView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        let stack = UIStackView(arrangedSubviews: [view, flexView])
+        stack.distribution = .fill
+        stack.axis = .vertical
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        
+        return stack
+        
+    }()
+    
+}
+
+open class PaddedTextField: UITextField {
+    public var textInsets = UIEdgeInsets.zero {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    convenience init() {
+        self.init(frame: .zero)
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    open override func textRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: textInsets)
+    }
+    
+    open override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: textInsets)
+    }
+    
+    open override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.inset(by: textInsets)
+    }
+    
+    open override func drawText(in rect: CGRect) {
+        super.drawText(in: rect.inset(by: textInsets))
+    }
 }

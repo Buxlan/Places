@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		400E81FC26A571E000164CB3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 400E81FE26A571E000164CB3 /* Localizable.strings */; };
 		400E820426A575F000164CB3 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E820326A575F000164CB3 /* Strings.swift */; };
-		400E820726A57E2100164CB3 /* OnboardingControls.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E820626A57E2100164CB3 /* OnboardingControls.swift */; };
+		400E820726A57E2100164CB3 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E820626A57E2100164CB3 /* Buttons.swift */; };
 		400E820B26A57F4B00164CB3 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E820A26A57F4B00164CB3 /* OnboardingCoordinator.swift */; };
 		401960E6266A9B09004765F7 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401960E5266A9B08004765F7 /* Log.swift */; };
 		401ACA2C265F6C8500AEADE2 /* OnboardingFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401ACA2B265F6C8500AEADE2 /* OnboardingFirstViewController.swift */; };
@@ -77,7 +77,7 @@
 		400E81FD26A571E000164CB3 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		400E820026A571E400164CB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		400E820326A575F000164CB3 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		400E820626A57E2100164CB3 /* OnboardingControls.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingControls.swift; sourceTree = "<group>"; };
+		400E820626A57E2100164CB3 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		400E820A26A57F4B00164CB3 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		401960E5266A9B08004765F7 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		401ACA2B265F6C8500AEADE2 /* OnboardingFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstViewController.swift; sourceTree = "<group>"; };
@@ -341,6 +341,14 @@
 			path = SignIn;
 			sourceTree = "<group>";
 		};
+		40B650C326A7724700BB0396 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				400E820626A57E2100164CB3 /* Buttons.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		40BB8F51267969B7009B8841 /* NearestPlaces */ = {
 			isa = PBXGroup;
 			children = (
@@ -358,7 +366,6 @@
 				401ACA2B265F6C8500AEADE2 /* OnboardingFirstViewController.swift */,
 				401ACA2E265F6CC600AEADE2 /* OnboardingSecondViewController.swift */,
 				401ACA31265F6CEC00AEADE2 /* OnboardingThirdViewController.swift */,
-				400E820626A57E2100164CB3 /* OnboardingControls.swift */,
 				400E820A26A57F4B00164CB3 /* OnboardingCoordinator.swift */,
 			);
 			path = Obnoarding;
@@ -377,6 +384,7 @@
 		40E982E526440022007D14D6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				40B650C326A7724700BB0396 /* Views */,
 				40AE8B9126A74F51004825AF /* Authenticaton */,
 				40D4F271265F6ACF001326C8 /* Obnoarding */,
 				40A4160A266A31C6005ADBBD /* MainViewController */,
@@ -615,7 +623,7 @@
 				408C38C72657728C009832FD /* PlaceMapTableViewCell.swift in Sources */,
 				406660C7263D21FF001BEF66 /* SceneDelegate.swift in Sources */,
 				407DCD7426585AEC005ADB16 /* ViewConfigurator.swift in Sources */,
-				400E820726A57E2100164CB3 /* OnboardingControls.swift in Sources */,
+				400E820726A57E2100164CB3 /* Buttons.swift in Sources */,
 				408C38BF26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift in Sources */,
 				40978D9C26544E3A001E1DFC /* PlaceImageTableViewCell.swift in Sources */,
 				407D8482265DB1E800F45C22 /* FavoritePlacesViewController.swift in Sources */,

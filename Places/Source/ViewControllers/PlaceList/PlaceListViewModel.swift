@@ -16,14 +16,11 @@ class PlaceListViewModel {
     var ref: DatabaseReference?
     var handleRef: UInt = 0
     var items: [Place]
-    weak var tableView: UITableView?
     var isOffline = false
     
-    init(tableView: UITableView) {
-        self.tableView = tableView
+    init() {
         items = [Place]()
         ref = database.reference()
-        Log(text: "database ", object: ref)
     }
     
     func updateData(completion: @escaping () -> Void) {
@@ -83,12 +80,8 @@ class PlaceListViewModel {
 //                self.database.goOffline()
 //            }
             
-            DispatchQueue.main.async {
-                self.tableView?.reloadData()
-                completion()
-            }
-            
-            Log(text: "Data was loaded and table view was reloaded", object: self.tableView)
+            completion()
+            Log(text: "Place list view model: Data has loaded and competion has executed")
      
         }
     }

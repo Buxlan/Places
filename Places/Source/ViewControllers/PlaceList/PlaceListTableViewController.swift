@@ -7,28 +7,36 @@
 
 import UIKit
 
-class PlaceListTableViewController: UIViewController {
+class PlaceListTableViewController: UITableViewController {
     
     // MARK: - Public
     struct Strings {
-        static let title = "Лента"
         static let cellReuseId = "PlaceCell"
     }
     
     // MARK: - Private
-    private var tableView: UITableView = UITableView(frame: .zero, style: .plain)
     private var viewModel: PlaceListViewModel
     private var spinner = UIActivityIndicatorView(style: .white)
     
     // MARK: - Init, Events and actions
     init() {
-        viewModel = PlaceListViewModel(tableView: tableView)
+        viewModel = PlaceListViewModel()
         super.init(nibName: nil, bundle: nil)
+        tableView = UITableView(frame: .zero, style: .grouped)
+        // Tab bar configure
+        tabBarItem.title = L10n.PlacesList.title
+        let image = Asset.buildingColumns.image.resizeImage(to: 30, aspectRatio: .current)
+        tabBarItem.image = image
     }
     
     required init?(coder: NSCoder) {
-        viewModel = PlaceListViewModel(tableView: tableView)
+        viewModel = PlaceListViewModel()
         super.init(coder: coder)
+        tableView = UITableView(frame: .zero, style: .grouped)
+        // Tab bar configure
+        tabBarItem.title = L10n.PlacesList.title
+        let image = Asset.buildingColumns.image.resizeImage(to: 30, aspectRatio: .current)
+        tabBarItem.image = image
     }
         
     override func viewDidLoad() {
@@ -36,9 +44,7 @@ class PlaceListTableViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = Asset.background.color
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .done, target: self, action: #selector(updateData))
+        title = L10n.PlacesList.title
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -60,24 +66,14 @@ class PlaceListTableViewController: UIViewController {
             spinner.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
-   
-        if self.title != nil {
-            //
-        } else {
-            self.title = Strings.title
-        }
-        
+           
         configureBars()
         
     }
     
     private func configureBars() {
     
-        if navigationController?.title != nil {
-            //
-        } else {
-            navigationController?.title = title
-        }
+        navigationController?.title = title
         navigationController?.hidesBarsOnTap = false
         navigationController?.isToolbarHidden = true
         
@@ -88,7 +84,9 @@ class PlaceListTableViewController: UIViewController {
         spinner.hidesWhenStopped = true
         spinner.startAnimating()
         viewModel.updateData { [weak spinner] in
-            spinner?.stopAnimating()
+            DispatchQueue.main.async {
+                spinner?.stopAnimating()
+            }
         }
     }
     
@@ -96,21 +94,25 @@ class PlaceListTableViewController: UIViewController {
     private func updateData() {
         spinner.startAnimating()
         viewModel.updateData { [weak self] in
-//            self?.viewModel.database.goOnline()
-            self?.spinner.stopAnimating()
+            DispatchQueue.main.async {
+                self?.tableView.reloadData()
+    //            self?.viewModel.database.goOnline()
+                self?.spinner.stopAnimating()
+            }
         }
     }
-
+    
 }
 
-extension PlaceListTableViewController: UITableViewDelegate {
+// Delegate
+extension PlaceListTableViewController {
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return self.tableView.bounds.height / 2
         return UITableView.automaticDimension
     }
     
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
         return UITableView.automaticDimension
     }
 
@@ -130,15 +132,19 @@ extension PlaceListTableViewController: UITableViewDelegate {
 //        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: PlaceTableViewFooter.reuseIdentifier)
 //        return view
 //    }
+
 }
 
-extension PlaceListTableViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+// Data source
+extension PlaceListTableViewController {
+
+    override func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
         viewModel.items.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let item = viewModel.items[indexPath.row]
                 
@@ -151,7 +157,7 @@ extension PlaceListTableViewController: UITableViewDataSource {
         return cell
     }
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
