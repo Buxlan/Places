@@ -1,16 +1,16 @@
 "App.name" = "Place";
 "Onboarding.Buttons.futher1" = "Next (1 from 3)";
 "Onboarding.Buttons.futher2" = "Next (2 from 3)";
-"Onboarding.welcome" = "Welcome!";
-"Onboarding.shareImaginations" = "Share your imaginations! Listen and share audio, text and pictures with other";
-"Onboarding.welcomeDescription" = "
-We're glad to see you at Place. Here are we're sharing thoughts, dreams and imaginations about favorite Saint-petersburg places";
-"Onboarding.loginDescription" = "Login is needed for...";
+"Onboarding.onboardngTitle1" = "Welcome";
+"Onboarding.onboardngTitle2" = "Look, learn and share";
+"Onboarding.onboardngTitle3" = "Join to us";
+"Onboarding.onboardngText1" = "We're glad to see you at Place. Here are we're sharing thoughts, dreams and imaginations about favorite Saint-petersburg places";
+"Onboarding.onboardngText2" = "Share your imaginations! Listen and share audio, text and pictures with other";
+"Onboarding.onboardngText3" = "Joining us allow to share you own essay about variable places...";
 "Onboarding.Buttons.Later" = "Maybe later";
 "Onboarding.Buttons.Skip" = "Skip";
-"Onboarding.welcomeLogin" = "Do you have a login already?";
-"Onboarding.loginDescription" = "You will have a lot of advantages besause of signing. Please do it as faster as you can.";
 /* Authentication */
+"Auth.title" = "Joining us allow to share you own essay about variable places...";
 "Auth.usernamePlaceholder" = "Username / E-mail";
 "Auth.passwordPlaceholder" = "Password";
 "Auth.Buttons.signUp" = "Sign up now";

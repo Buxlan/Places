@@ -65,8 +65,8 @@ extension UIButton {
         button.setTitle(title, for: .normal)
         button.setImage(image, for: .normal)
         
-        button.setTitleColor(Asset.lightText.color, for: .normal)
-        button.backgroundColor = Asset.controlBackground.color
+        button.setTitleColor(.bxText0, for: .normal)
+        button.backgroundColor = Asset.background1.color
         
         button.titleLabel?.font = .preferredFont(forTextStyle: .title2)
         

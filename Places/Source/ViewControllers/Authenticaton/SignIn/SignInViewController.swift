@@ -22,7 +22,7 @@ class SignInViewController: UIViewController {
     private lazy var logo: UILabel = {
         let view = UILabel()
         view.text = L10n.App.name
-        view.textColor = Asset.darkText.color
+        view.textColor = .darkText
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 2
         view.font = .bxControlTitle
@@ -46,12 +46,12 @@ class SignInViewController: UIViewController {
         view.layer.shadowRadius = 50
         view.layer.shadowOpacity = 0.4
         view.layer.shadowOffset = CGSize(width: 12, height: 12)
-        view.layer.shadowColor = Asset.darkText.color.cgColor
+        view.layer.shadowColor = UIColor.bxText1.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
                         
         let imageView = UIImageView()
         imageView.image = image
-        imageView.backgroundColor = Asset.background.color
+        imageView.backgroundColor = Asset.background0.color
         imageView.layer.cornerRadius = 50
         imageView.clipsToBounds = true
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -63,8 +63,8 @@ class SignInViewController: UIViewController {
             
     private lazy var titleLabel: UILabel = {
         let view = UILabel()
-        view.text = L10n.Onboarding.welcomeLogin
-        view.textColor = Asset.darkText.color
+        view.text = L10n.Auth.title
+        view.textColor = .bxText1
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 1
         view.font = .bxControlTitle
@@ -77,7 +77,7 @@ class SignInViewController: UIViewController {
         view.placeholder = L10n.Auth.usernamePlaceholder
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.5
-        view.layer.borderColor = Asset.border.color.cgColor
+        view.layer.borderColor = Asset.background2.color.cgColor
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         
@@ -97,7 +97,7 @@ class SignInViewController: UIViewController {
         view.isSecureTextEntry = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.5
-        view.layer.borderColor = Asset.border.color.cgColor
+        view.layer.borderColor = Asset.background2.color.cgColor
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         
@@ -149,7 +149,7 @@ class SignInViewController: UIViewController {
         let view = ButtonWithShadow(title: L10n.Auth.Buttons.login,
                                           image: nil)
         
-        view.backgroundColor = Asset.shadow.color
+        view.backgroundColor = .bxControlBackground
         view.titleLabel?.backgroundColor = view.backgroundColor
         view.imageView?.backgroundColor = view.backgroundColor
         
@@ -161,7 +161,7 @@ class SignInViewController: UIViewController {
     private lazy var signUpButton: ButtonWithShadow = {
         let view = ButtonWithShadow(title: L10n.Auth.Buttons.signUp,
                                       image: nil)
-        view.addTarget(self, action: #selector(OnboardingCoordinator.signUp), for: .touchUpInside)
+        view.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         return view
     }()
     
@@ -177,8 +177,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Asset.background.color
-        view.tintColor = Asset.appTintColor.color
+        view.backgroundColor = Asset.background0.color
         
         view.addSubview(logo)
         view.addSubview(dismissButton)
@@ -239,6 +238,11 @@ class SignInViewController: UIViewController {
     
     @objc
     func signIn() {
+        
+    }
+    
+    @objc
+    func signUp() {
         
     }
     

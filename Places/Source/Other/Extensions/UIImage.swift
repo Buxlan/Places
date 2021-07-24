@@ -18,9 +18,9 @@ extension UIImage {
         let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
-    }
+    }    
     
-    func resizeImage(to height: CGFloat, aspectRatio: AspectRatio) -> UIImage {
+    func resizeImage(to height: CGFloat, aspectRatio: AspectRatio, with color: UIColor) -> UIImage {
         
         let imageSize = self.size
         var width: CGFloat = 0
@@ -38,7 +38,8 @@ extension UIImage {
                           size: size)
         let rend = UIGraphicsImageRenderer(size: size,
                                            format: self.imageRendererFormat)
-        let resizedImage = rend.image { _ in
+        let resizedImage = rend.image { con in
+            con.cgContext.setFillColor(color.cgColor)
             self.draw(in: rect)
         }
         return resizedImage
@@ -54,12 +55,12 @@ extension UIImage {
         let colorSpace = CGColorSpaceCreateDeviceRGB()
         let bitmapInfo = CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue)
         guard let context = CGContext(data: nil,
-                                width: Int(width),
-                                height: Int(height),
-                                bitsPerComponent: 8,
-                                bytesPerRow: 0,
-                                space: colorSpace,
-                                bitmapInfo: bitmapInfo.rawValue)
+                                      width: Int(width),
+                                      height: Int(height),
+                                      bitsPerComponent: 8,
+                                      bytesPerRow: 0,
+                                      space: colorSpace,
+                                      bitmapInfo: bitmapInfo.rawValue)
         else {
             fatalError()
 //            return UIImage()

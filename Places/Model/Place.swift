@@ -17,6 +17,8 @@ struct Place: ReusableObject {
     
     typealias PlaceCategory = String
     
+    static let empty = Place(title: "", category: "", description: "")
+    
     static let storyboardName = "Place"
     static let viewControllerName = "Place"
     static let reuseIdentifier = "Place"
@@ -24,8 +26,7 @@ struct Place: ReusableObject {
     let title: String
     let category: PlaceCategory
     let image: UIImage = {
-        let color = Asset.secondaryText.color
-        let image = Asset.camera.image.maskWithColor(color: color)
+        let image = Asset.camera.image
         return image
     }()
     let identifier = UUID()

@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // swiftlint:disable:next unused_optional_binding
         guard let _ = (scene as? UIWindowScene) else { return }
         
-        window?.tintColor = Asset.appTintColor.color
+        window?.tintColor = Asset.foreground0.color
 
     }
 

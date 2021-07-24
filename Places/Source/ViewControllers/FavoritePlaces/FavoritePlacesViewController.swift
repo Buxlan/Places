@@ -15,7 +15,7 @@ class FavoritePlacesViewController: UIViewController {
         
         // Tab bar configure
         tabBarItem.title = L10n.FavoritePlaces.title
-        let image = Asset.favoriteFill.image.resizeImage(to: 30, aspectRatio: .current)
+        let image = Asset.favoriteFill.image.resizeImage(to: 30, aspectRatio: .current, with: view.tintColor)
         tabBarItem.image = image
     }
     
@@ -40,7 +40,7 @@ class FavoritePlacesViewController: UIViewController {
         
         super.viewDidLoad()
         
-        view.backgroundColor = Asset.background.color
+        view.backgroundColor = Asset.background0.color
        
         tableView.tableFooterView = UIView()
         tableView.delegate = self

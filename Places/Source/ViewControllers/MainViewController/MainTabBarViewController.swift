@@ -14,16 +14,29 @@ class MainTabBarViewController: UITabBarController {
     // MARK: - Public vars and properties
     
     // MARK: - Public functions
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+//        UITabBar.appearance().barTintColor = Asset.background1.color
+//        UITabBar.appearance().backgroundColor = Asset.background2.color
+//        UITabBar.appearance().backgroundColor = .clear
+        tabBar.barTintColor = Asset.background2.color
+        tabBar.unselectedItemTintColor = Asset.background1.color
+        tabBar.backgroundColor = Asset.background2.color
+//        tabBar.backgroundColor = .clear
+    }
     
     override func viewDidLoad() {
         
         super.viewDidLoad()
         
+        view.tintColor = Asset.foreground0.color
+
         title = L10n.App.name
             
         delegate = self
         setViewControllers(items, animated: true)
         selectedIndex = 0
+        tabBar.selectedItem
         
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         leftSwipe.direction = .left
@@ -44,7 +57,7 @@ class MainTabBarViewController: UITabBarController {
         super.viewDidAppear(animated)
              
         if AppController.shared.isFirstLaunch {
-            let onboarding: UIViewController = OnboardingViewController()
+            let onboarding: UIViewController = OnboardingPageViewController()
             onboarding.modalPresentationStyle = .fullScreen
             present(onboarding, animated: true, completion: nil)
         }
@@ -63,7 +76,7 @@ class MainTabBarViewController: UITabBarController {
     private let appController = AppController.shared
     
     private lazy var items: [UIViewController] = [
-        UINavigationController(rootViewController: PlaceListTableViewController()),
+        UINavigationController(rootViewController: PlaceListViewController()),
         UINavigationController(rootViewController: NearestPlacesViewController()),
         UINavigationController(rootViewController: FavoritePlacesViewController()),
         UINavigationController(rootViewController: ProfileViewController())
@@ -100,11 +113,11 @@ class MainTabBarViewController: UITabBarController {
     fileprivate func configureViewController(vc: UIViewController) -> UIViewController {
           
         vc.tabBarItem.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: Asset.secondaryText.color],
+            [NSAttributedString.Key.foregroundColor: UIColor.bxSecondaryText1],
             for: .normal)
         
         vc.tabBarItem.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: Asset.darkText.color],
+            [NSAttributedString.Key.foregroundColor: UIColor.bxText1],
             for: .selected)
         
         return vc
@@ -117,13 +130,11 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         let numberOfItems = items.count
         let tabBarItemSize = CGSize(width: tabBar.frame.width / CGFloat(numberOfItems), height: tabBar.frame.height)
-        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: Asset.background.color,
+        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: Asset.background0.color,
                                                                 size: tabBarItemSize)
         
 //        tabBar.frame.size.width = self.view.frame.width + 4
 //        tabBar.frame.origin.x = -2
- 
-        tabBar.barTintColor = Asset.background.color
     }
     
     func tabBarController(_ tabBarController: UITabBarController,

@@ -10,11 +10,7 @@
 		400E81FC26A571E000164CB3 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 400E81FE26A571E000164CB3 /* Localizable.strings */; };
 		400E820426A575F000164CB3 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E820326A575F000164CB3 /* Strings.swift */; };
 		400E820726A57E2100164CB3 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E820626A57E2100164CB3 /* Buttons.swift */; };
-		400E820B26A57F4B00164CB3 /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 400E820A26A57F4B00164CB3 /* OnboardingCoordinator.swift */; };
 		401960E6266A9B09004765F7 /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401960E5266A9B08004765F7 /* Log.swift */; };
-		401ACA2C265F6C8500AEADE2 /* OnboardingFirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401ACA2B265F6C8500AEADE2 /* OnboardingFirstViewController.swift */; };
-		401ACA2F265F6CC600AEADE2 /* OnboardingSecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401ACA2E265F6CC600AEADE2 /* OnboardingSecondViewController.swift */; };
-		401ACA32265F6CEC00AEADE2 /* OnboardingThirdViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401ACA31265F6CEC00AEADE2 /* OnboardingThirdViewController.swift */; };
 		401ACA3B265F86BE00AEADE2 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401ACA3A265F86BE00AEADE2 /* AppController.swift */; };
 		401BFFDE26A31D35005E0B74 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 401BFFDD26A31D35005E0B74 /* swiftgen.yml */; };
 		4028E52626617BF800765DC6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028E52526617BF800765DC6 /* ProfileViewController.swift */; };
@@ -37,6 +33,8 @@
 		407DCD71265859F4005ADB16 /* ConfigurableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407DCD70265859F4005ADB16 /* ConfigurableView.swift */; };
 		407DCD7426585AEC005ADB16 /* ViewConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407DCD7326585AEC005ADB16 /* ViewConfigurator.swift */; };
 		407DCD77265A590B005ADB16 /* PlaceTableViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407DCD76265A590B005ADB16 /* PlaceTableViewHeader.swift */; };
+		4082209E26AA039800A927CA /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082209D26AA039800A927CA /* OnboardingViewController.swift */; };
+		408220A126AA045600A927CA /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408220A026AA045600A927CA /* OnboardingViewModel.swift */; };
 		408C38B8265685E2009832FD /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38B7265685E2009832FD /* CellConfigurator.swift */; };
 		408C38BC26568A11009832FD /* PlaceLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38BB26568A11009832FD /* PlaceLabelTableViewCell.swift */; };
 		408C38BF26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38BE26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift */; };
@@ -54,13 +52,13 @@
 		40978DAC265671F9001E1DFC /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978DAB265671F9001E1DFC /* ConfigurableCell.swift */; };
 		40AE8B9826A74FE1004825AF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AE8B9726A74FE1004825AF /* SignInViewController.swift */; };
 		40AE8B9B26A75022004825AF /* SignInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40AE8B9A26A75022004825AF /* SignInView.xib */; };
-		40B6EAEF267973D500AA4CC2 /* PlaceListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B6EAEE267973D500AA4CC2 /* PlaceListTableViewController.swift */; };
+		40B6EAEF267973D500AA4CC2 /* PlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B6EAEE267973D500AA4CC2 /* PlaceListViewController.swift */; };
 		40B6EAF2267974B200AA4CC2 /* PlaceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B6EAF1267974B200AA4CC2 /* PlaceListViewModel.swift */; };
-		40B6EAF52679754500AA4CC2 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B6EAF42679754500AA4CC2 /* PlaceTableViewCell.swift */; };
+		40B6EAF52679754500AA4CC2 /* PlaceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B6EAF42679754500AA4CC2 /* PlaceListCell.swift */; };
 		40BB8F5826796BC7009B8841 /* NearestPlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40BB8F5726796BC7009B8841 /* NearestPlacesViewController.swift */; };
 		40C10948267A628F00264062 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 40C10947267A628F00264062 /* GoogleService-Info.plist */; };
 		40CF48E926A4A4020054DD6C /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40CF48E826A4A4020054DD6C /* Assets.swift */; };
-		40D1289926A8866D0037C506 /* PlaceListTableViewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D1289826A8866D0037C506 /* PlaceListTableViewDataModel.swift */; };
+		40D1289926A8866D0037C506 /* PlaceListDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D1289826A8866D0037C506 /* PlaceListDataModel.swift */; };
 		40D3EEA7264545AB005E2F0F /* Trash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D3EEA6264545AB005E2F0F /* Trash.swift */; };
 		40D3EEAC2645C5CE005E2F0F /* PlaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D3EEAB2645C5CE005E2F0F /* PlaceController.swift */; };
 		40D3EEB12645C729005E2F0F /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40D3EEB02645C729005E2F0F /* Place.swift */; };
@@ -69,7 +67,7 @@
 		40E7D9EE26A5AE1900DC94C2 /* FavoritePlacesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40E7D9ED26A5AE1900DC94C2 /* FavoritePlacesView.xib */; };
 		40E7D9FC26A5AEDE00DC94C2 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40E7D9FB26A5AEDE00DC94C2 /* ProfileView.xib */; };
 		40E982D9264349A4007D14D6 /* OtherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E982D8264349A4007D14D6 /* OtherExtensions.swift */; };
-		40E982E7264400BC007D14D6 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E982E6264400BC007D14D6 /* OnboardingViewController.swift */; };
+		40E982E7264400BC007D14D6 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E982E6264400BC007D14D6 /* OnboardingPageViewController.swift */; };
 		FB6793D10F24DC3E1D21CBC8 /* Pods_Places.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB95DCC09A0ED131E58E26D2 /* Pods_Places.framework */; };
 /* End PBXBuildFile section */
 
@@ -79,11 +77,7 @@
 		400E820026A571E400164CB3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		400E820326A575F000164CB3 /* Strings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		400E820626A57E2100164CB3 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
-		400E820A26A57F4B00164CB3 /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		401960E5266A9B08004765F7 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
-		401ACA2B265F6C8500AEADE2 /* OnboardingFirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFirstViewController.swift; sourceTree = "<group>"; };
-		401ACA2E265F6CC600AEADE2 /* OnboardingSecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingSecondViewController.swift; sourceTree = "<group>"; };
-		401ACA31265F6CEC00AEADE2 /* OnboardingThirdViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingThirdViewController.swift; sourceTree = "<group>"; };
 		401ACA3A265F86BE00AEADE2 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		401BFFDD26A31D35005E0B74 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		4028E52526617BF800765DC6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +102,8 @@
 		407DCD70265859F4005ADB16 /* ConfigurableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableView.swift; sourceTree = "<group>"; };
 		407DCD7326585AEC005ADB16 /* ViewConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConfigurator.swift; sourceTree = "<group>"; };
 		407DCD76265A590B005ADB16 /* PlaceTableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewHeader.swift; sourceTree = "<group>"; };
+		4082209D26AA039800A927CA /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		408220A026AA045600A927CA /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		408C38B7265685E2009832FD /* CellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
 		408C38BB26568A11009832FD /* PlaceLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLabelTableViewCell.swift; sourceTree = "<group>"; };
 		408C38BE26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceUsefulButtonsTableViewCell.swift; sourceTree = "<group>"; };
@@ -125,14 +121,14 @@
 		40978DAB265671F9001E1DFC /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		40AE8B9726A74FE1004825AF /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		40AE8B9A26A75022004825AF /* SignInView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInView.xib; sourceTree = "<group>"; };
-		40B6EAEE267973D500AA4CC2 /* PlaceListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListTableViewController.swift; sourceTree = "<group>"; };
+		40B6EAEE267973D500AA4CC2 /* PlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewController.swift; sourceTree = "<group>"; };
 		40B6EAF1267974B200AA4CC2 /* PlaceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewModel.swift; sourceTree = "<group>"; };
-		40B6EAF42679754500AA4CC2 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
+		40B6EAF42679754500AA4CC2 /* PlaceListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListCell.swift; sourceTree = "<group>"; };
 		40BB8F5726796BC7009B8841 /* NearestPlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestPlacesViewController.swift; sourceTree = "<group>"; };
 		40C10947267A628F00264062 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		40CF48E826A4A4020054DD6C /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		40CF48EB26A4B6BB0054DD6C /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
-		40D1289826A8866D0037C506 /* PlaceListTableViewDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListTableViewDataModel.swift; sourceTree = "<group>"; };
+		40D1289826A8866D0037C506 /* PlaceListDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListDataModel.swift; sourceTree = "<group>"; };
 		40D3EEA6264545AB005E2F0F /* Trash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trash.swift; sourceTree = "<group>"; };
 		40D3EEAB2645C5CE005E2F0F /* PlaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceController.swift; sourceTree = "<group>"; };
 		40D3EEB02645C729005E2F0F /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
@@ -141,7 +137,7 @@
 		40E7D9ED26A5AE1900DC94C2 /* FavoritePlacesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritePlacesView.xib; sourceTree = "<group>"; };
 		40E7D9FB26A5AEDE00DC94C2 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		40E982D8264349A4007D14D6 /* OtherExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherExtensions.swift; sourceTree = "<group>"; };
-		40E982E6264400BC007D14D6 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		40E982E6264400BC007D14D6 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		58BE727BCED534A3751BCDD0 /* Pods-Places.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Places.debug.xcconfig"; path = "Target Support Files/Pods-Places/Pods-Places.debug.xcconfig"; sourceTree = "<group>"; };
 		BB95DCC09A0ED131E58E26D2 /* Pods_Places.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Places.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -181,10 +177,10 @@
 			isa = PBXGroup;
 			children = (
 				40E7D9E426A5ACDE00DC94C2 /* PlaceListTableView.xib */,
-				40B6EAEE267973D500AA4CC2 /* PlaceListTableViewController.swift */,
+				40B6EAEE267973D500AA4CC2 /* PlaceListViewController.swift */,
+				40B6EAF42679754500AA4CC2 /* PlaceListCell.swift */,
 				40B6EAF1267974B200AA4CC2 /* PlaceListViewModel.swift */,
-				40B6EAF42679754500AA4CC2 /* PlaceTableViewCell.swift */,
-				40D1289826A8866D0037C506 /* PlaceListTableViewDataModel.swift */,
+				40D1289826A8866D0037C506 /* PlaceListDataModel.swift */,
 			);
 			path = PlaceList;
 			sourceTree = "<group>";
@@ -200,6 +196,20 @@
 				40D3EEA6264545AB005E2F0F /* Trash.swift */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		406341F326A8B8790049855D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				40978D9B26544E3A001E1DFC /* PlaceImageTableViewCell.swift */,
+				408C38BB26568A11009832FD /* PlaceLabelTableViewCell.swift */,
+				408C38C62657728C009832FD /* PlaceMapTableViewCell.swift */,
+				408C38C326576797009832FD /* PlaceDescriptionTableViewCell.swift */,
+				408C38BE26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift */,
+				407DCD76265A590B005ADB16 /* PlaceTableViewHeader.swift */,
+				408C38D2265839DD009832FD /* PlaceTableViewFooter.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		406660B8263D21FF001BEF66 = {
@@ -257,11 +267,8 @@
 		407DCD79265A5925005ADB16 /* TableViews */ = {
 			isa = PBXGroup;
 			children = (
-				408D5B492645DD1E00B4930F /* Cells */,
 				40978DAA265671DD001E1DFC /* Config */,
-				407DCD76265A590B005ADB16 /* PlaceTableViewHeader.swift */,
-				408C38D2265839DD009832FD /* PlaceTableViewFooter.swift */,
-				408C38C92657E608009832FD /* PlaceTableViewDirector.swift */,
+				408D5B492645DD1E00B4930F /* Cells */,
 			);
 			path = TableViews;
 			sourceTree = "<group>";
@@ -269,11 +276,6 @@
 		408D5B492645DD1E00B4930F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				40978D9B26544E3A001E1DFC /* PlaceImageTableViewCell.swift */,
-				408C38BB26568A11009832FD /* PlaceLabelTableViewCell.swift */,
-				408C38C62657728C009832FD /* PlaceMapTableViewCell.swift */,
-				408C38C326576797009832FD /* PlaceDescriptionTableViewCell.swift */,
-				408C38BE26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -318,10 +320,11 @@
 		40A4160B266A321A005ADBBD /* Place */ = {
 			isa = PBXGroup;
 			children = (
+				406341F326A8B8790049855D /* Cells */,
 				40978DA12655AB80001E1DFC /* PlaceViewController.swift */,
 				40978D9E2655AAC9001E1DFC /* Place.storyboard */,
 				40978DA72655BAFD001E1DFC /* PlaceViewModel.swift */,
-				407DCD79265A5925005ADB16 /* TableViews */,
+				408C38C92657E608009832FD /* PlaceTableViewDirector.swift */,
 			);
 			path = Place;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 		40B650C326A7724700BB0396 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				407DCD79265A5925005ADB16 /* TableViews */,
 				400E820626A57E2100164CB3 /* Buttons.swift */,
 			);
 			path = Views;
@@ -365,11 +369,9 @@
 			isa = PBXGroup;
 			children = (
 				402C3C2B26A5B1E200E73581 /* OnboardingView.xib */,
-				40E982E6264400BC007D14D6 /* OnboardingViewController.swift */,
-				401ACA2B265F6C8500AEADE2 /* OnboardingFirstViewController.swift */,
-				401ACA2E265F6CC600AEADE2 /* OnboardingSecondViewController.swift */,
-				401ACA31265F6CEC00AEADE2 /* OnboardingThirdViewController.swift */,
-				400E820A26A57F4B00164CB3 /* OnboardingCoordinator.swift */,
+				40E982E6264400BC007D14D6 /* OnboardingPageViewController.swift */,
+				4082209D26AA039800A927CA /* OnboardingViewController.swift */,
+				408220A026AA045600A927CA /* OnboardingViewModel.swift */,
 			);
 			path = Obnoarding;
 			sourceTree = "<group>";
@@ -590,24 +592,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				40AE8B9826A74FE1004825AF /* SignInViewController.swift in Sources */,
-				40E982E7264400BC007D14D6 /* OnboardingViewController.swift in Sources */,
+				40E982E7264400BC007D14D6 /* OnboardingPageViewController.swift in Sources */,
 				403B5A52266A47CA00421470 /* UIColor.swift in Sources */,
 				40978DA82655BAFD001E1DFC /* PlaceViewModel.swift in Sources */,
-				400E820B26A57F4B00164CB3 /* OnboardingCoordinator.swift in Sources */,
-				40D1289926A8866D0037C506 /* PlaceListTableViewDataModel.swift in Sources */,
-				401ACA2F265F6CC600AEADE2 /* OnboardingSecondViewController.swift in Sources */,
+				40D1289926A8866D0037C506 /* PlaceListDataModel.swift in Sources */,
 				4028E52626617BF800765DC6 /* ProfileViewController.swift in Sources */,
 				40CF48E926A4A4020054DD6C /* Assets.swift in Sources */,
 				40539CC526A607EC00127DE5 /* Layers.swift in Sources */,
 				407DCD77265A590B005ADB16 /* PlaceTableViewHeader.swift in Sources */,
 				408C38BC26568A11009832FD /* PlaceLabelTableViewCell.swift in Sources */,
-				401ACA32265F6CEC00AEADE2 /* OnboardingThirdViewController.swift in Sources */,
 				40D3EEB12645C729005E2F0F /* Place.swift in Sources */,
 				401ACA3B265F86BE00AEADE2 /* AppController.swift in Sources */,
 				40625A36265BB4B100E0E744 /* Settings.swift in Sources */,
 				40BB8F5826796BC7009B8841 /* NearestPlacesViewController.swift in Sources */,
 				40978DA22655AB80001E1DFC /* PlaceViewController.swift in Sources */,
 				404DB6EE266CC0A6002464DB /* UIFont.swift in Sources */,
+				408220A126AA045600A927CA /* OnboardingViewModel.swift in Sources */,
 				406660DB263D4A8A001BEF66 /* Config.swift in Sources */,
 				408C38C426576797009832FD /* PlaceDescriptionTableViewCell.swift in Sources */,
 				406660C5263D21FF001BEF66 /* AppDelegate.swift in Sources */,
@@ -615,17 +615,17 @@
 				40D3EEA7264545AB005E2F0F /* Trash.swift in Sources */,
 				408C38D3265839DD009832FD /* PlaceTableViewFooter.swift in Sources */,
 				401960E6266A9B09004765F7 /* Log.swift in Sources */,
-				40B6EAEF267973D500AA4CC2 /* PlaceListTableViewController.swift in Sources */,
+				40B6EAEF267973D500AA4CC2 /* PlaceListViewController.swift in Sources */,
 				40B6EAF2267974B200AA4CC2 /* PlaceListViewModel.swift in Sources */,
 				4070918C26829B0900AF410F /* UIImage.swift in Sources */,
 				407DCD71265859F4005ADB16 /* ConfigurableView.swift in Sources */,
 				407D8485265DB72200F45C22 /* MainTabBarViewController.swift in Sources */,
 				408C38B8265685E2009832FD /* CellConfigurator.swift in Sources */,
-				40B6EAF52679754500AA4CC2 /* PlaceTableViewCell.swift in Sources */,
-				401ACA2C265F6C8500AEADE2 /* OnboardingFirstViewController.swift in Sources */,
+				40B6EAF52679754500AA4CC2 /* PlaceListCell.swift in Sources */,
 				408C38CD2657E92C009832FD /* CellAction.swift in Sources */,
 				408C38C72657728C009832FD /* PlaceMapTableViewCell.swift in Sources */,
 				406660C7263D21FF001BEF66 /* SceneDelegate.swift in Sources */,
+				4082209E26AA039800A927CA /* OnboardingViewController.swift in Sources */,
 				407DCD7426585AEC005ADB16 /* ViewConfigurator.swift in Sources */,
 				400E820726A57E2100164CB3 /* Buttons.swift in Sources */,
 				408C38BF26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift in Sources */,

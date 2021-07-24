@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             didFinishLaunchingWithOptions: launchOptions
         )
         
+        window?.tintColor = Asset.foreground0.color
+        
         return true
     }
     
@@ -63,9 +65,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     // MARK: - Application Appearance
 
-    private func configureApplicationAppearance() {
-      UINavigationBar.appearance().tintColor = .red
-      UITabBar.appearance().tintColor = .red
-    }
+//    private func configureApplicationAppearance() {
+//      UINavigationBar.appearance().tintColor = .red
+//      UITabBar.appearance().tintColor = .red
+//    }
     
 }

@@ -10,16 +10,55 @@ import UIKit
 class PlaceViewController: UIViewController {
     
     // MARK: - Public
-    var place: Place!
-        
-    // MARK: - Private
+    var place: Place
     struct Strings {
         static let backBarButtonTitle = "<<<"
         static let playImageName = "play.fill"
         static let recordImageName = "record.circle"
     }
     
+    init(place: Place) {
+        self.place = place
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        place = Place.empty
+        super.init(coder: coder)
+        title = L10n.App.name
+    }
+    
+    override func viewDidLoad() {
+        
+        viewModel = PlaceViewModel(place: place)
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 44
+        tableView.isUserInteractionEnabled = true
+        view.isUserInteractionEnabled = true
+        
+        configureBars()
+        
+        addHandlers()
+        view.addGestureRecognizer(swipeGesture)
+//        tableView.addGestureRecognizer(swipeGesture)
+//        tableView.panGestureRecognizer.require(toFail: swipeGesture)
+        
+        super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.removeGestureRecognizer(swipeGesture)
+    }
+    
+    // MARK: - Private
     @IBOutlet private var tableView: UITableView!
+    private lazy var swipeGesture: UIScreenEdgePanGestureRecognizer = {
+        let gest = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(swiped))
+        gest.edges = .left
+        gest.delegate = self
+        return gest
+    }()
     
     private var viewModel: PlaceViewModel! = nil
     private lazy var tableDirector: PlaceTableViewDirector = {
@@ -32,40 +71,17 @@ class PlaceViewController: UIViewController {
     private lazy var playBarButtonItem: UIBarButtonItem = {
         let image = Asset.play.image
         let item = UIBarButtonItem(image: image, style: .done, target: self, action: #selector(playTapped))
-        item.tintColor = Asset.lightText.color
         return item
     }()
-    
-    // MARK: - Events and actions
-    override func viewDidLoad() {
-        
-        title = "Place"
-        
-        viewModel = PlaceViewModel(place: place)
-        
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 44
-        
-        configureBar()
-        
-        addHandlers()
-        
-        super.viewDidLoad()
-    }
     
     private func addHandlers() {
         tableDirector.configureHandlers()
     }
     
-    private func configureBar() {
+    private func configureBars() {
         
         navigationController?.isToolbarHidden = false
-        navigationController?.toolbar.barTintColor = Asset.background.color
-        
-        let backItem = UIBarButtonItem(title: Strings.backBarButtonTitle, style: .done, target: self, action: #selector(backTapped))
-        navigationItem.leftBarButtonItem = backItem
-        
-        navigationItem.leftBarButtonItem?.tintColor = Asset.lightText.color        
+        tabBarItem.isEnabled = false
                 
         let items = [
 //            UIBarButtonItem(systemItem: .flexibleSpace),
@@ -76,25 +92,33 @@ class PlaceViewController: UIViewController {
                             action: #selector(recordTapped))
         ]
         setToolbarItems(items, animated: true)
-        
-//        navigationController?.toolbar.setBackgroundImage(UIImage(), forToolbarPosition: .any, barMetrics: .default)
-//        navigationController?.toolbar.setShadowImage(UIImage(), forToolbarPosition: .any)
-        
     }
     
     @objc
-    func playTapped() {
+    private func swiped(_ gesture: UISwipeGestureRecognizer) {
+        print("swiped")
+    }    
+    
+    @objc
+    private func playTapped() {
         print("Play sound")
     }
     
     @objc
-    func recordTapped() {
+    private func recordTapped() {
         print("Record")
     }
     
     @objc
-    func backTapped(sender: Any?) {
+    private func backTapped(sender: Any?) {
         navigationController?.popViewController(animated: true)
+    }
+}
+
+extension PlaceViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
     
 }

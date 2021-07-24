@@ -1,18 +1,16 @@
 "App.name" = "Place";
 "Onboarding.Buttons.futher1" = "Далее (1 из 3)";
 "Onboarding.Buttons.futher2" = "Далее (2 из 3)";
-"Onboarding.welcome" = "Добро пожаловать!";
-"Onboarding.shareImaginations" = "Вдохновляйтесь и вдохновляйте! Слушайте аудио, смотрите фото и читайте текстовые эссе.";
-"Onboarding.welcomeDescription" = "
-Мы рады приветствовать Вас в Панораме.;
-Здесь мы делимся собственными мыслями и воспоминаниями о любимых местах города.
-";
-"Onboarding.loginDescription" = "Login is needed for...";
 "Onboarding.Buttons.Later" = "Начать без регистрации";
 "Onboarding.Buttons.Skip" = "Пропустить";
-"Onboarding.welcomeLogin" = "Авторизация";
-"Onboarding.loginDescription" = "Зарегистрируйтесь или войдите в систему под собственным именем. Это позволит Вам оставлять собственные заметки.";
+"Onboarding.onboardngTitle1" = "Welcome";
+"Onboarding.onboardngTitle2" = "Look, learn and share";
+"Onboarding.onboardngTitle3" = "Join to us";
+"Onboarding.onboardngText1" = "We're glad to see you at Place. Here are we're sharing thoughts, dreams and imaginations about favorite Saint-petersburg places";
+"Onboarding.onboardngText2" = "Share your imaginations! Listen and share audio, text and pictures with other";
+"Onboarding.onboardngText3" = "Регистрация позволит Вам оставлять эссе и предложения о создании новых мест.";
 /* Authentication */
+"Auth.title" = "Регистрация позволит Вам оставлять эссе и предложения о создании новых мест.";
 "Auth.usernamePlaceholder" = "Имя / Почта";
 "Auth.passwordPlaceholder" = "Пароль";
 "Auth.Buttons.signUp" = "Регистрация";
