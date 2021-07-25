@@ -12,17 +12,11 @@ import CoreGraphics
 class MainTabBarViewController: UITabBarController {
     
     // MARK: - Public vars and properties
+    private var swipeDirection: UISwipeGestureRecognizer.Direction?
     
     // MARK: - Public functions
     required init?(coder: NSCoder) {
-        super.init(coder: coder)
-//        UITabBar.appearance().barTintColor = Asset.background1.color
-//        UITabBar.appearance().backgroundColor = Asset.background2.color
-//        UITabBar.appearance().backgroundColor = .clear
-        tabBar.barTintColor = Asset.background2.color
-        tabBar.unselectedItemTintColor = Asset.background1.color
-        tabBar.backgroundColor = Asset.background2.color
-//        tabBar.backgroundColor = .clear
+        super.init(coder: coder)        
     }
     
     override func viewDidLoad() {
@@ -30,13 +24,10 @@ class MainTabBarViewController: UITabBarController {
         super.viewDidLoad()
         
         view.tintColor = Asset.foreground0.color
-
         title = L10n.App.name
             
         delegate = self
         setViewControllers(items, animated: true)
-        selectedIndex = 0
-        tabBar.selectedItem
         
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         leftSwipe.direction = .left
@@ -46,11 +37,19 @@ class MainTabBarViewController: UITabBarController {
         rightSwipe.direction = .right
         self.view.addGestureRecognizer(rightSwipe)
         
+        self.navigationController?.isNavigationBarHidden = true
+                
+        // remove default border
+        tabBar.frame.size.width = self.view.frame.width + 4
+        tabBar.frame.origin.x = -2
+        
+        UITabBar.appearance().tintColor = Asset.foreground0.color
+        selectedIndex = 0
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,12 +74,34 @@ class MainTabBarViewController: UITabBarController {
     
     private let appController = AppController.shared
     
-    private lazy var items: [UIViewController] = [
-        UINavigationController(rootViewController: PlaceListViewController()),
-        UINavigationController(rootViewController: NearestPlacesViewController()),
-        UINavigationController(rootViewController: FavoritePlacesViewController()),
-        UINavigationController(rootViewController: ProfileViewController())
-    ]
+    private lazy var items: [UIViewController] = {
+        var items = [UIViewController]()
+        var vc: UINavigationController
+        vc = UINavigationController(rootViewController: PlaceListViewController())
+        vc.isToolbarHidden = true
+        vc.hidesBarsOnTap = true
+        vc.isToolbarHidden = true
+        vc.hidesBarsWhenKeyboardAppears = true
+        vc.setNavigationBarHidden(true, animated: false)
+        items.append(vc)
+        
+        vc = UINavigationController(rootViewController: FavoritePlacesViewController())
+        vc.isToolbarHidden = true
+        vc.hidesBarsOnTap = true
+        vc.isToolbarHidden = true
+        vc.hidesBarsWhenKeyboardAppears = true
+        vc.setNavigationBarHidden(true, animated: false)
+        items.append(vc)
+        
+        vc = UINavigationController(rootViewController: ProfileViewController())
+        vc.isToolbarHidden = true
+        vc.hidesBarsOnTap = true
+        vc.isToolbarHidden = true
+        vc.hidesBarsWhenKeyboardAppears = true
+        vc.setNavigationBarHidden(true, animated: false)
+        items.append(vc)
+        return items
+    }()
     
     @objc
     private func obnoardingDismissed() {
@@ -88,7 +109,20 @@ class MainTabBarViewController: UITabBarController {
         appController.isFirstLaunch = false
     }
     
-    private var swipeDirection: UISwipeGestureRecognizer.Direction?
+//    func setTabBarSelectionColor(item: UITabBarItem) {
+//        if let items = tabBar.items {
+//            for (index, tabBarItem) in items.enumerated() where item == tabBarItem {
+//                let view = self.tabBar.subviews[index+1]
+//                view.backgroundColor = .black // Selection color
+//            }
+//        }
+//    }
+//
+//    func clearTabBarSelectionColor() {
+//        for view in tabBar.subviews {
+//            view.backgroundColor = UIColor.clear
+//        }
+//    }
     
     @objc
     private func handleSwipes(_ sender: UISwipeGestureRecognizer) {
@@ -110,31 +144,32 @@ class MainTabBarViewController: UITabBarController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    fileprivate func configureViewController(vc: UIViewController) -> UIViewController {
-          
-        vc.tabBarItem.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: UIColor.bxSecondaryText1],
-            for: .normal)
-        
-        vc.tabBarItem.setTitleTextAttributes(
-            [NSAttributedString.Key.foregroundColor: UIColor.bxText1],
-            for: .selected)
-        
-        return vc
-    }
-    
 }
 // UITabBarControllerDelegate
 extension MainTabBarViewController: UITabBarControllerDelegate {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        let numberOfItems = items.count
-        let tabBarItemSize = CGSize(width: tabBar.frame.width / CGFloat(numberOfItems), height: tabBar.frame.height)
-        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: Asset.background0.color,
-                                                                size: tabBarItemSize)
+//        let numberOfItems = items.count
+//        let tabBarItemSize = CGSize(width: tabBar.frame.width / CGFloat(numberOfItems), height: tabBar.frame.height)
+//        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: Asset.background0.color,
+//                                                                size: tabBarItemSize)
         
-//        tabBar.frame.size.width = self.view.frame.width + 4
-//        tabBar.frame.origin.x = -2
+//        clearTabBarSelectionColor()
+//        setTabBarSelectionColor(item: item)
+        
+        tabBar.frame.size.width = self.view.frame.width + 4
+        tabBar.frame.origin.x = -2
+        
+        let numberOfItems = CGFloat(items.count)
+        let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems,
+                                    height: tabBar.frame.height)
+        let color = Asset.background2.color
+        
+        let image = UIImage.imageWithColor(color: color,
+                                           size: tabBarItemSize)
+        let resImage = image.resizableImage(withCapInsets: UIEdgeInsets.zero)
+        tabBar.selectionIndicatorImage = resImage
+        
     }
     
     func tabBarController(_ tabBarController: UITabBarController,

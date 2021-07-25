@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "arrow.right.pdf",
+      "filename" : "building.columns.fill.pdf",
       "idiom" : "universal"
     }
   ],
@@ -10,7 +10,6 @@
     "version" : 1
   },
   "properties" : {
-    "auto-scaling" : "auto",
     "preserves-vector-representation" : true
   }
 }

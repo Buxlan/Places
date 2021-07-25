@@ -20,6 +20,7 @@
     "version" : 1
   },
   "properties" : {
+    "auto-scaling" : "auto",
     "preserves-vector-representation" : true
   }
 }

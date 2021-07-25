@@ -32,7 +32,7 @@ class PlaceListViewController: UIViewController {
         view.allowsMultipleSelectionDuringEditing = false
         view.translatesAutoresizingMaskIntoConstraints = false
         view.rowHeight = UITableView.automaticDimension
-        view.estimatedRowHeight = UITableView.automaticDimension        
+        view.estimatedRowHeight = UITableView.automaticDimension
         view.register(PlaceListCell.self,
                            forCellReuseIdentifier: PlaceListCell.reuseIdentifier)
         
@@ -40,17 +40,22 @@ class PlaceListViewController: UIViewController {
         return view
     }()
     
+    private lazy var flexibleView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = Asset.foreground1.color
+        return view
+    }()
+    
     // MARK: - Init, Events and actions
     init() {
         super.init(nibName: nil, bundle: nil)
         configureTabBarItem()
-        configureBars()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         configureTabBarItem()
-        configureBars()
     }
         
     override func viewDidLoad() {
@@ -61,6 +66,7 @@ class PlaceListViewController: UIViewController {
         
         view.addSubview(tableView)
         view.addSubview(spinner)
+        view.addSubview(flexibleView)
         
         view.tintColor = Asset.foreground0.color
         view.backgroundColor = Asset.background0.color
@@ -75,7 +81,11 @@ class PlaceListViewController: UIViewController {
             tableView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor),
             tableView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor),
             spinner.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            spinner.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor)
+            spinner.centerYAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor),
+            flexibleView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            flexibleView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            flexibleView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor),
+            flexibleView.bottomAnchor.constraint(equalTo: view.bottomAnchor)            
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -93,18 +103,24 @@ class PlaceListViewController: UIViewController {
     }
     
     private func configureTabBarItem() {
+        
         tabBarItem.title = L10n.PlacesList.title
-        let image = Asset.buildingColumns.image.resizeImage(to: 30,
+        let image = Asset.buildingColumns.image.resizeImage(to: 24,
                                                             aspectRatio: .current,
                                                             with: view.tintColor)
         tabBarItem.image = image
+        let selImage = Asset.buildingColumnsFill.image.resizeImage(to: 26,
+                                                                   aspectRatio: .current,
+                                                                   with: view.tintColor)
+        tabBarItem.selectedImage = selImage
         title = L10n.App.name
-    }
-    
-    private func configureBars() {
-        navigationController?.title = title
-        navigationController?.hidesBarsOnTap = false
-        navigationController?.isToolbarHidden = true
+        
+//        let unselectedItem = [NSAttributedString.Key.foregroundColor: UIColor.white]
+//        let selectedItem = [NSAttributedString.Key.foregroundColor: UIColor.purple]
+//
+//        tabBarItem.setTitleTextAttributes(unselectedItem, for: .normal)
+//        tabBarItem.setTitleTextAttributes(selectedItem, for: .selected)
+        
     }
     
 //    @objc
@@ -132,14 +148,6 @@ extension PlaceListViewController: UITableViewDelegate {
             vc.modalPresentationStyle = .pageSheet
             present(vc, animated: true)
         }
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
     }
     
 }

@@ -28,6 +28,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window?.tintColor = Asset.foreground0.color
         
+        UITabBar.appearance().backgroundColor = Asset.background2.color
+        UITabBar.appearance().unselectedItemTintColor = Asset.foreground0.color
+        UITabBar.appearance().tintColor = Asset.foreground3.color
+        UINavigationBar.appearance().backgroundColor = Asset.background2.color
+        UINavigationBar.appearance().tintColor = Asset.foreground1.color
+        UINavigationBar.appearance().barTintColor = Asset.background1.color
+        
+        let attr = [NSAttributedString.Key.foregroundColor: Asset.foreground1.color]
+        UITabBarItem.appearance().setTitleTextAttributes(attr, for: .selected)
+        let attr2 = [NSAttributedString.Key.foregroundColor: Asset.foreground0.color]
+        UITabBarItem.appearance().setTitleTextAttributes(attr2, for: .normal)
+        
         return true
     }
     

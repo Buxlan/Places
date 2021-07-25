@@ -10,14 +10,15 @@ import UIKit
 class PlaceListCell: UITableViewCell, ConfigurableCell {
     
     var isInterfaceConfigured: Bool = false
-    func configureInterface() {
-        contentView.addSubview(placeLabel)
-        contentView.addSubview(photoImageView)
-        configureConstraints()
-        isInterfaceConfigured = true
-    }
     
     private lazy var placeLabel: UILabel = {
+        let view = UILabel()
+        view.backgroundColor = Asset.background0.color
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var descriptionLabel: UILabel = {
         let view = UILabel()
         view.backgroundColor = Asset.background1.color
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -26,9 +27,13 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
     
     private lazy var photoImageView: UIImageView = {
         let view = UIImageView()
-        view.backgroundColor = Asset.background1.color
-        view.contentMode = .scaleAspectFit
+        view.layer.cornerRadius = 50
+        view.clipsToBounds = true
+//        view.image = Asset.lock.image//.resizeImage(to: 200, aspectRatio: .square, with: .red)
+        view.backgroundColor = Asset.foreground0.color
+        view.contentMode = .scaleToFill
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.clipsToBounds = true
         return view
     }()
     
@@ -48,19 +53,39 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
 //        Log(text: "init with coder", object: nil)
     }
     
+    func configureInterface() {
+        contentView.backgroundColor = Asset.background0.color
+        contentView.addSubview(placeLabel)
+        contentView.addSubview(photoImageView)
+        contentView.addSubview(descriptionLabel)
+        configureConstraints()
+        isInterfaceConfigured = true
+    }
+    
     internal func configureConstraints() {
         let constraints: [NSLayoutConstraint] = [
             placeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
                                                 constant: 32),
             placeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             placeLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            placeLabel.bottomAnchor.constraint(greaterThanOrEqualTo: placeLabel.topAnchor),
+//            placeLabel.bottomAnchor.constraint(greaterThanOrEqualTo: placeLabel.topAnchor,
+//                                               constant: 44),
+            placeLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
             
             photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             photoImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             photoImageView.topAnchor.constraint(equalTo: placeLabel.bottomAnchor,
                                            constant: 8),
-            photoImageView.heightAnchor.constraint(equalTo: photoImageView.widthAnchor, multiplier: 1.3)
+            photoImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1.0),
+            
+            placeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
+                                                constant: 32),
+            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: photoImageView.bottomAnchor, constant: 8),
+            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+//            placeLabel.bottomAnchor.constraint(greaterThanOrEqualTo: placeLabel.topAnchor,
+//                                               constant: 44),
+            descriptionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40)
             
         ]
         NSLayoutConstraint.activate(constraints)
@@ -71,9 +96,12 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
         
         placeLabel.text = data.title
         placeLabel.font = UIFont.bxControlTitle
-        photoImageView.image = data.image.withRenderingMode(.alwaysOriginal)
-        setNeedsLayout()
-//        layoutIfNeeded()
+        descriptionLabel.text = data.title
+        descriptionLabel.font = UIFont.bxControlTitle
+//        photoImageView.image = data.image.withRenderingMode(.alwaysOriginal)
+//        photoImageView.setNeedsLayout()
+//        contentView.setNeedsLayout()
+//        contentView.layoutIfNeeded()
         
     }
 }
@@ -156,7 +184,7 @@ class PlaceContentView: UIView {
     private lazy var descriptionView: UILabel = {
         let view = UILabel(frame: .zero)
         view.font = UIFont.bxCaption
-        view.textColor = .bxSecondaryText1
+        view.textColor = .bxSecondaryText
         view.numberOfLines = 5        
         
         view.translatesAutoresizingMaskIntoConstraints = false

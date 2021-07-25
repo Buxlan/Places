@@ -106,7 +106,10 @@ extension PlaceListViewModel: UITableViewDataSource {
         if item.isInterfaceConfigured == false {
             item.configureInterface(cell: cell)
         }
-        item.configure(cell: cell)        
+        item.configure(cell: cell)
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        cell.clipsToBounds = true
         return cell
     }
 

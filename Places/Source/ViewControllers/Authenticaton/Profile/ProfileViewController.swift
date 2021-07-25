@@ -13,8 +13,14 @@ class ProfileViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         // Tab bar configure
         tabBarItem.title = L10n.Profile.title
-        let image = Asset.person.image.resizeImage(to: 30, aspectRatio: .current, with: view.tintColor)
+        let image = Asset.person.image.resizeImage(to: 24,
+                                                   aspectRatio: .current,
+                                                   with: view.tintColor)
+        let selImage = Asset.person.image.resizeImage(to: 26,
+                                                      aspectRatio: .current,
+                                                      with: view.tintColor)
         tabBarItem.image = image
+        tabBarItem.selectedImage = selImage
     }
     
     required init?(coder: NSCoder) {
