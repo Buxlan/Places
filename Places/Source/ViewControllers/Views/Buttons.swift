@@ -16,11 +16,11 @@ class ButtonWithShadow: UIButton {
     init(title: String, image: UIImage?) {
         super.init(frame: .zero)
         
-        setTitle(title, for: .normal)              
+        setTitle(title, for: .normal)
         setImage(image, for: .normal)
         
-        setTitleColor(.bxText0, for: .normal)
-        backgroundColor = Asset.background1.color
+        setTitleColor(Asset.other0.color, for: .normal)
+        backgroundColor = Asset.other0.color
         
         titleLabel?.font = .preferredFont(forTextStyle: .headline)
         
@@ -55,7 +55,7 @@ class OnboardingSkipButton: UIButton {
         self.setTitle(title, for: .normal)
         self.setImage(image, for: .normal)
         
-        self.setTitleColor(Asset.foreground0.color, for: .normal)
+        self.setTitleColor(Asset.other1.color, for: .normal)
         self.backgroundColor = .clear
         
         self.titleLabel?.font = .preferredFont(forTextStyle: .headline)

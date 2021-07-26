@@ -41,7 +41,7 @@ extension PlaceTableViewHeader {
         
         isUserInteractionEnabled = true
         
-        backgroundColor = Asset.background0.color
+        backgroundColor = Asset.other2.color
         
         self.addSubview(label)
         self.addSubview(imageView)

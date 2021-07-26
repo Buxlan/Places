@@ -23,7 +23,7 @@ class MainTabBarViewController: UITabBarController {
         
         super.viewDidLoad()
         
-        view.tintColor = Asset.foreground0.color
+        view.tintColor = Asset.other0.color
         title = L10n.App.name
             
         delegate = self
@@ -43,7 +43,7 @@ class MainTabBarViewController: UITabBarController {
         tabBar.frame.size.width = self.view.frame.width + 4
         tabBar.frame.origin.x = -2
         
-        UITabBar.appearance().tintColor = Asset.foreground0.color
+        UITabBar.appearance().tintColor = Asset.other0.color
         selectedIndex = 0
         
     }
@@ -79,7 +79,15 @@ class MainTabBarViewController: UITabBarController {
         var vc: UINavigationController
         vc = UINavigationController(rootViewController: PlaceListViewController())
         vc.isToolbarHidden = true
-        vc.hidesBarsOnTap = true
+        vc.hidesBarsOnTap = false
+        vc.isToolbarHidden = true
+        vc.hidesBarsWhenKeyboardAppears = true
+        vc.setNavigationBarHidden(true, animated: false)
+        items.append(vc)
+        
+        vc = UINavigationController(rootViewController: AuthorListViewController())
+        vc.isToolbarHidden = true
+        vc.hidesBarsOnTap = false
         vc.isToolbarHidden = true
         vc.hidesBarsWhenKeyboardAppears = true
         vc.setNavigationBarHidden(true, animated: false)
@@ -87,7 +95,7 @@ class MainTabBarViewController: UITabBarController {
         
         vc = UINavigationController(rootViewController: FavoritePlacesViewController())
         vc.isToolbarHidden = true
-        vc.hidesBarsOnTap = true
+        vc.hidesBarsOnTap = false
         vc.isToolbarHidden = true
         vc.hidesBarsWhenKeyboardAppears = true
         vc.setNavigationBarHidden(true, animated: false)
@@ -95,7 +103,7 @@ class MainTabBarViewController: UITabBarController {
         
         vc = UINavigationController(rootViewController: ProfileViewController())
         vc.isToolbarHidden = true
-        vc.hidesBarsOnTap = true
+        vc.hidesBarsOnTap = false
         vc.isToolbarHidden = true
         vc.hidesBarsWhenKeyboardAppears = true
         vc.setNavigationBarHidden(true, animated: false)
@@ -108,21 +116,6 @@ class MainTabBarViewController: UITabBarController {
         Log(text: "onboarding dismissed", object: self)
         appController.isFirstLaunch = false
     }
-    
-//    func setTabBarSelectionColor(item: UITabBarItem) {
-//        if let items = tabBar.items {
-//            for (index, tabBarItem) in items.enumerated() where item == tabBarItem {
-//                let view = self.tabBar.subviews[index+1]
-//                view.backgroundColor = .black // Selection color
-//            }
-//        }
-//    }
-//
-//    func clearTabBarSelectionColor() {
-//        for view in tabBar.subviews {
-//            view.backgroundColor = UIColor.clear
-//        }
-//    }
     
     @objc
     private func handleSwipes(_ sender: UISwipeGestureRecognizer) {
@@ -163,7 +156,7 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
         let numberOfItems = CGFloat(items.count)
         let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems,
                                     height: tabBar.frame.height)
-        let color = Asset.background2.color
+        let color = Asset.other1.color
         
         let image = UIImage.imageWithColor(color: color,
                                            size: tabBarItemSize)

@@ -1,17 +1,25 @@
 //
-//  PlaceListTableViewController.swift
+//  ReviewListViewController.swift
 //  Places
 //
-//  Created by  Buxlan on 6/16/21.
+//  Created by  Buxlan on 7/26/21.
 //
 
 import UIKit
 
-class PlaceListViewController: UIViewController {
+class ReviewListViewController: UIViewController {
     
     // MARK: - Public
         
     // MARK: - Private
+    private var data: Place {
+        didSet {
+            viewModel.update()
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
     private var viewModel: PlaceListViewModel = PlaceListViewModel()
     
     private lazy var spinner: UIActivityIndicatorView = {
@@ -42,11 +50,19 @@ class PlaceListViewController: UIViewController {
     
     // MARK: - Init, Events and actions
     init() {
+        data = Place.empty
         super.init(nibName: nil, bundle: nil)
         configureTabBarItem()
+        configureBars()
+    }
+    
+    convenience init(data: Place) {
+        self.init()
+        self.data = data
     }
     
     required init?(coder: NSCoder) {
+        data = Place.empty
         super.init(coder: coder)
         configureTabBarItem()
     }
@@ -98,21 +114,21 @@ class PlaceListViewController: UIViewController {
     
     private func configureBars() {
         navigationController?.setToolbarHidden(true, animated: false)
-        navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
-    
 }
 
 // Delegate
-extension PlaceListViewController: UITableViewDelegate {
+extension ReviewListViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = viewModel.item(at: indexPath)
-        let vc = ReviewListViewController(data: item)
-        vc.modalPresentationStyle = .fullScreen
-        vc.modalTransitionStyle = .flipHorizontal
-        navigationController?.pushViewController(vc, animated: true)
+        if let vc = UIViewController.instantiateViewController(withIdentifier: .place) as? PlaceViewController {
+            vc.place = item
+            vc.modalPresentationStyle = .pageSheet
+            present(vc, animated: true)
+        }
     }
     
 }

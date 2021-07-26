@@ -19,7 +19,7 @@ class OnboardingViewController: UIViewController {
         ]
         let attrStr = NSAttributedString(string: text, attributes: attr)
         view.attributedText = attrStr
-        view.textColor = .bxText1
+        view.textColor = Asset.other0.color
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 1
         view.font = .bxControlTitle
@@ -41,12 +41,12 @@ class OnboardingViewController: UIViewController {
         view.layer.shadowRadius = 50
         view.layer.shadowOpacity = 0.4
         view.layer.shadowOffset = CGSize(width: 12, height: 12)
-        view.layer.shadowColor = UIColor.bxText1.cgColor
+        view.layer.shadowColor = Asset.other0.color.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
         
         let imageView = UIImageView()
         imageView.image = viewModel.image
-        imageView.backgroundColor = Asset.background0.color
+        imageView.backgroundColor = Asset.other1.color
         imageView.layer.cornerRadius = 50
         imageView.clipsToBounds = true
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -59,7 +59,7 @@ class OnboardingViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.text = viewModel.title
-        view.textColor = .bxText1
+        view.textColor = Asset.other0.color
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 1
         view.font = .bxControlTitle
@@ -70,7 +70,7 @@ class OnboardingViewController: UIViewController {
         
         let view = UILabel()
         view.text = viewModel.text
-        view.textColor = .bxText1
+        view.textColor = Asset.other0.color
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 0
         view.autoresizingMask = [.flexibleWidth, .flexibleBottomMargin]
@@ -110,8 +110,8 @@ class OnboardingViewController: UIViewController {
         view.addSubview(textLabel)
         view.addSubview(buttonSkip)
                 
-        view.tintColor = Asset.foreground0.color
-        view.backgroundColor = Asset.background0.color
+        view.tintColor = Asset.other0.color
+        view.backgroundColor = Asset.other1.color
         buttonSkip.isHidden = viewModel.isButtonSkipEnabled ? false : true
         
         configureConstraints()

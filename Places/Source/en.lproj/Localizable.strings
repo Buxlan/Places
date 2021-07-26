@@ -18,6 +18,7 @@
 /* Main tab bar */
 /* Place list */
 "PlacesList.title" = "Top";
+"PlacesList.toReviews" = "Go to reviews";
 /* Nearest places */
 "NearestPlaces.title" = "Nearby";
 /* Favorite places */

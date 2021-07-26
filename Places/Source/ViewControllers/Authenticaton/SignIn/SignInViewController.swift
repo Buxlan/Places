@@ -46,12 +46,12 @@ class SignInViewController: UIViewController {
         view.layer.shadowRadius = 50
         view.layer.shadowOpacity = 0.4
         view.layer.shadowOffset = CGSize(width: 12, height: 12)
-        view.layer.shadowColor = UIColor.bxText1.cgColor
+        view.layer.shadowColor = Asset.other0.color.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
                         
         let imageView = UIImageView()
         imageView.image = image
-        imageView.backgroundColor = Asset.background0.color
+        imageView.backgroundColor = Asset.other1.color
         imageView.layer.cornerRadius = 50
         imageView.clipsToBounds = true
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -64,7 +64,6 @@ class SignInViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.text = L10n.Auth.title
-        view.textColor = .bxText1
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 1
         view.font = .bxControlTitle
@@ -77,7 +76,7 @@ class SignInViewController: UIViewController {
         view.placeholder = L10n.Auth.usernamePlaceholder
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.5
-        view.layer.borderColor = Asset.background2.color.cgColor
+        view.layer.borderColor = Asset.other1.color.cgColor
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         
@@ -97,7 +96,7 @@ class SignInViewController: UIViewController {
         view.isSecureTextEntry = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.5
-        view.layer.borderColor = Asset.background2.color.cgColor
+        view.layer.borderColor = Asset.other1.color.cgColor
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         
@@ -149,7 +148,7 @@ class SignInViewController: UIViewController {
         let view = ButtonWithShadow(title: L10n.Auth.Buttons.login,
                                           image: nil)
         
-        view.backgroundColor = .bxControlBackground
+        view.backgroundColor = Asset.other1.color
         view.titleLabel?.backgroundColor = view.backgroundColor
         view.imageView?.backgroundColor = view.backgroundColor
         
@@ -177,7 +176,7 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Asset.background0.color
+        view.backgroundColor = Asset.other1.color
         
         view.addSubview(logo)
         view.addSubview(dismissButton)

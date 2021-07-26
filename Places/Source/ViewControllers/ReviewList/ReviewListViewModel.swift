@@ -1,23 +1,13 @@
 //
-//  PlaceListViewModel.swift
+//  ReviewListViewModel.swift
 //  Places
 //
-//  Created by  Buxlan on 6/16/21.
+//  Created by  Buxlan on 7/26/21.
 //
 
 import UIKit
 
-struct TableViewSection: Equatable {
-    let name: String?
-    let items: [CellConfigurator]
-    
-    static func == (lhs: TableViewSection,
-                    rhs: TableViewSection) -> Bool {
-        return lhs.name == rhs.name
-    }
-}
-
-class PlaceListViewModel: NSObject {
+class ReviewListViewModel: NSObject {
  
     // MARK: - Public
     var sections: [TableViewSection] {
@@ -93,7 +83,7 @@ class PlaceListViewModel: NSObject {
     
 }
 
-extension PlaceListViewModel: UITableViewDataSource {
+extension ReviewListViewModel: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
@@ -126,3 +116,4 @@ extension PlaceListViewModel: UITableViewDataSource {
     }
         
 }
+

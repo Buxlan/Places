@@ -14,7 +14,7 @@ class ShadowLayer: CALayer {
         shadowRadius = 8
         shadowOpacity = 0.4
         shadowOffset = CGSize(width: 4, height: 4)
-        shadowColor = UIColor.bxText1.cgColor
+        shadowColor = Asset.other0.color.cgColor
         masksToBounds = false
         cornerRadius = shadowRadius
     }

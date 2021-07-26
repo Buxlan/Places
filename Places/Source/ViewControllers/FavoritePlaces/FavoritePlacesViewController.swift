@@ -46,7 +46,7 @@ class FavoritePlacesViewController: UIViewController {
         
         super.viewDidLoad()
         
-        view.backgroundColor = Asset.background0.color
+        view.backgroundColor = Asset.other1.color
        
         tableView.tableFooterView = UIView()
         tableView.delegate = self
@@ -73,8 +73,6 @@ class FavoritePlacesViewController: UIViewController {
             self.title = Strings.title
         }
         
-        configureBars()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -84,18 +82,6 @@ class FavoritePlacesViewController: UIViewController {
         viewModel.updateData { [weak spinner] in
             spinner?.stopAnimating()
         }
-    }
-    
-    private func configureBars() {
-    
-        if navigationController?.title != nil {
-            //
-        } else {
-            navigationController?.title = title
-        }
-        navigationController?.hidesBarsOnTap = false
-        navigationController?.isToolbarHidden = true
-        
     }
     
 }

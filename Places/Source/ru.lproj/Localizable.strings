@@ -18,6 +18,7 @@
 /* Main tab bar */
 /* Place list */
 "PlacesList.title" = "Лента";
+"PlacesList.toReviews" = "К обзорам";
 /* Nearest places */
 "NearestPlaces.title" = "Рядом";
 /* Favorite places */

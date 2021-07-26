@@ -15,11 +15,11 @@ class PlaceViewModel {
     init(place: Place) {
         self.place = place
         items = [
-            PlaceLabelTableCellConfigurator(item: place, cellHeight: UITableView.automaticDimension),
-            PlaceImageTableCellConfigurator(item: place, cellHeight: 250),
-            PlaceUsefulButtonsCellConfigurator(item: place, cellHeight: UITableView.automaticDimension),
-            PlaceDescriptionTableCellConfigurator(item: place, cellHeight: UITableView.automaticDimension),
-            PlaceMapTableCellConfigurator(item: place, cellHeight: 250)
+            PlaceLabelTableCellConfigurator(item: place),
+            PlaceImageTableCellConfigurator(item: place),
+            PlaceUsefulButtonsCellConfigurator(item: place),
+            PlaceDescriptionTableCellConfigurator(item: place),
+            PlaceMapTableCellConfigurator(item: place)
         ]
     }
     

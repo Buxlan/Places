@@ -88,17 +88,7 @@ extension PlaceTableViewDirector: UITableViewDataSource {
 }
 
 extension PlaceTableViewDirector: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        let item = items[indexPath.row]
-        return item.cellHeight
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let item = items[indexPath.row]
-        return item.cellHeight
-    }
-    
+       
     /* Handling TableView actions */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // no need to keep cell selected

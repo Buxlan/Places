@@ -54,7 +54,6 @@ class ProfileViewController: UIViewController {
     private lazy var logo: UILabel = {
         let view = UILabel()
         view.text = L10n.App.name
-        view.textColor = .bxText1
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 2
         view.font = .bxControlTitle
@@ -70,12 +69,12 @@ class ProfileViewController: UIViewController {
         view.layer.shadowRadius = 50
         view.layer.shadowOpacity = 0.4
         view.layer.shadowOffset = CGSize(width: 12, height: 12)
-        view.layer.shadowColor = UIColor.bxText1.cgColor
+        view.layer.shadowColor = Asset.other0.color.cgColor
         view.translatesAutoresizingMaskIntoConstraints = false
                         
         let imageView = UIImageView()
         imageView.image = image
-        imageView.backgroundColor = Asset.background0.color
+        imageView.backgroundColor = Asset.other1.color
         imageView.layer.cornerRadius = 50
         imageView.clipsToBounds = true
         imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -92,7 +91,7 @@ class ProfileViewController: UIViewController {
         view.placeholder = L10n.Auth.usernamePlaceholder
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.5
-        view.layer.borderColor = Asset.background2.color.cgColor
+        view.layer.borderColor = Asset.other1.color.cgColor
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         
@@ -113,7 +112,7 @@ class ProfileViewController: UIViewController {
         view.isSecureTextEntry = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.5
-        view.layer.borderColor = Asset.background2.color.cgColor
+        view.layer.borderColor = Asset.other1.color.cgColor
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
         
@@ -129,7 +128,6 @@ class ProfileViewController: UIViewController {
     private lazy var titleLabel: UILabel = {
         let view = UILabel()
         view.text = L10n.Auth.title
-        view.textColor = .bxText1
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 1
         view.font = .bxControlTitle
@@ -139,7 +137,6 @@ class ProfileViewController: UIViewController {
     private lazy var textLabel: UILabel = {
         let view = UILabel()
         view.text = L10n.Onboarding.onboardngText1
-        view.textColor = .bxText1
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 10
         view.font = .bxBody
@@ -165,7 +162,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Asset.background0.color
+        view.backgroundColor = Asset.other1.color
         
         view.addSubview(logo)
         view.addSubview(imageView)

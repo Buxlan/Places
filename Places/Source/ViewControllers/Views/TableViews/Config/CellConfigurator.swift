@@ -9,7 +9,6 @@ import UIKit
 
 protocol CellConfigurator {
     static var reuseIdentifier: String { get }
-    var cellHeight: CGFloat { get set }
     var hash: Int { get }
     var isInterfaceConfigured: Bool { get set }
 //    var object: Any { get set }
@@ -22,7 +21,6 @@ class TableCellConfigurator<CellType: ConfigurableCell,
                             DataType: Hashable>: CellConfigurator where CellType.DataType == DataType,
                                                                         CellType: UIView {
     static var reuseIdentifier: String { return CellType.reuseIdentifier }
-    var cellHeight: CGFloat
     var hash: Int {
         let hash = String(describing: CellType.self).hashValue ^ item.hashValue
         print("Hash is \(hash)")
@@ -32,10 +30,8 @@ class TableCellConfigurator<CellType: ConfigurableCell,
 //    var object: Any
     var item: DataType
     
-    init(item: DataType, cellHeight: CGFloat) {
+    init(item: DataType) {
         self.item = item
-//        object = item
-        self.cellHeight = cellHeight
     }
     
     var isInterfaceConfigured: Bool = false

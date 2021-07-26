@@ -78,11 +78,8 @@ class PlaceViewController: UIViewController {
         tableDirector.configureHandlers()
     }
     
-    private func configureBars() {
+    private func configureBars() {        
         
-        navigationController?.isToolbarHidden = false
-        tabBarItem.isEnabled = false
-                
         let items = [
 //            UIBarButtonItem(systemItem: .flexibleSpace),
             playBarButtonItem,

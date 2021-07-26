@@ -16,8 +16,8 @@ class OnboardingPageViewController: UIPageViewController {
     private lazy var pageControl: UIPageControl = {
         let view = UIPageControl()
         view.isUserInteractionEnabled = false
-        view.pageIndicatorTintColor = Asset.foreground0.color
-        view.currentPageIndicatorTintColor = Asset.foreground1.color
+        view.pageIndicatorTintColor = Asset.other0.color
+        view.currentPageIndicatorTintColor = Asset.main0.color
         return view
     }()
     lazy var items: [UIViewController] = {

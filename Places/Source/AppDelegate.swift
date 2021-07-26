@@ -26,18 +26,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             didFinishLaunchingWithOptions: launchOptions
         )
         
-        window?.tintColor = Asset.foreground0.color
+        window?.tintColor = Asset.other0.color
         
-        UITabBar.appearance().backgroundColor = Asset.background2.color
-        UITabBar.appearance().unselectedItemTintColor = Asset.foreground0.color
-        UITabBar.appearance().tintColor = Asset.foreground3.color
-        UINavigationBar.appearance().backgroundColor = Asset.background2.color
-        UINavigationBar.appearance().tintColor = Asset.foreground1.color
-        UINavigationBar.appearance().barTintColor = Asset.background1.color
+        UITabBar.appearance().backgroundColor = Asset.other1.color
+        UITabBar.appearance().unselectedItemTintColor = Asset.other0.color
+        UITabBar.appearance().tintColor = Asset.other0.color
+        UINavigationBar.appearance().backgroundColor = Asset.other1.color
+        UINavigationBar.appearance().tintColor = Asset.main0.color
+        UINavigationBar.appearance().barTintColor = Asset.other1.color
         
-        let attr = [NSAttributedString.Key.foregroundColor: Asset.foreground1.color]
+        let attr = [NSAttributedString.Key.foregroundColor: Asset.main0.color]
         UITabBarItem.appearance().setTitleTextAttributes(attr, for: .selected)
-        let attr2 = [NSAttributedString.Key.foregroundColor: Asset.foreground0.color]
+        let attr2 = [NSAttributedString.Key.foregroundColor: Asset.other0.color]
         UITabBarItem.appearance().setTitleTextAttributes(attr2, for: .normal)
         
         return true

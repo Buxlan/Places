@@ -11,26 +11,68 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
     
     var isInterfaceConfigured: Bool = false
     
-    private lazy var placeLabel: UILabel = {
-        let view = UILabel()
-        view.backgroundColor = Asset.background0.color
+    private let cornerRadius: CGFloat = 24.0
+    
+    private lazy var roundedView: UIView = {
+        let view = CorneredView(corners: [.topLeft, .topRight], radius: cornerRadius)
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
+//        view.roundCorners(corners: [.allCorners], radius: 40)
+//        view.clipsToBounds = true
         return view
     }()
     
-    private lazy var descriptionLabel: UILabel = {
+    private lazy var placeLabel: UILabel = {
         let view = UILabel()
-        view.backgroundColor = Asset.background1.color
+        view.setMargins(margin: 32.0)
+        view.backgroundColor = Asset.accent1.color
+        view.translatesAutoresizingMaskIntoConstraints = false        
+        return view
+    }()
+    
+    private lazy var likeButton: UIButton = {
+        let view = UIButton()
+        view.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
+        view.backgroundColor = Asset.other1.color
+        let image = Asset.favorite.image
+        let selectedImage = Asset.favoriteFill.image
+        
+        view.setImage(image, for: .normal)
+        view.setImage(selectedImage, for: .selected)
         view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    private lazy var shareButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = Asset.other1.color
+        view.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
+        let image = Asset.share.image
+        view.setImage(image, for: .normal)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    private lazy var toReviewsButton: UIButton = {
+        let view = UIButton()
+        view.backgroundColor = Asset.other1.color
+        view.setTitle(L10n.PlacesList.toReviews, for: .normal)
+        view.addTarget(self, action: #selector(toReviewsTapped), for: .touchUpInside)
+        let image = Asset.share.image
+        view.setImage(image, for: .normal)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
         return view
     }()
     
     private lazy var photoImageView: UIImageView = {
-        let view = UIImageView()
-        view.layer.cornerRadius = 50
-        view.clipsToBounds = true
-//        view.image = Asset.lock.image//.resizeImage(to: 200, aspectRatio: .square, with: .red)
-        view.backgroundColor = Asset.foreground0.color
+        let view = CorneredImageView(corners: [.bottomLeft, .bottomRight], radius: cornerRadius)
+//        view.layer.cornerRadius = 50
+//        view.clipsToBounds = true
+        view.image = Asset.camera.image//.resizeImage(to: 200, aspectRatio: .square, with: .red)
+        view.backgroundColor = Asset.other0.color
         view.contentMode = .scaleToFill
         view.translatesAutoresizingMaskIntoConstraints = false
         view.clipsToBounds = true
@@ -54,39 +96,49 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
     }
     
     func configureInterface() {
-        contentView.backgroundColor = Asset.background0.color
-        contentView.addSubview(placeLabel)
-        contentView.addSubview(photoImageView)
-        contentView.addSubview(descriptionLabel)
+        tintColor = Asset.other1.color
+        contentView.backgroundColor = Asset.other1.color
+        roundedView.addSubview(placeLabel)
+        roundedView.addSubview(photoImageView)
+        roundedView.addSubview(likeButton)
+        roundedView.addSubview(shareButton)
+        contentView.addSubview(roundedView)
         configureConstraints()
         isInterfaceConfigured = true
     }
     
     internal func configureConstraints() {
         let constraints: [NSLayoutConstraint] = [
-            placeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
-                                                constant: 32),
-            placeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            placeLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            roundedView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            roundedView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            roundedView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            roundedView.heightAnchor.constraint(equalTo: contentView.heightAnchor),
+            
+            placeLabel.leadingAnchor.constraint(equalTo: roundedView.leadingAnchor),
+            placeLabel.trailingAnchor.constraint(equalTo: roundedView.trailingAnchor),
+            placeLabel.topAnchor.constraint(equalTo: roundedView.topAnchor),
 //            placeLabel.bottomAnchor.constraint(greaterThanOrEqualTo: placeLabel.topAnchor,
 //                                               constant: 44),
-            placeLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40),
+            placeLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 44),
             
-            photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            photoImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-            photoImageView.topAnchor.constraint(equalTo: placeLabel.bottomAnchor,
-                                           constant: 8),
-            photoImageView.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1.0),
+            photoImageView.leadingAnchor.constraint(equalTo: roundedView.leadingAnchor),
+            photoImageView.trailingAnchor.constraint(equalTo: roundedView.trailingAnchor),
+//            photoImageView.widthAnchor.constraint(equalTo: roundedView.widthAnchor),
+            photoImageView.topAnchor.constraint(equalTo: placeLabel.bottomAnchor),
+            photoImageView.heightAnchor.constraint(equalTo: photoImageView.widthAnchor, multiplier: 1.0),
+//            photoImageView.bottomAnchor.constraint(lessThanOrEqualTo: likeButton.topAnchor, constant: -8),
             
-            placeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,
-                                                constant: 32),
-            descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            descriptionLabel.topAnchor.constraint(greaterThanOrEqualTo: photoImageView.bottomAnchor, constant: 8),
-            descriptionLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-//            placeLabel.bottomAnchor.constraint(greaterThanOrEqualTo: placeLabel.topAnchor,
-//                                               constant: 44),
-            descriptionLabel.heightAnchor.constraint(greaterThanOrEqualToConstant: 40)
+            likeButton.leadingAnchor.constraint(equalTo: roundedView.leadingAnchor),
+            likeButton.widthAnchor.constraint(equalTo: likeButton.heightAnchor),
+            likeButton.topAnchor.constraint(greaterThanOrEqualTo: photoImageView.bottomAnchor, constant: 8),
+            likeButton.bottomAnchor.constraint(equalTo: roundedView.bottomAnchor),
+            likeButton.heightAnchor.constraint(equalToConstant: 44),
             
+            shareButton.trailingAnchor.constraint(equalTo: roundedView.trailingAnchor),
+            shareButton.widthAnchor.constraint(equalTo: shareButton.heightAnchor),
+//            shareButton.topAnchor.constraint(greaterThanOrEqualTo: photoImageView.bottomAnchor, constant: 8),
+            shareButton.bottomAnchor.constraint(equalTo: roundedView.bottomAnchor),
+            shareButton.heightAnchor.constraint(equalToConstant: 44)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -96,13 +148,30 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
         
         placeLabel.text = data.title
         placeLabel.font = UIFont.bxControlTitle
-        descriptionLabel.text = data.title
-        descriptionLabel.font = UIFont.bxControlTitle
+        placeLabel.setMargins(margin: 32.0)
 //        photoImageView.image = data.image.withRenderingMode(.alwaysOriginal)
 //        photoImageView.setNeedsLayout()
 //        contentView.setNeedsLayout()
 //        contentView.layoutIfNeeded()
         
+    }
+    
+    @objc
+    private func shareButtonTapped() {
+        self.shareButton.isSelected.toggle()
+        Log(text: "shareButtonTapped", object: nil)
+    }
+    
+    @objc
+    private func likeButtonTapped() {
+        self.likeButton.isSelected.toggle()
+        Log(text: "shareButtonTapped", object: nil)
+    }
+    
+    @objc
+    private func toReviewsTapped() {
+        self.toReviewsButton.isSelected.toggle()
+        Log(text: "toReviewsButton", object: nil)
     }
 }
 
@@ -158,40 +227,6 @@ class PlaceContentView: UIView {
         return imageView
     }()
     
-    private lazy var stackView: UIStackView = {
-        
-        var view = UIStackView(arrangedSubviews: [likeButton, shareButton])
-        view.backgroundColor = Asset.background0.color
-        view.axis = .horizontal
-        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.semanticContentAttribute = .forceRightToLeft
-        view.distribution = .equalSpacing
-        view.alignment = .trailing
-        
-        return view
-        
-    }()
-    
-    private lazy var titleView: UILabel = {
-        let titleView = UILabel(frame: .zero)
-        titleView.font = UIFont.bxBody
-        titleView.textColor = .bxText1
-        titleView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return titleView
-    }()
-    
-    private lazy var descriptionView: UILabel = {
-        let view = UILabel(frame: .zero)
-        view.font = UIFont.bxCaption
-        view.textColor = .bxSecondaryText
-        view.numberOfLines = 5        
-        
-        view.translatesAutoresizingMaskIntoConstraints = false
-        
-        return view
-    }()
-    
     private lazy var likeButton: UIButton = {
         let view = UIButton()
         view.addTarget(self, action: #selector(likeButtonTapped), for: .touchUpInside)
@@ -209,8 +244,39 @@ class PlaceContentView: UIView {
         let view = UIButton()
         view.addTarget(self, action: #selector(shareButtonTapped), for: .touchUpInside)
         let image = Asset.share.image
-        
         view.setImage(image, for: .normal)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        return view
+    }()
+    
+    private lazy var stackView: UIStackView = {
+        
+        var view = UIStackView(arrangedSubviews: [likeButton, shareButton])
+        view.backgroundColor = Asset.other1.color
+        view.axis = .horizontal
+        view.translatesAutoresizingMaskIntoConstraints = false
+//        view.semanticContentAttribute = .forceRightToLeft
+        view.distribution = .equalSpacing
+        view.alignment = .trailing
+        
+        return view
+        
+    }()
+    
+    private lazy var titleView: UILabel = {
+        let titleView = UILabel(frame: .zero)
+        titleView.font = UIFont.bxBody
+        titleView.translatesAutoresizingMaskIntoConstraints = false
+        
+        return titleView
+    }()
+    
+    private lazy var descriptionView: UILabel = {
+        let view = UILabel(frame: .zero)
+        view.font = UIFont.bxCaption
+        view.numberOfLines = 5        
+        
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
