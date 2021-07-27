@@ -17,7 +17,8 @@
 		402C3C2C26A5B1E200E73581 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402C3C2B26A5B1E200E73581 /* OnboardingView.xib */; };
 		4031EBF82682031000BF1F76 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4031EBF72682031000BF1F76 /* .swiftlint.yml */; };
 		403B5A52266A47CA00421470 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B5A51266A47CA00421470 /* UIColor.swift */; };
-		404C999C26777F51009ADECF /* FavoritePlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404C999B26777F51009ADECF /* FavoritePlaceTableViewCell.swift */; };
+		404C999C26777F51009ADECF /* FavoritePlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404C999B26777F51009ADECF /* FavoritePlaceCell.swift */; };
+		404D9CE626B0AAF600AF616F /* ReviewCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404D9CE526B0AAF600AF616F /* ReviewCollectionViewHeader.swift */; };
 		404DB6EE266CC0A6002464DB /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DB6ED266CC0A6002464DB /* UIFont.swift */; };
 		40539CC526A607EC00127DE5 /* Layers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40539CC426A607EC00127DE5 /* Layers.swift */; };
 		405CE9FB26AF504A00DB5C2D /* ReviewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405CE9FA26AF504A00DB5C2D /* ReviewListViewModel.swift */; };
@@ -53,6 +54,9 @@
 		408C38D02657EAFC009832FD /* CellActionProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38CF2657EAFC009832FD /* CellActionProxy.swift */; };
 		408C38D3265839DD009832FD /* PlaceTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38D2265839DD009832FD /* PlaceTableViewFooter.swift */; };
 		408D39D42678B5A90082151C /* FavoritePlacesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408D39D32678B5A90082151C /* FavoritePlacesViewModel.swift */; };
+		409063AF26B08F2200704CA6 /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409063AE26B08F2200704CA6 /* ReviewCollectionViewCell.swift */; };
+		409063B226B090D400704CA6 /* PlaceReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409063B126B090D400704CA6 /* PlaceReview.swift */; };
+		409063B526B090F100704CA6 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409063B426B090F100704CA6 /* Author.swift */; };
 		40978D9C26544E3A001E1DFC /* PlaceImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978D9B26544E3A001E1DFC /* PlaceImageTableViewCell.swift */; };
 		40978D9F2655AAC9001E1DFC /* Place.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40978D9E2655AAC9001E1DFC /* Place.storyboard */; };
 		40978DA22655AB80001E1DFC /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978DA12655AB80001E1DFC /* PlaceViewController.swift */; };
@@ -92,7 +96,8 @@
 		402C3C2B26A5B1E200E73581 /* OnboardingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
 		4031EBF72682031000BF1F76 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		403B5A51266A47CA00421470 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		404C999B26777F51009ADECF /* FavoritePlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceTableViewCell.swift; sourceTree = "<group>"; };
+		404C999B26777F51009ADECF /* FavoritePlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceCell.swift; sourceTree = "<group>"; };
+		404D9CE526B0AAF600AF616F /* ReviewCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewHeader.swift; sourceTree = "<group>"; };
 		404DB6ED266CC0A6002464DB /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		40539CC426A607EC00127DE5 /* Layers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Layers.swift; path = Places/Source/Layers.swift; sourceTree = SOURCE_ROOT; };
 		405CE9FA26AF504A00DB5C2D /* ReviewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListViewModel.swift; sourceTree = "<group>"; };
@@ -130,6 +135,9 @@
 		408C38CF2657EAFC009832FD /* CellActionProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellActionProxy.swift; sourceTree = "<group>"; };
 		408C38D2265839DD009832FD /* PlaceTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewFooter.swift; sourceTree = "<group>"; };
 		408D39D32678B5A90082151C /* FavoritePlacesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlacesViewModel.swift; sourceTree = "<group>"; };
+		409063AE26B08F2200704CA6 /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		409063B126B090D400704CA6 /* PlaceReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceReview.swift; sourceTree = "<group>"; };
+		409063B426B090F100704CA6 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
 		40978D9B26544E3A001E1DFC /* PlaceImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceImageTableViewCell.swift; sourceTree = "<group>"; };
 		40978D9E2655AAC9001E1DFC /* Place.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Place.storyboard; sourceTree = "<group>"; };
 		40978DA12655AB80001E1DFC /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
@@ -184,7 +192,7 @@
 				40E7D9ED26A5AE1900DC94C2 /* FavoritePlacesView.xib */,
 				407D8481265DB1E800F45C22 /* FavoritePlacesViewController.swift */,
 				408D39D32678B5A90082151C /* FavoritePlacesViewModel.swift */,
-				404C999B26777F51009ADECF /* FavoritePlaceTableViewCell.swift */,
+				404C999B26777F51009ADECF /* FavoritePlaceCell.swift */,
 			);
 			path = FavoritePlaces;
 			sourceTree = "<group>";
@@ -194,7 +202,9 @@
 			children = (
 				40E7D9E426A5ACDE00DC94C2 /* PlaceListTableView.xib */,
 				40B6EAEE267973D500AA4CC2 /* PlaceListViewController.swift */,
+				409063AE26B08F2200704CA6 /* ReviewCollectionViewCell.swift */,
 				40B6EAF42679754500AA4CC2 /* PlaceListCell.swift */,
+				404D9CE526B0AAF600AF616F /* ReviewCollectionViewHeader.swift */,
 				405CE9FD26AF5A2900DB5C2D /* TopCorneredLabel.swift */,
 				405CEA0426AF60B500DB5C2D /* BottomCorneredImageView.swift */,
 				40B6EAF1267974B200AA4CC2 /* PlaceListViewModel.swift */,
@@ -266,6 +276,8 @@
 			isa = PBXGroup;
 			children = (
 				40D3EEB02645C729005E2F0F /* Place.swift */,
+				409063B126B090D400704CA6 /* PlaceReview.swift */,
+				409063B426B090F100704CA6 /* Author.swift */,
 				40D3EEAB2645C5CE005E2F0F /* PlaceController.swift */,
 			);
 			path = Model;
@@ -633,8 +645,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				409063B526B090F100704CA6 /* Author.swift in Sources */,
 				40AE8B9826A74FE1004825AF /* SignInViewController.swift in Sources */,
+				409063AF26B08F2200704CA6 /* ReviewCollectionViewCell.swift in Sources */,
 				40E982E7264400BC007D14D6 /* OnboardingPageViewController.swift in Sources */,
+				409063B226B090D400704CA6 /* PlaceReview.swift in Sources */,
 				403B5A52266A47CA00421470 /* UIColor.swift in Sources */,
 				40978DA82655BAFD001E1DFC /* PlaceViewModel.swift in Sources */,
 				40D1289926A8866D0037C506 /* PlaceListDataModel.swift in Sources */,
@@ -645,6 +660,7 @@
 				407DCD77265A590B005ADB16 /* PlaceTableViewHeader.swift in Sources */,
 				408C38BC26568A11009832FD /* PlaceLabelTableViewCell.swift in Sources */,
 				40D3EEB12645C729005E2F0F /* Place.swift in Sources */,
+				404D9CE626B0AAF600AF616F /* ReviewCollectionViewHeader.swift in Sources */,
 				401ACA3B265F86BE00AEADE2 /* AppController.swift in Sources */,
 				40625A36265BB4B100E0E744 /* Settings.swift in Sources */,
 				40BB8F5826796BC7009B8841 /* AuthorsListViewController.swift in Sources */,
@@ -684,7 +700,7 @@
 				400E820426A575F000164CB3 /* Strings.swift in Sources */,
 				40E982D9264349A4007D14D6 /* OtherExtensions.swift in Sources */,
 				406D330E26AF4A6100680BCB /* ReviewListViewController.swift in Sources */,
-				404C999C26777F51009ADECF /* FavoritePlaceTableViewCell.swift in Sources */,
+				404C999C26777F51009ADECF /* FavoritePlaceCell.swift in Sources */,
 				408D39D42678B5A90082151C /* FavoritePlacesViewModel.swift in Sources */,
 				408C38CA2657E608009832FD /* PlaceTableViewDirector.swift in Sources */,
 			);

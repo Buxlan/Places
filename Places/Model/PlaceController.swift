@@ -17,6 +17,7 @@ enum CollectionType {
 }
 
 struct PlaceCollection: Hashable, Equatable {
+        
     let name: String
     let collectionType: CollectionType
     let items: [Place]
@@ -104,6 +105,14 @@ extension PlaceController {
                                         Place(title: "Devyatkino", category: "Category 3", description: PlaceController.description)
                                      ])
         
-        _collections = [topCol, newCol]
+        let favCol = PlaceCollection(name: "Избранные!",
+                                     collectionType: .favorite,
+                                     items: [
+                                        Place(title: "Vas'ka", category: "Category 1", description: PlaceController.description),
+                                        Place(title: "Prosvet", category: "Category 2", description: PlaceController.description),
+                                        Place(title: "Ozerki", category: "Category 3", description: PlaceController.description)
+                                     ])
+        
+        _collections = [topCol, newCol, favCol]
     }
 }

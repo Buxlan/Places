@@ -68,7 +68,7 @@ extension PlaceTableViewHeader: ConfigurableView {
     
     func configure(data: Place) {
         label.text = data.title
-        imageView.setImage(data.image, animated: true)
+        imageView.setImage(data.images[0], animated: true)
         setNeedsLayout()
     }
   

@@ -14,7 +14,7 @@ protocol ConfigurableCell {
     
     associatedtype DataType
     func configure(data: DataType)
-    func configureInterface()
+    func configureInterface(with options: [String: Any]?)
     func configureConstraints()
 }
 

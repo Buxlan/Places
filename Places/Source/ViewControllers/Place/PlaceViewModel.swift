@@ -7,6 +7,17 @@
 
 import UIKit
 
+typealias PlaceImageTableCellConfigurator =
+    TableCellConfigurator<PlaceImageTableViewCell, Place>
+typealias PlaceLabelTableCellConfigurator =
+    TableCellConfigurator<PlaceLabelTableViewCell, Place>
+typealias PlaceUsefulButtonsCellConfigurator =
+    TableCellConfigurator<PlaceUsefulButtonsTableViewCell, Place>
+typealias PlaceDescriptionTableCellConfigurator =
+    TableCellConfigurator<PlaceDescriptionTableViewCell, Place>
+typealias PlaceMapTableCellConfigurator =
+    TableCellConfigurator<PlaceMapTableViewCell, Place>
+
 class PlaceViewModel {
     
     let place: Place

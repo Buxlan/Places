@@ -98,7 +98,7 @@ extension ReviewListViewModel: UITableViewDataSource {
                                                  for: indexPath)
         
         if item.isInterfaceConfigured == false {
-            item.configureInterface(cell: cell)
+            item.configureInterface(cell: cell, with: nil)
         }
         item.configure(cell: cell)
         cell.setNeedsLayout()
@@ -116,4 +116,3 @@ extension ReviewListViewModel: UITableViewDataSource {
     }
         
 }
-

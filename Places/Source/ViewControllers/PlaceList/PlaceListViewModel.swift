@@ -7,6 +7,11 @@
 
 import UIKit
 
+typealias PlaceListCellConfigurator
+    = TableCellConfigurator<PlaceListCell, Place>
+typealias PlaceReviewCellConfigurator
+    = CollectionCellConfigurator<ReviewCollectionViewCell, PlaceReview>
+
 struct TableViewSection: Equatable {
     let name: String?
     let items: [CellConfigurator]
@@ -107,13 +112,16 @@ extension PlaceListViewModel: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: PlaceListCellConfigurator.reuseIdentifier,
                                                  for: indexPath)
         
-        if item.isInterfaceConfigured == false {
-            item.configureInterface(cell: cell)
+        if let castedCell = cell as? PlaceListCell,
+           castedCell.isInterfaceConfigured == false {
+            let options = ["collectionDelegate": self,
+                           "collectionDataSource": self]
+            item.configureInterface(cell: cell, with: options)
         }
         item.configure(cell: cell)
-        cell.setNeedsLayout()
-        cell.layoutIfNeeded()
-        cell.clipsToBounds = true
+//        cell.setNeedsLayout()
+//        cell.layoutIfNeeded()
+//        cell.clipsToBounds = true
         return cell
     }
 
@@ -125,4 +133,58 @@ extension PlaceListViewModel: UITableViewDataSource {
         return _sections[section].name
     }
         
+}
+
+extension PlaceListViewModel: UICollectionViewDelegate {
+      
+}
+
+extension PlaceListViewModel: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        1
+    }
+    
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReviewCollectionViewCell.reuseIdentifier, for: indexPath)
+        
+        if let reviewCell = cell as? ReviewCollectionViewCell {
+            reviewCell.configureInterface()
+            let review = PlaceReview.empty
+            reviewCell.configure(data: review)
+        }
+        cell.backgroundColor = .blue
+        
+        return cell
+    }
+    
+}
+
+extension PlaceListViewModel: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemsPerRow: CGFloat = 1
+        let paddingWidth = 20 * (itemsPerRow + 1)
+        let availableWidth = collectionView.frame.width - paddingWidth
+        let itemWidth = availableWidth / itemsPerRow
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
+
 }

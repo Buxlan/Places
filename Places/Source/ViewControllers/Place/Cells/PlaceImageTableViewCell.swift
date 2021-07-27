@@ -11,7 +11,7 @@ class PlaceImageTableViewCell: UITableViewCell, ConfigurableCell {
     
     var isInterfaceConfigured: Bool = true
     
-    func configureInterface() {
+    func configureInterface(with options: [String: Any]? = nil) {
         
     }
     
@@ -30,6 +30,6 @@ class PlaceImageTableViewCell: UITableViewCell, ConfigurableCell {
     
     func configure(data: Place) {
         isUserInteractionEnabled = true
-        placeImageView.image = data.image
+        placeImageView.image = data.images[0]
     }
 }

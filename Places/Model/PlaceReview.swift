@@ -1,27 +1,26 @@
 //
-//  Place.swift
+//  PlaceReview.swift
 //  Places
 //
-//  Created by  Buxlan on 5/7/21.
+//  Created by  Buxlan on 7/27/21.
 //
 
 import Foundation
 import CoreLocation
 import UIKit
 
-protocol ReusableObject {
-    static var reuseIdentifier: String { get }
-}
-
-struct Place: ReusableObject {
-        
+struct PlaceReview: ReusableObject {
+    
     typealias PlaceCategory = String
     
     static var reuseIdentifier: String = String(describing: Self.self)
-    static let empty = Place()
+    static let empty = PlaceReview(author: Author(), title: "Spb", description: "Spb descr")
     
+    let author: Author
     let title: String
-    let category: PlaceCategory
+    let mainImage: UIImage = {
+        Asset.person.image
+    }()
     let images: [UIImage] = {
         var items = [UIImage]()
         items.append(Asset.camera.image)
@@ -32,29 +31,14 @@ struct Place: ReusableObject {
     }()
     let identifier = UUID()
     let description: String
-    
-    let latitude: CLLocationDegrees = 59.935317
-    let longitude: CLLocationDegrees = 30.326959
-    
-    init() {
-        title = ""
-        category = ""
-        description = ""
-    }
-    
-    init(title: String, category: String, description: String) {
-        self.title = title
-        self.category = category
-        self.description = description
-    }
 }
 
-extension Place: Hashable {
+extension PlaceReview: Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(identifier)
     }
     
-    static func == (lhs: Place, rhs: Place) -> Bool {
+    static func == (lhs: PlaceReview, rhs: PlaceReview) -> Bool {
         return lhs.hashValue == rhs.hashValue
     }
 }

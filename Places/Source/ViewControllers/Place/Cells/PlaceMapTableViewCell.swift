@@ -22,7 +22,7 @@ class PlaceMapTableViewCell: UITableViewCell, ConfigurableCell {
         isUserInteractionEnabled = true
     }
     
-    func configureInterface() {
+    func configureInterface(with options: [String: Any]? = nil) {
         
     }
     
