@@ -18,7 +18,12 @@
 		4031EBF82682031000BF1F76 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4031EBF72682031000BF1F76 /* .swiftlint.yml */; };
 		403B5A52266A47CA00421470 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B5A51266A47CA00421470 /* UIColor.swift */; };
 		404C999C26777F51009ADECF /* FavoritePlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404C999B26777F51009ADECF /* FavoritePlaceCell.swift */; };
-		404D9CE626B0AAF600AF616F /* ReviewCollectionViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404D9CE526B0AAF600AF616F /* ReviewCollectionViewHeader.swift */; };
+		404D9CEC26B0CE9F00AF616F /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404D9CEB26B0CE9F00AF616F /* ReviewViewController.swift */; };
+		404D9CEF26B0D03400AF616F /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404D9CEE26B0D03400AF616F /* ReviewViewModel.swift */; };
+		404D9CF326B0D1B000AF616F /* ReviewImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404D9CF226B0D1B000AF616F /* ReviewImageCell.swift */; };
+		404D9CF926B0D24D00AF616F /* ReviewLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404D9CF826B0D24D00AF616F /* ReviewLabelCell.swift */; };
+		404D9CFD26B0D2A100AF616F /* ReviewDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404D9CFC26B0D2A100AF616F /* ReviewDescriptionCell.swift */; };
+		404D9D0126B0E14D00AF616F /* Review.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404D9D0026B0E14D00AF616F /* Review.storyboard */; };
 		404DB6EE266CC0A6002464DB /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DB6ED266CC0A6002464DB /* UIFont.swift */; };
 		40539CC526A607EC00127DE5 /* Layers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40539CC426A607EC00127DE5 /* Layers.swift */; };
 		405CE9FB26AF504A00DB5C2D /* ReviewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405CE9FA26AF504A00DB5C2D /* ReviewListViewModel.swift */; };
@@ -45,9 +50,9 @@
 		4082209E26AA039800A927CA /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4082209D26AA039800A927CA /* OnboardingViewController.swift */; };
 		408220A126AA045600A927CA /* OnboardingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408220A026AA045600A927CA /* OnboardingViewModel.swift */; };
 		408C38B8265685E2009832FD /* CellConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38B7265685E2009832FD /* CellConfigurator.swift */; };
-		408C38BC26568A11009832FD /* PlaceLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38BB26568A11009832FD /* PlaceLabelTableViewCell.swift */; };
+		408C38BC26568A11009832FD /* PlaceLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38BB26568A11009832FD /* PlaceLabelCell.swift */; };
 		408C38BF26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38BE26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift */; };
-		408C38C426576797009832FD /* PlaceDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38C326576797009832FD /* PlaceDescriptionTableViewCell.swift */; };
+		408C38C426576797009832FD /* PlaceDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38C326576797009832FD /* PlaceDescriptionCell.swift */; };
 		408C38C72657728C009832FD /* PlaceMapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38C62657728C009832FD /* PlaceMapTableViewCell.swift */; };
 		408C38CA2657E608009832FD /* PlaceTableViewDirector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38C92657E608009832FD /* PlaceTableViewDirector.swift */; };
 		408C38CD2657E92C009832FD /* CellAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38CC2657E92C009832FD /* CellAction.swift */; };
@@ -55,9 +60,9 @@
 		408C38D3265839DD009832FD /* PlaceTableViewFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408C38D2265839DD009832FD /* PlaceTableViewFooter.swift */; };
 		408D39D42678B5A90082151C /* FavoritePlacesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 408D39D32678B5A90082151C /* FavoritePlacesViewModel.swift */; };
 		409063AF26B08F2200704CA6 /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409063AE26B08F2200704CA6 /* ReviewCollectionViewCell.swift */; };
-		409063B226B090D400704CA6 /* PlaceReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409063B126B090D400704CA6 /* PlaceReview.swift */; };
+		409063B226B090D400704CA6 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409063B126B090D400704CA6 /* Review.swift */; };
 		409063B526B090F100704CA6 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409063B426B090F100704CA6 /* Author.swift */; };
-		40978D9C26544E3A001E1DFC /* PlaceImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978D9B26544E3A001E1DFC /* PlaceImageTableViewCell.swift */; };
+		40978D9C26544E3A001E1DFC /* PlaceImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978D9B26544E3A001E1DFC /* PlaceImageCell.swift */; };
 		40978D9F2655AAC9001E1DFC /* Place.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40978D9E2655AAC9001E1DFC /* Place.storyboard */; };
 		40978DA22655AB80001E1DFC /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978DA12655AB80001E1DFC /* PlaceViewController.swift */; };
 		40978DA82655BAFD001E1DFC /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978DA72655BAFD001E1DFC /* PlaceViewModel.swift */; };
@@ -97,7 +102,12 @@
 		4031EBF72682031000BF1F76 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		403B5A51266A47CA00421470 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		404C999B26777F51009ADECF /* FavoritePlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceCell.swift; sourceTree = "<group>"; };
-		404D9CE526B0AAF600AF616F /* ReviewCollectionViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewHeader.swift; sourceTree = "<group>"; };
+		404D9CEB26B0CE9F00AF616F /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		404D9CEE26B0D03400AF616F /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
+		404D9CF226B0D1B000AF616F /* ReviewImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewImageCell.swift; sourceTree = "<group>"; };
+		404D9CF826B0D24D00AF616F /* ReviewLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewLabelCell.swift; sourceTree = "<group>"; };
+		404D9CFC26B0D2A100AF616F /* ReviewDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDescriptionCell.swift; sourceTree = "<group>"; };
+		404D9D0026B0E14D00AF616F /* Review.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Review.storyboard; sourceTree = "<group>"; };
 		404DB6ED266CC0A6002464DB /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		40539CC426A607EC00127DE5 /* Layers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Layers.swift; path = Places/Source/Layers.swift; sourceTree = SOURCE_ROOT; };
 		405CE9FA26AF504A00DB5C2D /* ReviewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListViewModel.swift; sourceTree = "<group>"; };
@@ -126,9 +136,9 @@
 		4082209D26AA039800A927CA /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		408220A026AA045600A927CA /* OnboardingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewModel.swift; sourceTree = "<group>"; };
 		408C38B7265685E2009832FD /* CellConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellConfigurator.swift; sourceTree = "<group>"; };
-		408C38BB26568A11009832FD /* PlaceLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLabelTableViewCell.swift; sourceTree = "<group>"; };
+		408C38BB26568A11009832FD /* PlaceLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceLabelCell.swift; sourceTree = "<group>"; };
 		408C38BE26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceUsefulButtonsTableViewCell.swift; sourceTree = "<group>"; };
-		408C38C326576797009832FD /* PlaceDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		408C38C326576797009832FD /* PlaceDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDescriptionCell.swift; sourceTree = "<group>"; };
 		408C38C62657728C009832FD /* PlaceMapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceMapTableViewCell.swift; sourceTree = "<group>"; };
 		408C38C92657E608009832FD /* PlaceTableViewDirector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewDirector.swift; sourceTree = "<group>"; };
 		408C38CC2657E92C009832FD /* CellAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellAction.swift; sourceTree = "<group>"; };
@@ -136,9 +146,9 @@
 		408C38D2265839DD009832FD /* PlaceTableViewFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewFooter.swift; sourceTree = "<group>"; };
 		408D39D32678B5A90082151C /* FavoritePlacesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlacesViewModel.swift; sourceTree = "<group>"; };
 		409063AE26B08F2200704CA6 /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
-		409063B126B090D400704CA6 /* PlaceReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceReview.swift; sourceTree = "<group>"; };
+		409063B126B090D400704CA6 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		409063B426B090F100704CA6 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
-		40978D9B26544E3A001E1DFC /* PlaceImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceImageTableViewCell.swift; sourceTree = "<group>"; };
+		40978D9B26544E3A001E1DFC /* PlaceImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceImageCell.swift; sourceTree = "<group>"; };
 		40978D9E2655AAC9001E1DFC /* Place.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Place.storyboard; sourceTree = "<group>"; };
 		40978DA12655AB80001E1DFC /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
 		40978DA72655BAFD001E1DFC /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
@@ -202,15 +212,35 @@
 			children = (
 				40E7D9E426A5ACDE00DC94C2 /* PlaceListTableView.xib */,
 				40B6EAEE267973D500AA4CC2 /* PlaceListViewController.swift */,
-				409063AE26B08F2200704CA6 /* ReviewCollectionViewCell.swift */,
+				40B6EAF1267974B200AA4CC2 /* PlaceListViewModel.swift */,
 				40B6EAF42679754500AA4CC2 /* PlaceListCell.swift */,
-				404D9CE526B0AAF600AF616F /* ReviewCollectionViewHeader.swift */,
+				409063AE26B08F2200704CA6 /* ReviewCollectionViewCell.swift */,
 				405CE9FD26AF5A2900DB5C2D /* TopCorneredLabel.swift */,
 				405CEA0426AF60B500DB5C2D /* BottomCorneredImageView.swift */,
-				40B6EAF1267974B200AA4CC2 /* PlaceListViewModel.swift */,
 				40D1289826A8866D0037C506 /* PlaceListDataModel.swift */,
 			);
 			path = PlaceList;
+			sourceTree = "<group>";
+		};
+		404D9CEA26B0CE7200AF616F /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				404D9D0026B0E14D00AF616F /* Review.storyboard */,
+				404D9CEB26B0CE9F00AF616F /* ReviewViewController.swift */,
+				404D9CEE26B0D03400AF616F /* ReviewViewModel.swift */,
+				404D9CF126B0D18B00AF616F /* Views */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		404D9CF126B0D18B00AF616F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				404D9CF826B0D24D00AF616F /* ReviewLabelCell.swift */,
+				404D9CF226B0D1B000AF616F /* ReviewImageCell.swift */,
+				404D9CFC26B0D2A100AF616F /* ReviewDescriptionCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		40625A38265CFF4500E0E744 /* Other */ = {
@@ -229,10 +259,10 @@
 		406341F326A8B8790049855D /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				40978D9B26544E3A001E1DFC /* PlaceImageTableViewCell.swift */,
-				408C38BB26568A11009832FD /* PlaceLabelTableViewCell.swift */,
+				40978D9B26544E3A001E1DFC /* PlaceImageCell.swift */,
+				408C38BB26568A11009832FD /* PlaceLabelCell.swift */,
 				408C38C62657728C009832FD /* PlaceMapTableViewCell.swift */,
-				408C38C326576797009832FD /* PlaceDescriptionTableViewCell.swift */,
+				408C38C326576797009832FD /* PlaceDescriptionCell.swift */,
 				408C38BE26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift */,
 				407DCD76265A590B005ADB16 /* PlaceTableViewHeader.swift */,
 				408C38D2265839DD009832FD /* PlaceTableViewFooter.swift */,
@@ -276,7 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				40D3EEB02645C729005E2F0F /* Place.swift */,
-				409063B126B090D400704CA6 /* PlaceReview.swift */,
+				409063B126B090D400704CA6 /* Review.swift */,
 				409063B426B090F100704CA6 /* Author.swift */,
 				40D3EEAB2645C5CE005E2F0F /* PlaceController.swift */,
 			);
@@ -439,6 +469,7 @@
 		40E982E526440022007D14D6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				404D9CEA26B0CE7200AF616F /* Review */,
 				406D330C26AF4A2F00680BCB /* ReviewList */,
 				406D8B3126AE29CC00FC5266 /* Authors */,
 				40B650C326A7724700BB0396 /* Views */,
@@ -535,6 +566,7 @@
 				402C3C2C26A5B1E200E73581 /* OnboardingView.xib in Resources */,
 				40E7D9FC26A5AEDE00DC94C2 /* ProfileView.xib in Resources */,
 				40E7D9EE26A5AE1900DC94C2 /* FavoritePlacesView.xib in Resources */,
+				404D9D0126B0E14D00AF616F /* Review.storyboard in Resources */,
 				406D8B3726AE2A1400FC5266 /* AuthorListView.xib in Resources */,
 				40E7D9EA26A5ADC900DC94C2 /* AuthorsListView.xib in Resources */,
 				400E81FC26A571E000164CB3 /* Localizable.strings in Resources */,
@@ -649,7 +681,7 @@
 				40AE8B9826A74FE1004825AF /* SignInViewController.swift in Sources */,
 				409063AF26B08F2200704CA6 /* ReviewCollectionViewCell.swift in Sources */,
 				40E982E7264400BC007D14D6 /* OnboardingPageViewController.swift in Sources */,
-				409063B226B090D400704CA6 /* PlaceReview.swift in Sources */,
+				409063B226B090D400704CA6 /* Review.swift in Sources */,
 				403B5A52266A47CA00421470 /* UIColor.swift in Sources */,
 				40978DA82655BAFD001E1DFC /* PlaceViewModel.swift in Sources */,
 				40D1289926A8866D0037C506 /* PlaceListDataModel.swift in Sources */,
@@ -658,10 +690,10 @@
 				40CF48E926A4A4020054DD6C /* Assets.swift in Sources */,
 				40539CC526A607EC00127DE5 /* Layers.swift in Sources */,
 				407DCD77265A590B005ADB16 /* PlaceTableViewHeader.swift in Sources */,
-				408C38BC26568A11009832FD /* PlaceLabelTableViewCell.swift in Sources */,
+				408C38BC26568A11009832FD /* PlaceLabelCell.swift in Sources */,
 				40D3EEB12645C729005E2F0F /* Place.swift in Sources */,
-				404D9CE626B0AAF600AF616F /* ReviewCollectionViewHeader.swift in Sources */,
 				401ACA3B265F86BE00AEADE2 /* AppController.swift in Sources */,
+				404D9CF326B0D1B000AF616F /* ReviewImageCell.swift in Sources */,
 				40625A36265BB4B100E0E744 /* Settings.swift in Sources */,
 				40BB8F5826796BC7009B8841 /* AuthorsListViewController.swift in Sources */,
 				405CEA0526AF60B500DB5C2D /* BottomCorneredImageView.swift in Sources */,
@@ -670,7 +702,8 @@
 				405CE9FE26AF5A2900DB5C2D /* TopCorneredLabel.swift in Sources */,
 				408220A126AA045600A927CA /* OnboardingViewModel.swift in Sources */,
 				406660DB263D4A8A001BEF66 /* Config.swift in Sources */,
-				408C38C426576797009832FD /* PlaceDescriptionTableViewCell.swift in Sources */,
+				404D9CEC26B0CE9F00AF616F /* ReviewViewController.swift in Sources */,
+				408C38C426576797009832FD /* PlaceDescriptionCell.swift in Sources */,
 				406660C5263D21FF001BEF66 /* AppDelegate.swift in Sources */,
 				40978DAC265671F9001E1DFC /* ConfigurableCell.swift in Sources */,
 				40D3EEA7264545AB005E2F0F /* Trash.swift in Sources */,
@@ -678,6 +711,7 @@
 				401960E6266A9B09004765F7 /* Log.swift in Sources */,
 				405CEA0126AF5B6000DB5C2D /* UIView.swift in Sources */,
 				40B6EAEF267973D500AA4CC2 /* PlaceListViewController.swift in Sources */,
+				404D9CEF26B0D03400AF616F /* ReviewViewModel.swift in Sources */,
 				40B6EAF2267974B200AA4CC2 /* PlaceListViewModel.swift in Sources */,
 				4070918C26829B0900AF410F /* UIImage.swift in Sources */,
 				407DCD71265859F4005ADB16 /* ConfigurableView.swift in Sources */,
@@ -686,13 +720,15 @@
 				408C38B8265685E2009832FD /* CellConfigurator.swift in Sources */,
 				40B6EAF52679754500AA4CC2 /* PlaceListCell.swift in Sources */,
 				408C38CD2657E92C009832FD /* CellAction.swift in Sources */,
+				404D9CF926B0D24D00AF616F /* ReviewLabelCell.swift in Sources */,
 				408C38C72657728C009832FD /* PlaceMapTableViewCell.swift in Sources */,
+				404D9CFD26B0D2A100AF616F /* ReviewDescriptionCell.swift in Sources */,
 				406660C7263D21FF001BEF66 /* SceneDelegate.swift in Sources */,
 				4082209E26AA039800A927CA /* OnboardingViewController.swift in Sources */,
 				407DCD7426585AEC005ADB16 /* ViewConfigurator.swift in Sources */,
 				400E820726A57E2100164CB3 /* Buttons.swift in Sources */,
 				408C38BF26568C31009832FD /* PlaceUsefulButtonsTableViewCell.swift in Sources */,
-				40978D9C26544E3A001E1DFC /* PlaceImageTableViewCell.swift in Sources */,
+				40978D9C26544E3A001E1DFC /* PlaceImageCell.swift in Sources */,
 				407D8482265DB1E800F45C22 /* FavoritePlacesViewController.swift in Sources */,
 				406660E3263D4E55001BEF66 /* Utils.swift in Sources */,
 				408C38D02657EAFC009832FD /* CellActionProxy.swift in Sources */,

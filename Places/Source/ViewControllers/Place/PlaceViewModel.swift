@@ -8,13 +8,13 @@
 import UIKit
 
 typealias PlaceImageTableCellConfigurator =
-    TableCellConfigurator<PlaceImageTableViewCell, Place>
+    TableCellConfigurator<PlaceImageCell, Place>
 typealias PlaceLabelTableCellConfigurator =
-    TableCellConfigurator<PlaceLabelTableViewCell, Place>
+    TableCellConfigurator<PlaceLabelCell, Place>
 typealias PlaceUsefulButtonsCellConfigurator =
     TableCellConfigurator<PlaceUsefulButtonsTableViewCell, Place>
 typealias PlaceDescriptionTableCellConfigurator =
-    TableCellConfigurator<PlaceDescriptionTableViewCell, Place>
+    TableCellConfigurator<PlaceDescriptionCell, Place>
 typealias PlaceMapTableCellConfigurator =
     TableCellConfigurator<PlaceMapTableViewCell, Place>
 

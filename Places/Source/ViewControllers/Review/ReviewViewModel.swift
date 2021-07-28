@@ -1,45 +1,70 @@
 //
-//  PlaceTableViewDirector.swift
+//  ReviewViewModel.swift
 //  Places
 //
-//  Created by  Buxlan on 5/21/21.
+//  Created by  Buxlan on 7/28/21.
 //
 
 import UIKit
 
-class PlaceTableViewDirector: NSObject {
+typealias ReviewImageCellConfigurator =
+    TableCellConfigurator<ReviewImageCell, Review>
+typealias ReviewLabelCellConfigurator =
+    TableCellConfigurator<ReviewLabelCell, Review>
+typealias ReviewDescriptionCellConfigurator =
+    TableCellConfigurator<ReviewDescriptionCell, Review>
+
+class ReviewViewModel: NSObject {
     
-    let actionsProxy = CellActionProxy()
-    
-    let tableView: UITableView
-    var items: [CellConfigurator] {
+    var review: Review {
         didSet {
-            tableView.reloadData()
+            items = [
+                ReviewImageCellConfigurator(item: review),
+                ReviewLabelCellConfigurator(item: review),
+                ReviewDescriptionCellConfigurator(item: review)
+            ]
         }
     }
-    private var footerConfigurator: PlaceTableFooterConfigurator
-    private var headerConfigurator: PlaceTableHeaderConfigurator
+    var items: [CellConfigurator]
+    let actionsProxy = CellActionProxy()
+    var tableView: UITableView {
+        didSet {
+            tableView.delegate = self
+            tableView.dataSource = self
+        }
+    }
     
-    private lazy var tableFooterView: UIView = {
-        return PlaceTableViewFooter()
-    }()
-    
-    private lazy var tableHeaderView: UIView = {
-        return PlaceTableViewHeader()
-    }()
-    
-    init(tableView: UITableView,
-         items: [CellConfigurator],
-         footerConfigurator: PlaceTableFooterConfigurator,
-         headerConfigurator: PlaceTableHeaderConfigurator) {
-        self.tableView = tableView
-        self.items = items
-        self.headerConfigurator = headerConfigurator
-        self.footerConfigurator = footerConfigurator
+    override init() {
+        self.tableView = UITableView()
+        self.review = Review.empty
+        items = [
+            ReviewImageCellConfigurator(item: review),
+            ReviewLabelCellConfigurator(item: review),
+            ReviewDescriptionCellConfigurator(item: review)
+        ]
+        
         super.init()
         
-        self.tableView.dataSource = self
-        self.tableView.delegate = self
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onActionEvent),
+                                               name: CellAction.notificationName,
+                                               object: nil)
+        
+    }
+        
+    init(review: Review, tableView: UITableView) {
+        self.tableView = tableView
+        self.review = review
+        items = [
+            ReviewImageCellConfigurator(item: review),
+            ReviewLabelCellConfigurator(item: review),
+            ReviewDescriptionCellConfigurator(item: review)
+        ]
+                
+        super.init()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
         
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(onActionEvent),
@@ -47,14 +72,12 @@ class PlaceTableViewDirector: NSObject {
                                                object: nil)
     }
     
-    @objc fileprivate
-    func onActionEvent(notification: Notification) {
+    @objc
+    private func onActionEvent(notification: Notification) {
         if let eventData = notification.userInfo?["data"] as? CellActionEventData,
            let cell = eventData.cell as? UITableViewCell,
            let indexPath = self.tableView.indexPath(for: cell) {
             actionsProxy.invoke(action: eventData.action, cell: cell, configurator: items[indexPath.row])
-        } else if let eventData = notification.userInfo?["data"] as? CellActionEventData {
-            actionsProxy.invoke(action: eventData.action, object: footerConfigurator.item, view: eventData.cell)
         }
     }
     
@@ -64,7 +87,7 @@ class PlaceTableViewDirector: NSObject {
     
 }
 
-extension PlaceTableViewDirector: UITableViewDataSource {
+extension ReviewViewModel: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -77,27 +100,34 @@ extension PlaceTableViewDirector: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let item = items[indexPath.row]
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseIdentifier)!
+        let cell = tableView.dequeueReusableCell(withIdentifier: type(of: item).reuseIdentifier,
+                                                 for: indexPath)
         item.configure(cell: cell)
-        print(type(of: item).reuseIdentifier)
         
         return cell
     }
 
 }
 
-extension PlaceTableViewDirector: UITableViewDelegate {
+extension ReviewViewModel: UITableViewDelegate {
        
     /* Handling TableView actions */
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // no need to keep cell selected
-        tableView.deselectRow(at: indexPath, animated: true)
-        let cellConfigurator = items[indexPath.row]
-        guard let cell = tableView.cellForRow(at: indexPath) else {
-            fatalError()
-        }
-        self.actionsProxy.invoke(action: .didSelect, cell: cell, configurator: cellConfigurator)
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        let cellConfigurator = items[indexPath.row]
+//        guard let cell = tableView.cellForRow(at: indexPath) else {
+//            fatalError()
+//        }
+//        self.actionsProxy.invoke(action: .didSelect, cell: cell, configurator: cellConfigurator)
+        
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        let item = viewModel.item(at: indexPath)
+//        if let vc = UIViewController.instantiateViewController(withIdentifier: .review) as? ReviewViewController {
+//            vc.place = item
+//            vc.modalPresentationStyle = .pageSheet
+//            present(vc, animated: true)
+//        }
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -106,7 +136,7 @@ extension PlaceTableViewDirector: UITableViewDelegate {
     }
 }
 
-extension PlaceTableViewDirector {
+extension ReviewViewModel {
     
     func configureHandlers() {
         

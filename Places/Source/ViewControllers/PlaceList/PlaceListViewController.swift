@@ -12,7 +12,11 @@ class PlaceListViewController: UIViewController {
     // MARK: - Public
         
     // MARK: - Private
-    private var viewModel: PlaceListViewModel = PlaceListViewModel()
+    private lazy var viewModel: PlaceListViewModel = {
+        let item = PlaceListViewModel()
+        item.managedViewController = self
+        return item
+    }()
     
     private lazy var spinner: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: .white)
@@ -115,4 +119,40 @@ extension PlaceListViewController: UITableViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+}
+
+extension PlaceListViewController: UICollectionViewDelegate {    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let review = Review.empty
+        let vc = UIViewController.instantiateViewController(withIdentifier: .review)
+        if let vc = vc as? ReviewViewController {
+            vc.review = review
+            vc.modalTransitionStyle = .flipHorizontal
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}
+
+extension PlaceListViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let itemsPerRow: CGFloat = 1
+        let paddingWidth = 20 * (itemsPerRow + 1)
+        let availableWidth = collectionView.frame.width - paddingWidth
+        let itemWidth = availableWidth / itemsPerRow
+        return CGSize(width: itemWidth, height: itemWidth)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 20
+    }
+
 }

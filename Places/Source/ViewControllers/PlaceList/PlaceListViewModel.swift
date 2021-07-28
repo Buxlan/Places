@@ -10,7 +10,7 @@ import UIKit
 typealias PlaceListCellConfigurator
     = TableCellConfigurator<PlaceListCell, Place>
 typealias PlaceReviewCellConfigurator
-    = CollectionCellConfigurator<ReviewCollectionViewCell, PlaceReview>
+    = CollectionCellConfigurator<ReviewCollectionViewCell, Review>
 
 struct TableViewSection: Equatable {
     let name: String?
@@ -23,8 +23,10 @@ struct TableViewSection: Equatable {
 }
 
 class PlaceListViewModel: NSObject {
- 
+    
     // MARK: - Public
+    weak var managedViewController: UIViewController?
+    
     var sections: [TableViewSection] {
         return _sections
     }
@@ -114,9 +116,11 @@ extension PlaceListViewModel: UITableViewDataSource {
         
         if let castedCell = cell as? PlaceListCell,
            castedCell.isInterfaceConfigured == false {
-            let options = ["collectionDelegate": self,
-                           "collectionDataSource": self]
-            item.configureInterface(cell: cell, with: options)
+            if let managedVC = managedViewController {
+                let options = [PlaceListCell.Option.collectionDelegate.rawValue: managedVC,
+                               PlaceListCell.Option.collectionDataSource.rawValue: self]
+                item.configureInterface(cell: cell, with: options)
+            }
         }
         item.configure(cell: cell)
 //        cell.setNeedsLayout()
@@ -135,10 +139,6 @@ extension PlaceListViewModel: UITableViewDataSource {
         
 }
 
-extension PlaceListViewModel: UICollectionViewDelegate {
-      
-}
-
 extension PlaceListViewModel: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -155,36 +155,11 @@ extension PlaceListViewModel: UICollectionViewDataSource {
         
         if let reviewCell = cell as? ReviewCollectionViewCell {
             reviewCell.configureInterface()
-            let review = PlaceReview.empty
+            let review = Review.empty
             reviewCell.configure(data: review)
         }
         cell.backgroundColor = .blue
         
         return cell
-    }
-    
-}
-
-extension PlaceListViewModel: UICollectionViewDelegateFlowLayout {
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let itemsPerRow: CGFloat = 1
-        let paddingWidth = 20 * (itemsPerRow + 1)
-        let availableWidth = collectionView.frame.width - paddingWidth
-        let itemWidth = availableWidth / itemsPerRow
-        return CGSize(width: itemWidth, height: itemWidth)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 20
-    }
-
+    }    
 }

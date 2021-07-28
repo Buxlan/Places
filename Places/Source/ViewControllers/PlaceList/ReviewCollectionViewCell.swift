@@ -10,16 +10,6 @@ import UIKit
 class ReviewCollectionViewCell: UICollectionViewCell, ConfigurableCell {
     
     internal var isInterfaceConfigured: Bool = false
-    private let cornerRadius: CGFloat = 24.0
-    
-    private lazy var roundedView: UIView = {
-        let view = CorneredView(corners: [.topLeft, .topRight], radius: cornerRadius)
-        view.backgroundColor = .clear
-        view.translatesAutoresizingMaskIntoConstraints = false
-//        view.roundCorners(corners: [.allCorners], radius: 40)
-//        view.clipsToBounds = true
-        return view
-    }()
     
     private lazy var placeLabel: UILabel = {
         let view = UILabel()
@@ -63,10 +53,9 @@ class ReviewCollectionViewCell: UICollectionViewCell, ConfigurableCell {
         let backView = UIView()
         backView.backgroundColor = Asset.other0.color
         backgroundView = backView
-        roundedView.addSubview(placeLabel)
-        roundedView.addSubview(photoImageView)
-        roundedView.addSubview(likeButton)
-        contentView.addSubview(roundedView)
+        contentView.addSubview(placeLabel)
+        contentView.addSubview(photoImageView)
+        contentView.addSubview(likeButton)
         configureConstraints()
         isInterfaceConfigured = true
     }
@@ -97,53 +86,27 @@ class ReviewCollectionViewCell: UICollectionViewCell, ConfigurableCell {
 //            likeButton.widthAnchor.constraint(equalToConstant: 44),
 //            likeButton.heightAnchor.constraint(equalToConstant: 44),
 //            likeButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0)
-//            placeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            photoImageView.leadingAnchor.constraint(equalTo: placeLabel.leadingAnchor),
-//            likeButton.leadingAnchor.constraint(equalTo: placeLabel.leadingAnchor),
-//
-//            placeLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            photoImageView.topAnchor.constraint(equalTo: placeLabel.bottomAnchor),
-//            likeButton.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 16),
-//
-//            placeLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-//            photoImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-//            likeButton.widthAnchor.constraint(equalToConstant: 44),
-//
-//            photoImageView.heightAnchor.constraint(equalTo: photoImageView.widthAnchor,
-//                                                   multiplier: 1.0),
-//            likeButton.heightAnchor.constraint(equalToConstant: 44),
-//
-//            likeButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
+            placeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            placeLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+            placeLabel.heightAnchor.constraint(equalToConstant: 24),
+            placeLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor),
             
-            
-            
-            roundedView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            roundedView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            roundedView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            roundedView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
-            placeLabel.leadingAnchor.constraint(equalTo: roundedView.leadingAnchor),
             photoImageView.leadingAnchor.constraint(equalTo: placeLabel.leadingAnchor),
-            likeButton.leadingAnchor.constraint(equalTo: placeLabel.leadingAnchor),
-            
-            placeLabel.topAnchor.constraint(equalTo: roundedView.topAnchor),
             photoImageView.topAnchor.constraint(equalTo: placeLabel.bottomAnchor),
-            likeButton.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 16),
-                        
-            placeLabel.widthAnchor.constraint(equalTo: roundedView.widthAnchor),
-            photoImageView.widthAnchor.constraint(equalTo: roundedView.widthAnchor),
-            likeButton.widthAnchor.constraint(equalToConstant: 44),
-            
-            photoImageView.heightAnchor.constraint(equalTo: photoImageView.widthAnchor,
+            photoImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
+            photoImageView.heightAnchor.constraint(lessThanOrEqualTo: photoImageView.widthAnchor,
                                                    multiplier: 1.0),
-            likeButton.heightAnchor.constraint(equalToConstant: 44),
             
-            likeButton.bottomAnchor.constraint(equalTo: roundedView.bottomAnchor, constant: -8)
+            likeButton.leadingAnchor.constraint(equalTo: placeLabel.leadingAnchor),
+            likeButton.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 8),
+            likeButton.widthAnchor.constraint(equalToConstant: 24),
+            likeButton.heightAnchor.constraint(equalToConstant: 24),
+            likeButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ]
         NSLayoutConstraint.activate(constraints)
     }
     
-    func configure(data: PlaceReview) {
+    func configure(data: Review) {
         isUserInteractionEnabled = true
         
         placeLabel.text = data.title

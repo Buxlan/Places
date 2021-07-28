@@ -129,6 +129,19 @@ extension ReviewListViewController: UITableViewDelegate {
             vc.modalPresentationStyle = .pageSheet
             present(vc, animated: true)
         }
-    }
+    }    
+}
+
+extension ReviewListViewController: UICollectionViewDelegate {
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let review = Review.empty
+        let vc = UIViewController.instantiateViewController(withIdentifier: .review)
+        if let vc = vc as? ReviewViewController {
+            vc.review = review
+            vc.modalTransitionStyle = .flipHorizontal
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+      
 }
