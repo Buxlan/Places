@@ -11,6 +11,15 @@ class ShadowLayer: CALayer {
     
     override init() {
         super.init()
+        configureMask()
+    }
+    
+    override init(layer: Any) {
+        super.init(layer: layer)
+        configureMask()
+    }
+    
+    private func configureMask() {
         shadowRadius = 8
         shadowOpacity = 0.4
         shadowOffset = CGSize(width: 4, height: 4)

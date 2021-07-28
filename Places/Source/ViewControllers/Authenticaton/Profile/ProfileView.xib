@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="Places" customModuleProvider="target">
             <connections>
-                <outlet property="view" destination="iN0-l3-epB" id="YDO-Cr-LGA"/>
+                <outlet property="view" destination="iN0-l3-epB" id="tDo-Lv-rvB"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -20,7 +20,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-            <point key="canvasLocation" x="-75" y="62"/>
+            <point key="canvasLocation" x="91" y="79"/>
         </view>
     </objects>
     <resources>

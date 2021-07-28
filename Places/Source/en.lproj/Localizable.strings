@@ -10,6 +10,8 @@
 "Onboarding.Buttons.Later" = "Maybe later";
 "Onboarding.Buttons.Skip" = "Skip";
 /* Authentication */
+"SignIn.title" = "Login";
+"Auth.forgotPassword" = "Forget password?";
 "Auth.title" = "Joining us allow to share you own essay about variable places...";
 "Auth.usernamePlaceholder" = "Username / E-mail";
 "Auth.passwordPlaceholder" = "Password";
@@ -25,3 +27,5 @@
 "FavoritePlaces.title" = "Favorite";
 /* Profile */
 "Profile.title" = "Profile";
+"Profile.Buttons.SignIn" = "Sign in";
+"Profile.Buttons.SignUp" = "Register";

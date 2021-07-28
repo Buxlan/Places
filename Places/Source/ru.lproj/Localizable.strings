@@ -10,6 +10,8 @@
 "Onboarding.onboardngText2" = "Share your imaginations! Listen and share audio, text and pictures with other";
 "Onboarding.onboardngText3" = "Регистрация позволит Вам оставлять эссе и предложения о создании новых мест.";
 /* Authentication */
+"SignIn.title" = "Вход в систему";
+"Auth.forgotPassword" = "Забыли пароль?";
 "Auth.title" = "Регистрация позволит Вам оставлять эссе и предложения о создании новых мест.";
 "Auth.usernamePlaceholder" = "Имя / Почта";
 "Auth.passwordPlaceholder" = "Пароль";
@@ -25,3 +27,5 @@
 "FavoritePlaces.title" = "Любимые";
 /* Profile */
 "Profile.title" = "Профиль";
+"Profile.Buttons.SignIn" = "Войти";
+"Profile.Buttons.SignUp" = "Зарегистрироваться";

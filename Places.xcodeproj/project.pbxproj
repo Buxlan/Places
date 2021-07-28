@@ -15,6 +15,7 @@
 		401BFFDE26A31D35005E0B74 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 401BFFDD26A31D35005E0B74 /* swiftgen.yml */; };
 		4028E52626617BF800765DC6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028E52526617BF800765DC6 /* ProfileViewController.swift */; };
 		402C3C2C26A5B1E200E73581 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402C3C2B26A5B1E200E73581 /* OnboardingView.xib */; };
+		4030AB7D26B1CFE200202A20 /* SignInView_test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4030AB7C26B1CFE200202A20 /* SignInView_test.xib */; };
 		4031EBF82682031000BF1F76 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4031EBF72682031000BF1F76 /* .swiftlint.yml */; };
 		403B5A52266A47CA00421470 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B5A51266A47CA00421470 /* UIColor.swift */; };
 		404C999C26777F51009ADECF /* FavoritePlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404C999B26777F51009ADECF /* FavoritePlaceCell.swift */; };
@@ -25,6 +26,9 @@
 		404D9CFD26B0D2A100AF616F /* ReviewDescriptionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404D9CFC26B0D2A100AF616F /* ReviewDescriptionCell.swift */; };
 		404D9D0126B0E14D00AF616F /* Review.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404D9D0026B0E14D00AF616F /* Review.storyboard */; };
 		404DB6EE266CC0A6002464DB /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DB6ED266CC0A6002464DB /* UIFont.swift */; };
+		404DBE9726B17681009D8081 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 404DBE9626B17681009D8081 /* SignUp.storyboard */; };
+		404DBE9A26B1768F009D8081 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404DBE9926B1768F009D8081 /* SignUpViewController.swift */; };
+		404DBE9E26B184B2009D8081 /* SignInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 404DBE9D26B184B2009D8081 /* SignInView.xib */; };
 		40539CC526A607EC00127DE5 /* Layers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40539CC426A607EC00127DE5 /* Layers.swift */; };
 		405CE9FB26AF504A00DB5C2D /* ReviewListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405CE9FA26AF504A00DB5C2D /* ReviewListViewModel.swift */; };
 		405CE9FE26AF5A2900DB5C2D /* TopCorneredLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 405CE9FD26AF5A2900DB5C2D /* TopCorneredLabel.swift */; };
@@ -41,6 +45,7 @@
 		406D331126AF4A7100680BCB /* ReviewListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 406D331026AF4A7100680BCB /* ReviewListView.xib */; };
 		406D8B3326AE29ED00FC5266 /* AuthorListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 406D8B3226AE29ED00FC5266 /* AuthorListViewController.swift */; };
 		406D8B3726AE2A1400FC5266 /* AuthorListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 406D8B3626AE2A1400FC5266 /* AuthorListView.xib */; };
+		406F271726B1C9AE006F92B4 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 406F271626B1C9AE006F92B4 /* ProfileView.xib */; };
 		4070918C26829B0900AF410F /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4070918B26829B0900AF410F /* UIImage.swift */; };
 		407D8482265DB1E800F45C22 /* FavoritePlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D8481265DB1E800F45C22 /* FavoritePlacesViewController.swift */; };
 		407D8485265DB72200F45C22 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 407D8484265DB72200F45C22 /* MainTabBarViewController.swift */; };
@@ -68,7 +73,6 @@
 		40978DA82655BAFD001E1DFC /* PlaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978DA72655BAFD001E1DFC /* PlaceViewModel.swift */; };
 		40978DAC265671F9001E1DFC /* ConfigurableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978DAB265671F9001E1DFC /* ConfigurableCell.swift */; };
 		40AE8B9826A74FE1004825AF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40AE8B9726A74FE1004825AF /* SignInViewController.swift */; };
-		40AE8B9B26A75022004825AF /* SignInView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40AE8B9A26A75022004825AF /* SignInView.xib */; };
 		40B6EAEF267973D500AA4CC2 /* PlaceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B6EAEE267973D500AA4CC2 /* PlaceListViewController.swift */; };
 		40B6EAF2267974B200AA4CC2 /* PlaceListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B6EAF1267974B200AA4CC2 /* PlaceListViewModel.swift */; };
 		40B6EAF52679754500AA4CC2 /* PlaceListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40B6EAF42679754500AA4CC2 /* PlaceListCell.swift */; };
@@ -82,7 +86,7 @@
 		40E7D9E526A5ACDE00DC94C2 /* PlaceListTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40E7D9E426A5ACDE00DC94C2 /* PlaceListTableView.xib */; };
 		40E7D9EA26A5ADC900DC94C2 /* AuthorsListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40E7D9E926A5ADC900DC94C2 /* AuthorsListView.xib */; };
 		40E7D9EE26A5AE1900DC94C2 /* FavoritePlacesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40E7D9ED26A5AE1900DC94C2 /* FavoritePlacesView.xib */; };
-		40E7D9FC26A5AEDE00DC94C2 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40E7D9FB26A5AEDE00DC94C2 /* ProfileView.xib */; };
+		40E7D9FC26A5AEDE00DC94C2 /* ProfileView_test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40E7D9FB26A5AEDE00DC94C2 /* ProfileView_test.xib */; };
 		40E982D9264349A4007D14D6 /* OtherExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E982D8264349A4007D14D6 /* OtherExtensions.swift */; };
 		40E982E7264400BC007D14D6 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E982E6264400BC007D14D6 /* OnboardingPageViewController.swift */; };
 		FB6793D10F24DC3E1D21CBC8 /* Pods_Places.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB95DCC09A0ED131E58E26D2 /* Pods_Places.framework */; };
@@ -99,6 +103,7 @@
 		401BFFDD26A31D35005E0B74 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 		4028E52526617BF800765DC6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		402C3C2B26A5B1E200E73581 /* OnboardingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
+		4030AB7C26B1CFE200202A20 /* SignInView_test.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInView_test.xib; sourceTree = "<group>"; };
 		4031EBF72682031000BF1F76 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		403B5A51266A47CA00421470 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		404C999B26777F51009ADECF /* FavoritePlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceCell.swift; sourceTree = "<group>"; };
@@ -109,6 +114,9 @@
 		404D9CFC26B0D2A100AF616F /* ReviewDescriptionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDescriptionCell.swift; sourceTree = "<group>"; };
 		404D9D0026B0E14D00AF616F /* Review.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Review.storyboard; sourceTree = "<group>"; };
 		404DB6ED266CC0A6002464DB /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		404DBE9626B17681009D8081 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		404DBE9926B1768F009D8081 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		404DBE9D26B184B2009D8081 /* SignInView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInView.xib; sourceTree = "<group>"; };
 		40539CC426A607EC00127DE5 /* Layers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Layers.swift; path = Places/Source/Layers.swift; sourceTree = SOURCE_ROOT; };
 		405CE9FA26AF504A00DB5C2D /* ReviewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListViewModel.swift; sourceTree = "<group>"; };
 		405CE9FD26AF5A2900DB5C2D /* TopCorneredLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCorneredLabel.swift; sourceTree = "<group>"; };
@@ -127,6 +135,7 @@
 		406D331026AF4A7100680BCB /* ReviewListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewListView.xib; sourceTree = "<group>"; };
 		406D8B3226AE29ED00FC5266 /* AuthorListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorListViewController.swift; sourceTree = "<group>"; };
 		406D8B3626AE2A1400FC5266 /* AuthorListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorListView.xib; sourceTree = "<group>"; };
+		406F271626B1C9AE006F92B4 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		4070918B26829B0900AF410F /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		407D8481265DB1E800F45C22 /* FavoritePlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlacesViewController.swift; sourceTree = "<group>"; };
 		407D8484265DB72200F45C22 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
@@ -154,7 +163,6 @@
 		40978DA72655BAFD001E1DFC /* PlaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewModel.swift; sourceTree = "<group>"; };
 		40978DAB265671F9001E1DFC /* ConfigurableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableCell.swift; sourceTree = "<group>"; };
 		40AE8B9726A74FE1004825AF /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		40AE8B9A26A75022004825AF /* SignInView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInView.xib; sourceTree = "<group>"; };
 		40B6EAEE267973D500AA4CC2 /* PlaceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewController.swift; sourceTree = "<group>"; };
 		40B6EAF1267974B200AA4CC2 /* PlaceListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListViewModel.swift; sourceTree = "<group>"; };
 		40B6EAF42679754500AA4CC2 /* PlaceListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceListCell.swift; sourceTree = "<group>"; };
@@ -169,7 +177,7 @@
 		40E7D9E426A5ACDE00DC94C2 /* PlaceListTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceListTableView.xib; sourceTree = "<group>"; };
 		40E7D9E926A5ADC900DC94C2 /* AuthorsListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthorsListView.xib; sourceTree = "<group>"; };
 		40E7D9ED26A5AE1900DC94C2 /* FavoritePlacesView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoritePlacesView.xib; sourceTree = "<group>"; };
-		40E7D9FB26A5AEDE00DC94C2 /* ProfileView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
+		40E7D9FB26A5AEDE00DC94C2 /* ProfileView_test.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileView_test.xib; sourceTree = "<group>"; };
 		40E982D8264349A4007D14D6 /* OtherExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherExtensions.swift; sourceTree = "<group>"; };
 		40E982E6264400BC007D14D6 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		58BE727BCED534A3751BCDD0 /* Pods-Places.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Places.debug.xcconfig"; path = "Target Support Files/Pods-Places/Pods-Places.debug.xcconfig"; sourceTree = "<group>"; };
@@ -241,6 +249,15 @@
 				404D9CFC26B0D2A100AF616F /* ReviewDescriptionCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		404DBE9526B17665009D8081 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				404DBE9626B17681009D8081 /* SignUp.storyboard */,
+				404DBE9926B1768F009D8081 /* SignUpViewController.swift */,
+			);
+			path = SignUp;
 			sourceTree = "<group>";
 		};
 		40625A38265CFF4500E0E744 /* Other */ = {
@@ -412,6 +429,7 @@
 		40AE8B9126A74F51004825AF /* Authenticaton */ = {
 			isa = PBXGroup;
 			children = (
+				404DBE9526B17665009D8081 /* SignUp */,
 				40AE8B9226A74F6B004825AF /* SignIn */,
 				40E7D9F426A5AE8800DC94C2 /* Profile */,
 			);
@@ -421,8 +439,9 @@
 		40AE8B9226A74F6B004825AF /* SignIn */ = {
 			isa = PBXGroup;
 			children = (
+				404DBE9D26B184B2009D8081 /* SignInView.xib */,
 				40AE8B9726A74FE1004825AF /* SignInViewController.swift */,
-				40AE8B9A26A75022004825AF /* SignInView.xib */,
+				4030AB7C26B1CFE200202A20 /* SignInView_test.xib */,
 			);
 			path = SignIn;
 			sourceTree = "<group>";
@@ -459,7 +478,8 @@
 		40E7D9F426A5AE8800DC94C2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				40E7D9FB26A5AEDE00DC94C2 /* ProfileView.xib */,
+				406F271626B1C9AE006F92B4 /* ProfileView.xib */,
+				40E7D9FB26A5AEDE00DC94C2 /* ProfileView_test.xib */,
 				4028E52526617BF800765DC6 /* ProfileViewController.swift */,
 				40539CC426A607EC00127DE5 /* Layers.swift */,
 			);
@@ -556,19 +576,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40AE8B9B26A75022004825AF /* SignInView.xib in Resources */,
 				4031EBF82682031000BF1F76 /* .swiftlint.yml in Resources */,
 				40E7D9E526A5ACDE00DC94C2 /* PlaceListTableView.xib in Resources */,
 				401BFFDE26A31D35005E0B74 /* swiftgen.yml in Resources */,
 				40C10948267A628F00264062 /* GoogleService-Info.plist in Resources */,
+				4030AB7D26B1CFE200202A20 /* SignInView_test.xib in Resources */,
 				406D331126AF4A7100680BCB /* ReviewListView.xib in Resources */,
 				40978D9F2655AAC9001E1DFC /* Place.storyboard in Resources */,
 				402C3C2C26A5B1E200E73581 /* OnboardingView.xib in Resources */,
-				40E7D9FC26A5AEDE00DC94C2 /* ProfileView.xib in Resources */,
+				404DBE9726B17681009D8081 /* SignUp.storyboard in Resources */,
+				40E7D9FC26A5AEDE00DC94C2 /* ProfileView_test.xib in Resources */,
 				40E7D9EE26A5AE1900DC94C2 /* FavoritePlacesView.xib in Resources */,
+				404DBE9E26B184B2009D8081 /* SignInView.xib in Resources */,
 				404D9D0126B0E14D00AF616F /* Review.storyboard in Resources */,
 				406D8B3726AE2A1400FC5266 /* AuthorListView.xib in Resources */,
 				40E7D9EA26A5ADC900DC94C2 /* AuthorsListView.xib in Resources */,
+				406F271726B1C9AE006F92B4 /* ProfileView.xib in Resources */,
 				400E81FC26A571E000164CB3 /* Localizable.strings in Resources */,
 				406660CE263D21FF001BEF66 /* Assets.xcassets in Resources */,
 				406660CC263D21FF001BEF66 /* Main.storyboard in Resources */,
@@ -692,6 +715,7 @@
 				407DCD77265A590B005ADB16 /* PlaceTableViewHeader.swift in Sources */,
 				408C38BC26568A11009832FD /* PlaceLabelCell.swift in Sources */,
 				40D3EEB12645C729005E2F0F /* Place.swift in Sources */,
+				404DBE9A26B1768F009D8081 /* SignUpViewController.swift in Sources */,
 				401ACA3B265F86BE00AEADE2 /* AppController.swift in Sources */,
 				404D9CF326B0D1B000AF616F /* ReviewImageCell.swift in Sources */,
 				40625A36265BB4B100E0E744 /* Settings.swift in Sources */,

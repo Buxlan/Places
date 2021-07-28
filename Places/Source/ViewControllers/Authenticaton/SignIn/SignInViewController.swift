@@ -16,26 +16,7 @@ class SignInViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-    }
-    
-    // MARK: - Private
-    private lazy var logo: UILabel = {
-        let view = UILabel()
-        view.text = L10n.App.name
-        view.textColor = .darkText
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.numberOfLines = 2
-        view.font = .bxControlTitle
-        return view
-    }()
-    
-    private lazy var dismissButton: UIButton = {
-        let view = UIButton()
-        view.setImage(Asset.xmark.image, for: .normal)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
-        return view
-    }()
+    }    
     
     private lazy var imageView: UIView = {
         
@@ -63,21 +44,21 @@ class SignInViewController: UIViewController {
             
     private lazy var titleLabel: UILabel = {
         let view = UILabel()
-        view.text = L10n.Auth.title
+        view.text = L10n.SignIn.title
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 1
         view.font = .bxControlTitle
         return view
     }()
     
-    private lazy var usernameView: UITextField = {
+    private lazy var usernameTextField: UITextField = {
         let view = UITextField()
         view.delegate = self
         view.placeholder = L10n.Auth.usernamePlaceholder
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.5
-        view.layer.borderColor = Asset.other1.color.cgColor
-        view.layer.cornerRadius = 8
+        view.layer.borderColor = Asset.other0.color.cgColor
+        view.layer.cornerRadius = 4
         view.clipsToBounds = true
         
         let leftView = UIView()
@@ -89,15 +70,15 @@ class SignInViewController: UIViewController {
         return view
     }()
     
-    private lazy var passwordView: UITextField = {
+    private lazy var passwordTextField: UITextField = {
         let view = UITextField()
         view.delegate = self
         view.placeholder = L10n.Auth.passwordPlaceholder
         view.isSecureTextEntry = true
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.borderWidth = 0.5
-        view.layer.borderColor = Asset.other1.color.cgColor
-        view.layer.cornerRadius = 8
+        view.layer.borderColor = Asset.other0.color.cgColor
+        view.layer.cornerRadius = 4
         view.clipsToBounds = true
         
         let leftView = UIView()
@@ -105,41 +86,21 @@ class SignInViewController: UIViewController {
         view.leftView = leftView
         view.leftViewMode = .always
         
-        let image = Asset.lock.image
-        let size = CGSize(width: 16, height: 16)
-        let frame = CGRect(origin: CGPoint(x: 0, y: 0), size: size)
+        let color = Asset.other0.color
+        let image = Asset.eye.image
+        let selectedImage = Asset.fillEye.image
+                        
+        let button = UIButton()
+        button.frame = CGRect(x: 0, y: 0, width: 20, height: 16)
+        button.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        button.setImage(image, for: .normal)
+        button.setImage(selectedImage, for: .selected)
+        button.addTarget(self, action: #selector(showPasswordTapped), for: .touchUpInside)
+        button.contentEdgeInsets = UIEdgeInsets(top: 0, left: -10, bottom: 0, right: 10)
         
-        let rend = UIGraphicsImageRenderer(size: size, format: image.imageRendererFormat)
-        let resizedImage = rend.image { _ in
-            image.draw(in: frame)
-        }
+        view.rightView = button
+        view.rightViewMode = .always
                 
-        let imageView = UIImageView(frame: frame)
-        imageView.alpha = 0.5
-        imageView.setImage(resizedImage)
-        imageView.contentMode = .scaleAspectFit
-        
-        let viewSize = CGSize(width: size.width + 8, height: size.height)
-        let viewFrame = CGRect(origin: CGPoint(x: 0, y: 0), size: viewSize)
-        let rightView = UIView(frame: viewFrame)
-        rightView.addSubview(imageView)
-        
-        view.rightView = rightView
-        view.rightViewMode = .unlessEditing
-                
-        return view
-    }()
-    
-    private lazy var buttonsStack: UIStackView = {
-//        let flexView = UIView()
-//        flexView.backgroundColor = .red
-//        flexView.setContentHuggingPriority(.defaultLow, for: .vertical)
-        let subviews = [signInButton, forgetPasswordButton, signUpButton]
-        let view = UIStackView(arrangedSubviews: subviews)
-        view.axis = .vertical
-        view.distribution = .fillEqually
-        view.spacing = 8
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
         
@@ -147,27 +108,17 @@ class SignInViewController: UIViewController {
         
         let view = ButtonWithShadow(title: L10n.Auth.Buttons.login,
                                           image: nil)
-        
         view.backgroundColor = Asset.other1.color
-        view.titleLabel?.backgroundColor = view.backgroundColor
-        view.imageView?.backgroundColor = view.backgroundColor
-        
         view.addTarget(self, action: #selector(signIn), for: .touchUpInside)
   
         return view
     }()
     
-    private lazy var signUpButton: ButtonWithShadow = {
-        let view = ButtonWithShadow(title: L10n.Auth.Buttons.signUp,
+    private lazy var forgotPasswordButton: ButtonWithShadow = {
+        let view = ButtonWithShadow(title: L10n.Auth.forgotPassword,
                                       image: nil)
-        view.addTarget(self, action: #selector(signUp), for: .touchUpInside)
-        return view
-    }()
-    
-    private lazy var forgetPasswordButton: OnboardingSkipButton = {
-        let view = OnboardingSkipButton(title: L10n.Onboarding.Buttons.later,
-                                      image: nil)
-        view.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
+        view.backgroundColor = Asset.other1.color
+        view.addTarget(self, action: #selector(forgotPasswordTapped), for: .touchUpInside)
         return view
     }()
     
@@ -178,59 +129,68 @@ class SignInViewController: UIViewController {
         
         view.backgroundColor = Asset.other1.color
         
-        view.addSubview(logo)
-        view.addSubview(dismissButton)
         view.addSubview(imageView)
         view.addSubview(titleLabel)
-        view.addSubview(usernameView)
-        view.addSubview(passwordView)
-        view.addSubview(buttonsStack)
+        view.addSubview(usernameTextField)
+        view.addSubview(passwordTextField)
+        view.addSubview(signInButton)
+        view.addSubview(forgotPasswordButton)
+        
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(viewTapped))
+        gesture.numberOfTapsRequired = 1
+        gesture.numberOfTouchesRequired = 1
+        view.addGestureRecognizer(gesture)
         
         configureConstraints()
  
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        configureBars()
+    }
+
+    private func configureBars(animated: Bool = false) {
+        navigationController?.setToolbarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.navigationBar.barTintColor = Asset.other1.color
+        navigationController?.navigationBar.tintColor = Asset.other0.color
     }
 
     private func configureConstraints() {
                 
         let constraints: [NSLayoutConstraint] = [
             
-            logo.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor,
-                                               constant: 8),
-            logo.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-                        
-            dismissButton.centerYAnchor.constraint(equalTo: logo.centerYAnchor),
-            dismissButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-            dismissButton.widthAnchor.constraint(equalToConstant: 16),
-            dismissButton.heightAnchor.constraint(equalTo: dismissButton.widthAnchor),
-            
-            imageView.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 8),
+            imageView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 8),
             imageView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor),
-            imageView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: -8),
+            imageView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor, multiplier: 0.5),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
             
             titleLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.centerYAnchor, constant: 8),
+            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor,
+                                            constant: 16),
             titleLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
                                               constant: -32),
-            usernameView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            usernameView.heightAnchor.constraint(equalToConstant: 44),
-            usernameView.widthAnchor.constraint(equalTo: buttonsStack.widthAnchor),
-            usernameView.bottomAnchor.constraint(equalTo: passwordView.topAnchor, constant: -8),
+            usernameTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
+            usernameTextField.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+            usernameTextField.widthAnchor.constraint(equalTo: titleLabel.widthAnchor),
+            usernameTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -8),
+            usernameTextField.heightAnchor.constraint(equalToConstant: 44),
 
-            passwordView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            passwordView.heightAnchor.constraint(equalToConstant: 44),
-            passwordView.widthAnchor.constraint(equalTo: buttonsStack.widthAnchor),
-            passwordView.bottomAnchor.constraint(equalTo: buttonsStack.topAnchor, constant: -8),
+            passwordTextField.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+            passwordTextField.widthAnchor.constraint(equalTo: titleLabel.widthAnchor),
+            passwordTextField.bottomAnchor.constraint(equalTo: signInButton.topAnchor, constant: -8),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 44),
             
-            buttonsStack.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            buttonsStack.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor,
-                                               constant: -8),
-            buttonsStack.widthAnchor.constraint(greaterThanOrEqualTo: view.layoutMarginsGuide.widthAnchor,
-                                                multiplier: 0.5),
-            buttonsStack.widthAnchor.constraint(lessThanOrEqualTo: view.layoutMarginsGuide.widthAnchor,
-                                                multiplier: 0.8),
-            buttonsStack.heightAnchor.constraint(equalToConstant: 148)
-
+            signInButton.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+            signInButton.widthAnchor.constraint(greaterThanOrEqualTo: view.layoutMarginsGuide.widthAnchor,
+                                                multiplier: 0.6),
+            
+            forgotPasswordButton.topAnchor.constraint(equalTo: signInButton.bottomAnchor, constant: 8),
+            forgotPasswordButton.widthAnchor.constraint(equalTo: signInButton.widthAnchor),
+            forgotPasswordButton.centerXAnchor.constraint(equalTo: signInButton.centerXAnchor),
+            forgotPasswordButton.heightAnchor.constraint(equalTo: signInButton.heightAnchor),
+            forgotPasswordButton.bottomAnchor.constraint(lessThanOrEqualTo: view.layoutMarginsGuide.bottomAnchor,
+                                               constant: -8)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -246,14 +206,54 @@ class SignInViewController: UIViewController {
     }
     
     @objc
-    func dismissTapped() {
-        dismiss(animated: true) {
-            
+    private func showPasswordTapped(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        passwordTextField.isSecureTextEntry.toggle()
+    }
+    
+    @objc
+    private func forgotPasswordTapped(_ sender: UIButton) {
+        
+    }
+    
+    @objc
+    private func viewTapped() {
+        if view.isFirstResponder {
+            view.resignFirstResponder()
+            return
+        }
+        for subview in view.subviews where subview.isFirstResponder {
+            subview.resignFirstResponder()
+            return
         }
     }
-
+    
 }
 
 extension SignInViewController: UITextFieldDelegate {
-            
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.becomeFirstResponder()
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+//        if textField == usernameTextField {
+//            passwordTextField.becomeFirstResponder()
+//        } else {
+//            textField.resignFirstResponder()
+//        }
+//        textField.resignFirstResponder()
+        configureBars(animated: true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+            signIn()
+        }
+        return true
+    }
+    
 }

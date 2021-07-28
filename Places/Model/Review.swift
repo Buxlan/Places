@@ -8,13 +8,14 @@
 import Foundation
 import CoreLocation
 import UIKit
+import AVFoundation
 
 struct Review: ReusableObject {
     
     typealias PlaceCategory = String
     
     static var reuseIdentifier: String = String(describing: Self.self)
-    static let empty = Review(author: Author(), title: "Spb", description: "Spb descr")
+    static let empty = Review()
     
     let author: Author
     let title: String
@@ -31,6 +32,22 @@ struct Review: ReusableObject {
     }()
     let identifier = UUID()
     let description: String
+    let rating: CGFloat
+    let reviewCount: Int
+    let audio: AudioUnit? = nil
+        
+    let workingTime: String
+    let workingDays: [Int]
+    
+    init() {
+        author = Author()
+        title = "Spb"
+        description = "Spb descr"
+        rating = 5.0
+        reviewCount = 234
+        workingTime = "From 12 to 7 p.m."
+        workingDays = [1, 2, 3, 4, 5]
+    }
 }
 
 extension Review: Hashable {

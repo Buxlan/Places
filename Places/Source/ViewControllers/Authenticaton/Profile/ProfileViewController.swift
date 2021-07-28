@@ -9,49 +9,12 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        // Tab bar configure
-        tabBarItem.title = L10n.Profile.title
-        let image = Asset.person.image.resizeImage(to: 24,
-                                                   aspectRatio: .current,
-                                                   with: view.tintColor)
-        let selImage = Asset.person.image.resizeImage(to: 26,
-                                                      aspectRatio: .current,
-                                                      with: view.tintColor)
-        tabBarItem.image = image
-        tabBarItem.selectedImage = selImage
-    }
+    // MARK: - Public
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    // MARK: - Public vars and properties
-    
-    // MARK: - Public functions
-    
-    // MARK: - UI Elements
-    private struct Strings {
-        static let title = "Profile"
-    }
-    
-    // MARK: - Events and actions
-    
-    // MARK: Other private vars, properties and methods
-    private var login: String? {
-        didSet {
-            // firstViewResponder = Password view
-        }
-    }
-    private var password: String? {
-        didSet {
-            
-        }
-    }
+    // MARK: Private
     
     // MARK: - UI objects
-    private lazy var logo: UILabel = {
+    private lazy var logoLabel: UILabel = {
         let view = UILabel()
         view.text = L10n.App.name
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -83,231 +46,119 @@ class ProfileViewController: UIViewController {
         
         return view
     }()
-    
-    private lazy var userNameTextField: UITextField = {
-        
-        let view = UITextField()
-        view.delegate = self
-        view.placeholder = L10n.Auth.usernamePlaceholder
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderWidth = 0.5
-        view.layer.borderColor = Asset.other1.color.cgColor
-        view.layer.cornerRadius = 8
-        view.clipsToBounds = true
-        
-        let leftView = UIView()
-        leftView.frame = CGRect(x: 0, y: 0, width: 8, height: 8)
-                
-        view.leftView = leftView
-        view.leftViewMode = .always
-        
-        return view
-    }()
-    
-    private lazy var passwordTextField: UITextField = {
-        
-        let view = UITextField()
-        view.delegate = self
-        view.placeholder = L10n.Auth.passwordPlaceholder
-        view.isSecureTextEntry = true
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.borderWidth = 0.5
-        view.layer.borderColor = Asset.other1.color.cgColor
-        view.layer.cornerRadius = 8
-        view.clipsToBounds = true
-        
-        let leftView = UIView()
-        leftView.frame = CGRect(x: 0, y: 0, width: 8, height: 8)
-                
-        view.leftView = leftView
-        view.leftViewMode = .always
-        
-        return view
-    }()
-    
+       
     private lazy var titleLabel: UILabel = {
         let view = UILabel()
-        view.text = L10n.Auth.title
+        view.text = L10n.Profile.title
         view.translatesAutoresizingMaskIntoConstraints = false
         view.numberOfLines = 1
         view.font = .bxControlTitle
         return view
     }()
-    
-    private lazy var textLabel: UILabel = {
-        let view = UILabel()
-        view.text = L10n.Onboarding.onboardngText1
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.numberOfLines = 10
-        view.font = .bxBody
-        return view
-    }()
-    
+        
     private lazy var buttonSignIn: ButtonWithShadow = {
-        let view = ButtonWithShadow(title: L10n.Auth.Buttons.login,
+        let view = ButtonWithShadow(title: L10n.Profile.Buttons.signIn,
                                       image: nil)
+        view.backgroundColor = Asset.other1.color
+        view.accessibilityIdentifier = "buttonSignIn"
         view.addTarget(self, action: #selector(signIn), for: .touchUpInside)
         return view
     }()
     
-    private lazy var buttonForgetPassword: OnboardingSkipButton = {
-        let view = OnboardingSkipButton(title: L10n.Onboarding.Buttons.later,
+    private lazy var buttonSignUp: ButtonWithShadow = {
+        let view = ButtonWithShadow(title: L10n.Profile.Buttons.signUp,
                                       image: nil)
-        view.addTarget(self, action: #selector(passwordRecovery), for: .touchUpInside)
+        view.backgroundColor = Asset.other1.color
+        view.accessibilityIdentifier = "buttonSignUp"
+        view.tintColor = Asset.other2.color
+        view.addTarget(self, action: #selector(signUp), for: .touchUpInside)
         return view
     }()
+       
+    // MARK: - Methods
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        // Tab bar configure
+        tabBarItem.title = L10n.Profile.title
+        let image = Asset.person.image.resizeImage(to: 24,
+                                                   aspectRatio: .current,
+                                                   with: view.tintColor)
+        let selImage = Asset.person.image.resizeImage(to: 26,
+                                                      aspectRatio: .current,
+                                                      with: view.tintColor)
+        tabBarItem.image = image
+        tabBarItem.selectedImage = selImage
+    }
     
-    // MARK: - events and actions
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = Asset.other1.color
         
-        view.addSubview(logo)
+        view.addSubview(logoLabel)
         view.addSubview(imageView)
         view.addSubview(titleLabel)
-        view.addSubview(textLabel)
-        view.addSubview(userNameTextField)
-        view.addSubview(passwordTextField)
         view.addSubview(buttonSignIn)
-        view.addSubview(buttonForgetPassword)
+        view.addSubview(buttonSignUp)
         
         configureConstraints()
-        
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardShow),
-                                               name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(keyboardHide),
-                                               name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
-    private lazy var staticConstraints: [NSLayoutConstraint] = {
-        let constraints: [NSLayoutConstraint] = [
-            
-            logo.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor,
-                                               constant: 8),
-            logo.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-                       
-            imageView.topAnchor.constraint(equalTo: logo.bottomAnchor, constant: 8),
-            imageView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            imageView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
-                                             constant: -32),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
-            
-            titleLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            titleLabel.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 16),
-            titleLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
-                                              constant: -32),
+    override func viewWillAppear(_ animated: Bool) {
+        configureBars(animated: false)
+    }
+    
+    private func configureBars(animated: Bool = false) {
+        navigationController?.setToolbarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.navigationBar.barTintColor = Asset.other1.color
+        navigationController?.navigationBar.tintColor = Asset.other0.color
+    }
 
-            textLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            textLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 16),
-            textLabel.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor,
-                                             constant: -32),
-            
-            userNameTextField.heightAnchor.constraint(equalTo: buttonSignIn.heightAnchor),
-            userNameTextField.widthAnchor.constraint(equalTo: imageView.widthAnchor),
-            userNameTextField.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            
-            passwordTextField.heightAnchor.constraint(equalTo: buttonSignIn.heightAnchor),
-            passwordTextField.widthAnchor.constraint(equalTo: imageView.widthAnchor),
-            passwordTextField.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            
-            buttonForgetPassword.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
-            buttonForgetPassword.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor,
-                                                 constant: -8),
-            buttonForgetPassword.widthAnchor.constraint(equalTo: buttonSignIn.widthAnchor),
-            buttonForgetPassword.heightAnchor.constraint(equalTo: buttonSignIn.heightAnchor),
-            
-            buttonSignIn.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor)
-        ]
-        return constraints
-    }()
-    
-    private lazy var constraintsWithHiddenKeyboard: [NSLayoutConstraint] = {
-        let constraints: [NSLayoutConstraint] = [
-            userNameTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor,
-                                                      constant: -8),
-            passwordTextField.bottomAnchor.constraint(equalTo: buttonSignIn.topAnchor,
-                                                      constant: -8),
-            buttonSignIn.bottomAnchor.constraint(equalTo: buttonForgetPassword.topAnchor,
-                                                 constant: -8)
-        ]
-        return constraints
-    }()
-    
-    private lazy var constraintsWithShowedKeyboard: [NSLayoutConstraint] = {
-        let constraints: [NSLayoutConstraint] = [
-            userNameTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,
-                                                 constant: 8),
-            passwordTextField.topAnchor.constraint(equalTo: userNameTextField.bottomAnchor,
-                                                      constant: 8),
-            buttonSignIn.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor,
-                                                 constant: 8)
-        ]
-        return constraints
-    }()
-    
-    private var keyboardHidden = true
-    
     private func configureConstraints() {
-        if self.view.constraints.isEmpty {
-            let constraints = staticConstraints + constraintsWithHiddenKeyboard
-            NSLayoutConstraint.activate(constraints)
-        } else {
-            if keyboardHidden {
-                NSLayoutConstraint.deactivate(constraintsWithShowedKeyboard)
-                NSLayoutConstraint.activate(constraintsWithHiddenKeyboard)
-            } else {
-                NSLayoutConstraint.deactivate(constraintsWithHiddenKeyboard)
-                NSLayoutConstraint.activate(constraintsWithShowedKeyboard)
-            }
-            view.setNeedsLayout()
-        }
-    }
-    
-    @objc
-    func keyboardShow() {
-        keyboardHidden = false
-        self.textLabel.alpha = 0
-        self.configureConstraints()
-    }
-    
-    @objc
-    func keyboardHide() {
-        keyboardHidden = true
-        let anim = UIViewPropertyAnimator(duration: 1, curve: .linear) {
-            self.textLabel.alpha = 1
-        }
-        anim.startAnimation()
+        let constraints: [NSLayoutConstraint] = [
+            
+            logoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
+            logoLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -16),
+            logoLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            
+            imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
+            imageView.centerXAnchor.constraint(equalTo: buttonSignIn.centerXAnchor),
+            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
+            imageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -16),
+            
+            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            titleLabel.bottomAnchor.constraint(equalTo: buttonSignIn.topAnchor, constant: -16),
+            
+            buttonSignIn.widthAnchor.constraint(greaterThanOrEqualTo: view.widthAnchor, multiplier: 0.6),
+            buttonSignIn.centerXAnchor.constraint(equalTo: buttonSignUp.centerXAnchor),
+            buttonSignIn.bottomAnchor.constraint(equalTo: buttonSignUp.topAnchor, constant: -16),
+            
+            buttonSignUp.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor),
+            buttonSignUp.widthAnchor.constraint(equalTo: buttonSignIn.widthAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+
     }
     
     @objc
     func signIn() {
-        
+        let vc = SignInViewController()
+        vc.modalTransitionStyle = .flipHorizontal
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc
-    func passwordRecovery() {
-        
-    }
-
-}
-
-extension ProfileViewController: UITextFieldDelegate {
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.becomeFirstResponder()
-    }
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == userNameTextField {
-            passwordTextField.becomeFirstResponder()
-        } else if textField == passwordTextField {
-            resignFirstResponder()
+    func signUp() {
+        let vc = UIViewController.instantiateViewController(withIdentifier: .signUp)
+        if let vc = vc as? SignUpViewController {
+            vc.modalTransitionStyle = .flipHorizontal
+            navigationController?.pushViewController(vc, animated: true)
         }
-        return true
     }
-    
 }
