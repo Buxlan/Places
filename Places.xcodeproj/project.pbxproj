@@ -17,6 +17,12 @@
 		402C3C2C26A5B1E200E73581 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402C3C2B26A5B1E200E73581 /* OnboardingView.xib */; };
 		4030AB7D26B1CFE200202A20 /* SignInView_test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4030AB7C26B1CFE200202A20 /* SignInView_test.xib */; };
 		4031EBF82682031000BF1F76 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4031EBF72682031000BF1F76 /* .swiftlint.yml */; };
+		40358C1A26B41DD100D14A15 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40358C1826B41DD100D14A15 /* Car.swift */; };
+		40358C1B26B41DD100D14A15 /* CarNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40358C1926B41DD100D14A15 /* CarNumber.swift */; };
+		40358C1F26B4202900D14A15 /* SignalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40358C1D26B4202900D14A15 /* SignalType.swift */; };
+		40358C2026B4202900D14A15 /* Signal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40358C1E26B4202900D14A15 /* Signal.swift */; };
+		40358C2326B4207300D14A15 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40358C2226B4207300D14A15 /* Sender.swift */; };
+		40358C2626B4208900D14A15 /* IP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40358C2526B4208900D14A15 /* IP.swift */; };
 		403B5A52266A47CA00421470 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B5A51266A47CA00421470 /* UIColor.swift */; };
 		404C999C26777F51009ADECF /* FavoritePlaceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404C999B26777F51009ADECF /* FavoritePlaceCell.swift */; };
 		404D9CEC26B0CE9F00AF616F /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 404D9CEB26B0CE9F00AF616F /* ReviewViewController.swift */; };
@@ -105,6 +111,12 @@
 		402C3C2B26A5B1E200E73581 /* OnboardingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
 		4030AB7C26B1CFE200202A20 /* SignInView_test.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInView_test.xib; sourceTree = "<group>"; };
 		4031EBF72682031000BF1F76 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		40358C1826B41DD100D14A15 /* Car.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		40358C1926B41DD100D14A15 /* CarNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarNumber.swift; sourceTree = "<group>"; };
+		40358C1D26B4202900D14A15 /* SignalType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalType.swift; sourceTree = "<group>"; };
+		40358C1E26B4202900D14A15 /* Signal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signal.swift; sourceTree = "<group>"; };
+		40358C2226B4207300D14A15 /* Sender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		40358C2526B4208900D14A15 /* IP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IP.swift; sourceTree = "<group>"; };
 		403B5A51266A47CA00421470 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		404C999B26777F51009ADECF /* FavoritePlaceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePlaceCell.swift; sourceTree = "<group>"; };
 		404D9CEB26B0CE9F00AF616F /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
@@ -322,7 +334,13 @@
 		406660DD263D4CB6001BEF66 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				40358C1826B41DD100D14A15 /* Car.swift */,
+				40358C1926B41DD100D14A15 /* CarNumber.swift */,
 				40D3EEB02645C729005E2F0F /* Place.swift */,
+				40358C2226B4207300D14A15 /* Sender.swift */,
+				40358C2526B4208900D14A15 /* IP.swift */,
+				40358C1E26B4202900D14A15 /* Signal.swift */,
+				40358C1D26B4202900D14A15 /* SignalType.swift */,
 				409063B126B090D400704CA6 /* Review.swift */,
 				409063B426B090F100704CA6 /* Author.swift */,
 				40D3EEAB2645C5CE005E2F0F /* PlaceController.swift */,
@@ -702,8 +720,12 @@
 			files = (
 				409063B526B090F100704CA6 /* Author.swift in Sources */,
 				40AE8B9826A74FE1004825AF /* SignInViewController.swift in Sources */,
+				40358C2626B4208900D14A15 /* IP.swift in Sources */,
 				409063AF26B08F2200704CA6 /* ReviewCollectionViewCell.swift in Sources */,
+				40358C1B26B41DD100D14A15 /* CarNumber.swift in Sources */,
+				40358C2026B4202900D14A15 /* Signal.swift in Sources */,
 				40E982E7264400BC007D14D6 /* OnboardingPageViewController.swift in Sources */,
+				40358C1F26B4202900D14A15 /* SignalType.swift in Sources */,
 				409063B226B090D400704CA6 /* Review.swift in Sources */,
 				403B5A52266A47CA00421470 /* UIColor.swift in Sources */,
 				40978DA82655BAFD001E1DFC /* PlaceViewModel.swift in Sources */,
@@ -733,6 +755,7 @@
 				40D3EEA7264545AB005E2F0F /* Trash.swift in Sources */,
 				408C38D3265839DD009832FD /* PlaceTableViewFooter.swift in Sources */,
 				401960E6266A9B09004765F7 /* Log.swift in Sources */,
+				40358C2326B4207300D14A15 /* Sender.swift in Sources */,
 				405CEA0126AF5B6000DB5C2D /* UIView.swift in Sources */,
 				40B6EAEF267973D500AA4CC2 /* PlaceListViewController.swift in Sources */,
 				404D9CEF26B0D03400AF616F /* ReviewViewModel.swift in Sources */,
@@ -758,6 +781,7 @@
 				408C38D02657EAFC009832FD /* CellActionProxy.swift in Sources */,
 				40D3EEAC2645C5CE005E2F0F /* PlaceController.swift in Sources */,
 				400E820426A575F000164CB3 /* Strings.swift in Sources */,
+				40358C1A26B41DD100D14A15 /* Car.swift in Sources */,
 				40E982D9264349A4007D14D6 /* OtherExtensions.swift in Sources */,
 				406D330E26AF4A6100680BCB /* ReviewListViewController.swift in Sources */,
 				404C999C26777F51009ADECF /* FavoritePlaceCell.swift in Sources */,
