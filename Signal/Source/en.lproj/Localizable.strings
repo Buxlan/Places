@@ -1,0 +1,38 @@
+/* 
+  Localizable.strings
+  Signal
+
+  Created by  Buxlan on 7/15/21.
+  
+*/
+"App.name" = "Place";
+"Onboarding.Buttons.futher1" = "Next (1 from 3)";
+"Onboarding.Buttons.futher2" = "Next (2 from 3)";
+"Onboarding.onboardngTitle1" = "Welcome";
+"Onboarding.onboardngTitle2" = "Look, learn and share";
+"Onboarding.onboardngTitle3" = "Join to us";
+"Onboarding.onboardngText1" = "We're glad to see you at Place. Here are we're sharing thoughts, dreams and imaginations about favorite Saint-petersburg places";
+"Onboarding.onboardngText2" = "Share your imaginations! Listen and share audio, text and pictures with other";
+"Onboarding.onboardngText3" = "Joining us allow to share you own essay about variable places...";
+"Onboarding.Buttons.Later" = "Maybe later";
+"Onboarding.Buttons.Skip" = "Skip";
+/* Authentication */
+"SignIn.title" = "Login";
+"Auth.forgotPassword" = "Forget password?";
+"Auth.title" = "Joining us allow to share you own essay about variable places...";
+"Auth.usernamePlaceholder" = "Username / E-mail";
+"Auth.passwordPlaceholder" = "Password";
+"Auth.Buttons.signUp" = "Sign up now";
+"Auth.Buttons.Login" = "Login";
+/* Main tab bar */
+/* Place list */
+"PlacesList.title" = "Top";
+"PlacesList.toReviews" = "Go to reviews";
+/* Nearest places */
+"NearestPlaces.title" = "Nearby";
+/* Favorite places */
+"FavoritePlaces.title" = "Favorite";
+/* Profile */
+"Profile.title" = "Profile";
+"Profile.Buttons.SignIn" = "Sign in";
+"Profile.Buttons.SignUp" = "Register";

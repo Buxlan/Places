@@ -1,0 +1,38 @@
+/* 
+  Localizable.strings
+  Signal
+
+  Created by  Buxlan on 7/15/21.
+  
+*/
+"App.name" = "Place";
+"Onboarding.Buttons.futher1" = "Далее (1 из 3)";
+"Onboarding.Buttons.futher2" = "Далее (2 из 3)";
+"Onboarding.Buttons.Later" = "Начать без регистрации";
+"Onboarding.Buttons.Skip" = "Пропустить";
+"Onboarding.onboardngTitle1" = "Welcome";
+"Onboarding.onboardngTitle2" = "Look, learn and share";
+"Onboarding.onboardngTitle3" = "Join to us";
+"Onboarding.onboardngText1" = "We're glad to see you at Place. Here are we're sharing thoughts, dreams and imaginations about favorite Saint-petersburg places";
+"Onboarding.onboardngText2" = "Share your imaginations! Listen and share audio, text and pictures with other";
+"Onboarding.onboardngText3" = "Регистрация позволит Вам оставлять эссе и предложения о создании новых мест.";
+/* Authentication */
+"SignIn.title" = "Вход в систему";
+"Auth.forgotPassword" = "Забыли пароль?";
+"Auth.title" = "Регистрация позволит Вам оставлять эссе и предложения о создании новых мест.";
+"Auth.usernamePlaceholder" = "Имя / Почта";
+"Auth.passwordPlaceholder" = "Пароль";
+"Auth.Buttons.signUp" = "Регистрация";
+"Auth.Buttons.Login" = "Вход";
+/* Main tab bar */
+/* Place list */
+"PlacesList.title" = "Лента";
+"PlacesList.toReviews" = "К обзорам";
+/* Nearest places */
+"NearestPlaces.title" = "Рядом";
+/* Favorite places */
+"FavoritePlaces.title" = "Любимые";
+/* Profile */
+"Profile.title" = "Профиль";
+"Profile.Buttons.SignIn" = "Войти";
+"Profile.Buttons.SignUp" = "Зарегистрироваться";
