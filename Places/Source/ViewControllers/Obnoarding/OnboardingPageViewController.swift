@@ -10,9 +10,8 @@ import UserNotifications
 
 class OnboardingPageViewController: UIPageViewController {
     
-    // MARK: - Public
+    // MARK: - Properties
     var currentIndex = 0
-    private let appSettings = AppController.shared.settings
     private lazy var pageControl: UIPageControl = {
         let view = UIPageControl()
         view.isUserInteractionEnabled = false
@@ -43,6 +42,7 @@ class OnboardingPageViewController: UIPageViewController {
         return items
     }()
     
+    // MARK: - Init
     init() {
         let options = [UIPageViewController.OptionsKey.interPageSpacing: 32]
         super.init(transitionStyle: .scroll,
@@ -70,39 +70,8 @@ class OnboardingPageViewController: UIPageViewController {
         configureConstraints()
         
     }
-    // MARK: - Private
-        
-    private lazy var dismissAction: () -> Void = { [weak self] in
-        self?.dismiss(animated: true) {
-            Utils.log("Dismissed", object: self)
-        }
-    }
     
-    // MARK: - initializers
-    
-    // MARK: - events and actions
-    
-    func nextPage(viewControllerBefore viewController: UIViewController) {
-        guard let index = items.firstIndex(of: viewController)
-        else {
-            fatalError()
-        }
-        
-        if index == items.count - 1 {
-            AppController.shared.isFirstLaunch = false
-            dismiss(animated: true)
-            return
-        } else {
-            currentIndex = index+1
-            setViewControllers([items[index+1]],
-                               direction: .forward,
-                               animated: true) { [weak self] _ in
-                self?.pageControl.currentPage = self?.currentIndex ?? 0
-//                viewController.dismiss(animated: false, completion: nil)
-            }
-        }
-    }
-    
+    // MARK: - Helper functions
     private func configureConstraints() {
         pageControl.translatesAutoresizingMaskIntoConstraints = false
         let constraints: [NSLayoutConstraint] = [
@@ -114,7 +83,7 @@ class OnboardingPageViewController: UIPageViewController {
     }
 }
 
-extension OnboardingPageViewController: UIPageViewControllerDelegate {
+extension OnboardingPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController,
                             didFinishAnimating finished: Bool,
@@ -127,10 +96,6 @@ extension OnboardingPageViewController: UIPageViewControllerDelegate {
             }
         }
     }
-    
-}
-
-extension OnboardingPageViewController: UIPageViewControllerDataSource {
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
 //        return nil

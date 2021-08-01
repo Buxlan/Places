@@ -9,76 +9,57 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    // MARK: - Public
+    // MARK: - Properties
+    lazy var viewModel: ProfileViewModel = ProfileViewModel()
     
-    // MARK: Private
-    
-    // MARK: - UI objects
-    private lazy var logoLabel: UILabel = {
-        let view = UILabel()
-        view.text = L10n.App.name
+    private lazy var tableView: UITableView  = {
+        let view = UITableView(frame: .zero, style: .plain)
+        view.isUserInteractionEnabled = true
+        view.delegate = self
+        view.dataSource = self
+        view.allowsSelection = true
+        view.allowsMultipleSelection = false
+        view.allowsSelectionDuringEditing = false
+        view.allowsMultipleSelectionDuringEditing = false
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.numberOfLines = 2
-        view.font = .bxControlTitle
-        return view
-    }()
-    
-    private lazy var imageView: UIView = {
+//        view.rowHeight = UITableView.automaticDimension
+//        view.estimatedRowHeight = UITableView.automaticDimension
+        view.rowHeight = 60
+        view.estimatedRowHeight = 60
+        view.register(SettingCell.self,
+                      forCellReuseIdentifier: SettingCell.reuseIdentifier)
         
-        let image = Asset.onboarding3.image
-        
-        let view = UIView()
-        view.backgroundColor = .clear
-        view.layer.shadowRadius = 50
-        view.layer.shadowOpacity = 0.4
-        view.layer.shadowOffset = CGSize(width: 12, height: 12)
-        view.layer.shadowColor = Asset.other0.color.cgColor
-        view.translatesAutoresizingMaskIntoConstraints = false
-                        
-        let imageView = UIImageView()
-        imageView.image = image
-        imageView.backgroundColor = Asset.other1.color
-        imageView.layer.cornerRadius = 50
-        imageView.clipsToBounds = true
-        imageView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        view.addSubview(imageView)
-        
+        let frame = CGRect(x: 0, y: 88, width: view.frame.width, height: 100)
+        let userInfoHeader = UserInfoHeader(frame: frame)
+        view.tableHeaderView = userInfoHeader
+        view.tableFooterView = UIView()
         return view
     }()
        
-    private lazy var titleLabel: UILabel = {
-        let view = UILabel()
-        view.text = L10n.Profile.title
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.numberOfLines = 1
-        view.font = .bxControlTitle
-        return view
-    }()
-        
-    private lazy var buttonSignIn: ButtonWithShadow = {
-        let view = ButtonWithShadow(title: L10n.Profile.Buttons.signIn,
-                                      image: nil)
-        view.backgroundColor = Asset.other1.color
-        view.accessibilityIdentifier = "buttonSignIn"
-        view.addTarget(self, action: #selector(signIn), for: .touchUpInside)
-        return view
-    }()
-    
-    private lazy var buttonSignUp: ButtonWithShadow = {
-        let view = ButtonWithShadow(title: L10n.Profile.Buttons.signUp,
-                                      image: nil)
-        view.backgroundColor = Asset.other1.color
-        view.accessibilityIdentifier = "buttonSignUp"
-        view.tintColor = Asset.other2.color
-        view.addTarget(self, action: #selector(signUp), for: .touchUpInside)
-        return view
-    }()
-       
-    // MARK: - Methods
+    // MARK: - Init
     init() {
         super.init(nibName: nil, bundle: nil)
-        // Tab bar configure
+        configureTabBarItem()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()        
+        view.addSubview(tableView)
+        view.backgroundColor = Asset.other2.color
+        configureConstraints()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        configureBars(animated: false)
+    }
+    
+    // MARK: - Helper functions
+    
+    private func configureTabBarItem() {
         tabBarItem.title = L10n.Profile.title
         let image = Asset.person.image.resizeImage(to: 24,
                                                    aspectRatio: .current,
@@ -90,75 +71,64 @@ class ProfileViewController: UIViewController {
         tabBarItem.selectedImage = selImage
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = Asset.other1.color
-        
-        view.addSubview(logoLabel)
-        view.addSubview(imageView)
-        view.addSubview(titleLabel)
-        view.addSubview(buttonSignIn)
-        view.addSubview(buttonSignUp)
-        
-        configureConstraints()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        configureBars(animated: false)
-    }
-    
     private func configureBars(animated: Bool = false) {
         navigationController?.setToolbarHidden(true, animated: animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
         navigationController?.navigationBar.barTintColor = Asset.other1.color
         navigationController?.navigationBar.tintColor = Asset.other0.color
+        navigationController?.tabBarController?.tabBar.isHidden = false
     }
 
     private func configureConstraints() {
         let constraints: [NSLayoutConstraint] = [
-            
-            logoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            logoLabel.centerXAnchor.constraint(equalTo: imageView.centerXAnchor),
-            logoLabel.bottomAnchor.constraint(equalTo: imageView.topAnchor, constant: -16),
-            logoLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-            
-            imageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.5),
-            imageView.centerXAnchor.constraint(equalTo: buttonSignIn.centerXAnchor),
-            imageView.heightAnchor.constraint(equalTo: imageView.widthAnchor),
-            imageView.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -16),
-            
-            titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            titleLabel.bottomAnchor.constraint(equalTo: buttonSignIn.topAnchor, constant: -16),
-            
-            buttonSignIn.widthAnchor.constraint(greaterThanOrEqualTo: view.widthAnchor, multiplier: 0.6),
-            buttonSignIn.centerXAnchor.constraint(equalTo: buttonSignUp.centerXAnchor),
-            buttonSignIn.bottomAnchor.constraint(equalTo: buttonSignUp.topAnchor, constant: -16),
-            
-            buttonSignUp.bottomAnchor.constraint(lessThanOrEqualTo: view.bottomAnchor),
-            buttonSignUp.widthAnchor.constraint(equalTo: buttonSignIn.widthAnchor)
+            tableView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            tableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            tableView.widthAnchor.constraint(equalTo: view.layoutMarginsGuide.widthAnchor),
+            tableView.heightAnchor.constraint(equalTo: view.layoutMarginsGuide.heightAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
+    }
+}
 
+// Delegate
+extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sec = viewModel.sections[section]
+        return sec.title
     }
     
-    @objc
-    func signIn() {
-        let vc = SignInViewController()
-        vc.modalTransitionStyle = .flipHorizontal
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc
-    func signUp() {
-        let vc = UIViewController.instantiateViewController(withIdentifier: .signUp)
-        if let vc = vc as? SignUpViewController {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 0,
+           indexPath.row == 0 {
+            let vc = EditProfileViewController()
+            vc.modalPresentationStyle = .fullScreen
             vc.modalTransitionStyle = .flipHorizontal
             navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.sections.count
+    }
+   
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        viewModel.sections[section].items.count
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = viewModel.sections[indexPath.section].items[indexPath.row]
+                
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingCell.reuseIdentifier,
+                                                 for: indexPath)
+        
+        if let cell = cell as? SettingCell {
+            cell.configure(option: item)
+        }
+        return cell
+    }
+        
 }

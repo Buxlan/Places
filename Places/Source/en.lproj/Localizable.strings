@@ -29,3 +29,24 @@
 "Profile.title" = "Profile";
 "Profile.Buttons.SignIn" = "Sign in";
 "Profile.Buttons.SignUp" = "Register";
+"Profile.logout" = "Log out";
+"Profile.privacy" = "Privacy";
+"Profile.communication" = "Communication";
+"Profile.edit" = "Edit profile";
+"Profile.logout" = "Log out";
+"Profile.changePassword" = "Change password";
+"Profile.changeUserPhoto" = "Change user photo";
+/* Settings */
+"Settings.notifications" = "Notifications";
+"Settings.emails" = "Email";
+"Settings.allowNotifications" = "Allow notifications";
+"Settings.allowEmails" = "Allow e-mails";
+"Settings.crashReposts" = "Crash reports";
+"Settings.SectionTitles.general" = "General";
+"Settings.SectionTitles.communication" = "Communication";
+"Settings.SectionTitles.privacy" = "Privacy";
+/* User */
+"User.unregistered" = "Unregistered";
+"User.displayUnregistered" = "Unregistered user";
+
+

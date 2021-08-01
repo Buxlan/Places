@@ -20,10 +20,9 @@ class AppController: NSObject {
     
     static let shared = AppController()
     
-    let settings = AppSettings()
-    var config: Config {
-        settings.config
-    }
+    lazy var user: User = {
+        User()
+    }()
     
     var isFirstLaunch: Bool {
         get {

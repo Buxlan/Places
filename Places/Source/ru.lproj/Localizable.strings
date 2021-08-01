@@ -29,3 +29,22 @@
 "Profile.title" = "Профиль";
 "Profile.Buttons.SignIn" = "Войти";
 "Profile.Buttons.SignUp" = "Зарегистрироваться";
+"Profile.logout" = "Выйти";
+"Profile.privacy" = "Приватность";
+"Profile.communication" = "Уведомления";
+"Profile.edit" = "Редактировать профиль";
+"Profile.logout" = "Выйти";
+"Profile.changePassword" = "Изменить пароль";
+"Profile.changeUserPhoto" = "Изменить фото";
+/* Settings */
+"Settings.notifications" = "Уведомления";
+"Settings.emails" = "Электронная почта";
+"Settings.allowNotifications" = "Разрешить отправлять уведомления";
+"Settings.allowEmails" = "Разрешить отправлять эл. письма";
+"Settings.crashReposts" = "Отчеты о сбоях";
+"Settings.SectionTitles.general" = "Основные";
+"Settings.SectionTitles.communication" = "Уведомления";
+"Settings.SectionTitles.privacy" = "Безопасность";
+/* User */
+"User.unregistered" = "Аноним";
+"User.displayUnregistered" = "Анонимный пользователь";

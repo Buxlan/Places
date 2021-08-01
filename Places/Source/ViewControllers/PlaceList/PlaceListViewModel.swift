@@ -14,7 +14,7 @@ typealias PlaceReviewCellConfigurator
 
 struct TableViewSection: Equatable {
     let name: String?
-    let items: [CellConfigurator]
+    var items: [CellConfigurator] = [CellConfigurator]()
     
     static func == (lhs: TableViewSection,
                     rhs: TableViewSection) -> Bool {

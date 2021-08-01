@@ -9,10 +9,11 @@ import UIKit
 
 class ReviewListViewModel: NSObject {
  
-    // MARK: - Public
+    // MARK: - Properties
     var sections: [TableViewSection] {
         return _sections
     }
+    private var _sections: [TableViewSection] = [TableViewSection]()
     
     override init() {
         super.init()
@@ -77,9 +78,6 @@ class ReviewListViewModel: NSObject {
     func update() {
         
     }
-    
-    // MARK: - Private
-    private var _sections: [TableViewSection] = [TableViewSection]()
     
 }
 

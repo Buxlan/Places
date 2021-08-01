@@ -11,66 +11,8 @@ import CoreGraphics
 
 class MainTabBarViewController: UITabBarController {
     
-    // MARK: - Public vars and properties
+    // MARK: - Properties
     private var swipeDirection: UISwipeGestureRecognizer.Direction?
-    
-    // MARK: - Public functions
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)        
-    }
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        view.tintColor = Asset.other0.color
-        title = L10n.App.name
-            
-        delegate = self
-        setViewControllers(items, animated: true)
-        
-        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
-        leftSwipe.direction = .left
-        self.view.addGestureRecognizer(leftSwipe)
-        
-        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
-        rightSwipe.direction = .right
-        self.view.addGestureRecognizer(rightSwipe)
-        
-        self.navigationController?.isNavigationBarHidden = true
-                
-        // remove default border
-        tabBar.frame.size.width = self.view.frame.width + 4
-        tabBar.frame.origin.x = -2
-        
-        UITabBar.appearance().tintColor = Asset.other0.color
-        selectedIndex = 0
-        
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-             
-        if AppController.shared.isFirstLaunch {
-            let onboarding: UIViewController = OnboardingPageViewController()
-            onboarding.modalPresentationStyle = .fullScreen
-            present(onboarding, animated: true, completion: nil)
-        }
-        
-        guard let tabBarItems = tabBar.items,
-              let firstItem = tabBarItems.first
-        else {
-            Log(text: "tab bar is empty", object: self)
-            fatalError()
-        }
-        self.tabBar(self.tabBar, didSelect: firstItem)
-    }
-    
-    // MARK: - Private vars and functions
     
     private let appController = AppController.shared
     
@@ -110,6 +52,69 @@ class MainTabBarViewController: UITabBarController {
         items.append(vc)
         return items
     }()
+    
+    // MARK: - Init
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)        
+    }
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        view.tintColor = Asset.other0.color
+        title = L10n.App.name
+            
+        delegate = self
+        setViewControllers(items, animated: true)
+        
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        leftSwipe.direction = .left
+        self.view.addGestureRecognizer(leftSwipe)
+        
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
+        rightSwipe.direction = .right
+        self.view.addGestureRecognizer(rightSwipe)
+        
+        self.navigationController?.isNavigationBarHidden = true
+                
+        // remove default border
+        tabBar.frame.size.width = self.view.frame.width + 4
+        tabBar.frame.origin.x = -2
+        
+        UITabBar.appearance().tintColor = Asset.other0.color
+        selectedIndex = 0
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        configureBars()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+             
+        if AppController.shared.isFirstLaunch {
+            let onboarding: UIViewController = OnboardingPageViewController()
+            onboarding.modalPresentationStyle = .fullScreen
+            present(onboarding, animated: true, completion: nil)
+        }
+        
+        guard let tabBarItems = tabBar.items,
+              let firstItem = tabBarItems.first
+        else {
+            Log(text: "tab bar is empty", object: self)
+            fatalError()
+        }
+        self.tabBar(self.tabBar, didSelect: firstItem)
+    }
+    
+    // MARK: - Helper functions
+    private func configureBars() {
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.tabBarController?.tabBar.isHidden = false
+    }
     
     @objc
     private func obnoardingDismissed() {

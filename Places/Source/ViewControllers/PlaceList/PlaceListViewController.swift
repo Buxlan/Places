@@ -9,9 +9,7 @@ import UIKit
 
 class PlaceListViewController: UIViewController {
     
-    // MARK: - Public
-        
-    // MARK: - Private
+    // MARK: - Properties
     private lazy var viewModel: PlaceListViewModel = {
         let item = PlaceListViewModel()
         item.managedViewController = self
@@ -39,7 +37,7 @@ class PlaceListViewController: UIViewController {
         view.estimatedRowHeight = UITableView.automaticDimension
         view.register(PlaceListCell.self,
                            forCellReuseIdentifier: PlaceListCell.reuseIdentifier)
-        
+                
         view.tableFooterView = UIView()
         return view
     }()
@@ -75,6 +73,7 @@ class PlaceListViewController: UIViewController {
         configureBars()
     }
     
+    // MARK: - Helper Functions
     private func configureConstraints() {
         let constraints: [NSLayoutConstraint] = [
             tableView.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
