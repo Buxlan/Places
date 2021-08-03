@@ -7,22 +7,6 @@
 
 import UIKit
 
-//enum SettingNode: Hashable {
-//    case stringValue(named: SettingName, value: String)
-//    case boolValue(named: SettingName, value: Bool)
-//}
-//
-//extension SettingNode: CustomStringConvertible {
-//    var description: String {
-//        switch self {
-//        case .boolValue(let name, let value):
-//            return "Setting with name \(name) has value \(value)"
-//        case .stringValue(let name, let value):
-//            return "Setting with name \(name) has value \(value)"
-//        }
-//    }
-//}
-
 class Settings {
     
     enum SettingName: String, CaseIterable {

@@ -66,7 +66,7 @@ class MainTabBarViewController: UITabBarController {
         title = L10n.App.name
             
         delegate = self
-        setViewControllers(items, animated: true)
+        setViewControllers(items, animated: false)
         
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
         leftSwipe.direction = .left
@@ -173,19 +173,19 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
     func tabBarController(_ tabBarController: UITabBarController,
                           shouldSelect viewController: UIViewController) -> Bool {
         
-        guard let fromView = selectedViewController?.view,
-              let toView = viewController.view else {
-            return false
-        }
-        
-        if fromView != toView {
-            let transitionStyle = UIView.AnimationOptions.transitionCrossDissolve
-            UIView.transition(from: fromView,
-                              to: toView,
-                              duration: 0.5,
-                              options: [transitionStyle],
-                              completion: nil)
-        }
+//        guard let fromView = selectedViewController?.view,
+//              let toView = viewController.view else {
+//            return false
+//        }
+//        
+//        if fromView != toView {
+//            let transitionStyle = UIView.AnimationOptions.transitionCrossDissolve
+//            UIView.transition(from: fromView,
+//                              to: toView,
+//                              duration: 0.5,
+//                              options: [transitionStyle],
+//                              completion: nil)
+//        }
         selectedViewController = viewController
         
         return true

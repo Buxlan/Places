@@ -1,21 +1,19 @@
 //
-//  FavoritePlacesViewModel.swift
+//  ReviewListViewModel.swift
 //  Places
 //
-//  Created by  Buxlan on 6/15/21.
+//  Created by  Buxlan on 7/26/21.
 //
 
-import Foundation
 import UIKit
 
-typealias FavoriteListCellConfigurator = TableCellConfigurator<FavoritePlaceCell, Place>
-
-class FavoritePlacesViewModel: NSObject {
-    
-    // MARK: - Public
+class ReviewListViewModel: NSObject {
+ 
+    // MARK: - Properties
     var sections: [TableViewSection] {
         return _sections
     }
+    private var _sections: [TableViewSection] = [TableViewSection]()
     
     override init() {
         super.init()
@@ -38,7 +36,7 @@ class FavoritePlacesViewModel: NSObject {
         guard indexPath.section >= 0 && indexPath.section < sections.count else {
             fatalError()
         }
-        if let conf = _sections[indexPath.section].items[indexPath.row] as? FavoriteListCellConfigurator {
+        if let conf = _sections[indexPath.section].items[indexPath.row] as? PlaceListCellConfigurator {
             return conf.item
         }
         return Place.empty
@@ -46,14 +44,18 @@ class FavoritePlacesViewModel: NSObject {
     
     private func generateSections() {
         let pcon = PlaceController.shared
-        if let collection = pcon.collection(with: .favorite) {
-            var items = [CellConfigurator]()
-            for place in collection.items {
-                let con = FavoriteListCellConfigurator(item: place)
-                items.append(con)
+        if let collection1 = pcon.collection(with: .top),
+           let collection2 = pcon.collection(with: .new) {
+            let collections = [collection1, collection2]
+            for collection in collections {
+                var items = [CellConfigurator]()
+                for place in collection.items {
+                    let con = PlaceListCellConfigurator(item: place)
+                    items.append(con)
+                }
+                let section = TableViewSection(name: collection.name, icon: collection.icon, items: items)
+                _sections.append(section)
             }
-            let section = TableViewSection(name: collection.name, icon: collection.icon, items: items)
-            _sections.append(section)
         } else {
             fatalError()
         }
@@ -73,27 +75,13 @@ class FavoritePlacesViewModel: NSObject {
         }
     }
     
-//    func update(completion: @escaping () -> Void) {
-//        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-//            do {
-//                sleep(4)
-//            }
-//            self?.items = PlaceController().collections[0].items
-//            
-//            DispatchQueue.main.async {
-//                self?.tableView?.reloadData()
-//                completion()
-//            }
-//            Log(text: "Data was loaded and table view was reloaded", object: self?.tableView)
-//        }
-//    }
-    
-    // MARK: - Private
-    private var _sections: [TableViewSection] = [TableViewSection]()
+    func update() {
+        
+    }
     
 }
 
-extension FavoritePlacesViewModel: UITableViewDataSource {
+extension ReviewListViewModel: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
@@ -104,17 +92,16 @@ extension FavoritePlacesViewModel: UITableViewDataSource {
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let item = sections[indexPath.section].items[indexPath.row]
                 
-        let cell = tableView.dequeueReusableCell(withIdentifier: FavoritePlaceCell.reuseIdentifier,
+        let cell = tableView.dequeueReusableCell(withIdentifier: PlaceListCellConfigurator.reuseIdentifier,
                                                  for: indexPath)
         
-        if let castedCell = cell as? FavoritePlaceCell,
-           castedCell.isInterfaceConfigured == false {
+        if item.isInterfaceConfigured == false {
             item.configureInterface(cell: cell, with: nil)
         }
         item.configure(cell: cell)
-//        cell.setNeedsLayout()
-//        cell.layoutIfNeeded()
-//        cell.clipsToBounds = true
+        cell.setNeedsLayout()
+        cell.layoutIfNeeded()
+        cell.clipsToBounds = true
         return cell
     }
 
@@ -125,5 +112,5 @@ extension FavoritePlacesViewModel: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         return _sections[section].name
     }
-          
+        
 }

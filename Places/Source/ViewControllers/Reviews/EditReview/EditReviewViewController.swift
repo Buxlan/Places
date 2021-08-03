@@ -1,20 +1,20 @@
 //
-//  EditProfileViewController.swift
+//  EditReviewViewController.swift
 //  Places
 //
-//  Created by  Buxlan on 8/1/21.
+//  Created by  Buxlan on 8/2/21.
 //
 
 import UIKit
 
-class EditProfileViewController: UIViewController {
+class EditReviewViewController: UIViewController {
     
     // MARK: - Properties
-    private static let cellReuseIdentifier = "EditProfileViewController"
+    private static let cellReuseIdentifier = String.init(describing: EditReviewViewController.self)
     private var viewModel =  EditProfileViewModel()
     private lazy var imageContainer: UIView = {
         let view = UIView()
-//        view.translatesAutoresizingMaskIntoConstraints = false
+        //        view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         view.clipsToBounds = true
         view.layer.cornerRadius = 32
@@ -37,7 +37,7 @@ class EditProfileViewController: UIViewController {
             format.opaque = false
             let rend = UIGraphicsImageRenderer(size: size,
                                                format: image.imageRendererFormat)
-            let ellipsedImage = rend.image {_ in 
+            let ellipsedImage = rend.image {_ in
                 UIBezierPath(ovalIn: rect).addClip()
                 image.draw(in: rect)
             }
@@ -78,7 +78,7 @@ class EditProfileViewController: UIViewController {
         view.rowHeight = 80
         view.estimatedRowHeight = 80
         view.register(UITableViewCell.self,
-                      forCellReuseIdentifier: EditProfileViewController.cellReuseIdentifier)
+                      forCellReuseIdentifier: EditReviewViewController.cellReuseIdentifier)
         
         let frame = CGRect(x: 0, y: 0, width: 0, height: 170)
         imageContainer.frame = frame
@@ -86,11 +86,11 @@ class EditProfileViewController: UIViewController {
         view.tableFooterView = UIView()
         return view
     }()
-        
+    
     // MARK: - Init
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configureInterface()
     }
     
@@ -110,21 +110,21 @@ class EditProfileViewController: UIViewController {
     private func configureInterface() {
         view.backgroundColor = Asset.other2.color
         
-//        view.addSubview(imageContainer)
+        //        view.addSubview(imageContainer)
         view.addSubview(userInfoTableView)
         
-//        imageContainer.addSubview(imageView)
+        //        imageContainer.addSubview(imageView)
         
         configureConstraints()
     }
     
     private func configureConstraints() {
         let constraints: [NSLayoutConstraint] = [
-//            imageContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-//            imageContainer.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 40),
-//            imageContainer.widthAnchor.constraint(equalToConstant: 200),
-//            imageContainer.heightAnchor.constraint(equalToConstant: 200),
-//
+            //            imageContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            //            imageContainer.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 40),
+            //            imageContainer.widthAnchor.constraint(equalToConstant: 200),
+            //            imageContainer.heightAnchor.constraint(equalToConstant: 200),
+            //
             imageButtonView.centerXAnchor.constraint(equalTo: imageContainer.centerXAnchor),
             imageButtonView.centerYAnchor.constraint(equalTo: imageContainer.centerYAnchor),
             imageButtonView.widthAnchor.constraint(equalToConstant: 150),
@@ -133,7 +133,7 @@ class EditProfileViewController: UIViewController {
             userInfoTableView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
             userInfoTableView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             userInfoTableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 16),
-            userInfoTableView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)            
+            userInfoTableView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
         ]
         NSLayoutConstraint.activate(constraints)
     }
@@ -155,16 +155,16 @@ class EditProfileViewController: UIViewController {
     }
 }
 
-extension EditProfileViewController: UITableViewDelegate, UITableViewDataSource {
+extension EditReviewViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: EditProfileViewController.cellReuseIdentifier,
+        let cell = tableView.dequeueReusableCell(withIdentifier: EditReviewViewController.cellReuseIdentifier,
                                                  for: indexPath)
         let userInfo = viewModel.items[indexPath.row]
-                
+        
         cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
         
         switch userInfo {

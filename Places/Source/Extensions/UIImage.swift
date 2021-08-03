@@ -20,7 +20,9 @@ extension UIImage {
         return image
     }    
     
-    func resizeImage(to height: CGFloat, aspectRatio: AspectRatio, with color: UIColor) -> UIImage {
+    func resizeImage(to height: CGFloat,
+                     aspectRatio: AspectRatio,
+                     with color: UIColor) -> UIImage {
         
         let imageSize = self.size
         var width: CGFloat = 0
@@ -40,6 +42,7 @@ extension UIImage {
                                            format: self.imageRendererFormat)
         let resizedImage = rend.image { con in
             con.cgContext.setFillColor(color.cgColor)
+            con.cgContext.setStrokeColor(Asset.accent1.color.cgColor)
             self.draw(in: rect)
         }
         return resizedImage

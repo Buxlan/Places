@@ -5,7 +5,7 @@
 //  Created by  Buxlan on 5/7/21.
 //
 
-import Foundation
+import UIKit
 
 enum CollectionType {
     case top
@@ -14,12 +14,17 @@ enum CollectionType {
     case new
     case ancient
     case nearToCenter
+    case streetArt
+    case recent
+    case attractions
+    case parks
 }
 
 struct PlaceCollection: Hashable, Equatable {
         
     let name: String
     let collectionType: CollectionType
+    let icon: UIImage
     let items: [Place]
     
     let identifier = UUID()
@@ -87,8 +92,8 @@ extension PlaceController {
     
     private func generateCollections() {
         
-        let topCol = PlaceCollection(name: "Популярные за неделю",
-                                     collectionType: .top,
+        let topCol = PlaceCollection(name: "Лучшие",
+                                     collectionType: .top, icon: Asset.play.image,
                                      items: [
                                         Place(title: "Невский проспект", category: "Category 1", description: PlaceController.description),
                                         Place(title: "Parnas", category: "Category 2", description: "1"),
@@ -97,22 +102,38 @@ extension PlaceController {
                                         Place(title: "Площадь восстания", category: "Category 3", description: PlaceController.description)
                                      ])
         
-        let newCol = PlaceCollection(name: "Новинки!",
-                                     collectionType: .new,
+        let newCol = PlaceCollection(name: "Новинки",
+                                     collectionType: .new, icon: Asset.buildingColumns.image,
                                      items: [
                                         Place(title: "Vas'ka", category: "Category 1", description: PlaceController.description),
                                         Place(title: "Prosvet", category: "Category 2", description: PlaceController.description),
                                         Place(title: "Devyatkino", category: "Category 3", description: PlaceController.description)
                                      ])
         
-        let favCol = PlaceCollection(name: "Избранные!",
-                                     collectionType: .favorite,
+        let favCol = PlaceCollection(name: "Избранные",
+                                     collectionType: .favorite, icon: Asset.map.image,
                                      items: [
                                         Place(title: "Vas'ka", category: "Category 1", description: PlaceController.description),
                                         Place(title: "Prosvet", category: "Category 2", description: PlaceController.description),
                                         Place(title: "Ozerki", category: "Category 3", description: PlaceController.description)
                                      ])
         
-        _collections = [topCol, newCol, favCol]
+        let streetArtCol = PlaceCollection(name: "Стрит-арт",
+                                     collectionType: .streetArt, icon: Asset.map.image,
+                                     items: [
+                                        Place(title: "Стена на Ваське", category: "Category 1", description: PlaceController.description),
+                                        Place(title: "Шнуров - супер-герой", category: "Category 2", description: PlaceController.description),
+                                        Place(title: "Петухов - гений", category: "Category 3", description: PlaceController.description)
+                                     ])
+        
+        let recent = PlaceCollection(name: "Недавние",
+                                     collectionType: .recent, icon: Asset.lock.image,
+                                     items: [
+                                        Place(title: "Стена на Ваське", category: "Category 1", description: PlaceController.description),
+                                        Place(title: "Шнуров - супер-герой", category: "Category 2", description: PlaceController.description),
+                                        Place(title: "Петухов - гений", category: "Category 3", description: PlaceController.description)
+                                     ])
+        
+        _collections = [topCol, newCol, favCol, streetArtCol, recent]
     }
 }

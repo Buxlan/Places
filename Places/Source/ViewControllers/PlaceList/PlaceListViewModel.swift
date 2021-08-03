@@ -10,10 +10,11 @@ import UIKit
 typealias PlaceListCellConfigurator
     = TableCellConfigurator<PlaceListCell, Place>
 typealias PlaceReviewCellConfigurator
-    = CollectionCellConfigurator<ReviewCollectionViewCell, Review>
+    = CollectionCellConfigurator<ReviewCollectionCell, Review>
 
 struct TableViewSection: Equatable {
     let name: String?
+    let icon: UIImage?
     var items: [CellConfigurator] = [CellConfigurator]()
     
     static func == (lhs: TableViewSection,
@@ -60,20 +61,27 @@ class PlaceListViewModel: NSObject {
     
     private func generateSections() {
         let pcon = PlaceController.shared
-        if let collection1 = pcon.collection(with: .top),
-           let collection2 = pcon.collection(with: .new) {
-            let collections = [collection1, collection2]
-            for collection in collections {
+        
+        let categories: [CollectionType] = [
+            .top,
+            .new,
+            .favorite,
+            .recent,
+            .streetArt,
+            .recent,
+            .streetArt
+        ]
+        
+        for category in categories {
+            if let collection = pcon.collection(with: category) {
                 var items = [CellConfigurator]()
                 for place in collection.items {
                     let con = PlaceListCellConfigurator(item: place)
                     items.append(con)
                 }
-                let section = TableViewSection(name: collection.name, items: items)
+                let section = TableViewSection(name: collection.name, icon: collection.icon, items: items)
                 _sections.append(section)
             }
-        } else {
-            fatalError()
         }
     }
     
@@ -151,9 +159,9 @@ extension PlaceListViewModel: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReviewCollectionViewCell.reuseIdentifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReviewCollectionCell.reuseIdentifier, for: indexPath)
         
-        if let reviewCell = cell as? ReviewCollectionViewCell {
+        if let reviewCell = cell as? ReviewCollectionCell {
             reviewCell.configureInterface()
             let review = Review.empty
             reviewCell.configure(data: review)

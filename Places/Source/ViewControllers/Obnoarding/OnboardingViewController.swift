@@ -27,9 +27,24 @@ class OnboardingViewController: UIViewController {
     }()
     
     private lazy var dismissButton: UIButton = {
+        let height: CGFloat = 20
         let view = UIButton()
-        view.setImage(Asset.xmark.image, for: .normal)
+        view.setImage(Asset.xmark.image.resizeImage(to: height,
+                                                    aspectRatio: .square,
+                                                    with: .clear), for: .normal)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentHorizontalAlignment = .right
+        
+//        if let imageView = view.imageView {
+//            imageView.contentMode = .scaleAspectFit
+//            imageView.translatesAutoresizingMaskIntoConstraints = false
+//            NSLayoutConstraint.deactivate(imageView.constraints)
+//            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+//            imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//            imageView.widthAnchor.constraint(equalToConstant: height).isActive = true
+//            imageView.heightAnchor.constraint(equalToConstant: height).isActive = true
+//        }
+        
         view.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
         return view
     }()
@@ -123,11 +138,11 @@ class OnboardingViewController: UIViewController {
             
             logoLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor,
                                            constant: 8),
-            logoLabel.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+            logoLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
             
             dismissButton.centerYAnchor.constraint(equalTo: logoLabel.centerYAnchor),
             dismissButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
-            dismissButton.widthAnchor.constraint(equalToConstant: 16),
+            dismissButton.widthAnchor.constraint(equalToConstant: 32),
             dismissButton.heightAnchor.constraint(equalTo: dismissButton.widthAnchor),
             
             imageView.topAnchor.constraint(equalTo: logoLabel.bottomAnchor, constant: 8),

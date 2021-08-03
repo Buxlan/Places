@@ -11,12 +11,12 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
     
     weak var collectionDelegate: UICollectionViewDelegate? {
         didSet {
-            reviewCollectionsView.delegate = collectionDelegate
+            reviewsCollectionView.delegate = collectionDelegate
         }
     }
     weak var collectionDataSource: UICollectionViewDataSource? {
         didSet {
-            reviewCollectionsView.dataSource = collectionDataSource
+            reviewsCollectionView.dataSource = collectionDataSource
         }
     }
     enum Option: String {
@@ -99,7 +99,7 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
         return view
     }()
     
-    private lazy var reviewCollectionsView: UICollectionView = {
+    private lazy var reviewsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -107,9 +107,10 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
         view.isUserInteractionEnabled = true
         view.allowsSelection = true
         view.allowsMultipleSelection = false
-        view.translatesAutoresizingMaskIntoConstraints = false        
-        view.register(ReviewCollectionViewCell.self,
-                      forCellWithReuseIdentifier: ReviewCollectionViewCell.reuseIdentifier)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isPagingEnabled = true
+        view.register(ReviewCollectionCell.self,
+                      forCellWithReuseIdentifier: ReviewCollectionCell.reuseIdentifier)
         return view
     }()
     
@@ -134,7 +135,7 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
         tintColor = Asset.other1.color
         contentView.backgroundColor = Asset.other1.color
         roundedView.addSubview(placeLabel)
-        roundedView.addSubview(reviewCollectionsView)
+        roundedView.addSubview(reviewsCollectionView)
         roundedView.addSubview(likeButton)
         roundedView.addSubview(shareButton)
         contentView.addSubview(roundedView)
@@ -166,21 +167,21 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
             roundedView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             
             placeLabel.leadingAnchor.constraint(equalTo: roundedView.leadingAnchor),
-            reviewCollectionsView.leadingAnchor.constraint(equalTo: placeLabel.leadingAnchor),
+            reviewsCollectionView.leadingAnchor.constraint(equalTo: placeLabel.leadingAnchor),
             likeButton.leadingAnchor.constraint(equalTo: placeLabel.leadingAnchor),
             shareButton.trailingAnchor.constraint(equalTo: roundedView.trailingAnchor),
             
             placeLabel.topAnchor.constraint(equalTo: roundedView.topAnchor),
-            reviewCollectionsView.topAnchor.constraint(equalTo: placeLabel.bottomAnchor),
-            likeButton.topAnchor.constraint(equalTo: reviewCollectionsView.bottomAnchor, constant: 16),
-            shareButton.topAnchor.constraint(equalTo: reviewCollectionsView.bottomAnchor, constant: 16),
+            reviewsCollectionView.topAnchor.constraint(equalTo: placeLabel.bottomAnchor),
+            likeButton.topAnchor.constraint(equalTo: reviewsCollectionView.bottomAnchor, constant: 16),
+            shareButton.topAnchor.constraint(equalTo: reviewsCollectionView.bottomAnchor, constant: 16),
             
             placeLabel.widthAnchor.constraint(equalTo: roundedView.widthAnchor),
-            reviewCollectionsView.widthAnchor.constraint(equalTo: roundedView.widthAnchor),
+            reviewsCollectionView.widthAnchor.constraint(equalTo: roundedView.widthAnchor),
             likeButton.widthAnchor.constraint(equalToConstant: 32),
             shareButton.widthAnchor.constraint(equalToConstant: 32),
             
-            reviewCollectionsView.heightAnchor.constraint(equalTo: reviewCollectionsView.widthAnchor,
+            reviewsCollectionView.heightAnchor.constraint(equalTo: reviewsCollectionView.widthAnchor,
                                                    multiplier: 1.0),
             likeButton.heightAnchor.constraint(equalToConstant: 32),
             shareButton.heightAnchor.constraint(equalToConstant: 32),
