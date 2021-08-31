@@ -26,3 +26,7 @@ line_length:
 type_body_length:
   - 400 # warning
   - 600 # error
+  
+function_body_length:
+  - 60 # warning
+  - 100 # error

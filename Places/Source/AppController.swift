@@ -20,8 +20,8 @@ class AppController: NSObject {
     
     static let shared = AppController()
     
-    lazy var user: User = {
-        User()
+    lazy var user: PlaceUser = {
+        PlaceUser()
     }()
     
     var isFirstLaunch: Bool {

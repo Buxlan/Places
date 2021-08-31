@@ -1,9 +1,8 @@
 //
 //  UserInfoHeader.swift
-//  SettingsTemplate
+//  Places
 //
-//  Created by Stephen Dowless on 2/10/19.
-//  Copyright © 2019 Stephan Dowless. All rights reserved.
+//  Created by  Buxlan on 8/1/21.
 //
 
 import UIKit
@@ -11,41 +10,50 @@ import UIKit
 class UserInfoHeader: UIView {
     
     // MARK: - Properties    
-    lazy var userImage: UIImage? = {
-        UIImage(named: User.current.image)
-    }()
+    var user: PlaceUser = PlaceUser.current
     
     lazy var profileImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFit
-        iv.clipsToBounds = true
-        iv.translatesAutoresizingMaskIntoConstraints = false
-        iv.image = userImage
-        return iv
+        let view = UIImageView()
+        view.contentMode = .scaleAspectFit
+        view.clipsToBounds = true
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     lazy var usernameLabel: UILabel = {
-        let label = UILabel()
-        label.text = User.current.name
-        label.font = UIFont.systemFont(ofSize: 16)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+        let view = UILabel()
+        view.font = UIFont.systemFont(ofSize: 16)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     lazy var emailLabel: UILabel = {
-        let label = UILabel()
-        label.text = User.current.email
-        label.font = UIFont.systemFont(ofSize: 14)
-        label.textColor = .lightGray
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+        let view = UILabel()
+        view.text = PlaceUser.current.email
+        view.font = UIFont.systemFont(ofSize: 14)
+        view.textColor = .lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     // MARK: - Init
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        configureUI()
+    }
+    
+    convenience init(user: PlaceUser) {
+        self.init(frame: .zero)
+        self.user = user
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Private
+    func configureUI() {
         let profileImageDimension: CGFloat = 60
         
         addSubview(profileImageView)
@@ -62,10 +70,11 @@ class UserInfoHeader: UIView {
         addSubview(emailLabel)
         emailLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor, constant: 10).isActive = true
         emailLabel.leftAnchor.constraint(equalTo: profileImageView.rightAnchor, constant: 12).isActive = true
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+                
+        usernameLabel.text = user.displayName
+        profileImageView.image = user.image
+        emailLabel.text = user.email
+        
     }
     
 }

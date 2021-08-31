@@ -49,7 +49,7 @@ class EditProfileViewController: UIViewController {
     
     private lazy var usernameLabel: UILabel = {
         let label = UILabel()
-        label.text = User.current.name
+        label.text = PlaceUser.current.name
         label.font = UIFont.systemFont(ofSize: 16)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -57,7 +57,7 @@ class EditProfileViewController: UIViewController {
     
     private lazy var emailLabel: UILabel = {
         let label = UILabel()
-        label.text = User.current.email
+        label.text = PlaceUser.current.email
         label.font = UIFont.systemFont(ofSize: 14)
         label.textColor = .lightGray
         label.translatesAutoresizingMaskIntoConstraints = false

@@ -17,6 +17,9 @@
 "Auth.passwordPlaceholder" = "Password";
 "Auth.Buttons.signUp" = "Sign up now";
 "Auth.Buttons.Login" = "Login";
+"Auth.Buttons.appleSignIn" = "Sign in with Apple";
+"Auth.Buttons.googleSignIn" = "Sign in with Google";
+"Auth.Buttons.facebookSignIn" = "Login with Facebook";
 /* Main tab bar */
 /* Place list */
 "PlacesList.title" = "Top";

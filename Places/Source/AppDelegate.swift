@@ -40,6 +40,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let attr2 = [NSAttributedString.Key.foregroundColor: Asset.other0.color]
         UITabBarItem.appearance().setTitleTextAttributes(attr2, for: .normal)
         
+        let encoder = JSONEncoder()
+        if let data = try? encoder.encode(PlaceUser.unsignedUser) {
+            UserDefaults.standard.register(defaults:
+                                            [UserDefaultKey.loggedUser.rawValue: data])
+        }
+        
         return true
     }
     

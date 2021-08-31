@@ -10,7 +10,10 @@ import UIKit
 class ProfileViewModel: NSObject {
     
     // MARK: - Properties
-    let user: User
+    let user: PlaceUser
+    var isLogged: Bool {
+        user.isLogged
+    }
     var sections: [Section] {
         return _sections
     }
@@ -52,7 +55,7 @@ class ProfileViewModel: NSObject {
     
     // MARK: - Init
     override init() {
-        user = User()
+        user = PlaceUser.current
         super.init()
     }
     

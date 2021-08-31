@@ -9,7 +9,9 @@ import UIKit
 
 struct EditProfileViewModel {
     
-    let userImage: UIImage? = UIImage(named: User.current.image)
+    var userImage: UIImage? {
+        PlaceUser.current.image
+    }
     
     enum UserInfo: CustomStringConvertible {
         case displayName(value: String, icon: UIImage?)
@@ -29,15 +31,15 @@ struct EditProfileViewModel {
     }
     
     let items: [UserInfo] = [
-        .displayName(value: User.current.displayName,
+        .displayName(value: PlaceUser.current.displayName,
                      icon: Asset.person.image.resizeImage(to: 20,
                                                           aspectRatio: .current,
                                                           with: Asset.accent0.color)),
-        .contacts(value: User.current.contacts,
+        .contacts(value: PlaceUser.current.contacts,
                   icon: Asset.person.image.resizeImage(to: 20,
                                                        aspectRatio: .current,
                                                        with: Asset.accent0.color)),
-        .email(value: User.current.email,
+        .email(value: PlaceUser.current.email,
                icon: Asset.person.image.resizeImage(to: 20,
                                                     aspectRatio: .current,
                                                     with: Asset.accent0.color))

@@ -17,6 +17,9 @@
 "Auth.passwordPlaceholder" = "Пароль";
 "Auth.Buttons.signUp" = "Регистрация";
 "Auth.Buttons.Login" = "Вход";
+"Auth.Buttons.appleSignIn" = "Вход через Apple";
+"Auth.Buttons.googleSignIn" = "Вход через Google";
+"Auth.Buttons.facebookSignIn" = "Вход через Facebook";
 /* Main tab bar */
 /* Place list */
 "PlacesList.title" = "Лента";

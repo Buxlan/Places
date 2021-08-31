@@ -55,6 +55,10 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         configureBars(animated: false)
+        if !viewModel.isLogged {
+            let vc: UIViewController = SignInViewController()
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
     // MARK: - Helper functions
@@ -73,10 +77,11 @@ class ProfileViewController: UIViewController {
     
     private func configureBars(animated: Bool = false) {
         navigationController?.setToolbarHidden(true, animated: animated)
-        navigationController?.setNavigationBarHidden(true, animated: animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
         navigationController?.navigationBar.barTintColor = Asset.other1.color
         navigationController?.navigationBar.tintColor = Asset.other0.color
         navigationController?.tabBarController?.tabBar.isHidden = false
+        self.title = L10n.Profile.title
     }
 
     private func configureConstraints() {
