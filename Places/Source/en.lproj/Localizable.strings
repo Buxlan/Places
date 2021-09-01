@@ -15,11 +15,17 @@
 "Auth.title" = "Joining us allow to share you own essay about variable places...";
 "Auth.usernamePlaceholder" = "Username / E-mail";
 "Auth.passwordPlaceholder" = "Password";
-"Auth.Buttons.signUp" = "Sign up now";
+"Auth.Buttons.signUpSectionTitle" = "Haven't account?";
+"Auth.signUp" = "Sign up now";
 "Auth.Buttons.Login" = "Login";
-"Auth.Buttons.appleSignIn" = "Sign in with Apple";
-"Auth.Buttons.googleSignIn" = "Sign in with Google";
-"Auth.Buttons.facebookSignIn" = "Login with Facebook";
+"Auth.authProvidersTitle" = "Log in with:";
+"Auth.appleSignIn" = "Sign in with Apple";
+"Auth.googleSignIn" = "Sign in with Google";
+"Auth.facebookSignIn" = "Login with Facebook";
+"Auth.emailPasswordSignIn" = "Email & Password login";
+"Auth.anonymousSignIn" = "Begin without registration";
+"Auth.authDescription" = "Choose a login flow from one of the identity providers above.";
+"Auth.firebaseSectionHeader" = "Places authorisation";
 /* Main tab bar */
 /* Place list */
 "PlacesList.title" = "Top";

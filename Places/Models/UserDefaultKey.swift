@@ -6,5 +6,5 @@
 //
 
 enum UserDefaultKey: String {
-    case loggedUser = "loggedUser"
+    case loggedUser
 }

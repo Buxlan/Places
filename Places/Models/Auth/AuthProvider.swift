@@ -16,28 +16,43 @@ import UIKit
 
 /// Firebase Auth supported identity providers and other methods of authentication
 enum AuthProvider: String {
+    case registration = "registration"
     case google = "google.com"
-    case apple = "apple.com"
     case facebook = "facebook.com"
-    case emailPassword = "password"
+    case emailPassword = "emailAuth"
     case anonymous = "anonymous"
     
     /// More intuitively named getter for `rawValue`.
     var id: String { self.rawValue }
     
-    /// The UI friendly name of the `AuthProvider`. Used for display.
+    /// The UI friendly name of the `AuthProvider`. Used for finding item's image.
     var name: String {
         switch self {
         case .google:
             return "Google"
-        case .apple:
-            return "Apple"
         case .facebook:
             return "Facebook"
         case .emailPassword:
-            return "Email & Password Login"
+            return "emailAuth"
         case .anonymous:
-            return "Anonymous Authentication"
+            return "anonymous"
+        case .registration:
+            return "personCropCircleBadgePlus"
+        }
+    }
+    
+    var title: String {
+        switch self {
+        case .google:
+            return L10n.Auth.googleSignIn
+        case .facebook:
+            return L10n.Auth.facebookSignIn
+        case .emailPassword:
+            return L10n.Auth.emailPasswordSignIn
+        case .anonymous:
+            return L10n.Auth.anonymousSignIn
+        case .registration:
+            return L10n.Auth.signUp
         }
     }
     
@@ -45,16 +60,16 @@ enum AuthProvider: String {
     /// - Parameter rawValue: String value representing `AuthProvider`'s name or type.
     init?(rawValue: String) {
         switch rawValue {
-        case "Google":
+        case L10n.Auth.googleSignIn:
             self = .google
-        case "Apple":
-            self = .apple
-        case "Facebook":
+        case L10n.Auth.facebookSignIn:
             self = .facebook
-        case "Email & Password Login":
+        case L10n.Auth.emailPasswordSignIn:
             self = .emailPassword
-        case "Anonymous Authentication":
+        case L10n.Auth.anonymousSignIn:
             self = .anonymous
+        case L10n.Auth.signUp:
+            self = .registration
         default: return nil
         }
     }
@@ -64,25 +79,42 @@ enum AuthProvider: String {
 
 extension AuthProvider: DataSourceProvidable {
     private static var providers: [AuthProvider] {
-        [.google, .apple, .facebook, .emailPassword, .anonymous]
+        [.google, .facebook]
+    }
+    
+    private static var firebaseProviders: [AuthProvider] {
+        [.registration, .emailPassword]
     }
     
     static var providerSection: AuthSection {
-        let providers = self.providers.map { AuthItem(title: $0.name) }
-        let header = "Identity Providers"
-        let footer = "Choose a login flow from one of the identity providers above."
-        return AuthSection(headerDescription: header, footerDescription: footer, items: providers)
+        let providers = self.providers.map { AuthItem(title: $0.title, imageName: $0.name) }
+        let header = L10n.Auth.authProvidersTitle
+        return AuthSection(headerDescription: header, items: providers)
     }
     
-    static var emailPasswordSection: AuthSection {
-        let image = UIImage(named: "firebaseIcon")
-        let item = AuthItem(title: emailPassword.name, hasNestedContent: true, image: image)
-        let footer = "A example login flow with password authentication."
+    static var firebaseSection: AuthSection {
+        var items = [AuthItem]()
+        for provider in firebaseProviders {
+            var item = AuthItem(title: provider.title, imageName: provider.name)
+            item.hasNestedContent = true
+            let image = item.image?.resizeImage(to: 32, aspectRatio: .current, with: .clear)
+            item.image = image
+            items.append(item)
+        }
+        
+        let header = L10n.Auth.firebaseSectionHeader
+        return AuthSection(headerDescription: header, items: items)
+    }
+    
+    static var anonymousSection: AuthSection {
+        let provider = AuthProvider.anonymous
+        let item = AuthItem(title: provider.title, imageName: provider.name)
+        let footer = L10n.Auth.authDescription
         return AuthSection(footerDescription: footer, items: [item])
     }
     
     static var sections: [AuthSection] {
-        [providerSection]
+        [firebaseSection, providerSection, anonymousSection]
     }
     
     static var authLinkSections: [AuthSection] {

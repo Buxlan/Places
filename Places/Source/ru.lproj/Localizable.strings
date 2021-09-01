@@ -15,11 +15,17 @@
 "Auth.title" = "Регистрация позволит Вам оставлять эссе и предложения о создании новых мест.";
 "Auth.usernamePlaceholder" = "Имя / Почта";
 "Auth.passwordPlaceholder" = "Пароль";
-"Auth.Buttons.signUp" = "Регистрация";
+"Auth.signUp" = "Зарегистрироваться";
+"Auth.Buttons.signUpSectionTitle" = "Нет аккаунта?";
 "Auth.Buttons.Login" = "Вход";
-"Auth.Buttons.appleSignIn" = "Вход через Apple";
-"Auth.Buttons.googleSignIn" = "Вход через Google";
-"Auth.Buttons.facebookSignIn" = "Вход через Facebook";
+"Auth.emailPasswordSignIn" = "Войти через почту";
+"Auth.appleSignIn" = "Войти через Apple";
+"Auth.googleSignIn" = "Войти через Google";
+"Auth.facebookSignIn" = "Войти через Facebook";
+"Auth.authProvidersTitle" = "Войти с помощью:";
+"Auth.anonymousSignIn" = "Начать без регистрации";
+"Auth.authDescription" = "Выберите любой удобный Вам способ авторизации.";
+"Auth.firebaseSectionHeader" = "Places авторизация";
 /* Main tab bar */
 /* Place list */
 "PlacesList.title" = "Лента";

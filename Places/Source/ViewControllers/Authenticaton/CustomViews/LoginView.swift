@@ -78,7 +78,7 @@ class LoginView: UIView {
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: -55),
             imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 55),
             imageView.widthAnchor.constraint(equalToConstant: 325),
-            imageView.heightAnchor.constraint(equalToConstant: 325),
+            imageView.heightAnchor.constraint(equalToConstant: 325)
         ])
     }
     
@@ -95,7 +95,7 @@ class LoginView: UIView {
                 equalTo: safeAreaLayoutGuide.trailingAnchor,
                 constant: -15
             ),
-            emailTextField.heightAnchor.constraint(equalToConstant: 45),
+            emailTextField.heightAnchor.constraint(equalToConstant: 45)
         ])
         
         let constant: CGFloat = UIDevice.current.orientation.isLandscape ? 15 : 50
@@ -119,7 +119,7 @@ class LoginView: UIView {
                 equalTo: safeAreaLayoutGuide.trailingAnchor,
                 constant: -15
             ),
-            passwordTextField.heightAnchor.constraint(equalToConstant: 45),
+            passwordTextField.heightAnchor.constraint(equalToConstant: 45)
         ])
         
         let constant: CGFloat = UIDevice.current.orientation.isLandscape ? 5 : 20
@@ -144,7 +144,7 @@ class LoginView: UIView {
                 constant: -15
             ),
             loginButton.heightAnchor.constraint(equalToConstant: 45),
-            loginButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 5),
+            loginButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 5)
         ])
     }
     

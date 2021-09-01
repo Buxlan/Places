@@ -16,8 +16,10 @@
 		401A92EB26B8B01600DD6C2B /* PlaceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401A92EA26B8B01600DD6C2B /* PlaceCategory.swift */; };
 		401ACA3B265F86BE00AEADE2 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 401ACA3A265F86BE00AEADE2 /* AppController.swift */; };
 		401BFFDE26A31D35005E0B74 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 401BFFDD26A31D35005E0B74 /* swiftgen.yml */; };
+		4023C0CF26E0368200C17EA4 /* AccountLinkingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4023C0CE26E0368200C17EA4 /* AccountLinkingViewController.swift */; };
 		4028E52626617BF800765DC6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4028E52526617BF800765DC6 /* ProfileViewController.swift */; };
 		402C3C2C26A5B1E200E73581 /* OnboardingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 402C3C2B26A5B1E200E73581 /* OnboardingView.xib */; };
+		402EB42626E0324000B60010 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EB42526E0324000B60010 /* UserViewController.swift */; };
 		4030AB7D26B1CFE200202A20 /* SignInView_test.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4030AB7C26B1CFE200202A20 /* SignInView_test.xib */; };
 		4031EBF82682031000BF1F76 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = 4031EBF72682031000BF1F76 /* .swiftlint.yml */; };
 		403B5A52266A47CA00421470 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403B5A51266A47CA00421470 /* UIColor.swift */; };
@@ -131,8 +133,10 @@
 		401A92EA26B8B01600DD6C2B /* PlaceCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCategory.swift; sourceTree = "<group>"; };
 		401ACA3A265F86BE00AEADE2 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 		401BFFDD26A31D35005E0B74 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		4023C0CE26E0368200C17EA4 /* AccountLinkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountLinkingViewController.swift; sourceTree = "<group>"; };
 		4028E52526617BF800765DC6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		402C3C2B26A5B1E200E73581 /* OnboardingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
+		402EB42526E0324000B60010 /* UserViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		4030AB7C26B1CFE200202A20 /* SignInView_test.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInView_test.xib; sourceTree = "<group>"; };
 		4031EBF72682031000BF1F76 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		403B5A51266A47CA00421470 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -529,6 +533,7 @@
 		40AE8B9126A74F51004825AF /* Authenticaton */ = {
 			isa = PBXGroup;
 			children = (
+				4023C0CE26E0368200C17EA4 /* AccountLinkingViewController.swift */,
 				409F9E4826DE0E01004DBC4F /* CustomViews */,
 				404DBE9526B17665009D8081 /* SignUp */,
 				40AE8B9226A74F6B004825AF /* SignIn */,
@@ -630,6 +635,7 @@
 		40E7D9F426A5AE8800DC94C2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				402EB42526E0324000B60010 /* UserViewController.swift */,
 				406F271626B1C9AE006F92B4 /* ProfileView.xib */,
 				4028E52526617BF800765DC6 /* ProfileViewController.swift */,
 				40B89BE926B5FDCE008217BE /* ProfileViewModel.swift */,
@@ -881,6 +887,7 @@
 				401ACA3B265F86BE00AEADE2 /* AppController.swift in Sources */,
 				404D9CF326B0D1B000AF616F /* ReviewImageCell.swift in Sources */,
 				40625A36265BB4B100E0E744 /* Settings.swift in Sources */,
+				402EB42626E0324000B60010 /* UserViewController.swift in Sources */,
 				40EA39B326B6813C005E8878 /* SettingsSection.swift in Sources */,
 				40BB8F5826796BC7009B8841 /* AuthorsListViewController.swift in Sources */,
 				405CEA0526AF60B500DB5C2D /* BottomCorneredImageView.swift in Sources */,
@@ -895,6 +902,7 @@
 				408C38C426576797009832FD /* PlaceDescriptionCell.swift in Sources */,
 				406660C5263D21FF001BEF66 /* AppDelegate.swift in Sources */,
 				40978DAC265671F9001E1DFC /* ConfigurableCell.swift in Sources */,
+				4023C0CF26E0368200C17EA4 /* AccountLinkingViewController.swift in Sources */,
 				40D3EEA7264545AB005E2F0F /* Trash.swift in Sources */,
 				408C38D3265839DD009832FD /* PlaceTableViewFooter.swift in Sources */,
 				401A92EB26B8B01600DD6C2B /* PlaceCategory.swift in Sources */,

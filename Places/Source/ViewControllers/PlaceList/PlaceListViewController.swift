@@ -28,7 +28,7 @@ class PlaceListViewController: UIViewController {
         view.setImage(Asset.plus.image.resizeImage(to: 37,
                                                    aspectRatio: .square,
                                                    with: backgroundColor), for: .normal)
-        view.setImage(Asset.filledPlus.image.resizeImage(to: 37,
+        view.setImage(Asset.plusFill.image.resizeImage(to: 37,
                                                          aspectRatio: .square,
                                                          with: backgroundColor), for: .selected)
 //        view.contentEdgeInsets = .init(top: 10, left: 6, bottom: 10, right: 6)

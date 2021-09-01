@@ -141,7 +141,7 @@ extension UITextField {
 }
 
 extension UIImageView {
-
+    
     func setImage(from url: URL?) {
         guard let url = url else { return }
         DispatchQueue.global(qos: .background).async {
@@ -173,4 +173,26 @@ extension UITextView {
         self.contentInset.bottom = inset
     }
     
+}
+
+// MARK: UINavigationBar + UserDisplayable Protocol
+
+protocol UserDisplayable {
+    func addProfilePic(_ imageView: UIImageView)
+}
+
+extension UINavigationBar: UserDisplayable {
+    func addProfilePic(_ imageView: UIImageView) {
+        let length = frame.height * 0.46
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = length / 2
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(imageView)
+        NSLayoutConstraint.activate([
+            imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+            imageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
+            imageView.heightAnchor.constraint(equalToConstant: length),
+            imageView.widthAnchor.constraint(equalToConstant: length)
+        ])
+    }
 }

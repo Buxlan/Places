@@ -28,7 +28,7 @@ extension User: DataSourceProvidable {
     private var metaDataSection: AuthSection {
         let metadataRows = [
             AuthItem(title: metadata.lastSignInDate?.description, detailTitle: "Last Sign-in Date"),
-            AuthItem(title: metadata.creationDate?.description, detailTitle: "Creation Date"),
+            AuthItem(title: metadata.creationDate?.description, detailTitle: "Creation Date")
         ]
         return AuthSection(headerDescription: "Firebase Metadata", items: metadataRows)
     }
@@ -46,7 +46,7 @@ extension User: DataSourceProvidable {
             AuthItem(title: AuthUserAction.link.rawValue, textColor: .systemBlue, hasNestedContent: true),
             AuthItem(title: AuthUserAction.requestVerifyEmail.rawValue, textColor: .systemBlue),
             AuthItem(title: AuthUserAction.tokenRefresh.rawValue, textColor: .systemBlue),
-            AuthItem(title: AuthUserAction.delete.rawValue, textColor: .systemRed),
+            AuthItem(title: AuthUserAction.delete.rawValue, textColor: .systemRed)
         ]
         return AuthSection(headerDescription: "Actions", items: actionsRows)
     }
@@ -55,7 +55,6 @@ extension User: DataSourceProvidable {
         [infoSection, metaDataSection, otherSection, actionSection]
     }
 }
-
 
 // MARK: - UIKit Extensions
 
