@@ -23,10 +23,7 @@ struct TableViewSection: Equatable {
     }
 }
 
-class PlaceListViewModel: NSObject {
-    
-    // MARK: - Public
-    weak var managedViewController: UIViewController?
+class PlaceListViewModel: NSObject {    
     
     var sections: [TableViewSection] {
         return _sections
@@ -106,45 +103,6 @@ class PlaceListViewModel: NSObject {
     // MARK: - Private
     private var _sections: [TableViewSection] = [TableViewSection]()
     
-}
-
-extension PlaceListViewModel: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView,
-                   numberOfRowsInSection section: Int) -> Int {
-        return items(at: section).count
-    }
-    
-    func tableView(_ tableView: UITableView,
-                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let item = sections[indexPath.section].items[indexPath.row]
-                
-        let cell = tableView.dequeueReusableCell(withIdentifier: PlaceListCellConfigurator.reuseIdentifier,
-                                                 for: indexPath)
-        
-        if let castedCell = cell as? PlaceListCell,
-           castedCell.isInterfaceConfigured == false {
-            if let managedVC = managedViewController {
-                let options = [PlaceListCell.Option.collectionDelegate.rawValue: managedVC,
-                               PlaceListCell.Option.collectionDataSource.rawValue: self]
-                item.configureInterface(cell: cell, with: options)
-            }
-        }
-        item.configure(cell: cell)
-//        cell.setNeedsLayout()
-//        cell.layoutIfNeeded()
-//        cell.clipsToBounds = true
-        return cell
-    }
-
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return _sections.count
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return _sections[section].name
-    }
-        
 }
 
 extension PlaceListViewModel: UICollectionViewDataSource {

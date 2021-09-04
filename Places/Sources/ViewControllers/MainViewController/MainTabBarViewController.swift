@@ -128,12 +128,12 @@ class MainTabBarViewController: UITabBarController {
         if sender.direction == .left {
             if selectedIndex < items.count - 1 {
                 let vc = items[selectedIndex + 1]
-                _ = self.tabBarController(self, shouldSelect: vc)
+                selectedViewController = vc
             }
         } else if sender.direction == .right {
             if selectedIndex > 0 {
                 let vc = items[self.selectedIndex - 1]
-                _ = self.tabBarController(self, shouldSelect: vc)
+                selectedViewController = vc
             }
         }
     }
@@ -147,13 +147,6 @@ class MainTabBarViewController: UITabBarController {
 extension MainTabBarViewController: UITabBarControllerDelegate {
     
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-//        let numberOfItems = items.count
-//        let tabBarItemSize = CGSize(width: tabBar.frame.width / CGFloat(numberOfItems), height: tabBar.frame.height)
-//        tabBar.selectionIndicatorImage = UIImage.imageWithColor(color: Asset.background0.color,
-//                                                                size: tabBarItemSize)
-        
-//        clearTabBarSelectionColor()
-//        setTabBarSelectionColor(item: item)
         
         tabBar.frame.size.width = self.view.frame.width + 4
         tabBar.frame.origin.x = -2
@@ -166,28 +159,6 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
         let image = UIImage.imageWithColor(color: color,
                                            size: tabBarItemSize)
         let resImage = image.resizableImage(withCapInsets: UIEdgeInsets.zero)
-        tabBar.selectionIndicatorImage = resImage
-        
-    }
-    
-    func tabBarController(_ tabBarController: UITabBarController,
-                          shouldSelect viewController: UIViewController) -> Bool {
-        
-//        guard let fromView = selectedViewController?.view,
-//              let toView = viewController.view else {
-//            return false
-//        }
-//        
-//        if fromView != toView {
-//            let transitionStyle = UIView.AnimationOptions.transitionCrossDissolve
-//            UIView.transition(from: fromView,
-//                              to: toView,
-//                              duration: 0.5,
-//                              options: [transitionStyle],
-//                              completion: nil)
-//        }
-        selectedViewController = viewController
-        
-        return true
+        tabBar.selectionIndicatorImage = resImage        
     }
 }

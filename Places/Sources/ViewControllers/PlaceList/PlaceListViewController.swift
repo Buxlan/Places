@@ -119,7 +119,7 @@ class PlaceListViewController: UIViewController {
         let view = UITableView(frame: .zero, style: .plain)
         view.isUserInteractionEnabled = true
         view.delegate = self
-        view.dataSource = viewModel
+        view.dataSource = self
         view.allowsSelection = true
         view.allowsMultipleSelection = false
         view.allowsSelectionDuringEditing = false
@@ -333,4 +333,38 @@ extension PlaceListViewController: UICollectionViewDelegateFlowLayout {
         }
     }
 
+}
+
+extension PlaceListViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return viewModel.items(at: section).count
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = viewModel.sections[indexPath.section].items[indexPath.row]
+                
+        let cell = tableView.dequeueReusableCell(withIdentifier: PlaceListCellConfigurator.reuseIdentifier,
+                                                 for: indexPath)
+        
+        if let castedCell = cell as? PlaceListCell,
+           castedCell.isInterfaceConfigured == false {
+            let options = [PlaceListCell.Option.collectionDelegate.rawValue: self,
+                           PlaceListCell.Option.collectionDataSource.rawValue: self]
+            item.configureInterface(cell: cell, with: options)
+        }
+        item.configure(cell: cell)
+        return cell
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.sections.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.sections[section].name
+    }
+        
 }
