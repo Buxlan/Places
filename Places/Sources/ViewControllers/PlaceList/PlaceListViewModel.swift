@@ -25,9 +25,10 @@ struct TableViewSection: Equatable {
 
 class PlaceListViewModel: NSObject {    
     
-    var sections: [TableViewSection] {
-        return _sections
+    var tableViewSections: [TableViewSection] {
+        return _tableViewSections
     }
+    private var _tableViewSections: [TableViewSection] = [TableViewSection]()
     
     override init() {
         super.init()
@@ -36,21 +37,21 @@ class PlaceListViewModel: NSObject {
     
     init(sections: [TableViewSection]) {
         super.init()
-        self._sections = sections
+        self._tableViewSections = sections
     }
     
     func items(at sectionIndex: Int) -> [CellConfigurator] {
-        guard sectionIndex >= 0 && sectionIndex < sections.count else {
+        guard sectionIndex >= 0 && sectionIndex < tableViewSections.count else {
             fatalError()
         }
-        return sections[sectionIndex].items
+        return tableViewSections[sectionIndex].items
     }
     
     func item(at indexPath: IndexPath) -> Place {
-        guard indexPath.section >= 0 && indexPath.section < sections.count else {
+        guard indexPath.section >= 0 && indexPath.section < tableViewSections.count else {
             fatalError()
         }
-        if let conf = _sections[indexPath.section].items[indexPath.row] as? PlaceListCellConfigurator {
+        if let conf = _tableViewSections[indexPath.section].items[indexPath.row] as? PlaceListCellConfigurator {
             return conf.item
         }
         return Place.empty
@@ -77,22 +78,22 @@ class PlaceListViewModel: NSObject {
                     items.append(con)
                 }
                 let section = TableViewSection(name: collection.name, icon: collection.icon, items: items)
-                _sections.append(section)
+                _tableViewSections.append(section)
             }
         }
     }
     
     func insert(section: TableViewSection, at index: Int) {
-        _sections.insert(section, at: index)
+        _tableViewSections.insert(section, at: index)
     }
     
     func append(section: TableViewSection) {
-        _sections.append(section)
+        _tableViewSections.append(section)
     }
     
     func remove(section: TableViewSection) {
-        if let index = _sections.firstIndex(where: { $0 == section }) {
-            _sections.remove(at: index)
+        if let index = _tableViewSections.firstIndex(where: { $0 == section }) {
+            _tableViewSections.remove(at: index)
         }
     }
     
@@ -100,32 +101,4 @@ class PlaceListViewModel: NSObject {
         
     }
     
-    // MARK: - Private
-    private var _sections: [TableViewSection] = [TableViewSection]()
-    
-}
-
-extension PlaceListViewModel: UICollectionViewDataSource {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
-    }
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        5
-    }
-    
-    func collectionView(_ collectionView: UICollectionView,
-                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReviewCollectionCell.reuseIdentifier, for: indexPath)
-        
-        if let reviewCell = cell as? ReviewCollectionCell {
-            reviewCell.configureInterface()
-            let review = Review.empty
-            reviewCell.configure(data: review)
-        }
-        cell.backgroundColor = .blue
-        
-        return cell
-    }    
 }

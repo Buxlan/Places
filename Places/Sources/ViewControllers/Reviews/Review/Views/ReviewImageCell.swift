@@ -9,11 +9,10 @@ import UIKit
 
 class ReviewImageCell: UITableViewCell, ConfigurableCell {
     
+    @IBOutlet var placeImageView: UIImageView!
     var isInterfaceConfigured: Bool = true
         
-    @IBOutlet var placeImageView: UIImageView!
-    
-    func configureInterface(with options: [String: Any]? = nil) {
+    func configureInterface(with options: ConfigurableCellInputOptions? = nil) {
         if isInterfaceConfigured { return }
         configureConstraints()
     }

@@ -7,6 +7,12 @@
 
 import UIKit
 
+struct ConfigurableCellInputOptions {
+    weak var collectionViewDelegate: UICollectionViewDelegate?
+    weak var collectionViewDataSource: UICollectionViewDataSource?
+    var indexPath: IndexPath?
+}
+
 protocol ConfigurableCell {
     
     static var reuseIdentifier: String { get }
@@ -15,7 +21,7 @@ protocol ConfigurableCell {
     associatedtype DataType
     func configure()
     func configure(data: DataType)
-    func configureInterface(with options: [String: Any]?)
+    func configureInterface(with options: ConfigurableCellInputOptions?)
     func configureConstraints()
 }
 

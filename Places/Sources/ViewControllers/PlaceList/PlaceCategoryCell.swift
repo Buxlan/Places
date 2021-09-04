@@ -46,7 +46,7 @@ class PlaceCategoryCell: UICollectionViewCell, ConfigurableCell {
         return view
     }()
     
-    func configureInterface(with options: [String: Any]? = nil) {
+    func configureInterface(with options: ConfigurableCellInputOptions? = nil) {
         if isInterfaceConfigured { return }
         isUserInteractionEnabled = true
         tintColor = Asset.other0.color

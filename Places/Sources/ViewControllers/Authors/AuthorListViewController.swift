@@ -25,7 +25,7 @@ class AuthorListViewController: UIViewController {
         let view = UITableView(frame: .zero, style: .plain)
         view.isUserInteractionEnabled = true
         view.delegate = self
-        view.dataSource = viewModel
+        view.dataSource = self
         view.allowsSelection = true
         view.allowsMultipleSelection = false
         view.allowsSelectionDuringEditing = false
@@ -132,7 +132,7 @@ class AuthorListViewController: UIViewController {
 }
 
 // Delegate
-extension AuthorListViewController: UITableViewDelegate {
+extension AuthorListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -142,6 +142,58 @@ extension AuthorListViewController: UITableViewDelegate {
             vc.modalPresentationStyle = .pageSheet
             present(vc, animated: true)
         }
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return viewModel.items(at: section).count
+    }
+    
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = viewModel.tableViewSections[indexPath.section].items[indexPath.row]
+                
+        let cell = tableView.dequeueReusableCell(withIdentifier: PlaceListCellConfigurator.reuseIdentifier,
+                                                 for: indexPath)
+        
+        if let castedCell = cell as? PlaceListCell,
+           castedCell.isInterfaceConfigured == false {
+            var options = ConfigurableCellInputOptions()
+            options.collectionViewDelegate = self
+            options.collectionViewDataSource = self
+            options.indexPath = indexPath
+            item.configureInterface(cell: cell, with: options)
+        }
+        item.configure(cell: cell)
+        return cell
+    }
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return viewModel.tableViewSections.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.tableViewSections[section].name
+    }
+}
+
+// MARK: - UICollectionViewDelegate, UICollectionViewDataSource
+extension AuthorListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReviewCollectionCell.reuseIdentifier,
+                                                      for: indexPath)
+        return cell
     }
     
 }

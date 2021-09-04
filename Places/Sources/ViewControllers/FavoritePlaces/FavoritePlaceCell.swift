@@ -99,7 +99,7 @@ class FavoritePlaceCell: UITableViewCell, ConfigurableCell {
 //        Log(text: "init with coder", object: nil)
     }
     
-    func configureInterface(with options: [String: Any]? = nil) {
+    func configureInterface(with options: ConfigurableCellInputOptions? = nil) {
         tintColor = Asset.other1.color
         contentView.backgroundColor = Asset.other1.color
         roundedView.addSubview(placeLabel)

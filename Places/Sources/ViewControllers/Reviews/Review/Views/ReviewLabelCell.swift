@@ -12,7 +12,7 @@ class ReviewLabelCell: UITableViewCell, ConfigurableCell {
     var isInterfaceConfigured: Bool = true
     @IBOutlet var dataLabel: UILabel!
     
-    func configureInterface(with options: [String: Any]? = nil) {
+    func configureInterface(with options: ConfigurableCellInputOptions? = nil) {
         if isInterfaceConfigured { return }
     }
     

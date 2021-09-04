@@ -9,6 +9,7 @@ import UIKit
 
 class ReviewCollectionCell: UICollectionViewCell, ConfigurableCell {
     
+    var tableViewIndexPath: IndexPath?
     internal var isInterfaceConfigured: Bool = false
     
     private lazy var placeLabel: UILabel = {
@@ -47,8 +48,9 @@ class ReviewCollectionCell: UICollectionViewCell, ConfigurableCell {
         return view
     }()
     
-    func configureInterface(with options: [String: Any]? = nil) {
+    func configureInterface(with options: ConfigurableCellInputOptions? = nil) {
         if isInterfaceConfigured { return }
+        
         tintColor = Asset.other1.color
         let backView = UIView()
         backView.backgroundColor = Asset.other0.color
@@ -58,34 +60,12 @@ class ReviewCollectionCell: UICollectionViewCell, ConfigurableCell {
         contentView.addSubview(likeButton)
         configureConstraints()
         isInterfaceConfigured = true
+        
+        tableViewIndexPath = options?.indexPath        
     }
     
     internal func configureConstraints() {
         let constraints: [NSLayoutConstraint] = [
-//            photoImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-//            photoImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-//            photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            photoImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-//            photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            photoImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-//            photoImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor)
-            
-//            photoImageView.leadingAnchor.constraint(equalTo: placeLabel.leadingAnchor),
-//            photoImageView.topAnchor.constraint(equalTo: placeLabel.bottomAnchor),
-//            photoImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-//            photoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-//            photoImageView.heightAnchor.constraint(equalTo: photoImageView.widthAnchor,
-//                                                   multiplier: 1.0),
-//
-//            placeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-//            placeLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            placeLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor),
-//
-//            likeButton.leadingAnchor.constraint(equalTo: placeLabel.leadingAnchor),
-//            likeButton.topAnchor.constraint(equalTo: photoImageView.bottomAnchor, constant: 16),
-//            likeButton.widthAnchor.constraint(equalToConstant: 44),
-//            likeButton.heightAnchor.constraint(equalToConstant: 44),
-//            likeButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0)
             placeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             placeLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
             placeLabel.heightAnchor.constraint(equalToConstant: 24),
@@ -107,6 +87,7 @@ class ReviewCollectionCell: UICollectionViewCell, ConfigurableCell {
     }
     
     func configure(data: Review) {
+        configureInterface()
         isUserInteractionEnabled = true
         
         placeLabel.text = data.title

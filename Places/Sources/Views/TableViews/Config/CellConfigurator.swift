@@ -13,7 +13,7 @@ protocol CellConfigurator {
     var isInterfaceConfigured: Bool { get set }
 //    var object: Any { get set }
     
-    func configureInterface(cell: UIView, with options: [String: Any]?)
+    func configureInterface(cell: UIView, with options: ConfigurableCellInputOptions?)
     func configure(cell: UIView)
 }
 
@@ -37,7 +37,7 @@ class TableCellConfigurator<CellType: ConfigurableCell,
     }
     
     // MARK: Helper functions
-    func configureInterface(cell: UIView, with options: [String: Any]? = nil) {
+    func configureInterface(cell: UIView, with options: ConfigurableCellInputOptions? = nil) {
         guard let cell = cell as? CellType else {
             Log(text: "Can't cast cell to \(CellType.self)", object: self)
             return
@@ -72,7 +72,7 @@ class CollectionCellConfigurator<CellType: ConfigurableCell,
     }
     
     var isInterfaceConfigured: Bool = false
-    func configureInterface(cell: UIView, with options: [String: Any]? = nil) {
+    func configureInterface(cell: UIView, with options: ConfigurableCellInputOptions? = nil) {
         guard let cell = cell as? CellType else {
             Log(text: "Can't cast cell to \(CellType.self)", object: self)
             return

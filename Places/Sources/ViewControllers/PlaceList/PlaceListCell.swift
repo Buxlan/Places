@@ -8,24 +8,8 @@
 import UIKit
 
 class PlaceListCell: UITableViewCell, ConfigurableCell {
-    
-    weak var collectionDelegate: UICollectionViewDelegate? {
-        didSet {
-            reviewsCollectionView.delegate = collectionDelegate
-        }
-    }
-    weak var collectionDataSource: UICollectionViewDataSource? {
-        didSet {
-            reviewsCollectionView.dataSource = collectionDataSource
-        }
-    }
-    enum Option: String {
-        case collectionDelegate
-        case collectionDataSource
-    }
-    
-    var isInterfaceConfigured: Bool = false
-    
+       
+    var isInterfaceConfigured: Bool = false    
     private let cornerRadius: CGFloat = 24.0
     
     private lazy var roundedView: UIView = {
@@ -130,7 +114,7 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
 //        Log(text: "init with coder", object: nil)
     }
     
-    func configureInterface(with options: [String: Any]? = nil) {
+    func configureInterface(with options: ConfigurableCellInputOptions? = nil) {
         if isInterfaceConfigured { return }
         tintColor = Asset.other1.color
         contentView.backgroundColor = Asset.other1.color
@@ -141,22 +125,9 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
         contentView.addSubview(roundedView)
         configureConstraints()
         isInterfaceConfigured = true
-        if let options = options {
-            for option in options {
-                switch option.key {
-                case Option.collectionDataSource.rawValue:
-                    if let obj = option.value as? UICollectionViewDataSource {
-                        collectionDataSource = obj
-                    }
-                case Option.collectionDelegate.rawValue:
-                    if let obj = option.value as? UICollectionViewDelegate {
-                        collectionDelegate = obj
-                    }
-                default:
-                    Log(text: "Attention! Wrong options have been passsed into the function configureInterfaceWithOptions")
-                }
-            }
-        }
+        
+        reviewsCollectionView.dataSource = options?.collectionViewDataSource
+        reviewsCollectionView.delegate = options?.collectionViewDelegate
     }
     
     internal func configureConstraints() {
@@ -199,11 +170,6 @@ class PlaceListCell: UITableViewCell, ConfigurableCell {
         placeLabel.text = data.title
         placeLabel.font = UIFont.bxControlTitle
         placeLabel.setMargins(margin: 32.0)
-//        photoImageView.image = data.image.withRenderingMode(.alwaysOriginal)
-//        photoImageView.setNeedsLayout()
-//        contentView.setNeedsLayout()
-//        contentView.layoutIfNeeded()
-        
     }
     
     @objc

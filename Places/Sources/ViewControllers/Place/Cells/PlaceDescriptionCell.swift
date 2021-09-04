@@ -11,7 +11,7 @@ class PlaceDescriptionCell: UITableViewCell, ConfigurableCell {
     
     var isInterfaceConfigured: Bool = true
     
-    func configureInterface(with options: [String: Any]? = nil) {
+    func configureInterface(with options: ConfigurableCellInputOptions? = nil) {
         
     }
     
