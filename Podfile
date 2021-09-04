@@ -13,10 +13,12 @@ target 'Places' do
   pod 'Firebase/Storage'
   pod 'Firebase/DynamicLinks'
 
-  pod 'FirebaseUI'
-  pod 'FirebaseUI/Google'
-  pod 'FirebaseUI/Facebook'
-  pod 'FirebaseUI/OAuth' # Used for Sign in with Apple, Twitter, etc
+  pod 'GoogleSignIn'
+
+  #pod 'FirebaseUI'
+  #pod 'FirebaseUI/Google'
+  #pod 'FirebaseUI/Facebook'
+  #pod 'FirebaseUI/OAuth' # Used for Sign in with Apple, Twitter, etc
 
   pod 'SwiftGen', '~> 6.0'
 

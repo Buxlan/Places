@@ -154,7 +154,7 @@
 		404DBE9626B17681009D8081 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		404DBE9926B1768F009D8081 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		404DBE9D26B184B2009D8081 /* SignInView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignInView.xib; sourceTree = "<group>"; };
-		40539CC426A607EC00127DE5 /* Layers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Layers.swift; path = Places/Source/Layers.swift; sourceTree = SOURCE_ROOT; };
+		40539CC426A607EC00127DE5 /* Layers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Layers.swift; path = Places/Sources/Layers.swift; sourceTree = SOURCE_ROOT; };
 		405CE9FA26AF504A00DB5C2D /* ReviewListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewListViewModel.swift; sourceTree = "<group>"; };
 		405CE9FD26AF5A2900DB5C2D /* TopCorneredLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopCorneredLabel.swift; sourceTree = "<group>"; };
 		405CEA0026AF5B6000DB5C2D /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -383,7 +383,7 @@
 		406660C3263D21FF001BEF66 /* Places */ = {
 			isa = PBXGroup;
 			children = (
-				40A41608266A3165005ADBBD /* Source */,
+				40A41608266A3165005ADBBD /* Sources */,
 				406660DD263D4CB6001BEF66 /* Models */,
 				40C10947267A628F00264062 /* GoogleService-Info.plist */,
 				406660CD263D21FF001BEF66 /* Assets.xcassets */,
@@ -489,7 +489,7 @@
 			path = CustomViews;
 			sourceTree = "<group>";
 		};
-		40A41608266A3165005ADBBD /* Source */ = {
+		40A41608266A3165005ADBBD /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				406660C4263D21FF001BEF66 /* AppDelegate.swift */,
@@ -504,7 +504,7 @@
 				407091BB2682BADD00AF410F /* Extensions */,
 				400E81FE26A571E000164CB3 /* Localizable.strings */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		40A4160A266A31C6005ADBBD /* MainViewController */ = {
@@ -686,7 +686,6 @@
 				406660BE263D21FF001BEF66 /* Frameworks */,
 				406660BF263D21FF001BEF66 /* Resources */,
 				B1FC46E73BD8E60CA5114D49 /* [CP] Embed Pods Frameworks */,
-				5FEF0E19D6F36F3C039DD27C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -798,23 +797,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = " ${PODS_ROOT}/SwiftGen/bin/swiftgen config run --config ${PODS_ROOT}/SwiftGen/bin/swiftgen.yml\n";
-		};
-		5FEF0E19D6F36F3C039DD27C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Places/Pods-Places-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Places/Pods-Places-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Places/Pods-Places-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		B1FC46E73BD8E60CA5114D49 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -964,7 +946,7 @@
 				400E820026A571E400164CB3 /* en */,
 			);
 			name = Localizable.strings;
-			path = /Users/buxlan/Documents/_iosDev/Places/Places/Source;
+			path = /Users/buxlan/Documents/_iosDev/Places/Places/Sources;
 			sourceTree = "<absolute>";
 		};
 		406660CA263D21FF001BEF66 /* Main.storyboard */ = {
@@ -1111,7 +1093,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = bx.Places;
+				PRODUCT_BUNDLE_IDENTIFIER = bx.Places.ThePlaces;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1132,7 +1114,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = bx.Places;
+				PRODUCT_BUNDLE_IDENTIFIER = bx.Places.ThePlaces;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -1,0 +1,197 @@
+//
+//  EditReviewViewController.swift
+//  Places
+//
+//  Created by  Buxlan on 8/2/21.
+//
+
+import UIKit
+
+class EditReviewViewController: UIViewController {
+    
+    // MARK: - Properties
+    private static let cellReuseIdentifier = String.init(describing: EditReviewViewController.self)
+    private var viewModel =  EditProfileViewModel()
+    private lazy var imageContainer: UIView = {
+        let view = UIView()
+        //        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        view.clipsToBounds = true
+        view.layer.cornerRadius = 32
+        view.layer.masksToBounds = true
+        view.addSubview(photoButton)
+        return view
+    }()
+    
+    private lazy var photoButton: UIButton = {
+        let view = UIButton()
+        view.tintColor = .white
+        view.imageView?.contentMode = .scaleAspectFit
+        view.addTarget(self, action: #selector(imageTapped), for: .touchUpInside)
+        
+        let emptyImage = Asset.person.image
+        view.setImage(emptyImage, for: .normal)
+        if let url = PlaceUser.current.photoURL {
+            let session = URLSession.shared
+            let task = session.downloadTask(with: url, completionHandler: { fileURL, response, error in
+                if let error = error {
+                    print("error download: \(error.localizedDescription)")
+                }
+                if let url = fileURL,
+                   let data = try? Data(contentsOf: url),
+                   let image = UIImage(data: data) {
+                    let size = CGSize(width: 150, height: 150)
+                    let rect = CGRect(origin: .zero,
+                                      size: size)
+                    let format = image.imageRendererFormat
+                    format.opaque = false
+                    let rend = UIGraphicsImageRenderer(size: size,
+                                                       format: image.imageRendererFormat)
+                    let ellipsedImage = rend.image {_ in
+                        UIBezierPath(ovalIn: rect).addClip()
+                        image.draw(in: rect)
+                    }
+                    view.setImage(ellipsedImage, for: .normal)
+                }
+            })
+            task.resume()
+        }
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var usernameLabel: UILabel = {
+        let label = UILabel()
+        label.text = PlaceUser.current.displayName
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var emailLabel: UILabel = {
+        let label = UILabel()
+        label.text = PlaceUser.current.email
+        label.font = UIFont.systemFont(ofSize: 14)
+        label.textColor = .lightGray
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
+    private lazy var userInfoTableView: UITableView = {
+        let view = UITableView()
+        view.isUserInteractionEnabled = true
+        view.isScrollEnabled = false
+        view.delegate = self
+        view.dataSource = self
+        view.allowsSelection = true
+        view.allowsMultipleSelection = false
+        view.allowsSelectionDuringEditing = false
+        view.allowsMultipleSelectionDuringEditing = false
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.rowHeight = 80
+        view.estimatedRowHeight = 80
+        view.register(UITableViewCell.self,
+                      forCellReuseIdentifier: EditReviewViewController.cellReuseIdentifier)
+        
+        let frame = CGRect(x: 0, y: 0, width: 0, height: 170)
+        imageContainer.frame = frame
+        view.tableHeaderView = imageContainer
+        view.tableFooterView = UIView()
+        return view
+    }()
+    
+    // MARK: - Init
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureInterface()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        configureBars()
+    }
+    
+    // MARK: - Helper functions
+    private func configureBars() {
+        navigationController?.setToolbarHidden(true, animated: false)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.navigationBar.barTintColor = Asset.other1.color
+        navigationController?.navigationBar.tintColor = Asset.other0.color
+        navigationController?.tabBarController?.tabBar.isHidden = true
+    }
+    
+    private func configureInterface() {
+        view.backgroundColor = Asset.other2.color
+        
+        //        view.addSubview(imageContainer)
+        view.addSubview(userInfoTableView)
+        
+        //        imageContainer.addSubview(imageView)
+        
+        configureConstraints()
+    }
+    
+    private func configureConstraints() {
+        let constraints: [NSLayoutConstraint] = [
+            //            imageContainer.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            //            imageContainer.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 40),
+            //            imageContainer.widthAnchor.constraint(equalToConstant: 200),
+            //            imageContainer.heightAnchor.constraint(equalToConstant: 200),
+            //
+            photoButton.centerXAnchor.constraint(equalTo: imageContainer.centerXAnchor),
+            photoButton.centerYAnchor.constraint(equalTo: imageContainer.centerYAnchor),
+            photoButton.widthAnchor.constraint(equalToConstant: 150),
+            photoButton.heightAnchor.constraint(equalToConstant: 150),
+            
+            userInfoTableView.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            userInfoTableView.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
+            userInfoTableView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 16),
+            userInfoTableView.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor)
+        ]
+        NSLayoutConstraint.activate(constraints)
+    }
+    
+    @objc
+    private func imageTapped() {
+        let anim = UIViewPropertyAnimator(duration: 0.5,
+                                          curve: .easeInOut) { [weak self] in
+            self?.photoButton.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+        }
+        anim.addCompletion { [weak self] _ in
+            self?.photoButton.transform = .identity
+            let vc = PhotoViewController()
+            vc.modalPresentationStyle = .fullScreen
+            vc.modalTransitionStyle = .flipHorizontal
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+        anim.startAnimation()
+    }
+}
+
+extension EditReviewViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        viewModel.items.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: EditReviewViewController.cellReuseIdentifier,
+                                                 for: indexPath)
+        let userInfo = viewModel.items[indexPath.row]
+        
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 14)
+        
+        switch userInfo {
+        case .displayName(let value, let icon):
+            cell.textLabel?.text = value
+            cell.imageView?.setImage(icon)
+        case .contacts(let value, let icon):
+            cell.textLabel?.text = value
+            cell.imageView?.setImage(icon)
+        case .email(let value, let icon):
+            cell.textLabel?.text = value
+            cell.imageView?.setImage(icon)
+        }
+        cell.accessoryType = .detailButton
+        return cell
+    }
+}
