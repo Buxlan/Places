@@ -56,6 +56,7 @@ internal enum Asset {
   internal static let map = ImageAsset(name: "map")
   internal static let micFill = ImageAsset(name: "mic.fill")
   internal static let mic = ImageAsset(name: "mic")
+  internal static let news = ImageAsset(name: "news")
   internal static let paintbrushPointedFill = ImageAsset(name: "paintbrushPointedFill")
   internal static let pencil = ImageAsset(name: "pencil")
   internal static let person = ImageAsset(name: "person")

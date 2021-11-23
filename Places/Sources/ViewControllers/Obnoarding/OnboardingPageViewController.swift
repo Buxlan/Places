@@ -23,13 +23,13 @@ class OnboardingPageViewController: UIPageViewController {
         let viewModel1 = OnboardingViewModel(image: Asset.onboarding1.image,
                                              title: L10n.Onboarding.onboardngTitle1,
                                              text: L10n.Onboarding.onboardngText1,
-                                             isButtonSkipEnabled: true)
+                                             isButtonSkipEnabled: false)
         let firstOnboardingVC = OnboardingViewController(viewModel: viewModel1)
         
         let viewModel2 = OnboardingViewModel(image: Asset.onboarding2.image,
                                              title: L10n.Onboarding.onboardngTitle2,
                                              text: L10n.Onboarding.onboardngText2,
-                                             isButtonSkipEnabled: true)
+                                             isButtonSkipEnabled: false)
         let secondOnboardingVC = OnboardingViewController(viewModel: viewModel2)
         
         let viewModel3 = OnboardingViewModel(image: Asset.onboarding1.image,

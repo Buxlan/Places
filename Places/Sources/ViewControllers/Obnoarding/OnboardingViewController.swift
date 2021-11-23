@@ -8,6 +8,8 @@
 import UIKit
 
 class OnboardingViewController: UIViewController {
+    
+    // MARK: - Properties
   
     private var viewModel: OnboardingViewModel
     
@@ -99,11 +101,15 @@ class OnboardingViewController: UIViewController {
     private lazy var buttonSkip: OnboardingSkipButton = {
         let button = OnboardingSkipButton(title: L10n.Onboarding.Buttons.skip,
                                           image: nil)
+        button.setTitleColor(.black, for: .normal)
         button.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
+        button.backgroundColor = .red
+        button.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return button
     }()
     
-    // MARK: - public properties and methods
+    // MARK: - Lifecircle
+    
     init(viewModel: OnboardingViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -112,9 +118,7 @@ class OnboardingViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    // MARK: - events and actions
-    
+       
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -133,12 +137,15 @@ class OnboardingViewController: UIViewController {
         
     }
     
+    // MARK: - Helper methods
+    
     private func configureConstraints() {
         let constraints: [NSLayoutConstraint] = [
             
             logoLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor,
                                            constant: 8),
             logoLabel.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+            logoLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor),
             
             dismissButton.centerYAnchor.constraint(equalTo: logoLabel.centerYAnchor),
             dismissButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
@@ -164,6 +171,7 @@ class OnboardingViewController: UIViewController {
                                              constant: -32),
             
             buttonSkip.centerXAnchor.constraint(equalTo: view.layoutMarginsGuide.centerXAnchor),
+            buttonSkip.widthAnchor.constraint(equalToConstant: 150),
             buttonSkip.bottomAnchor.constraint(equalTo: view.layoutMarginsGuide.bottomAnchor,
                                                constant: -60),
             buttonSkip.heightAnchor.constraint(equalToConstant: 44)

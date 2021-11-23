@@ -57,5 +57,6 @@
 /* User */
 "User.unregistered" = "Unregistered";
 "User.displayUnregistered" = "Unregistered user";
-
-
+/* News */
+"News.tabBarTitle" = "News";
+"News.navigationBarTitle" = "Actual";

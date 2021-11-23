@@ -8,8 +8,7 @@
 import UIKit
 
 class ReviewCollectionCell: UICollectionViewCell, ConfigurableCell {
-    
-    var tableViewIndexPath: IndexPath?
+        
     internal var isInterfaceConfigured: Bool = false
     
     private lazy var placeLabel: UILabel = {
@@ -59,9 +58,7 @@ class ReviewCollectionCell: UICollectionViewCell, ConfigurableCell {
         contentView.addSubview(photoImageView)
         contentView.addSubview(likeButton)
         configureConstraints()
-        isInterfaceConfigured = true
-        
-        tableViewIndexPath = options?.indexPath        
+        isInterfaceConfigured = true             
     }
     
     internal func configureConstraints() {

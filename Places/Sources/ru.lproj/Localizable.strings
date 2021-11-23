@@ -57,3 +57,6 @@
 /* User */
 "User.unregistered" = "Аноним";
 "User.displayUnregistered" = "Анонимный пользователь";
+/* News */
+"News.tabBarTitle" = "Новости";
+"News.navigationBarTitle" = "Актуальное";

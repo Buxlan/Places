@@ -74,6 +74,9 @@
 		409063AF26B08F2200704CA6 /* ReviewCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409063AE26B08F2200704CA6 /* ReviewCollectionCell.swift */; };
 		409063B226B090D400704CA6 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409063B126B090D400704CA6 /* Review.swift */; };
 		409063B526B090F100704CA6 /* Author.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409063B426B090F100704CA6 /* Author.swift */; };
+		409480D826E3CC6200FED51E /* LastNewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409480D626E3CC6200FED51E /* LastNewsTableViewController.swift */; };
+		409480D926E3CC6200FED51E /* LastNewsTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 409480D726E3CC6200FED51E /* LastNewsTableView.xib */; };
+		409480E026E3CF4700FED51E /* MainTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409480DF26E3CF4700FED51E /* MainTabBarViewModel.swift */; };
 		40978D9C26544E3A001E1DFC /* PlaceImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978D9B26544E3A001E1DFC /* PlaceImageCell.swift */; };
 		40978D9F2655AAC9001E1DFC /* Place.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 40978D9E2655AAC9001E1DFC /* Place.storyboard */; };
 		40978DA22655AB80001E1DFC /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40978DA12655AB80001E1DFC /* PlaceViewController.swift */; };
@@ -132,7 +135,7 @@
 		401960E5266A9B08004765F7 /* Log.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Log.swift; sourceTree = "<group>"; };
 		401A92EA26B8B01600DD6C2B /* PlaceCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCategory.swift; sourceTree = "<group>"; };
 		401ACA3A265F86BE00AEADE2 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
-		401BFFDD26A31D35005E0B74 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
+		401BFFDD26A31D35005E0B74 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; name = swiftgen.yml; path = ../Pods/SwiftGen/bin/swiftgen.yml; sourceTree = "<group>"; };
 		4023C0CE26E0368200C17EA4 /* AccountLinkingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountLinkingViewController.swift; sourceTree = "<group>"; };
 		4028E52526617BF800765DC6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		402C3C2B26A5B1E200E73581 /* OnboardingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView.xib; sourceTree = "<group>"; };
@@ -193,6 +196,9 @@
 		409063AE26B08F2200704CA6 /* ReviewCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionCell.swift; sourceTree = "<group>"; };
 		409063B126B090D400704CA6 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		409063B426B090F100704CA6 /* Author.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Author.swift; sourceTree = "<group>"; };
+		409480D626E3CC6200FED51E /* LastNewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastNewsTableViewController.swift; sourceTree = "<group>"; };
+		409480D726E3CC6200FED51E /* LastNewsTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastNewsTableView.xib; sourceTree = "<group>"; };
+		409480DF26E3CF4700FED51E /* MainTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewModel.swift; sourceTree = "<group>"; };
 		40978D9B26544E3A001E1DFC /* PlaceImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceImageCell.swift; sourceTree = "<group>"; };
 		40978D9E2655AAC9001E1DFC /* Place.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Place.storyboard; sourceTree = "<group>"; };
 		40978DA12655AB80001E1DFC /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
@@ -458,6 +464,15 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		409480D526E3CC3600FED51E /* LastNews */ = {
+			isa = PBXGroup;
+			children = (
+				409480D626E3CC6200FED51E /* LastNewsTableViewController.swift */,
+				409480D726E3CC6200FED51E /* LastNewsTableView.xib */,
+			);
+			path = LastNews;
+			sourceTree = "<group>";
+		};
 		40978DAA265671DD001E1DFC /* Config */ = {
 			isa = PBXGroup;
 			children = (
@@ -512,6 +527,7 @@
 			children = (
 				406660CA263D21FF001BEF66 /* Main.storyboard */,
 				407D8484265DB72200F45C22 /* MainTabBarViewController.swift */,
+				409480DF26E3CF4700FED51E /* MainTabBarViewModel.swift */,
 			);
 			path = MainViewController;
 			sourceTree = "<group>";
@@ -649,6 +665,7 @@
 		40E982E526440022007D14D6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				409480D526E3CC3600FED51E /* LastNews */,
 				40B14F1C26B8900F00B15B24 /* Reviews */,
 				400283CB26B74B82009BF0A8 /* Photo */,
 				406D8B3126AE29CC00FC5266 /* Authors */,
@@ -752,6 +769,7 @@
 				406D8B3726AE2A1400FC5266 /* AuthorListView.xib in Resources */,
 				40E7D9EA26A5ADC900DC94C2 /* AuthorsListView.xib in Resources */,
 				406F271726B1C9AE006F92B4 /* ProfileView.xib in Resources */,
+				409480D926E3CC6200FED51E /* LastNewsTableView.xib in Resources */,
 				400E81FC26A571E000164CB3 /* Localizable.strings in Resources */,
 				40B14F2126B8905B00B15B24 /* EditReviewView.xib in Resources */,
 				406660CE263D21FF001BEF66 /* Assets.xcassets in Resources */,
@@ -849,9 +867,11 @@
 				409063AF26B08F2200704CA6 /* ReviewCollectionCell.swift in Sources */,
 				40E982E7264400BC007D14D6 /* OnboardingPageViewController.swift in Sources */,
 				409063B226B090D400704CA6 /* Review.swift in Sources */,
+				409480E026E3CF4700FED51E /* MainTabBarViewModel.swift in Sources */,
 				404CA4BB26B89BD3008A4EDB /* NewReviewViewController.swift in Sources */,
 				404CA4C026B89E9B008A4EDB /* PlaceCategoryCell.swift in Sources */,
 				403B5A52266A47CA00421470 /* UIColor.swift in Sources */,
+				409480D826E3CC6200FED51E /* LastNewsTableViewController.swift in Sources */,
 				409F9E4B26DE0E01004DBC4F /* LoginView.swift in Sources */,
 				40978DA82655BAFD001E1DFC /* PlaceViewModel.swift in Sources */,
 				40D1289926A8866D0037C506 /* PlaceListDataModel.swift in Sources */,

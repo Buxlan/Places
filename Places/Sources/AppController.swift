@@ -26,17 +26,17 @@ class AppController: NSObject {
     
     var isFirstLaunch: Bool {
         get {
-            return textIsFirstLaunch
+            return _isFirstLaunch
 //            let value = UserDefaults.standard.bool(forKey: "wasLauchedBefore")
 //            return !value
         }
         set {
-            textIsFirstLaunch = newValue
+            _isFirstLaunch = newValue
             UserDefaults.standard.set(!newValue, forKey: Key.wasLaunchedBefore)
         }
     }
     
-    var textIsFirstLaunch = true
+    private var _isFirstLaunch = true
     
     let viewController: ( (ViewControllerIdentifier) -> UIViewController ) = { identifier in
         let storyboard = UIStoryboard(name: storyboardIdentifier(identifier).rawValue, bundle: nil)

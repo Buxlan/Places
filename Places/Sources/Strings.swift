@@ -61,6 +61,13 @@ internal enum L10n {
     internal static let title = L10n.tr("Localizable", "NearestPlaces.title")
   }
 
+  internal enum News {
+    /// Actual
+    internal static let navigationBarTitle = L10n.tr("Localizable", "News.navigationBarTitle")
+    /// News
+    internal static let tabBarTitle = L10n.tr("Localizable", "News.tabBarTitle")
+  }
+
   internal enum Onboarding {
     /// We're glad to see you at Place. Here are we're sharing thoughts, dreams and imaginations about favorite Saint-petersburg places
     internal static let onboardngText1 = L10n.tr("Localizable", "Onboarding.onboardngText1")

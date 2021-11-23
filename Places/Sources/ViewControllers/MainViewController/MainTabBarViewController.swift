@@ -12,47 +12,11 @@ import CoreGraphics
 class MainTabBarViewController: UITabBarController {
     
     // MARK: - Properties
+    private let viewModel = MainTabBarViewModel()
     private var swipeDirection: UISwipeGestureRecognizer.Direction?
     
     private let appController = AppController.shared
-    
-    private lazy var items: [UIViewController] = {
-        var items = [UIViewController]()
-        var vc: UINavigationController
-        vc = UINavigationController(rootViewController: PlaceListViewController())
-        vc.isToolbarHidden = true
-        vc.hidesBarsOnTap = false
-        vc.isToolbarHidden = true
-        vc.hidesBarsWhenKeyboardAppears = true
-        vc.setNavigationBarHidden(true, animated: false)
-        items.append(vc)
         
-        vc = UINavigationController(rootViewController: AuthorListViewController())
-        vc.isToolbarHidden = true
-        vc.hidesBarsOnTap = false
-        vc.isToolbarHidden = true
-        vc.hidesBarsWhenKeyboardAppears = true
-        vc.setNavigationBarHidden(true, animated: false)
-        items.append(vc)
-        
-        vc = UINavigationController(rootViewController: FavoritePlacesViewController())
-        vc.isToolbarHidden = true
-        vc.hidesBarsOnTap = false
-        vc.isToolbarHidden = true
-        vc.hidesBarsWhenKeyboardAppears = true
-        vc.setNavigationBarHidden(true, animated: false)
-        items.append(vc)
-        
-        vc = UINavigationController(rootViewController: ProfileViewController())
-        vc.isToolbarHidden = true
-        vc.hidesBarsOnTap = false
-        vc.isToolbarHidden = true
-        vc.hidesBarsWhenKeyboardAppears = true
-        vc.setNavigationBarHidden(true, animated: false)
-        items.append(vc)
-        return items
-    }()
-    
     // MARK: - Init
     required init?(coder: NSCoder) {
         super.init(coder: coder)        
@@ -66,6 +30,7 @@ class MainTabBarViewController: UITabBarController {
         title = L10n.App.name
             
         delegate = self
+        let items = viewModel.viewControllers
         setViewControllers(items, animated: false)
         
         let leftSwipe = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipes(_:)))
@@ -125,6 +90,7 @@ class MainTabBarViewController: UITabBarController {
     @objc
     private func handleSwipes(_ sender: UISwipeGestureRecognizer) {
         swipeDirection = sender.direction
+        let items = viewModel.viewControllers
         if sender.direction == .left {
             if selectedIndex < items.count - 1 {
                 let vc = items[selectedIndex + 1]
@@ -151,6 +117,7 @@ extension MainTabBarViewController: UITabBarControllerDelegate {
         tabBar.frame.size.width = self.view.frame.width + 4
         tabBar.frame.origin.x = -2
         
+        let items = viewModel.viewControllers
         let numberOfItems = CGFloat(items.count)
         let tabBarItemSize = CGSize(width: tabBar.frame.width / numberOfItems,
                                     height: tabBar.frame.height)
