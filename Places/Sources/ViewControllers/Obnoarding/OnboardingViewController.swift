@@ -99,13 +99,13 @@ class OnboardingViewController: UIViewController {
     }()
     
     private lazy var buttonSkip: OnboardingSkipButton = {
-        let button = OnboardingSkipButton(title: L10n.Onboarding.Buttons.skip,
+        let view = OnboardingSkipButton(title: L10n.Onboarding.Buttons.skip,
                                           image: nil)
-        button.setTitleColor(.black, for: .normal)
-        button.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
-        button.backgroundColor = .red
-        button.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        return button
+        view.setTitleColor(.black, for: .normal)
+        view.addTarget(self, action: #selector(dismissTapped), for: .touchUpInside)
+        view.backgroundColor = .red
+        view.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
+        return view
     }()
     
     // MARK: - Lifecircle
